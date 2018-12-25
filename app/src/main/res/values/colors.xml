@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="psts_background_tab_pressed">#1AFFFFFF</color>
+    <color name="psts_background_tab_pressed_ripple">#AAFFFFFF</color>
+    <declare-styleable name="PagerSlidingTabStrip"><attr format="color" name="pstsIndicatorColor"/><attr format="dimension" name="pstsIndicatorHeight"/><attr format="color" name="pstsUnderlineColor"/><attr format="dimension" name="pstsUnderlineHeight"/><attr format="color" name="pstsDividerColor"/><attr format="dimension" name="pstsDividerWidth"/><attr format="dimension" name="pstsDividerPadding"/><attr format="dimension" name="pstsScrollOffset"/><attr format="boolean" name="pstsShouldExpand"/><attr format="boolean" name="pstsPaddingMiddle"/><attr format="dimension" name="pstsTabPaddingLeftRight"/><attr format="reference" name="pstsTabBackground"/><attr format="dimension" name="pstsTabTextSize"/><attr format="reference" name="pstsTabTextColor"/><attr format="reference" name="pstsTabTextStyle"><flag name="normal" value="0x0"/><flag name="bold" value="0x1"/><flag name="italic" value="0x2"/></attr><attr format="boolean" name="pstsTabTextAllCaps"/><attr format="integer" name="pstsTabTextAlpha"/><attr format="string" name="pstsTabTextFontFamily"/></declare-styleable>
+    <color name="text666">#666666</color>
+    <color name="text000">#000000</color>
+    <color name="textred">#ff5456</color>
+    <color name="text555">#555555</color>
+    <color name="text333">#333333</color>
+    <color name="text444">#444444</color>
+    <color name="text999">#999999</color>
+    <color name="textvip">#ff9b00</color>
+    <color name="bgfff">#fff</color>
+    <color name="bgsearch">#ffffff</color>
+    <color name="bgddd">#dddddd</color>
+    <color name="bgea">#EAEAEA</color>
+    <color name="bgtitle">#f23882</color>
+    <color name="pressedColor">#f23882</color>
+    <color name="white">#fff</color>
+    <color name="text">#fff</color>
+</resources>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgfff"
+    android:clipChildren="false"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <com.jude.rollviewpager.RollPagerView
+        android:id="@+id/RollPagerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y141" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y34"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20"
+            android:layout_marginLeft="@dimen/x10"
+            android:background="@mipmap/news" />
+
+        <TextView
+            android:id="@+id/tv_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x6"
+            android:textColor="@color/text000"
+            android:textSize="@dimen/x14" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x3"
+        android:background="@color/bgea"></View>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y34"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:id="@+id/ll_regou"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/x20"
+                    android:layout_height="@dimen/x20"
+                    android:background="@mipmap/regou" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x6"
+                    android:text="热购中"
+                    android:textColor="@color/text333"
+                    android:textSize="@dimen/x13" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/v_regou"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/x3"
+                android:layout_gravity="center"
+                android:background="@mipmap/line"></View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_jinri"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/x20"
+                    android:layout_height="@dimen/x20"
+                    android:background="@mipmap/jinri" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x6"
+                    android:text="今日预购"
+                    android:textColor="@color/text333"
+                    android:textSize="@dimen/x13" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/v_jinri"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/x3"
+                android:layout_gravity="center"
+                android:background="@mipmap/line"></View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_jinrilishi"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/x20"
+                    android:layout_height="@dimen/x20"
+                    android:background="@mipmap/jinrilishi" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x6"
+                    android:text="今日历史"
+                    android:textColor="@color/text333"
+                    android:textSize="@dimen/x13" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/v_jinrilishi"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/x3"
+                android:layout_gravity="center"
+                android:background="@mipmap/line"></View>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:layout_marginTop="@dimen/x3"
+        android:background="@color/bgddd"></View>
+
+</LinearLayout>

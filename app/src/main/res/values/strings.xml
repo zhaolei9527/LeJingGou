@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">LeJingGou</string>
+    <string name="loading">加载中......</string>
+    <string name="requstPerminssions">权限申请</string>
+    <string name="notmore">没有更多了</string>
+    <string name="Thepermissionapplicationisrejected">应用需要这些权限保证功能</string>
+    <string name="Networkexception">网络异常</string>
+    <string name="Clicktheexitprogramagain">再按一次退出</string>
+    <string name="Abnormalserver">服务器异常</string>
+    <string name="hasError">出错啦</string>
+    <string name="cancel">取消</string>
+    <string name="determine">确定</string>
+    <string name="Modify_user_name">修改用户名</string>
+    <string name="enter_new_user">请输入新的用户名</string>
+    <string name="deleteaddress">您确定删除此地址么？</string>
+    <string name="prompt">提示</string>
+    <string name="Welcome_back">欢迎回来</string>
+    <string name="Login_failed_login">登录失效，请重新登录</string>
+    <string name="Please_login_first">请先登录</string>
+
+</resources>
