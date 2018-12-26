@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgfff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/x10"
+            android:layout_height="@dimen/x10"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x5"
+            android:background="@drawable/title_news_noraml" />
+
+        <TextView
+            android:id="@+id/tv_type_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/y40"
+            android:padding="@dimen/x5"
+            android:singleLine="true"
+            android:text="标题描述标题描述标题描述标题描述标题描述标题描述标题描述标题描述标题描述标题描述标题描述"
+            android:textColor="@drawable/wenyi_text_selector"
+            android:textSize="@dimen/x13" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:background="@color/bgea"
+        android:layerType="software"></View>
+
+</FrameLayout>

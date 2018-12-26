@@ -135,11 +135,12 @@ public class FlashActivity extends BaseActivity {
                 Log.e("LoginActivity", decode);
                 try {
                     LoginBean loginBean = new Gson().fromJson(decode, LoginBean.class);
-                    if ("1".equals(loginBean.getStatus())) {
+                    if (1 == loginBean.getStatus()) {
                         Toast.makeText(context, getString(R.string.Welcome_back), Toast.LENGTH_SHORT).show();
                         SpUtil.putAndApply(context, "uid", loginBean.getData().getUid().toString());
                         gotoMain();
                     } else {
+                        Toast.makeText(context, "登录失效", Toast.LENGTH_SHORT).show();
                         SpUtil.clear(context);
                         delayGoToLogin();
                     }

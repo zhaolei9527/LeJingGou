@@ -5,12 +5,20 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <sakura.com.lejinggou.View.WenguoyiRecycleView
-        android:id="@+id/rv_homelist"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipChildren="false"
-        android:clipToPadding="false"></sakura.com.lejinggou.View.WenguoyiRecycleView>
+        android:orientation="vertical">
 
+        <sakura.com.lejinggou.View.WenguoyiRecycleView
+            android:id="@+id/rv_homelist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"></sakura.com.lejinggou.View.WenguoyiRecycleView>
+
+        <include layout="@layout/layout_empty"></include>
+
+    </FrameLayout>
 
 </LinearLayout>

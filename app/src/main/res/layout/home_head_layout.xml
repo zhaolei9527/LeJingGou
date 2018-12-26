@@ -26,7 +26,7 @@
             android:layout_marginLeft="@dimen/x10"
             android:background="@mipmap/news" />
 
-        <TextView
+        <sakura.com.lejinggou.View.VerticalTextview
             android:id="@+id/tv_news"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
 
             <View
                 android:id="@+id/v_regou"
-                android:layout_width="@dimen/x50"
+                android:layout_width="@dimen/x30"
                 android:layout_height="@dimen/x3"
                 android:layout_gravity="center"
                 android:background="@mipmap/line"></View>
@@ -118,10 +118,11 @@
 
             <View
                 android:id="@+id/v_jinri"
-                android:layout_width="@dimen/x50"
+                android:layout_width="@dimen/x30"
                 android:layout_height="@dimen/x3"
                 android:layout_gravity="center"
-                android:background="@mipmap/line"></View>
+                android:background="@mipmap/line"
+                android:visibility="gone"></View>
 
         </LinearLayout>
 
@@ -156,13 +157,13 @@
 
             <View
                 android:id="@+id/v_jinrilishi"
-                android:layout_width="@dimen/x50"
+                android:layout_width="@dimen/x30"
                 android:layout_height="@dimen/x3"
                 android:layout_gravity="center"
-                android:background="@mipmap/line"></View>
+                android:background="@mipmap/line"
+                android:visibility="gone"></View>
 
         </LinearLayout>
-
 
     </LinearLayout>
 

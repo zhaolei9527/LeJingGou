@@ -28,13 +28,8 @@ public class App extends MultiDexApplication {
      */
     public static RequestQueue queues;
     public static PausableThreadPoolExecutor pausableThreadPoolExecutor;
-
-    public static String LanguageTYPE = "3";
     public static String LanguageTYPEHTTP = "?l=zh-cn";
-
-
     public static Context context;
-
     protected String getAppkey() {
         return null;
     }

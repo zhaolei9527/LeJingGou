@@ -141,11 +141,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
-
     private String account;
     private String password;
     private String wxopenid;
-
 
     @Override
     protected void onResume() {

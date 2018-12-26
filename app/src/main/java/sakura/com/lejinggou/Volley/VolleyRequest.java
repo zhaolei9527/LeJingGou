@@ -53,7 +53,6 @@ public class VolleyRequest {
         request = new StringRequest(Request.Method.POST, url, vif.loadingListener(), vif.errorListener()) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                params.put("ltype", App.LanguageTYPE);
                 String s = formatUrlMap(params, false, false);
                 String s1 = urlmd5(s, UrlUtils.KEY);
                 params.put("pwd", s1);
@@ -82,7 +81,6 @@ public class VolleyRequest {
         request = new StringRequest(Request.Method.POST, url, vif.loadingListener(), vif.errorListener()) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                params.put("ltype", App.LanguageTYPE);
                 String s = formatUrlMap(params, false, false);
                 String s1 = urlmd5(s, UrlUtils.KEY);
                 params.put("pwd", s1);
@@ -104,7 +102,6 @@ public class VolleyRequest {
     public static void uploadMultipart(Context context, String url, List<String> listname,
                                        List<File> listFile, Map<String, String> params,
                                        VolleyInterface listener) {
-        params.put("ltype", App.LanguageTYPE);
         String s = formatUrlMap(params, false, false);
         String s1 = urlmd5(s, UrlUtils.KEY);
         params.put("pwd", s1);

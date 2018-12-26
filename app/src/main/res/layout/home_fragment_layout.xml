@@ -4,19 +4,39 @@
     android:layout_height="match_parent"
     android:background="@color/bgfff">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <sakura.com.lejinggou.View.WenguoyiRecycleView
-            android:id="@+id/rv_homelist"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:clipChildren="false"
-            android:clipToPadding="false"></sakura.com.lejinggou.View.WenguoyiRecycleView>
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <include
+                android:id="@+id/llhead"
+                layout="@layout/home_head_layout"></include>
+
+            <FrameLayout
+                android:layout_below="@id/llhead"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <sakura.com.lejinggou.View.WenguoyiRecycleView
+                    android:id="@+id/rv_homelist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"></sakura.com.lejinggou.View.WenguoyiRecycleView>
+
+                <include layout="@layout/layout_empty"></include>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </FrameLayout>

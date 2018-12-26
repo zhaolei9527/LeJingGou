@@ -18,15 +18,13 @@ public class HomeBean {
 
     /**
      * status : 1
-     * list : [{"id":"23","title":"细胞美容","img_feng":"/Public/uploads/goods/2018-09-26/5bab230ab1008.png","price":"4980","xiaoliang":"63"},{"id":"22","title":"爱美丽","img_feng":"/Public/uploads/goods/2018-09-26/5bab23c7ba090.png","price":"980","xiaoliang":"69"},{"id":"25","title":"细胞美容学","img_feng":"/Public/uploads/goods/2018-09-26/5bab24b8ddec8.png","price":"39","xiaoliang":"29"},{"id":"24","title":"生殖美学原理","img_feng":"/Public/uploads/goods/2018-09-26/5bab24dd36ee8.jpg","price":"45","xiaoliang":"32"},{"id":"26","title":"靓帝CY细胞美容生殖美学_专用胸牌10件组合_2018新春特价","img_feng":"/Public/uploads/goods/2018-09-26/5bab251f3ff70.jpg","price":"100","xiaoliang":"17"},{"id":"40","title":"123456","img_feng":"/Public/uploads/goods/2018-09-25/5ba99e61e1c80.jpg","price":"123123","xiaoliang":null}]
-     * lun_img : [{"id":"1","img":null,"addtime":"1503906558","url":"www.cn77.cn","title":"首页轮播图","sort":"0"},{"id":"2","img":"/Public/uploads/img/2018-09-21/5ba450c0a5938.png","addtime":"1537495232","url":"www.cn77.cn","title":"轮播图","sort":"0"},{"id":"3","img":"/Public/uploads/img/2018-09-21/5ba4524783a40.png","addtime":"1537495623","url":"www.cn77.cn","title":"轮播图","sort":"3"}]
-     * goods_pai : [{"id":"23","img_feng":"/Public/uploads/goods/2018-09-26/5bab230ab1008.png","zhou":"1"},{"id":"22","img_feng":"/Public/uploads/goods/2018-09-26/5bab23c7ba090.png","zhou":"2"},{"id":"25","img_feng":"/Public/uploads/goods/2018-09-26/5bab24b8ddec8.png","zhou":"3"},{"id":"24","img_feng":"/Public/uploads/goods/2018-09-26/5bab24dd36ee8.jpg","zhou":"4"},{"id":"30","img_feng":"/Public/uploads/goods/2018-09-26/5bab250117ed0.png","zhou":"5"},{"id":"26","img_feng":"/Public/uploads/goods/2018-09-26/5bab251f3ff70.jpg","zhou":"6"},{"id":"40","img_feng":"/Public/uploads/goods/2018-09-25/5ba99e61e1c80.jpg","zhou":"7"}]
+     * info : 信息拉取成功
+     * data : {"dyurl":"http://ljg.t.100help.net/ym/lxkf.html","img":["/Public/uploads/lb/2018-11-23/2018_11_23_095524_4083.jpg","/Public/uploads/lb/2018-11-23/2018_11_23_095545_3642.jpg","/Public/uploads/lb/2018-11-23/2018_11_23_095604_2579.jpg"],"news":[{"title":"在每个人生阶段，如何升级你的翡翠？","id":"11"},{"title":"青海玉的秘密","id":"9"},{"title":"这是一条新闻","id":"7"}],"rg":[{"id":"47","name":"卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png","gys":"早安日记文艺生活馆 ","dqprice":"530.00","starttime":"1544688209","endtime":"1546243411","s":455719,"type":1},{"id":"46","name":"定制西域 骆驼冲锋衣男女两件套三合一透气防风柔软面料保暖衣潮","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155337_4252.jpg","gys":"正品户外运动服装 ","dqprice":"450.00","starttime":"1544687587","endtime":"1546242791","s":455099,"type":1},{"id":"45","name":"德国波梵森秋冬季户外冲锋衣男女三合一两件套防水保暖登山服潮牌","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155129_7975.jpg","gys":"bonbfenssan波梵森旗舰店","dqprice":"1500.00","starttime":"1544687387","endtime":"1546242592","s":454900,"type":1},{"id":"44","name":"慕思床垫 独立筒弹簧床垫 2cm天然乳胶床垫1.8米席梦思 美脊版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154537_8974.jpg","gys":"慕思旗舰店 ","dqprice":"5000.00","starttime":"1544702400","endtime":"1546242228","s":454536,"type":1},{"id":"43","name":"海马床垫1.5m1.8米软硬两用乳胶椰棕20cm厚15cm厚席梦思床垫1.2米","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154154_7555.jpg","gys":"海马席梦思工厂折扣店 ","dqprice":"500.00","starttime":"1544773253","endtime":"1546242056","s":454364,"type":1},{"id":"42","name":"2018秋冬新品女装韩国V领撞色亮丝兔毛混纺女士显瘦毛衣 圣诞版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_153956_8791.jpg","gys":"KACIA STUDIO ","dqprice":"50.00","starttime":"1544686746","endtime":"1546241951","s":454259,"type":1}],"yg":[{"id":"47","name":"卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png","gys":"早安日记文艺生活馆 ","dqprice":"530.00","starttime":"1544688209","endtime":"1546243411","s":455719,"type":1},{"id":"46","name":"定制西域 骆驼冲锋衣男女两件套三合一透气防风柔软面料保暖衣潮","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155337_4252.jpg","gys":"正品户外运动服装 ","dqprice":"450.00","starttime":"1544687587","endtime":"1546242791","s":455099,"type":1},{"id":"45","name":"德国波梵森秋冬季户外冲锋衣男女三合一两件套防水保暖登山服潮牌","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155129_7975.jpg","gys":"bonbfenssan波梵森旗舰店","dqprice":"1500.00","starttime":"1544687387","endtime":"1546242592","s":454900,"type":1},{"id":"44","name":"慕思床垫 独立筒弹簧床垫 2cm天然乳胶床垫1.8米席梦思 美脊版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154537_8974.jpg","gys":"慕思旗舰店 ","dqprice":"5000.00","starttime":"1544702400","endtime":"1546242228","s":454536,"type":1},{"id":"43","name":"海马床垫1.5m1.8米软硬两用乳胶椰棕20cm厚15cm厚席梦思床垫1.2米","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154154_7555.jpg","gys":"海马席梦思工厂折扣店 ","dqprice":"500.00","starttime":"1544773253","endtime":"1546242056","s":454364,"type":1},{"id":"42","name":"2018秋冬新品女装韩国V领撞色亮丝兔毛混纺女士显瘦毛衣 圣诞版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_153956_8791.jpg","gys":"KACIA STUDIO ","dqprice":"50.00","starttime":"1544686746","endtime":"1546241951","s":454259,"type":1}],"ls":[{"id":"47","name":"卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png","gys":"早安日记文艺生活馆 ","dqprice":"530.00","starttime":"1544688209","endtime":"1546243411","s":455719,"type":1},{"id":"46","name":"定制西域 骆驼冲锋衣男女两件套三合一透气防风柔软面料保暖衣潮","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155337_4252.jpg","gys":"正品户外运动服装 ","dqprice":"450.00","starttime":"1544687587","endtime":"1546242791","s":455099,"type":1},{"id":"45","name":"德国波梵森秋冬季户外冲锋衣男女三合一两件套防水保暖登山服潮牌","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155129_7975.jpg","gys":"bonbfenssan波梵森旗舰店","dqprice":"1500.00","starttime":"1544687387","endtime":"1546242592","s":454900,"type":1},{"id":"44","name":"慕思床垫 独立筒弹簧床垫 2cm天然乳胶床垫1.8米席梦思 美脊版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154537_8974.jpg","gys":"慕思旗舰店 ","dqprice":"5000.00","starttime":"1544702400","endtime":"1546242228","s":454536,"type":1},{"id":"43","name":"海马床垫1.5m1.8米软硬两用乳胶椰棕20cm厚15cm厚席梦思床垫1.2米","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154154_7555.jpg","gys":"海马席梦思工厂折扣店 ","dqprice":"500.00","starttime":"1544773253","endtime":"1546242056","s":454364,"type":1},{"id":"42","name":"2018秋冬新品女装韩国V领撞色亮丝兔毛混纺女士显瘦毛衣 圣诞版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_153956_8791.jpg","gys":"KACIA STUDIO ","dqprice":"50.00","starttime":"1544686746","endtime":"1546241951","s":454259,"type":1}]}
      */
 
     private int status;
-    private List<ListBean> list;
-    private List<LunImgBean> lun_img;
-    private List<GoodsPaiBean> goods_pai;
+    private String info;
+    private DataBean data;
 
     public static List<HomeBean> arrayHomeBeanFromData(String str) {
 
@@ -44,209 +42,439 @@ public class HomeBean {
         this.status = status;
     }
 
-    public List<ListBean> getList() {
-        return list;
+    public String getInfo() {
+        return info;
     }
 
-    public void setList(List<ListBean> list) {
-        this.list = list;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
-    public List<LunImgBean> getLun_img() {
-        return lun_img;
+    public DataBean getData() {
+        return data;
     }
 
-    public void setLun_img(List<LunImgBean> lun_img) {
-        this.lun_img = lun_img;
+    public void setData(DataBean data) {
+        this.data = data;
     }
 
-    public List<GoodsPaiBean> getGoods_pai() {
-        return goods_pai;
-    }
-
-    public void setGoods_pai(List<GoodsPaiBean> goods_pai) {
-        this.goods_pai = goods_pai;
-    }
-
-    public static class ListBean {
+    public static class DataBean {
         /**
-         * id : 23
-         * title : 细胞美容
-         * img_feng : /Public/uploads/goods/2018-09-26/5bab230ab1008.png
-         * price : 4980
-         * xiaoliang : 63
+         * dyurl : http://ljg.t.100help.net/ym/lxkf.html
+         * img : ["/Public/uploads/lb/2018-11-23/2018_11_23_095524_4083.jpg","/Public/uploads/lb/2018-11-23/2018_11_23_095545_3642.jpg","/Public/uploads/lb/2018-11-23/2018_11_23_095604_2579.jpg"]
+         * news : [{"title":"在每个人生阶段，如何升级你的翡翠？","id":"11"},{"title":"青海玉的秘密","id":"9"},{"title":"这是一条新闻","id":"7"}]
+         * rg : [{"id":"47","name":"卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png","gys":"早安日记文艺生活馆 ","dqprice":"530.00","starttime":"1544688209","endtime":"1546243411","s":455719,"type":1},{"id":"46","name":"定制西域 骆驼冲锋衣男女两件套三合一透气防风柔软面料保暖衣潮","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155337_4252.jpg","gys":"正品户外运动服装 ","dqprice":"450.00","starttime":"1544687587","endtime":"1546242791","s":455099,"type":1},{"id":"45","name":"德国波梵森秋冬季户外冲锋衣男女三合一两件套防水保暖登山服潮牌","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155129_7975.jpg","gys":"bonbfenssan波梵森旗舰店","dqprice":"1500.00","starttime":"1544687387","endtime":"1546242592","s":454900,"type":1},{"id":"44","name":"慕思床垫 独立筒弹簧床垫 2cm天然乳胶床垫1.8米席梦思 美脊版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154537_8974.jpg","gys":"慕思旗舰店 ","dqprice":"5000.00","starttime":"1544702400","endtime":"1546242228","s":454536,"type":1},{"id":"43","name":"海马床垫1.5m1.8米软硬两用乳胶椰棕20cm厚15cm厚席梦思床垫1.2米","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154154_7555.jpg","gys":"海马席梦思工厂折扣店 ","dqprice":"500.00","starttime":"1544773253","endtime":"1546242056","s":454364,"type":1},{"id":"42","name":"2018秋冬新品女装韩国V领撞色亮丝兔毛混纺女士显瘦毛衣 圣诞版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_153956_8791.jpg","gys":"KACIA STUDIO ","dqprice":"50.00","starttime":"1544686746","endtime":"1546241951","s":454259,"type":1}]
+         * yg : [{"id":"47","name":"卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png","gys":"早安日记文艺生活馆 ","dqprice":"530.00","starttime":"1544688209","endtime":"1546243411","s":455719,"type":1},{"id":"46","name":"定制西域 骆驼冲锋衣男女两件套三合一透气防风柔软面料保暖衣潮","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155337_4252.jpg","gys":"正品户外运动服装 ","dqprice":"450.00","starttime":"1544687587","endtime":"1546242791","s":455099,"type":1},{"id":"45","name":"德国波梵森秋冬季户外冲锋衣男女三合一两件套防水保暖登山服潮牌","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155129_7975.jpg","gys":"bonbfenssan波梵森旗舰店","dqprice":"1500.00","starttime":"1544687387","endtime":"1546242592","s":454900,"type":1},{"id":"44","name":"慕思床垫 独立筒弹簧床垫 2cm天然乳胶床垫1.8米席梦思 美脊版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154537_8974.jpg","gys":"慕思旗舰店 ","dqprice":"5000.00","starttime":"1544702400","endtime":"1546242228","s":454536,"type":1},{"id":"43","name":"海马床垫1.5m1.8米软硬两用乳胶椰棕20cm厚15cm厚席梦思床垫1.2米","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154154_7555.jpg","gys":"海马席梦思工厂折扣店 ","dqprice":"500.00","starttime":"1544773253","endtime":"1546242056","s":454364,"type":1},{"id":"42","name":"2018秋冬新品女装韩国V领撞色亮丝兔毛混纺女士显瘦毛衣 圣诞版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_153956_8791.jpg","gys":"KACIA STUDIO ","dqprice":"50.00","starttime":"1544686746","endtime":"1546241951","s":454259,"type":1}]
+         * ls : [{"id":"47","name":"卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png","gys":"早安日记文艺生活馆 ","dqprice":"530.00","starttime":"1544688209","endtime":"1546243411","s":455719,"type":1},{"id":"46","name":"定制西域 骆驼冲锋衣男女两件套三合一透气防风柔软面料保暖衣潮","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155337_4252.jpg","gys":"正品户外运动服装 ","dqprice":"450.00","starttime":"1544687587","endtime":"1546242791","s":455099,"type":1},{"id":"45","name":"德国波梵森秋冬季户外冲锋衣男女三合一两件套防水保暖登山服潮牌","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_155129_7975.jpg","gys":"bonbfenssan波梵森旗舰店","dqprice":"1500.00","starttime":"1544687387","endtime":"1546242592","s":454900,"type":1},{"id":"44","name":"慕思床垫 独立筒弹簧床垫 2cm天然乳胶床垫1.8米席梦思 美脊版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154537_8974.jpg","gys":"慕思旗舰店 ","dqprice":"5000.00","starttime":"1544702400","endtime":"1546242228","s":454536,"type":1},{"id":"43","name":"海马床垫1.5m1.8米软硬两用乳胶椰棕20cm厚15cm厚席梦思床垫1.2米","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_154154_7555.jpg","gys":"海马席梦思工厂折扣店 ","dqprice":"500.00","starttime":"1544773253","endtime":"1546242056","s":454364,"type":1},{"id":"42","name":"2018秋冬新品女装韩国V领撞色亮丝兔毛混纺女士显瘦毛衣 圣诞版","fm_img":"/Public/uploads/lb/2018-12-13/2018_12_13_153956_8791.jpg","gys":"KACIA STUDIO ","dqprice":"50.00","starttime":"1544686746","endtime":"1546241951","s":454259,"type":1}]
          */
 
-        private String id;
-        private String title;
-        private String img_feng;
-        private String price;
-        private String xiaoliang;
+        private String dyurl;
+        private List<String> img;
+        private List<NewsBean> news;
+        private List<RgBean> rg;
+        private List<YgBean> yg;
+        private List<LsBean> ls;
 
-        public static List<ListBean> arrayListBeanFromData(String str) {
+        public static List<DataBean> arrayDataBeanFromData(String str) {
 
-            Type listType = new TypeToken<ArrayList<ListBean>>() {
+            Type listType = new TypeToken<ArrayList<DataBean>>() {
             }.getType();
 
             return new Gson().fromJson(str, listType);
         }
 
-        public String getId() {
-            return id;
+        public String getDyurl() {
+            return dyurl;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setDyurl(String dyurl) {
+            this.dyurl = dyurl;
         }
 
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getImg_feng() {
-            return img_feng;
-        }
-
-        public void setImg_feng(String img_feng) {
-            this.img_feng = img_feng;
-        }
-
-        public String getPrice() {
-            return price;
-        }
-
-        public void setPrice(String price) {
-            this.price = price;
-        }
-
-        public String getXiaoliang() {
-            return xiaoliang;
-        }
-
-        public void setXiaoliang(String xiaoliang) {
-            this.xiaoliang = xiaoliang;
-        }
-    }
-
-    public static class LunImgBean {
-        /**
-         * id : 1
-         * img : null
-         * addtime : 1503906558
-         * url : www.cn77.cn
-         * title : 首页轮播图
-         * sort : 0
-         */
-
-        private String id;
-        private Object img;
-        private String addtime;
-        private String url;
-        private String title;
-        private String sort;
-
-        public static List<LunImgBean> arrayLunImgBeanFromData(String str) {
-
-            Type listType = new TypeToken<ArrayList<LunImgBean>>() {
-            }.getType();
-
-            return new Gson().fromJson(str, listType);
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public Object getImg() {
+        public List<String> getImg() {
             return img;
         }
 
-        public void setImg(Object img) {
+        public void setImg(List<String> img) {
             this.img = img;
         }
 
-        public String getAddtime() {
-            return addtime;
+        public List<NewsBean> getNews() {
+            return news;
         }
 
-        public void setAddtime(String addtime) {
-            this.addtime = addtime;
+        public void setNews(List<NewsBean> news) {
+            this.news = news;
         }
 
-        public String getUrl() {
-            return url;
+        public List<RgBean> getRg() {
+            return rg;
         }
 
-        public void setUrl(String url) {
-            this.url = url;
+        public void setRg(List<RgBean> rg) {
+            this.rg = rg;
         }
 
-        public String getTitle() {
-            return title;
+        public List<YgBean> getYg() {
+            return yg;
         }
 
-        public void setTitle(String title) {
-            this.title = title;
+        public void setYg(List<YgBean> yg) {
+            this.yg = yg;
         }
 
-        public String getSort() {
-            return sort;
+        public List<LsBean> getLs() {
+            return ls;
         }
 
-        public void setSort(String sort) {
-            this.sort = sort;
-        }
-    }
-
-    public static class GoodsPaiBean {
-        /**
-         * id : 23
-         * img_feng : /Public/uploads/goods/2018-09-26/5bab230ab1008.png
-         * zhou : 1
-         */
-
-        private String id;
-        private String img_feng;
-        private String zhou;
-
-        public static List<GoodsPaiBean> arrayGoodsPaiBeanFromData(String str) {
-
-            Type listType = new TypeToken<ArrayList<GoodsPaiBean>>() {
-            }.getType();
-
-            return new Gson().fromJson(str, listType);
+        public void setLs(List<LsBean> ls) {
+            this.ls = ls;
         }
 
-        public String getId() {
-            return id;
+        public static class NewsBean {
+            /**
+             * title : 在每个人生阶段，如何升级你的翡翠？
+             * id : 11
+             */
+
+            private String title;
+            private String id;
+
+            public static List<NewsBean> arrayNewsBeanFromData(String str) {
+
+                Type listType = new TypeToken<ArrayList<NewsBean>>() {
+                }.getType();
+
+                return new Gson().fromJson(str, listType);
+            }
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public static class RgBean {
+            /**
+             * id : 47
+             * name : 卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款
+             * fm_img : /Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png
+             * gys : 早安日记文艺生活馆
+             * dqprice : 530.00
+             * starttime : 1544688209
+             * endtime : 1546243411
+             * s : 455719
+             * type : 1
+             */
+
+            private String id;
+            private String name;
+            private String fm_img;
+            private String gys;
+            private String dqprice;
+            private String starttime;
+            private String endtime;
+            private int s;
+            private int type;
+
+            public static List<RgBean> arrayRgBeanFromData(String str) {
+
+                Type listType = new TypeToken<ArrayList<RgBean>>() {
+                }.getType();
+
+                return new Gson().fromJson(str, listType);
+            }
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public String getFm_img() {
+                return fm_img;
+            }
+
+            public void setFm_img(String fm_img) {
+                this.fm_img = fm_img;
+            }
+
+            public String getGys() {
+                return gys;
+            }
+
+            public void setGys(String gys) {
+                this.gys = gys;
+            }
+
+            public String getDqprice() {
+                return dqprice;
+            }
+
+            public void setDqprice(String dqprice) {
+                this.dqprice = dqprice;
+            }
+
+            public String getStarttime() {
+                return starttime;
+            }
+
+            public void setStarttime(String starttime) {
+                this.starttime = starttime;
+            }
+
+            public String getEndtime() {
+                return endtime;
+            }
+
+            public void setEndtime(String endtime) {
+                this.endtime = endtime;
+            }
+
+            public int getS() {
+                return s;
+            }
+
+            public void setS(int s) {
+                this.s = s;
+            }
+
+            public int getType() {
+                return type;
+            }
+
+            public void setType(int type) {
+                this.type = type;
+            }
         }
 
-        public String getImg_feng() {
-            return img_feng;
+        public static class YgBean {
+            /**
+             * id : 47
+             * name : 卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款
+             * fm_img : /Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png
+             * gys : 早安日记文艺生活馆
+             * dqprice : 530.00
+             * starttime : 1544688209
+             * endtime : 1546243411
+             * s : 455719
+             * type : 1
+             */
+
+            private String id;
+            private String name;
+            private String fm_img;
+            private String gys;
+            private String dqprice;
+            private String starttime;
+            private String endtime;
+            private int s;
+            private int type;
+
+            public static List<YgBean> arrayYgBeanFromData(String str) {
+
+                Type listType = new TypeToken<ArrayList<YgBean>>() {
+                }.getType();
+
+                return new Gson().fromJson(str, listType);
+            }
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public String getFm_img() {
+                return fm_img;
+            }
+
+            public void setFm_img(String fm_img) {
+                this.fm_img = fm_img;
+            }
+
+            public String getGys() {
+                return gys;
+            }
+
+            public void setGys(String gys) {
+                this.gys = gys;
+            }
+
+            public String getDqprice() {
+                return dqprice;
+            }
+
+            public void setDqprice(String dqprice) {
+                this.dqprice = dqprice;
+            }
+
+            public String getStarttime() {
+                return starttime;
+            }
+
+            public void setStarttime(String starttime) {
+                this.starttime = starttime;
+            }
+
+            public String getEndtime() {
+                return endtime;
+            }
+
+            public void setEndtime(String endtime) {
+                this.endtime = endtime;
+            }
+
+            public int getS() {
+                return s;
+            }
+
+            public void setS(int s) {
+                this.s = s;
+            }
+
+            public int getType() {
+                return type;
+            }
+
+            public void setType(int type) {
+                this.type = type;
+            }
         }
 
-        public void setImg_feng(String img_feng) {
-            this.img_feng = img_feng;
-        }
+        public static class LsBean {
+            /**
+             * id : 47
+             * name : 卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款
+             * fm_img : /Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png
+             * gys : 早安日记文艺生活馆
+             * dqprice : 530.00
+             * starttime : 1544688209
+             * endtime : 1546243411
+             * s : 455719
+             * type : 1
+             */
 
-        public String getZhou() {
-            return zhou;
-        }
+            private String id;
+            private String name;
+            private String fm_img;
+            private String gys;
+            private String dqprice;
+            private String starttime;
+            private String endtime;
+            private int s;
+            private int type;
 
-        public void setZhou(String zhou) {
-            this.zhou = zhou;
+            public static List<LsBean> arrayLsBeanFromData(String str) {
+
+                Type listType = new TypeToken<ArrayList<LsBean>>() {
+                }.getType();
+
+                return new Gson().fromJson(str, listType);
+            }
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public String getFm_img() {
+                return fm_img;
+            }
+
+            public void setFm_img(String fm_img) {
+                this.fm_img = fm_img;
+            }
+
+            public String getGys() {
+                return gys;
+            }
+
+            public void setGys(String gys) {
+                this.gys = gys;
+            }
+
+            public String getDqprice() {
+                return dqprice;
+            }
+
+            public void setDqprice(String dqprice) {
+                this.dqprice = dqprice;
+            }
+
+            public String getStarttime() {
+                return starttime;
+            }
+
+            public void setStarttime(String starttime) {
+                this.starttime = starttime;
+            }
+
+            public String getEndtime() {
+                return endtime;
+            }
+
+            public void setEndtime(String endtime) {
+                this.endtime = endtime;
+            }
+
+            public int getS() {
+                return s;
+            }
+
+            public void setS(int s) {
+                this.s = s;
+            }
+
+            public int getType() {
+                return type;
+            }
+
+            public void setType(int type) {
+                this.type = type;
+            }
         }
     }
 }

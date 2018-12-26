@@ -33,7 +33,8 @@
         <activity android:name=".Activity.ForgetActivity"></activity>
         <activity android:name=".Activity.RegisterActivity"></activity>
         <activity android:name=".Activity.ZhuCeXieYiDetailsActivity"></activity>
-
+        <activity android:name=".Activity.NewsActivity"></activity>
+        <activity android:name=".Activity.NewsDetailsActivity"></activity>
 
         <!--====================================功能需要==========================================-->
 
