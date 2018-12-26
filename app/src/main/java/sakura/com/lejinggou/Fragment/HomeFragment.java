@@ -229,10 +229,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                         adapter.datasRemove();
                         adapter.notifyDataSetChanged();
                     }
-
-
-
-
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
