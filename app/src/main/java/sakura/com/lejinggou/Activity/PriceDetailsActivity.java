@@ -183,6 +183,15 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                             }
                         });
 
+
+                        llCJJL.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(context, ChuJiaJiLuActivity.class).putExtra("id", goodsIndexBean.getData().getId()));
+                            }
+                        });
+
+
                         Log.e("PriceDetailsActivity", String.valueOf(goodsIndexBean.getData().getS()));
 
                         if (!TextUtils.isEmpty(String.valueOf(goodsIndexBean.getData().getS())) && !"0".equals(String.valueOf(goodsIndexBean.getData().getS()))) {
