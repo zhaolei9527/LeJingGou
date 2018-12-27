@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
@@ -138,6 +139,9 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                 });
             }
         });
+        TextView textView = new TextView(context);
+        textView.setText(context.getString(R.string.notmore));
+        rvHomelist.setFootEndView(textView);
 
     }
 
@@ -187,7 +191,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                     adapter = new HomeGoodListAdapter(mContext, homeBean.getData().getRg());
                     rvHomelist.setAdapter(adapter);
                     rvHomelist.loadMoreComplete();
-
                     homeBean = null;
                     result = null;
                 } catch (Exception e) {
@@ -238,7 +241,9 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                                     LLEmpty.setVisibility(View.GONE);
                                 }
                             } else {
+                                rvHomelist.loadMoreComplete();
                                 rvHomelist.loadMoreEnd();
+                                rvHomelist.setCanloadMore(false);
                                 if (page == 1) {
                                     LLEmpty.setVisibility(View.VISIBLE);
                                 }

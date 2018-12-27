@@ -1,12 +1,14 @@
 package sakura.com.lejinggou.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,9 +17,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import sakura.com.lejinggou.Activity.MainActivity;
+import sakura.com.lejinggou.Activity.PriceDetailsActivity;
 import sakura.com.lejinggou.Bean.HomeBean;
 import sakura.com.lejinggou.Bean.IndexGoodsBean;
 import sakura.com.lejinggou.R;
+import sakura.com.lejinggou.Utils.DateUtils;
 import sakura.com.lejinggou.Utils.UrlUtils;
 
 /**
@@ -53,11 +58,22 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
         this.lsBeanList.addAll(rgBean);
     }
 
-
     public void datasRemove() {
         rgBeanList.clear();
         ygBeanList.clear();
         lsBeanList.clear();
+    }
+
+    public List getDatas() {
+        if (type.equals("1")) {
+            return rgBeanList;
+        } else if (type.equals("2")) {
+            return ygBeanList;
+        } else if (type.equals("3")) {
+            return lsBeanList;
+        } else {
+            return new ArrayList();
+        }
     }
 
     public void setDatas(String type, List<IndexGoodsBean.DataBean> dataBeans) {
@@ -114,27 +130,147 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
         return vp;
     }
 
-    private boolean isfirst = false;
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-
         if (type.equals("1")) {
             holder.SimpleDraweeView.setImageURI(UrlUtils.URL + rgBeanList.get(position).getFm_img());
+            holder.SimpleDraweeView.setTag("1");
+            holder.SimpleDraweeView.setTag(UrlUtils.URL + rgBeanList.get(position).getFm_img());
             holder.tvGYS.setText("供应商：" + rgBeanList.get(position).getGys());
             holder.tvMoney.setText("￥" + rgBeanList.get(position).getDqprice());
             holder.tvTitle.setText(rgBeanList.get(position).getName());
+            holder.tvTime.setBackground(mContext.getResources().getDrawable(R.mipmap.time_bg));
+
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    try {
+                        while (true) {
+                            if (type.equals("1")) {
+                                Thread.sleep(1000);
+                                ((MainActivity) mContext).runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            if (!rgBeanList.isEmpty()) {
+                                                rgBeanList.get(position).setS(rgBeanList.get(position).getS() - 1);
+                                                holder.tvTime.setText("距结束：" + getTimeFromInt(rgBeanList.get(position).getS()));
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+                                });
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.start();
+
+            holder.llShop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mContext.startActivity(new Intent(mContext,PriceDetailsActivity.class).putExtra("id",rgBeanList.get(position).getId()));
+                }
+            });
+
+
         } else if (type.equals("2")) {
             holder.SimpleDraweeView.setImageURI(UrlUtils.URL + ygBeanList.get(position).getFm_img());
+            holder.SimpleDraweeView.setTag("2");
+            holder.SimpleDraweeView.setTag(UrlUtils.URL + ygBeanList.get(position).getFm_img());
             holder.tvGYS.setText("供应商：" + ygBeanList.get(position).getGys());
             holder.tvMoney.setText("￥" + ygBeanList.get(position).getDqprice());
             holder.tvTitle.setText(ygBeanList.get(position).getName());
+            holder.tvTime.setBackground(mContext.getResources().getDrawable(R.mipmap.yugoutime_bg));
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    try {
+                        for (int i = 0; i < ygBeanList.get(position).getS(); i++) {
+                            Thread.sleep(1000);
+
+                            while (true) {
+                                if (type.equals("1")) {
+                                    Thread.sleep(1000);
+                                    ((MainActivity) mContext).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                if (!ygBeanList.isEmpty()) {
+                                                    ygBeanList.get(position).setS(ygBeanList.get(position).getS() - 1);
+                                                    holder.tvTime.setText("距开始:" + getTimeFromInt(ygBeanList.get(position).getS()));
+                                                }
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.start();
+
+            holder.llShop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mContext.startActivity(new Intent(mContext,PriceDetailsActivity.class).putExtra("id",ygBeanList.get(position).getId()));
+                }
+            });
+
         } else if (type.equals("3")) {
             holder.SimpleDraweeView.setImageURI(UrlUtils.URL + lsBeanList.get(position).getFm_img());
+            holder.SimpleDraweeView.setTag("3");
+            holder.SimpleDraweeView.setTag(UrlUtils.URL + lsBeanList.get(position).getFm_img());
             holder.tvGYS.setText("供应商：" + lsBeanList.get(position).getGys());
             holder.tvMoney.setText("￥" + lsBeanList.get(position).getDqprice());
             holder.tvTitle.setText(lsBeanList.get(position).getName());
+            holder.tvTime.setBackground(mContext.getResources().getDrawable(R.mipmap.jieshutime_bg));
+            holder.tvTime.setText("已结束：" + DateUtils.getDay(Long.parseLong(lsBeanList.get(position).getEndtime()) * 1000));
+
+            holder.llShop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mContext.startActivity(new Intent(mContext,PriceDetailsActivity.class).putExtra("id",lsBeanList.get(position).getId()));
+                }
+            });
+
+        }
+
+    }
+
+    public String getTimeFromInt(long time) {
+
+        if (time <= 0) {
+            return "已结束";
+        }
+
+        long day = time / (1 * 60 * 60 * 24);
+        long hour = time / (1 * 60 * 60) % 24;
+        long minute = time / (1 * 60) % 60;
+        long second = time / (1) % 60;
+
+        if (day == 0) {
+            return hour + "小时" + minute + "分" + second + "秒";
+        } else if (hour == 0) {
+            return minute + "分" + second + "秒";
+        } else if (minute == 0) {
+            return second + "秒";
+        } else if (second == 0) {
+            return "已结束";
+        } else {
+            return "已结束";
         }
 
     }
@@ -161,6 +297,10 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
         TextView tvMoney;
         @BindView(R.id.tv_GYS)
         TextView tvGYS;
+        @BindView(R.id.tv_time)
+        TextView tvTime;
+        @BindView(R.id.ll_shop)
+        LinearLayout llShop;
 
         public ViewHolder(View view) {
             super(view);

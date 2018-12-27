@@ -230,13 +230,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 try {
 
                     LoginBean loginBean = new Gson().fromJson(result, LoginBean.class);
-                    SpUtil.putAndApply(context, "uid", loginBean.getData().getUid());
-                    SpUtil.putAndApply(context, "tel", etAccount.getText().toString());
-                    SpUtil.putAndApply(context, "password", etPasswd.getText().toString());
-
                     if (1 == loginBean.getStatus()) {
+                        SpUtil.putAndApply(context, "uid", loginBean.getData().getUid());
+                        SpUtil.putAndApply(context, "tel", etAccount.getText().toString());
+                        SpUtil.putAndApply(context, "password", etPasswd.getText().toString());
                         EasyToast.showShort(context, loginBean.getInfo());
                         gotoMain();
+                    }else {
+                        EasyToast.showShort(context,loginBean.getInfo());
                     }
 
                 } catch (Exception e) {

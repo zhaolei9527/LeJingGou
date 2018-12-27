@@ -35,6 +35,7 @@
         <activity android:name=".Activity.ZhuCeXieYiDetailsActivity"></activity>
         <activity android:name=".Activity.NewsActivity"></activity>
         <activity android:name=".Activity.NewsDetailsActivity"></activity>
+        <activity android:name=".Activity.PriceDetailsActivity"></activity>
 
         <!--====================================功能需要==========================================-->
 
