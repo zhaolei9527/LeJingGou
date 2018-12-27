@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
@@ -16,7 +17,6 @@ import com.tencent.smtt.sdk.WebViewClient;
 import butterknife.BindView;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
 
 /**
@@ -26,11 +26,13 @@ import sakura.com.lejinggou.Utils.Utils;
  * @date 2018/3/31
  * 功能描述：
  */
-public class ZhuCeXieYiDetailsActivity extends BaseActivity {
+public class JingPaiXieYiDetailsActivity extends BaseActivity {
     @BindView(R.id.rl_back)
     FrameLayout rlBack;
     @BindView(R.id.forum_Context)
     WebView forum_Context;
+    @BindView(R.id.tv_Title)
+    TextView tvTitle;
     private Dialog dialog;
 
     @Override
@@ -45,6 +47,8 @@ public class ZhuCeXieYiDetailsActivity extends BaseActivity {
         if (!dialog.isShowing()) {
             dialog.show();
         }
+
+        tvTitle.setText("竞拍协议");
 
         // 开启 localStorage
         forum_Context.getSettings().setDomStorageEnabled(true);
@@ -88,8 +92,7 @@ public class ZhuCeXieYiDetailsActivity extends BaseActivity {
 
             }
         });
-        forum_Context.loadUrl(UrlUtils.URL + "ym/zcxy");
-
+        forum_Context.loadUrl(String.valueOf(getIntent().getStringExtra("url")));
     }
 
     @Override

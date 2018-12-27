@@ -22,4 +22,9 @@
     <color name="pressedColor">#f23882</color>
     <color name="white">#fff</color>
     <color name="text">#fff</color>
+
+    <color name="time">#ef1544</color>
+    <color name="time_yg">#8f3844</color>
+    <color name="time_ls">#333333</color>
+
 </resources>

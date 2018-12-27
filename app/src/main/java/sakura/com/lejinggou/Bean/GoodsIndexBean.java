@@ -19,7 +19,7 @@ public class GoodsIndexBean {
     /**
      * status : 1
      * info : 信息拉取成功
-     * data : {"id":"76","name":"朱炳仁 铜梅花鹿铜摆件 逐鹿顺意家居装饰品 铜工艺品 艺术品开业礼品 15天后发货礼物 小号（不参与活动）","imgurl":["/Public/uploads/lb/2018-12-26/2018_12_26_140313_7042.jpg"],"gys":"朱炳仁旗舰店","dqprice":"2200.00","cjuid":"38","fd":"100.00","bl":null,"bzj":"800.00","starttime":"1545753600","endtime":"1545926400","fdprice":"3800.00","ckprice":"3800.00","url":"http://ljg.t.100help.net/ym/gd/id/76.html","jgurl":"http://ljg.t.100help.net/ym/jggz.html","type":1,"s":36086}
+     * data : {"id":"76","name":"朱炳仁 铜梅花鹿铜摆件 逐鹿顺意家居装饰品 铜工艺品 艺术品开业礼品 15天后发货礼物 小号（不参与活动）","imgurl":["/Public/uploads/lb/2018-12-26/2018_12_26_140313_7042.jpg"],"dqprice":"2200.00","cjuid":"38","fd":"100.00","bl":null,"bzj":"800.00","starttime":"1545753600","endtime":"1545926400","fdprice":"3800.00","ckprice":"3800.00","url":"http://ljg.t.100help.net/ym/gd/id/76.html","jgurl":"http://ljg.t.100help.net/ym/jggz.html","type":1,"uname":"哈哈大笑","uheadimg":"/Public/uploads/lb/2018-12-26/2018_12_26_164348_6557.jpeg","gys":"朱炳仁旗舰店","s":24122}
      */
 
     private int status;
@@ -63,7 +63,6 @@ public class GoodsIndexBean {
          * id : 76
          * name : 朱炳仁 铜梅花鹿铜摆件 逐鹿顺意家居装饰品 铜工艺品 艺术品开业礼品 15天后发货礼物 小号（不参与活动）
          * imgurl : ["/Public/uploads/lb/2018-12-26/2018_12_26_140313_7042.jpg"]
-         * gys : 朱炳仁旗舰店
          * dqprice : 2200.00
          * cjuid : 38
          * fd : 100.00
@@ -76,16 +75,18 @@ public class GoodsIndexBean {
          * url : http://ljg.t.100help.net/ym/gd/id/76.html
          * jgurl : http://ljg.t.100help.net/ym/jggz.html
          * type : 1
-         * s : 36086
+         * uname : 哈哈大笑
+         * uheadimg : /Public/uploads/lb/2018-12-26/2018_12_26_164348_6557.jpeg
+         * gys : 朱炳仁旗舰店
+         * s : 24122
          */
 
         private String id;
         private String name;
-        private String gys;
         private String dqprice;
         private String cjuid;
         private String fd;
-        private String bl;
+        private Object bl;
         private String bzj;
         private String starttime;
         private String endtime;
@@ -94,6 +95,9 @@ public class GoodsIndexBean {
         private String url;
         private String jgurl;
         private int type;
+        private String uname;
+        private String uheadimg;
+        private String gys;
         private int s;
         private List<String> imgurl;
 
@@ -121,14 +125,6 @@ public class GoodsIndexBean {
             this.name = name;
         }
 
-        public String getGys() {
-            return gys;
-        }
-
-        public void setGys(String gys) {
-            this.gys = gys;
-        }
-
         public String getDqprice() {
             return dqprice;
         }
@@ -153,11 +149,11 @@ public class GoodsIndexBean {
             this.fd = fd;
         }
 
-        public String getBl() {
+        public Object getBl() {
             return bl;
         }
 
-        public void setBl(String bl) {
+        public void setBl(Object bl) {
             this.bl = bl;
         }
 
@@ -223,6 +219,30 @@ public class GoodsIndexBean {
 
         public void setType(int type) {
             this.type = type;
+        }
+
+        public String getUname() {
+            return uname;
+        }
+
+        public void setUname(String uname) {
+            this.uname = uname;
+        }
+
+        public String getUheadimg() {
+            return uheadimg;
+        }
+
+        public void setUheadimg(String uheadimg) {
+            this.uheadimg = uheadimg;
+        }
+
+        public String getGys() {
+            return gys;
+        }
+
+        public void setGys(String gys) {
+            this.gys = gys;
         }
 
         public int getS() {

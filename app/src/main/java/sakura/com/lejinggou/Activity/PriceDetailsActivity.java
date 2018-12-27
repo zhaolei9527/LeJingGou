@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.tencent.smtt.sdk.WebView;
@@ -75,6 +76,16 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
     WebView wb;
     @BindView(R.id.shopnow)
     TextView shopnow;
+    @BindView(R.id.ll_JPXX)
+    LinearLayout llJPXX;
+    @BindView(R.id.tv_user)
+    TextView tvUser;
+    @BindView(R.id.tv_user_money)
+    TextView tvUserMoney;
+    @BindView(R.id.ll_JPJG)
+    LinearLayout llJPJG;
+    @BindView(R.id.SimpleDraweeView_user)
+    SimpleDraweeView SimpleDraweeViewUser;
     private Dialog dialog;
     private String uid;
     private String id;
@@ -95,17 +106,15 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
         uid = (String) SpUtil.get(context, "uid", "");
         RollPagerView.setHintView(new IconHintView(context, R.drawable.shape_selected, R.drawable.shape_noraml, DensityUtils.dp2px(context, getResources().getDimension(R.dimen.x7))));
         RollPagerView.setPlayDelay(30000);
-
     }
 
     @Override
     protected void initListener() {
-
+        rlBack.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-
         if (Utils.isConnected(context)) {
             dialog = Utils.showLoadingDialog(context);
             dialog.show();
@@ -113,7 +122,6 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
         } else {
             EasyToast.showShort(context, R.string.Networkexception);
         }
-
     }
 
     @Override
@@ -158,7 +166,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                         RollPagerView.setAdapter(new GoodLoopAdapter(RollPagerView, goodsIndexBean.getData().getImgurl()));
                         wb.loadUrl(goodsIndexBean.getData().getUrl());
                         tvTitle.setText(goodsIndexBean.getData().getName());
-                        tvGYS.setText("供应商："+goodsIndexBean.getData().getGys());
+                        tvGYS.setText("供应商：" + goodsIndexBean.getData().getGys());
                         tvGYS2.setText(goodsIndexBean.getData().getGys());
                         tvDQJMoney.setText("￥" + goodsIndexBean.getData().getDqprice());
                         tvJJMoney.setText("￥" + goodsIndexBean.getData().getFd());
@@ -168,37 +176,57 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                         tvStartTime.setText(DateUtils.getMillon(Long.parseLong(goodsIndexBean.getData().getStarttime()) * 1000));
                         tvEndTime.setText(DateUtils.getMillon(Long.parseLong(goodsIndexBean.getData().getEndtime()) * 1000));
 
-                        new Thread() {
+                        llJGGZ.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void run() {
-                                super.run();
-                                try {
-                                    for (int i = 0; i < goodsIndexBean.getData().getS(); i++) {
-                                        Thread.sleep(1000);
-
-                                        while (true) {
-                                            Thread.sleep(1000);
-                                            runOnUiThread(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    try {
-                                                        goodsIndexBean.getData().setS(goodsIndexBean.getData().getS() - 1);
-                                                        tvTime.setText("距开始:" + getTimeFromInt(goodsIndexBean.getData().getS()));
-                                                    } catch (Exception e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                }
-                                            });
-                                        }
-
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                            public void onClick(View view) {
+                                startActivity(new Intent(context, JingPaiXieYiDetailsActivity.class).putExtra("url", goodsIndexBean.getData().getJgurl()));
                             }
-                        }.start();
+                        });
 
+                        Log.e("PriceDetailsActivity", String.valueOf(goodsIndexBean.getData().getS()));
 
+                        if (!TextUtils.isEmpty(String.valueOf(goodsIndexBean.getData().getS())) && !"0".equals(String.valueOf(goodsIndexBean.getData().getS()))) {
+                            if (System.currentTimeMillis() > (Long.parseLong(goodsIndexBean.getData().getStarttime()) * 1000)) {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        goodsIndexBean.getData().setS(goodsIndexBean.getData().getS() - 1);
+                                        tvTime.setText("距结束:" + getTimeFromInt(goodsIndexBean.getData().getS()));
+                                        tvTime.setBackgroundColor(context.getResources().getColor(R.color.time));
+                                        mHandler.postDelayed(this, 1000);
+                                    }
+                                });
+
+                                llJPJG.setVisibility(View.GONE);
+
+                            } else if (System.currentTimeMillis() < (Long.parseLong(goodsIndexBean.getData().getStarttime()) * 1000)) {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        goodsIndexBean.getData().setS(goodsIndexBean.getData().getS() - 1);
+                                        tvTime.setText("距开始:" + getTimeFromInt(goodsIndexBean.getData().getS()));
+                                        tvTime.setBackgroundColor(context.getResources().getColor(R.color.time_yg));
+                                        mHandler.postDelayed(this, 1000);
+                                    }
+                                });
+
+                                tvDQJ.setText("当前价");
+                                tvDQJ.setTextColor(context.getResources().getColor(R.color.text333));
+                                llJPJG.setVisibility(View.GONE);
+
+                            }
+                        } else {
+                            tvTime.setBackgroundColor(context.getResources().getColor(R.color.time_ls));
+                            tvTime.setText("已结束：" + DateUtils.getMillon(Long.parseLong(goodsIndexBean.getData().getEndtime()) * 1000));
+
+                            llJPJG.setVisibility(View.VISIBLE);
+                            llJPXX.setVisibility(View.GONE);
+
+                            tvUser.setText(goodsIndexBean.getData().getUname());
+                            tvUserMoney.setText("￥" + goodsIndexBean.getData().getDqprice());
+                            SimpleDraweeViewUser.setImageURI(UrlUtils.URL + goodsIndexBean.getData().getUheadimg());
+
+                        }
                     } else {
                         EasyToast.showShort(context, goodsIndexBean.getInfo());
                         finish();

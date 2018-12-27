@@ -36,6 +36,7 @@
         <activity android:name=".Activity.NewsActivity"></activity>
         <activity android:name=".Activity.NewsDetailsActivity"></activity>
         <activity android:name=".Activity.PriceDetailsActivity"></activity>
+        <activity android:name=".Activity.JingPaiXieYiDetailsActivity"></activity>
 
         <!--====================================功能需要==========================================-->
 
