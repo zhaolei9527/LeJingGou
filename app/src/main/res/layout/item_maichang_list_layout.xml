@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_JPJG"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/text333" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x10">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/SimpleDraweeView_user"
+                android:layout_width="@dimen/x41"
+                android:layout_height="@dimen/x41"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x10"
+                android:background="@mipmap/ic_launcher" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/x10"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/text333" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="出价："
+                        android:textColor="@color/text333" />
+
+                    <TextView
+                        android:id="@+id/tv_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥0.00"
+                        android:textColor="@color/textred" />
+
+                    <TextView
+                        android:id="@+id/tv_JLJ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="，将会获得6.00元奖励金"
+                        android:textColor="@color/text333" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

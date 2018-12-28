@@ -89,6 +89,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
     private Dialog dialog;
     private String uid;
     private String id;
+    private GoodsIndexBean goodsIndexBean;
 
     @Override
     protected void onDestroy() {
@@ -111,6 +112,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void initListener() {
         rlBack.setOnClickListener(this);
+        shopnow.setOnClickListener(this);
     }
 
     @Override
@@ -133,6 +135,19 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                     startActivity(new Intent(context, LoginActivity.class));
                     return;
                 }
+
+                if (goodsIndexBean.getData().getType() == 1) {
+                    // startActivity(new Intent(context, MaiChangJieShuActivity.class).putExtra("id", goodsIndexBean.getData().getId()));
+                }
+
+                if (goodsIndexBean.getData().getType() == 2) {
+                    // startActivity(new Intent(context, MaiChangJieShuActivity.class).putExtra("id", goodsIndexBean.getData().getId()));
+                }
+
+                if (goodsIndexBean.getData().getType() == 3) {
+                    startActivity(new Intent(context, MaiChangJieShuActivity.class).putExtra("id", goodsIndexBean.getData().getId()));
+                }
+
                 break;
             case R.id.rl_back:
                 finish();
@@ -161,7 +176,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                 Log.e("PriceDetailsActivity", result);
                 try {
                     dialog.dismiss();
-                    final GoodsIndexBean goodsIndexBean = new Gson().fromJson(result, GoodsIndexBean.class);
+                    goodsIndexBean = new Gson().fromJson(result, GoodsIndexBean.class);
                     if (1 == goodsIndexBean.getStatus()) {
                         RollPagerView.setAdapter(new GoodLoopAdapter(RollPagerView, goodsIndexBean.getData().getImgurl()));
                         wb.loadUrl(goodsIndexBean.getData().getUrl());
@@ -231,13 +246,13 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                             tvTime.setBackgroundColor(context.getResources().getColor(R.color.time_ls));
                             tvTime.setText("已结束：" + DateUtils.getMillon(Long.parseLong(goodsIndexBean.getData().getEndtime()) * 1000));
 
-                            if (!TextUtils.isEmpty(goodsIndexBean.getData().getUname())){
+                            if (!TextUtils.isEmpty(goodsIndexBean.getData().getUname())) {
                                 llJPJG.setVisibility(View.VISIBLE);
                                 llJPXX.setVisibility(View.GONE);
                                 tvUser.setText(goodsIndexBean.getData().getUname());
                                 tvUserMoney.setText("￥" + goodsIndexBean.getData().getDqprice());
                                 SimpleDraweeViewUser.setImageURI(UrlUtils.URL + goodsIndexBean.getData().getUheadimg());
-                            }else {
+                            } else {
                                 llJPJG.setVisibility(View.GONE);
                                 llJPXX.setVisibility(View.GONE);
                             }
