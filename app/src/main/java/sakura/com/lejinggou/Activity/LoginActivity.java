@@ -111,7 +111,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         rlBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                gotoMain();
             }
         });
     }
@@ -236,8 +236,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         SpUtil.putAndApply(context, "password", etPasswd.getText().toString());
                         EasyToast.showShort(context, loginBean.getInfo());
                         gotoMain();
-                    }else {
-                        EasyToast.showShort(context,loginBean.getInfo());
+                    } else {
+                        EasyToast.showShort(context, loginBean.getInfo());
                     }
 
                 } catch (Exception e) {

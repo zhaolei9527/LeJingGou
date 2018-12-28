@@ -30,7 +30,9 @@ import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.LoginBean;
 import sakura.com.lejinggou.Fragment.HomeFragment;
+import sakura.com.lejinggou.Fragment.MeFragment;
 import sakura.com.lejinggou.Fragment.ShopFragment;
+import sakura.com.lejinggou.Fragment.ZuoRiLiShiFragment;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EasyToast;
 import sakura.com.lejinggou.Utils.SpUtil;
@@ -86,8 +88,8 @@ public class MainActivity extends BaseActivity {
         final ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new ShopFragment());
-        fragments.add(new HomeFragment());
-        fragments.add(new HomeFragment());
+        fragments.add(new ZuoRiLiShiFragment());
+        fragments.add(new MeFragment());
         CustomViewPager viewpager = (CustomViewPager) findViewById(R.id.fl_content);
         viewpager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -110,7 +112,7 @@ public class MainActivity extends BaseActivity {
                 .setFontSize(12)
                 .setDividerColor(getResources().getColor(R.color.bgea))
                 .addTabItem("首页", getResources().getDrawable(R.mipmap.home_after), getResources().getDrawable(R.mipmap.home_before))
-                .addTabItem("房间", getResources().getDrawable(R.mipmap.room_after), getResources().getDrawable(R.mipmap.room_before))
+                .addTabItem("商城", getResources().getDrawable(R.mipmap.room_after), getResources().getDrawable(R.mipmap.room_before))
                 .addTabItem("历史", getResources().getDrawable(R.mipmap.history_after), getResources().getDrawable(R.mipmap.history_before))
                 .addTabItem("个人中心", getResources().getDrawable(R.mipmap.center_after), getResources().getDrawable(R.mipmap.center_before))
                 .setOnTabChangeListener(new BottomTabBar.OnTabChangeListener() {

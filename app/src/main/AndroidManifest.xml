@@ -38,6 +38,11 @@
         <activity android:name=".Activity.PriceDetailsActivity"></activity>
         <activity android:name=".Activity.JingPaiXieYiDetailsActivity"></activity>
         <activity android:name=".Activity.ChuJiaJiLuActivity"></activity>
+        <activity android:name=".Activity.MyMessageActivity"></activity>
+        <activity android:name=".Activity.SettingActivity"></activity>
+        <activity android:name=".Activity.ZhiFuBaoActivity"></activity>
+        <activity android:name=".Activity.ShiMingActivity"></activity>
+        <activity android:name=".Activity.ChangePasswordActivity"></activity>
 
         <!--====================================功能需要==========================================-->
 
@@ -48,6 +53,8 @@
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity"
             android:theme="@style/customTheme" />
+        <activity android:name=".Activity.SettingActivity" />
+        <activity android:name=".Activity.ShiMingActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

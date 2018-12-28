@@ -19,6 +19,7 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.fangx.haorefresh.LoadMoreListener;
+import sakura.com.lejinggou.Adapter.ChuJiaJiLuListAdapter;
 import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.GoodsJlBean;
@@ -50,9 +51,11 @@ public class ChuJiaJiLuActivity extends BaseActivity implements View.OnClickList
     @BindView(R.id.LL_empty)
     RelativeLayout LLEmpty;
     private String id;
+    public static String type = "1";
     private SakuraLinearLayoutManager line;
     private int page = 1;
     private Dialog dialog;
+    private ChuJiaJiLuListAdapter chuJiaJiLuListAdapter;
 
     @Override
     protected int setthislayout() {
@@ -63,6 +66,7 @@ public class ChuJiaJiLuActivity extends BaseActivity implements View.OnClickList
     protected void initview() {
         dialog = Utils.showLoadingDialog(context);
         id = getIntent().getStringExtra("id");
+        type = getIntent().getStringExtra("type");
         line = new SakuraLinearLayoutManager(context);
         line.setOrientation(LinearLayoutManager.VERTICAL);
         rvChujialist.setLayoutManager(line);
@@ -134,13 +138,26 @@ public class ChuJiaJiLuActivity extends BaseActivity implements View.OnClickList
                     rvChujialist.loadMoreComplete();
                     GoodsJlBean goodsJlBean = new Gson().fromJson(result, GoodsJlBean.class);
 
+                    if (null == goodsJlBean.getData().getList() || goodsJlBean.getData().getList().isEmpty()) {
+                        if (page == 1) {
+                            LLEmpty.setVisibility(View.VISIBLE);
+                        }
 
-
-
+                        rvChujialist.loadMoreEnd();
+                        rvChujialist.setCanloadMore(false);
+                    } else {
+                        if (page == 1) {
+                            chuJiaJiLuListAdapter = new ChuJiaJiLuListAdapter(context, goodsJlBean.getData().getList());
+                            rvChujialist.setAdapter(chuJiaJiLuListAdapter);
+                        } else {
+                            chuJiaJiLuListAdapter.setDatas(goodsJlBean.getData().getList());
+                        }
+                    }
 
                     result = null;
                 } catch (Exception e) {
                     dialog.dismiss();
+                    page = page - 1;
                     if (rvChujialist != null) {
                         rvChujialist.loadMoreComplete();
                         rvChujialist.loadMoreEnd();
@@ -153,6 +170,7 @@ public class ChuJiaJiLuActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onMyError(VolleyError error) {
                 dialog.dismiss();
+                page = page - 1;
                 error.printStackTrace();
             }
         });

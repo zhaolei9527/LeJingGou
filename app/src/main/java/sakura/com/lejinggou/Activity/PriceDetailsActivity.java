@@ -187,7 +187,10 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                         llCJJL.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                startActivity(new Intent(context, ChuJiaJiLuActivity.class).putExtra("id", goodsIndexBean.getData().getId()));
+                                startActivity(new Intent(context, ChuJiaJiLuActivity.class)
+                                        .putExtra("id", goodsIndexBean.getData().getId())
+                                        .putExtra("type", String.valueOf(goodsIndexBean.getData().getType()))
+                                );
                             }
                         });
 
@@ -228,12 +231,16 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                             tvTime.setBackgroundColor(context.getResources().getColor(R.color.time_ls));
                             tvTime.setText("已结束：" + DateUtils.getMillon(Long.parseLong(goodsIndexBean.getData().getEndtime()) * 1000));
 
-                            llJPJG.setVisibility(View.VISIBLE);
-                            llJPXX.setVisibility(View.GONE);
-
-                            tvUser.setText(goodsIndexBean.getData().getUname());
-                            tvUserMoney.setText("￥" + goodsIndexBean.getData().getDqprice());
-                            SimpleDraweeViewUser.setImageURI(UrlUtils.URL + goodsIndexBean.getData().getUheadimg());
+                            if (!TextUtils.isEmpty(goodsIndexBean.getData().getUname())){
+                                llJPJG.setVisibility(View.VISIBLE);
+                                llJPXX.setVisibility(View.GONE);
+                                tvUser.setText(goodsIndexBean.getData().getUname());
+                                tvUserMoney.setText("￥" + goodsIndexBean.getData().getDqprice());
+                                SimpleDraweeViewUser.setImageURI(UrlUtils.URL + goodsIndexBean.getData().getUheadimg());
+                            }else {
+                                llJPJG.setVisibility(View.GONE);
+                                llJPXX.setVisibility(View.GONE);
+                            }
 
                         }
                     } else {
@@ -262,6 +269,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
         ButterKnife.bind(this);
     }
 
+
     public String getTimeFromInt(long time) {
 
         if (time <= 0) {
@@ -281,6 +289,8 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
             return second + "秒";
         } else if (second == 0) {
             return "已结束";
+        } else if (day != 0) {
+            return day + "天" + hour + "小时" + minute + "分" + second + "秒";
         } else {
             return "已结束";
         }

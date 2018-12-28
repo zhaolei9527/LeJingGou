@@ -229,9 +229,7 @@
                             android:layout_width="@dimen/x41"
                             android:layout_height="@dimen/x41"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="@dimen/x10"
-                            android:background="@mipmap/ic_launcher" />
-
+                            android:layout_marginLeft="@dimen/x10" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -249,14 +247,12 @@
                                     android:id="@+id/tv_user"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="清风流水"
                                     android:textColor="@color/text333" />
 
                                 <TextView
                                     android:id="@+id/tv_user_money"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="￥3000.00"
                                     android:textColor="@color/textred" />
 
                             </LinearLayout>

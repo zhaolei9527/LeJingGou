@@ -142,43 +142,37 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
             holder.tvTitle.setText(rgBeanList.get(position).getName());
             holder.tvTime.setBackground(mContext.getResources().getDrawable(R.mipmap.time_bg));
 
-            new Thread() {
+            ((MainActivity) mContext).mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    super.run();
-                    try {
-                        while (true) {
-                            if (type.equals("1")) {
-                                Thread.sleep(1000);
-                                ((MainActivity) mContext).runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        try {
-                                            if (!rgBeanList.isEmpty()) {
-                                                rgBeanList.get(position).setS(rgBeanList.get(position).getS() - 1);
-                                                holder.tvTime.setText("距结束：" + getTimeFromInt(rgBeanList.get(position).getS()));
-                                            }
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-
+                    if (type.equals("1")) {
+                        ((MainActivity) mContext).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    if (!rgBeanList.isEmpty()) {
+                                        rgBeanList.get(position).setS(rgBeanList.get(position).getS() - 1);
+                                        holder.tvTime.setText("距结束：" + getTimeFromInt(rgBeanList.get(position).getS()));
                                     }
-                                });
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
                             }
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        });
+
+                        ((MainActivity) mContext).mHandler.postDelayed(this, 1000);
+
                     }
                 }
-            }.start();
+            });
 
             holder.llShop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mContext.startActivity(new Intent(mContext,PriceDetailsActivity.class).putExtra("id",rgBeanList.get(position).getId()));
+                    mContext.startActivity(new Intent(mContext, PriceDetailsActivity.class).putExtra("id", rgBeanList.get(position).getId()));
                 }
             });
-
 
         } else if (type.equals("2")) {
             holder.SimpleDraweeView.setImageURI(UrlUtils.URL + ygBeanList.get(position).getFm_img());
@@ -188,44 +182,33 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
             holder.tvMoney.setText("￥" + ygBeanList.get(position).getDqprice());
             holder.tvTitle.setText(ygBeanList.get(position).getName());
             holder.tvTime.setBackground(mContext.getResources().getDrawable(R.mipmap.yugoutime_bg));
-            new Thread() {
+
+            ((MainActivity) mContext).mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    super.run();
-                    try {
-                        for (int i = 0; i < ygBeanList.get(position).getS(); i++) {
-                            Thread.sleep(1000);
-
-                            while (true) {
-                                if (type.equals("1")) {
-                                    Thread.sleep(1000);
-                                    ((MainActivity) mContext).runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            try {
-                                                if (!ygBeanList.isEmpty()) {
-                                                    ygBeanList.get(position).setS(ygBeanList.get(position).getS() - 1);
-                                                    holder.tvTime.setText("距开始:" + getTimeFromInt(ygBeanList.get(position).getS()));
-                                                }
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    });
+                    if (type.equals("2")) {
+                        ((MainActivity) mContext).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    if (!ygBeanList.isEmpty()) {
+                                        ygBeanList.get(position).setS(ygBeanList.get(position).getS() - 1);
+                                        holder.tvTime.setText("距开始:" + getTimeFromInt(ygBeanList.get(position).getS()));
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
                             }
-
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        });
+                        ((MainActivity) mContext).mHandler.postDelayed(this, 1000);
                     }
                 }
-            }.start();
+            });
 
             holder.llShop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mContext.startActivity(new Intent(mContext,PriceDetailsActivity.class).putExtra("id",ygBeanList.get(position).getId()));
+                    mContext.startActivity(new Intent(mContext, PriceDetailsActivity.class).putExtra("id", ygBeanList.get(position).getId()));
                 }
             });
 
@@ -242,7 +225,7 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
             holder.llShop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mContext.startActivity(new Intent(mContext,PriceDetailsActivity.class).putExtra("id",lsBeanList.get(position).getId()));
+                    mContext.startActivity(new Intent(mContext, PriceDetailsActivity.class).putExtra("id", lsBeanList.get(position).getId()));
                 }
             });
 
@@ -269,6 +252,8 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
             return second + "秒";
         } else if (second == 0) {
             return "已结束";
+        } else if (day != 0) {
+            return day + "天" + hour + "小时" + minute + "分" + second + "秒";
         } else {
             return "已结束";
         }

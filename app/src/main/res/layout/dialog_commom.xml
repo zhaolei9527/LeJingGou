@@ -22,10 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="30dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
         android:lineSpacingExtra="3dp"
         android:text="@string/deleteaddress"
@@ -49,8 +49,8 @@
             android:layout_weight="1.0"
             android:background="@drawable/bg_dialog_left_white"
             android:gravity="center"
-            android:text="@string/determine"
-            android:textColor="#F0667F"
+            android:text="@string/cancel"
+            android:textColor="#666"
             android:textSize="@dimen/x15" />
 
         <View
@@ -65,8 +65,8 @@
             android:layout_weight="1.0"
             android:background="@drawable/bg_dialog_right_white"
             android:gravity="center"
-            android:text="@string/cancel"
-            android:textColor="#666"
+            android:text="@string/determine"
+            android:textColor="#F0667F"
             android:textSize="@dimen/x15" />
 
     </LinearLayout>

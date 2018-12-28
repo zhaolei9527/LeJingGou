@@ -188,8 +188,16 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
                     tvNews.setTextList(titleList);
                     tvNews.startAutoScroll();
-                    adapter = new HomeGoodListAdapter(mContext, homeBean.getData().getRg());
-                    rvHomelist.setAdapter(adapter);
+
+                    if (null != homeBean.getData().getRg() && !homeBean.getData().getRg().isEmpty()) {
+                        adapter = new HomeGoodListAdapter(mContext, homeBean.getData().getRg());
+                        rvHomelist.setAdapter(adapter);
+                    } else {
+                        adapter = new HomeGoodListAdapter(mContext, new ArrayList<HomeBean.DataBean.RgBean>());
+                        rvHomelist.setAdapter(adapter);
+                        LLEmpty.setVisibility(View.VISIBLE);
+                    }
+
                     rvHomelist.loadMoreComplete();
                     homeBean = null;
                     result = null;
@@ -241,7 +249,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                                     LLEmpty.setVisibility(View.GONE);
                                 }
                             } else {
-                                rvHomelist.loadMoreComplete();
                                 rvHomelist.loadMoreEnd();
                                 rvHomelist.setCanloadMore(false);
                                 if (page == 1) {
@@ -256,7 +263,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                 } catch (Exception e) {
                     dialog.dismiss();
                     if (rvHomelist != null) {
-                        rvHomelist.loadMoreComplete();
                         rvHomelist.loadMoreEnd();
                         rvHomelist.setCanloadMore(false);
                     }
@@ -298,28 +304,37 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_regou:
-                type = "1";
-                page = 1;
-                vRegou.setVisibility(View.VISIBLE);
-                vJinri.setVisibility(View.GONE);
-                vJinrilishi.setVisibility(View.GONE);
-                getListData(type);
+                if (!type.equals("1")) {
+                    type = "1";
+                    page = 1;
+                    vRegou.setVisibility(View.VISIBLE);
+                    vJinri.setVisibility(View.GONE);
+                    vJinrilishi.setVisibility(View.GONE);
+                    dialog.show();
+                    getListData(type);
+                }
                 break;
             case R.id.ll_jinri:
-                type = "2";
-                page = 1;
-                vRegou.setVisibility(View.GONE);
-                vJinri.setVisibility(View.VISIBLE);
-                vJinrilishi.setVisibility(View.GONE);
-                getListData(type);
+                if (!type.equals("2")) {
+                    type = "2";
+                    page = 1;
+                    vRegou.setVisibility(View.GONE);
+                    vJinri.setVisibility(View.VISIBLE);
+                    vJinrilishi.setVisibility(View.GONE);
+                    dialog.show();
+                    getListData(type);
+                }
                 break;
             case R.id.ll_jinrilishi:
-                type = "3";
-                page = 1;
-                vRegou.setVisibility(View.GONE);
-                vJinri.setVisibility(View.GONE);
-                vJinrilishi.setVisibility(View.VISIBLE);
-                getListData(type);
+                if (!type.equals("3")) {
+                    type = "3";
+                    page = 1;
+                    vRegou.setVisibility(View.GONE);
+                    vJinri.setVisibility(View.GONE);
+                    vJinrilishi.setVisibility(View.VISIBLE);
+                    dialog.show();
+                    getListData(type);
+                }
                 break;
             default:
                 break;
