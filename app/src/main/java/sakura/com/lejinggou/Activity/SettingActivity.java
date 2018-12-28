@@ -115,7 +115,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 startActivity(new Intent(context, ChangePasswordActivity.class));
                 break;
             case R.id.ll_ChangeAddress:
-                startActivity(new Intent(context, MyMessageActivity.class));
+                startActivity(new Intent(context, AddressActivitry.class));
                 break;
             case R.id.btn_exit:
                 new CommomDialog(context, R.style.dialog, "您确定退出登录么？", new CommomDialog.OnCloseListener() {
