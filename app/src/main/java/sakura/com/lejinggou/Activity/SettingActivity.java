@@ -123,12 +123,13 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     public void onClick(Dialog dialog, final boolean confirm) {
                         if (confirm) {
                             dialog.dismiss();
-                        } else {
-                            dialog.dismiss();
                             SpUtil.clear(context);
                             Intent intent = new Intent(context, LoginActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
+                        } else {
+                            dialog.dismiss();
+
                         }
                     }
                 }).setTitle("提示").show();

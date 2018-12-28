@@ -234,13 +234,13 @@
 
     <Button
         android:id="@+id/btn_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x180"
+        android:layout_height="@dimen/y30"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/y280"
         android:background="@mipmap/btn_login"
         android:text="退出登录"
         android:textColor="@color/bgfff"
-        android:textSize="@dimen/x15" />
+        android:textSize="@dimen/x13" />
 
 </RelativeLayout>

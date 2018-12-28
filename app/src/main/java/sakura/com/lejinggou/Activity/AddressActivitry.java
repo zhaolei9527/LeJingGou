@@ -250,7 +250,6 @@ public class AddressActivitry extends BaseActivity implements View.OnClickListen
      */
     private void addressDel(String id) {
         HashMap<String, String> params = new HashMap<>(3);
-        params.put("key", UrlUtils.KEY);
         params.put("id", id);
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "about/dzdel", "about/dzdel", params, new VolleyInterface(context) {
@@ -286,7 +285,6 @@ public class AddressActivitry extends BaseActivity implements View.OnClickListen
      */
     private void addressQie(String id) {
         HashMap<String, String> params = new HashMap<>(3);
-        params.put("key", UrlUtils.KEY);
         params.put("id", id);
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "about/dzmr", "about/dzmr", params, new VolleyInterface(context) {

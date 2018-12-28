@@ -24,7 +24,10 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import sakura.com.lejinggou.Activity.LoginActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
+import sakura.com.lejinggou.Activity.MingXiJiLuListActivity;
 import sakura.com.lejinggou.Activity.SettingActivity;
+import sakura.com.lejinggou.Activity.TiXianActivity;
+import sakura.com.lejinggou.Activity.ZhiFuBaoActivity;
 import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseLazyFragment;
 import sakura.com.lejinggou.Bean.AboutIndexBean;
@@ -113,13 +116,10 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     tvUsername.setText(uname);
                 }
 
-                imgMessage.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(context, SettingActivity.class));
-                    }
-                });
-
+                imgMessage.setOnClickListener(this);
+                llChongzhi.setOnClickListener(this);
+                llTixian.setOnClickListener(this);
+                llMingxi.setOnClickListener(this);
 
                 getData();
             } else {
@@ -164,6 +164,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                         SpUtil.putAndApply(context, "idcard", aboutIndexBean.getData().getIdcard());
                         SpUtil.putAndApply(context, "skmsg", aboutIndexBean.getData().getSkmsg());
                         SpUtil.putAndApply(context, "qm", aboutIndexBean.getData().getQm());
+                        SpUtil.putAndApply(context, "Kymon", aboutIndexBean.getData().getKymon());
+
 
                         SimpleDraweeView.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getHeadimg());
                         tvUsername.setText(String.valueOf(aboutIndexBean.getData().getNickname()));
@@ -217,6 +219,24 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.img_message:
+                startActivity(new Intent(context, SettingActivity.class));
+                break;
+            case R.id.ll_chongzhi:
+
+                break;
+            case R.id.ll_tixian:
+                String zfbname = (String) SpUtil.get(context, "zfbname", "");
+                if (!TextUtils.isEmpty(zfbname)) {
+                    startActivity(new Intent(context, TiXianActivity.class));
+                } else {
+                    EasyToast.showShort(context, "请先绑定支付宝账户");
+                    startActivity(new Intent(context, ZhiFuBaoActivity.class));
+                }
+                break;
+            case R.id.ll_mingxi:
+                startActivity(new Intent(context, MingXiJiLuListActivity.class));
+                break;
             default:
                 break;
         }
