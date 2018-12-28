@@ -25,6 +25,7 @@ import butterknife.Unbinder;
 import sakura.com.lejinggou.Activity.LoginActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.MingXiJiLuListActivity;
+import sakura.com.lejinggou.Activity.MyChongZhiActivity;
 import sakura.com.lejinggou.Activity.SettingActivity;
 import sakura.com.lejinggou.Activity.TiXianActivity;
 import sakura.com.lejinggou.Activity.ZhiFuBaoActivity;
@@ -223,7 +224,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 startActivity(new Intent(context, SettingActivity.class));
                 break;
             case R.id.ll_chongzhi:
-
+                startActivity(new Intent(context, MyChongZhiActivity.class));
                 break;
             case R.id.ll_tixian:
                 String zfbname = (String) SpUtil.get(context, "zfbname", "");
