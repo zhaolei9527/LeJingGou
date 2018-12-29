@@ -123,6 +123,17 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
             EasyToast.showShort(context, R.string.Networkexception);
 
         }
+
+
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                getMcListTop(topM);
+                mHandler.postDelayed(this, 1000);
+            }
+        });
+
+
     }
 
     @Override
@@ -181,6 +192,46 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
             }
         });
     }
+
+    private void getMcListTop(final String m) {
+        HashMap<String, String> params = new HashMap<>(1);
+        params.put("m", m);
+        params.put("type", "2");
+        params.put("id", String.valueOf(getIntent().getStringExtra("id")));
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
+        Log.e("NewsListFragment", "params:" + params);
+        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "goods/mc", "goods/mc", params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String result) {
+                String decode = result;
+                try {
+                    dialog.dismiss();
+                    Log.e("NewsListFragment:top", decode);
+                    final McReGouBean mcBean = new Gson().fromJson(decode, McReGouBean.class);
+                    if (1 == mcBean.getStatus()) {
+                        SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
+                        tvUser.setText(mcBean.getData().getUname());
+                        tvUserMoney.setText("￥" + mcBean.getData().getPrice());
+                        if (null != mcBean.getData().getList() && !mcBean.getData().getList().isEmpty()) {
+                            topM = mcBean.getData().getEnd();
+                            adapter.setTopDatas((ArrayList) mcBean.getData().getList());
+                            rvMaichanglist.scrollToPosition(0);
+                        }
+                    }
+                    decode = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+    }
+
 
     private void getMcList() {
         HashMap<String, String> params = new HashMap<>(1);

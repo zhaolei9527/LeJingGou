@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -45,6 +46,14 @@ public class MaiChangReGouListAdapter extends RecyclerView.Adapter<MaiChangReGou
 
     public void setDatas(ArrayList datas) {
         this.datas.addAll(datas);
+    }
+
+    public void setTopDatas(ArrayList<McReGouBean.DataBean.ListBean> datas) {
+        Collections.reverse(datas);
+        for (int i = 0; i < datas.size(); i++) {
+            this.datas.add(0, datas.get(i));
+        }
+        notifyDataSetChanged();
     }
 
     @Override
