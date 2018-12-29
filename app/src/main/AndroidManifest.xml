@@ -50,6 +50,7 @@
         <activity android:name=".Activity.MyChongZhiActivity"></activity>
         <activity android:name=".Activity.MaiChangJieShuActivity"></activity>
         <activity android:name=".Activity.MaiChangYuGouActivity"></activity>
+        <activity android:name=".Activity.MaiChangReGouActivity"></activity>
         <!--====================================功能需要==========================================-->
 
         <activity

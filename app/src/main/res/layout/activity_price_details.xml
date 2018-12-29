@@ -425,7 +425,7 @@
 
                     <ImageView
                         android:layout_width="@dimen/x10"
-                        android:layout_height="@dimen/x20"
+                        android:layout_height="@dimen/x15"
                         android:layout_marginTop="@dimen/x2"
                         android:layout_marginRight="@dimen/x10"
                         android:background="@mipmap/jiantou" />
@@ -449,7 +449,7 @@
 
                     <ImageView
                         android:layout_width="@dimen/x10"
-                        android:layout_height="@dimen/x20"
+                        android:layout_height="@dimen/x15"
                         android:layout_marginTop="@dimen/x2"
                         android:layout_marginRight="@dimen/x10"
                         android:background="@mipmap/jiantou" />

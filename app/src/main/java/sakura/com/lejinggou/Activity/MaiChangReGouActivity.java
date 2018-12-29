@@ -4,10 +4,14 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -20,12 +24,10 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.fangx.haorefresh.LoadMoreListener;
-import sakura.com.lejinggou.Adapter.MaiChangListAdapter;
-import sakura.com.lejinggou.App;
+import sakura.com.lejinggou.Adapter.MaiChangReGouListAdapter;
 import sakura.com.lejinggou.Base.BaseActivity;
-import sakura.com.lejinggou.Bean.McJieShuBean;
+import sakura.com.lejinggou.Bean.McReGouBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.DateUtils;
 import sakura.com.lejinggou.Utils.EasyToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
@@ -42,7 +44,7 @@ import sakura.com.lejinggou.Volley.VolleyRequest;
  * @date 2018/12/28
  * 功能描述：
  */
-public class MaiChangJieShuActivity extends BaseActivity implements View.OnClickListener {
+public class MaiChangReGouActivity extends BaseActivity implements View.OnClickListener {
 
     @BindView(R.id.rl_back)
     FrameLayout rlBack;
@@ -56,18 +58,30 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
     TextView tvUser;
     @BindView(R.id.tv_user_money)
     TextView tvUserMoney;
-    @BindView(R.id.ll_JPJG)
-    LinearLayout llJPJG;
     @BindView(R.id.rv_maichanglist)
     WenguoyiRecycleView rvMaichanglist;
+    @BindView(R.id.img)
+    ImageView img;
+    @BindView(R.id.LL_empty)
+    RelativeLayout LLEmpty;
+    @BindView(R.id.tv_DJ)
+    TextView tvDJ;
+    @BindView(R.id.tv_BZJ)
+    TextView tvBZJ;
+    @BindView(R.id.ll_dijia)
+    LinearLayout llDijia;
+    @BindView(R.id.btn_submit)
+    Button btnSubmit;
     private LinearLayoutManager line;
-    private String endM;
     private Dialog dialog;
-    private MaiChangListAdapter adapter;
+    private MaiChangReGouListAdapter adapter;
+    private String endM;
+    private String topM;
+
 
     @Override
     protected int setthislayout() {
-        return R.layout.activity_maichang_jieshu_layout;
+        return R.layout.activity_maichang_regou_layout;
     }
 
     @Override
@@ -129,6 +143,7 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
         }
     }
 
+
     private void getMcListEnd(final String m) {
         HashMap<String, String> params = new HashMap<>(1);
         params.put("m", m);
@@ -143,7 +158,7 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
                 try {
                     dialog.dismiss();
                     Log.e("NewsListFragment", decode);
-                    final McJieShuBean mcBean = new Gson().fromJson(decode, McJieShuBean.class);
+                    final McReGouBean mcBean = new Gson().fromJson(decode, McReGouBean.class);
                     if (1 == mcBean.getStatus()) {
                         if (null != mcBean.getData().getList() && !mcBean.getData().getList().isEmpty()) {
                             endM = mcBean.getData().getTop();
@@ -167,7 +182,6 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
         });
     }
 
-
     private void getMcList() {
         HashMap<String, String> params = new HashMap<>(1);
         params.put("m", "");
@@ -178,23 +192,45 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
         VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "goods/mc", "goods/mc", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
+                String decode = result;
                 try {
                     dialog.dismiss();
-                    Log.e("NewsListFragment", result);
-                    final McJieShuBean mcBean = new Gson().fromJson(result, McJieShuBean.class);
-                    if (1 == mcBean.getStatus()) {
-                        rvMaichanglist.loadMoreComplete();
-                        endM = mcBean.getData().getTop();
-                        tvTime.setText("已结束：" + DateUtils.getMillon(Long.parseLong(mcBean.getData().getEndtime()) * 1000));
-                        SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
-                        tvUser.setText(mcBean.getData().getUname());
-                        tvUserMoney.setText("￥" + mcBean.getData().getPrice());
-                        if (null != mcBean.getData().getList() && !mcBean.getData().getList().isEmpty()) {
-                            adapter = new MaiChangListAdapter(mcBean.getData().getList(), context);
-                            rvMaichanglist.setAdapter(adapter);
+                    Log.e("NewsListFragment", decode.toString());
+                    final McReGouBean mcBean = new Gson().fromJson(decode, McReGouBean.class);
+
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mcBean.getData().setS(mcBean.getData().getS() - 1);
+                            tvTime.setText("距结束:" + getTimeFromInt(mcBean.getData().getS()));
+                            tvTime.setBackgroundColor(context.getResources().getColor(R.color.time));
+                            mHandler.postDelayed(this, 1000);
                         }
+                    });
+
+                    if (1 == mcBean.getStatus()) {
+
+                        endM = mcBean.getData().getTop();
+                        topM = mcBean.getData().getEnd();
+
+                        LLEmpty.setVisibility(View.GONE);
+                        if (!TextUtils.isEmpty(mcBean.getData().getUname())) {
+                            SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
+                            tvUser.setText(mcBean.getData().getUname());
+                            tvUserMoney.setText("￥" + mcBean.getData().getPrice());
+                            adapter = new MaiChangReGouListAdapter(mcBean.getData().getList(), context);
+                            rvMaichanglist.setAdapter(adapter);
+                            llDijia.setVisibility(View.GONE);
+                        } else {
+                            tvDJ.setText("￥" + mcBean.getData().getDj());
+                            tvBZJ.setText("￥" + mcBean.getData().getBzj());
+                            llDijia.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        rvMaichanglist.setCanloadMore(false);
+                        rvMaichanglist.loadMoreEnd();
                     }
-                    result = null;
+                    decode = null;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -208,9 +244,32 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
         });
     }
 
-    @Override
-    protected void onDestroy() {
-        App.getQueues().cancelAll("goods/mc");
-        super.onDestroy();
+    public String getTimeFromInt(long time) {
+
+        if (time <= 0) {
+            return "已结束";
+        }
+
+        long day = time / (1 * 60 * 60 * 24);
+        long hour = time / (1 * 60 * 60) % 24;
+        long minute = time / (1 * 60) % 60;
+        long second = time / (1) % 60;
+
+        if (day == 0) {
+            return hour + "小时" + minute + "分" + second + "秒";
+        } else if (hour == 0) {
+            return minute + "分" + second + "秒";
+        } else if (minute == 0) {
+            return second + "秒";
+        } else if (second == 0) {
+            return "已结束";
+        } else if (day != 0) {
+            return day + "天" + hour + "小时" + minute + "分" + second + "秒";
+        } else {
+            return "已结束";
+        }
+
     }
+
+
 }

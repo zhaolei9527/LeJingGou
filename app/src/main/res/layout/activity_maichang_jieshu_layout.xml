@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgfff">
@@ -7,7 +8,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:descendantFocusability="blocksDescendants"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -63,30 +63,27 @@
             android:layout_height="1px"
             android:background="#ccc"></View>
 
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:descendantFocusability="blocksDescendants"
-                android:orientation="vertical">
-
+                android:descendantFocusability="blocksDescendants">
 
                 <LinearLayout
                     android:id="@+id/ll_JPJG"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/y90"
                     android:background="@mipmap/maichang_bg"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/x220"
+                        android:layout_height="@dimen/y65"
                         android:background="@mipmap/jingpaijieshu_bg">
 
                         <com.facebook.drawee.view.SimpleDraweeView
@@ -94,7 +91,8 @@
                             android:layout_width="@dimen/x41"
                             android:layout_height="@dimen/x41"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="@dimen/x10" />
+                            android:layout_marginLeft="@dimen/x10"
+                            fresco:roundAsCircle="true" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -140,29 +138,21 @@
                 </LinearLayout>
 
                 <View
+                    android:id="@+id/view"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
+                    android:layout_below="@id/ll_JPJG"
                     android:background="#ccc"></View>
 
-                <FrameLayout
+                <sakura.com.lejinggou.View.WenguoyiRecycleView
+                    android:layout_below="@id/view"
+                    android:id="@+id/rv_maichanglist"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/llhead">
+                    android:layout_height="match_parent"></sakura.com.lejinggou.View.WenguoyiRecycleView>
 
-                    <sakura.com.lejinggou.View.WenguoyiRecycleView
-                        android:id="@+id/rv_maichanglist"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"></sakura.com.lejinggou.View.WenguoyiRecycleView>
+            </RelativeLayout>
 
-                    <include layout="@layout/layout_empty"></include>
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-        </ScrollView>
+        </android.support.v4.widget.NestedScrollView>
 
     </LinearLayout>
 
