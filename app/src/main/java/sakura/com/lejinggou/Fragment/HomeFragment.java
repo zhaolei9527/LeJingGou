@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.fangx.haorefresh.LoadMoreListener;
+import sakura.com.lejinggou.Activity.KeFuDetailsActivity;
 import sakura.com.lejinggou.Activity.NewsActivity;
 import sakura.com.lejinggou.Adapter.HomeGoodListAdapter;
 import sakura.com.lejinggou.Adapter.LoopAdapter;
@@ -75,6 +77,8 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     WenguoyiRecycleView rvHomelist;
     @BindView(R.id.LL_empty)
     RelativeLayout LLEmpty;
+    @BindView(R.id.img_kefu)
+    ImageView imgKefu;
     private Context context;
     private GridLayoutManager line;
     private int page = 1;
@@ -179,6 +183,14 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                         public void onItemClick(int position) {
                             //新闻点击事件
                             mContext.startActivity(new Intent(mContext, NewsActivity.class));
+                        }
+                    });
+
+                    final HomeBean finalHomeBean = homeBean;
+                    imgKefu.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mContext.startActivity(new Intent(mContext, KeFuDetailsActivity.class).putExtra("url", finalHomeBean.getData().getDyurl()));
                         }
                     });
 

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -28,6 +28,77 @@
 
         </ScrollView>
 
-    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rl_ewm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#77000000">
+
+            <LinearLayout
+                android:id="@+id/ll_wem"
+                android:layout_width="@dimen/x236"
+                android:layout_height="@dimen/y227"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_dialog_ewm_white"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/x10"
+                    android:text="扫码注册"
+                    android:textSize="@dimen/x13" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/SimpleDraweeView_EWM"
+                    android:layout_width="@dimen/x165"
+                    android:layout_height="@dimen/x165"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/x3" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x3"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_TJM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/y19"
+                        android:background="@mipmap/gongyingshang_border"
+                        android:gravity="center"
+                        android:text="复制推荐码"
+                        android:textSize="@dimen/x12" />
+
+                    <TextView
+                        android:id="@+id/tvLJ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/y19"
+                        android:layout_marginLeft="@dimen/x10"
+                        android:background="@mipmap/gongyingshang_border"
+                        android:gravity="center"
+                        android:text="复制链接"
+                        android:textSize="@dimen/x12" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/wem_close"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/x30"
+                android:layout_below="@id/ll_wem"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/x10"
+                android:background="@mipmap/ewmclose" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
 
 </LinearLayout>

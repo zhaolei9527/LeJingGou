@@ -20,9 +20,9 @@
                 layout="@layout/home_head_layout"></include>
 
             <FrameLayout
-                android:layout_below="@id/llhead"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_below="@id/llhead">
 
                 <sakura.com.lejinggou.View.WenguoyiRecycleView
                     android:id="@+id/rv_homelist"
@@ -34,6 +34,15 @@
                 <include layout="@layout/layout_empty"></include>
 
             </FrameLayout>
+
+            <ImageView
+                android:id="@+id/img_kefu"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/x30"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/x12"
+                android:layout_marginRight="@dimen/x12"
+                android:background="@mipmap/kefu" />
 
         </RelativeLayout>
 

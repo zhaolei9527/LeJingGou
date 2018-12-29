@@ -54,6 +54,8 @@
         <activity android:name=".Activity.MyOrderActivity"></activity>
         <activity android:name=".Activity.MyOrderDetailsActivity"></activity>
         <activity android:name=".Activity.PayActivity"></activity>
+        <activity android:name=".Activity.HelpActivity"></activity>
+        <activity android:name=".Activity.KeFuDetailsActivity"></activity>
         <!--====================================功能需要==========================================-->
 
         <activity

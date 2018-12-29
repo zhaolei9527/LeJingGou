@@ -63,7 +63,7 @@
                 <com.jude.rollviewpager.RollPagerView
                     android:id="@+id/RollPagerView"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/y288"
+                    android:layout_height="@dimen/y123"
                     android:visibility="visible" />
 
                 <TextView
@@ -208,7 +208,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:paddingBottom="@dimen/x5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -216,6 +215,7 @@
                         android:layout_marginBottom="@dimen/x5"
                         android:background="@mipmap/title_bg"
                         android:gravity="center"
+                        android:paddingBottom="@dimen/x5"
                         android:text="竞拍结果"
                         android:textColor="@color/white" />
 

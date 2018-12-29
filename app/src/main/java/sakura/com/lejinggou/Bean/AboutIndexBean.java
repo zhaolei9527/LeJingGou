@@ -19,7 +19,7 @@ public class AboutIndexBean {
     /**
      * status : 1
      * info : 信息拉取成功
-     * data : {"id":"40","headimg":"/Public/home/images/f_icon6.png","nickname":"83bae","qm":"","ljsy":"0.00","kymon":"0.00","djmon":"0.00","zfbname":"","zfbacc":"","is_sm":"0","name":"","idcard":"","skmsg":"","is_yg":"1","ne":"0","zje":0}
+     * data : {"id":"36","headimg":"/Public/uploads/lb/2018-12-26/2018_12_26_165352_3226.jpeg","nickname":"ededed","qm":"11111","ljsy":"277.20","kymon":"94512.20","djmon":"4200.00","zfbname":"11223","zfbacc":"11231","is_sm":"2","name":"guide ","idcard":"142731199108224812","skmsg":"","tjcode":"7ce6207a","is_yg":"2","ne":"1545814432","zje":98712.2,"lj":"http://ljg.t.100help.net/login/reg/pid/36.html","ewm":"/Public/ewm/36.png"}
      */
 
     private int status;
@@ -60,22 +60,25 @@ public class AboutIndexBean {
 
     public static class DataBean {
         /**
-         * id : 40
-         * headimg : /Public/home/images/f_icon6.png
-         * nickname : 83bae
-         * qm :
-         * ljsy : 0.00
-         * kymon : 0.00
-         * djmon : 0.00
-         * zfbname :
-         * zfbacc :
-         * is_sm : 0
-         * name :
-         * idcard :
+         * id : 36
+         * headimg : /Public/uploads/lb/2018-12-26/2018_12_26_165352_3226.jpeg
+         * nickname : ededed
+         * qm : 11111
+         * ljsy : 277.20
+         * kymon : 94512.20
+         * djmon : 4200.00
+         * zfbname : 11223
+         * zfbacc : 11231
+         * is_sm : 2
+         * name : guide
+         * idcard : 142731199108224812
          * skmsg :
-         * is_yg : 1
-         * ne : 0
-         * zje : 0
+         * tjcode : 7ce6207a
+         * is_yg : 2
+         * ne : 1545814432
+         * zje : 98712.2
+         * lj : http://ljg.t.100help.net/login/reg/pid/36.html
+         * ewm : /Public/ewm/36.png
          */
 
         private String id;
@@ -91,9 +94,12 @@ public class AboutIndexBean {
         private String name;
         private String idcard;
         private String skmsg;
+        private String tjcode;
         private String is_yg;
         private String ne;
-        private String zje;
+        private double zje;
+        private String lj;
+        private String ewm;
 
         public static List<DataBean> arrayDataBeanFromData(String str) {
 
@@ -207,6 +213,14 @@ public class AboutIndexBean {
             this.skmsg = skmsg;
         }
 
+        public String getTjcode() {
+            return tjcode;
+        }
+
+        public void setTjcode(String tjcode) {
+            this.tjcode = tjcode;
+        }
+
         public String getIs_yg() {
             return is_yg;
         }
@@ -223,12 +237,28 @@ public class AboutIndexBean {
             this.ne = ne;
         }
 
-        public String getZje() {
+        public double getZje() {
             return zje;
         }
 
-        public void setZje(String zje) {
+        public void setZje(double zje) {
             this.zje = zje;
+        }
+
+        public String getLj() {
+            return lj;
+        }
+
+        public void setLj(String lj) {
+            this.lj = lj;
+        }
+
+        public String getEwm() {
+            return ewm;
+        }
+
+        public void setEwm(String ewm) {
+            this.ewm = ewm;
         }
     }
 }

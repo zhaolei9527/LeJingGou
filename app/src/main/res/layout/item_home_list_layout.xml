@@ -21,7 +21,7 @@
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/SimpleDraweeView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y131"
+                android:layout_height="@dimen/y83"
                 fresco:roundBottomLeft="false"
                 fresco:roundBottomRight="false"
                 fresco:roundTopLeft="true"

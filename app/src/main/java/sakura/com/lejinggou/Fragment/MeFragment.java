@@ -1,6 +1,7 @@
 package sakura.com.lejinggou.Fragment;
 
 import android.app.Dialog;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -22,6 +24,7 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import sakura.com.lejinggou.Activity.HelpActivity;
 import sakura.com.lejinggou.Activity.LoginActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.MingXiJiLuListActivity;
@@ -56,6 +59,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     TextView tvUsername;
     @BindView(R.id.tv_LJ)
     TextView tvLJ;
+    @BindView(R.id.tvLJ)
+    TextView tvLJURl;
     @BindView(R.id.tv_YE)
     TextView tvYE;
     @BindView(R.id.tv_BZJ)
@@ -88,8 +93,19 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     LinearLayout llBZ;
     @BindView(R.id.img_message)
     ImageView imgMessage;
+    @BindView(R.id.SimpleDraweeView_EWM)
+    com.facebook.drawee.view.SimpleDraweeView SimpleDraweeViewEWM;
+    @BindView(R.id.tv_TJM)
+    TextView tvTJM;
+    @BindView(R.id.ll_wem)
+    LinearLayout llWem;
+    @BindView(R.id.wem_close)
+    ImageView wemClose;
+    @BindView(R.id.rl_ewm)
+    RelativeLayout rlEwm;
     private Context context;
     private Dialog dialog;
+    private AboutIndexBean aboutIndexBean;
 
     @Override
     protected void initPrepare() {
@@ -141,7 +157,11 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     llDaishouhuo.setOnClickListener(this);
                     llYiwancheng.setOnClickListener(this);
                     llYiguoqi.setOnClickListener(this);
-
+                    llBZ.setOnClickListener(this);
+                    llTGM.setOnClickListener(this);
+                    wemClose.setOnClickListener(this);
+                    tvTJM.setOnClickListener(this);
+                    tvLJURl.setOnClickListener(this);
                     getData();
                 } else {
                     EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
@@ -163,7 +183,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 Log.e("HomeFragment", result);
                 try {
                     dialog.dismiss();
-                    AboutIndexBean aboutIndexBean = new Gson().fromJson(result, AboutIndexBean.class);
+                    aboutIndexBean = new Gson().fromJson(result, AboutIndexBean.class);
                     if (1 == aboutIndexBean.getStatus()) {
 
                         SpUtil.putAndApply(context, "img", aboutIndexBean.getData().getHeadimg());
@@ -186,6 +206,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                         tvBZJ.setText(String.valueOf(aboutIndexBean.getData().getDjmon()));
                         tvKYJ.setText(String.valueOf(aboutIndexBean.getData().getKymon()));
                         tvKQJ.setText(String.valueOf(aboutIndexBean.getData().getKymon()));
+
+                        SimpleDraweeViewEWM.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getEwm());
 
                     } else {
                         EasyToast.showShort(context, aboutIndexBean.getInfo());
@@ -231,6 +253,40 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.tv_TJM:
+                try {
+                    // 从API11开始android推荐使用android.content.ClipboardManager
+                    // 为了兼容低版本我们这里使用旧版的android.text.ClipboardManager，虽然提示deprecated，但不影响使用。
+                    ClipboardManager cm = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+                    // 将文本内容放到系统剪贴板里。
+                    cm.setText(aboutIndexBean.getData().getTjcode());
+                    EasyToast.showShort(context, "已将推荐码复制到粘贴板");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.tvLJ:
+                try {
+                    // 从API11开始android推荐使用android.content.ClipboardManager
+                    // 为了兼容低版本我们这里使用旧版的android.text.ClipboardManager，虽然提示deprecated，但不影响使用。
+                    ClipboardManager cm = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+                    // 将文本内容放到系统剪贴板里。
+                    cm.setText(aboutIndexBean.getData().getLj());
+                    EasyToast.showShort(context, "已将推荐链接复制到粘贴板");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.wem_close:
+                rlEwm.setVisibility(View.GONE);
+                break;
+            case R.id.ll_TGM:
+                if (!TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
+                    rlEwm.setVisibility(View.VISIBLE);
+                } else {
+                    EasyToast.showShort(context, "您当前非业务员");
+                }
+                break;
             case R.id.ll_myorder:
                 startActivity(new Intent(mContext, MyOrderActivity.class).putExtra("cid", "0"));
                 break;
@@ -266,6 +322,9 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 break;
             case R.id.ll_mingxi:
                 startActivity(new Intent(context, MingXiJiLuListActivity.class));
+                break;
+            case R.id.ll_BZ:
+                startActivity(new Intent(context, HelpActivity.class));
                 break;
             default:
                 break;
