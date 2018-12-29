@@ -21,18 +21,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/x10">
-
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/SimpleDraweeView_user"
-                android:layout_width="@dimen/x41"
-                android:layout_height="@dimen/x41"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/x10"
-                fresco:roundAsCircle="true" />
+            android:layout_marginBottom="@dimen/x10"
+            android:gravity="end">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -40,6 +33,7 @@
                     android:id="@+id/tv_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:layout_marginLeft="@dimen/x10"
                     android:textColor="@color/text333" />
 
@@ -75,6 +69,13 @@
 
             </LinearLayout>
 
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/SimpleDraweeView_user"
+                android:layout_width="@dimen/x41"
+                android:layout_height="@dimen/x41"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/x10"
+                fresco:roundAsCircle="true" />
         </LinearLayout>
 
     </LinearLayout>

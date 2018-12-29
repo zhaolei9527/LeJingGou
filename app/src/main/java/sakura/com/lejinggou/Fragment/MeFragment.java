@@ -102,31 +102,39 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
 
     @Override
     protected void initData() {
-        String uid = String.valueOf(SpUtil.get(context, "uid", ""));
-        if (!TextUtils.isEmpty(uid)) {
 
-            if (Utils.isConnected(context)) {
-                dialog = Utils.showLoadingDialog(getActivity());
-                dialog.show();
-                String img = String.valueOf(SpUtil.get(context, "img", ""));
-                if (!TextUtils.isEmpty(img)) {
-                    SimpleDraweeView.setImageURI(UrlUtils.URL + img);
+        try {
+            String uid = String.valueOf(SpUtil.get(context, "uid", ""));
+            if (!TextUtils.isEmpty(uid)) {
+
+                if (Utils.isConnected(context)) {
+                    dialog = Utils.showLoadingDialog(getActivity());
+                    dialog.show();
+                    String img = String.valueOf(SpUtil.get(context, "img", ""));
+
+                    if (!TextUtils.isEmpty(img)) {
+                        SimpleDraweeView.setImageURI(UrlUtils.URL + img);
+                    }
+
+                    String uname = String.valueOf(SpUtil.get(context, "uname", ""));
+                    if (!TextUtils.isEmpty(uname)) {
+                        tvUsername.setText(uname);
+                    }
+
+                    imgMessage.setOnClickListener(this);
+                    llChongzhi.setOnClickListener(this);
+                    llTixian.setOnClickListener(this);
+                    llMingxi.setOnClickListener(this);
+
+                    getData();
+                } else {
+                    EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
                 }
-                String uname = String.valueOf(SpUtil.get(context, "uname", ""));
-                if (!TextUtils.isEmpty(uname)) {
-                    tvUsername.setText(uname);
-                }
-
-                imgMessage.setOnClickListener(this);
-                llChongzhi.setOnClickListener(this);
-                llTixian.setOnClickListener(this);
-                llMingxi.setOnClickListener(this);
-
-                getData();
-            } else {
-                EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
             }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
     @Override

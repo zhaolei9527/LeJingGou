@@ -27,12 +27,12 @@ import sakura.com.lejinggou.Adapter.MaiChangListAdapter;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.McJieShuBean;
 import sakura.com.lejinggou.R;
+import sakura.com.lejinggou.Utils.DateUtils;
 import sakura.com.lejinggou.Utils.EasyToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
 import sakura.com.lejinggou.View.ProgressView;
-import sakura.com.lejinggou.View.SakuraLinearLayoutManager;
 import sakura.com.lejinggou.View.WenguoyiRecycleView;
 import sakura.com.lejinggou.Volley.VolleyInterface;
 import sakura.com.lejinggou.Volley.VolleyRequest;
@@ -66,7 +66,7 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
     ImageView img;
     @BindView(R.id.LL_empty)
     RelativeLayout LLEmpty;
-    private SakuraLinearLayoutManager line;
+    private LinearLayoutManager line;
     private int p = 1;
     private Dialog dialog;
     private MaiChangListAdapter adapter;
@@ -78,7 +78,7 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
 
     @Override
     protected void initview() {
-        line = new SakuraLinearLayoutManager(context);
+        line = new LinearLayoutManager(context);
         line.setOrientation(LinearLayoutManager.VERTICAL);
         rvMaichanglist.setLayoutManager(line);
         rvMaichanglist.setItemAnimator(new DefaultItemAnimator());
@@ -130,7 +130,7 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_back:
-
+                finish();
                 break;
             default:
                 break;
@@ -151,7 +151,8 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
                 try {
                     dialog.dismiss();
                     Log.e("NewsListFragment", decode.toString());
-                    McJieShuBean mcBean = new Gson().fromJson(decode, McJieShuBean.class);
+                    final McJieShuBean mcBean = new Gson().fromJson(decode, McJieShuBean.class);
+                    tvTime.setText("已结束：" + DateUtils.getMillon(Long.parseLong(mcBean.getData().getEndtime()) * 1000));
                     if (1 == mcBean.getStatus()) {
                         LLEmpty.setVisibility(View.GONE);
                         if (rvMaichanglist != null) {
@@ -162,8 +163,8 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
                         if (p == 1) {
                             SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
                             tvUser.setText(mcBean.getData().getUname());
-                            tvUserMoney.setText(mcBean.getData().getPrice());
-                            adapter = new MaiChangListAdapter(mcBean.getData(), context);
+                            tvUserMoney.setText("￥" + mcBean.getData().getPrice());
+                            adapter = new MaiChangListAdapter(mcBean.getData().getList(), context);
                             rvMaichanglist.setAdapter(adapter);
                             if (mcBean.getData().getList().size() < 10) {
                                 rvMaichanglist.setCanloadMore(false);
@@ -184,7 +185,6 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
                         rvMaichanglist.setCanloadMore(false);
                         rvMaichanglist.loadMoreEnd();
                     }
-                    mcBean = null;
                     decode = null;
                 } catch (Exception e) {
                     e.printStackTrace();

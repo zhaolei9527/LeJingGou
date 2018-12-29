@@ -60,7 +60,7 @@ public class ZuoRiLiShiListAdapter extends RecyclerView.Adapter<ZuoRiLiShiListAd
         holder.tvMoney.setText("￥" + datas.get(position).getDqprice());
         holder.tvTitle.setText(datas.get(position).getName());
         holder.tvTime.setBackground(mContext.getResources().getDrawable(R.mipmap.jieshutime_bg));
-        holder.tvTime.setText("已结束：" + DateUtils.getDay(Long.parseLong(datas.get(position).getEndtime()) * 1000));
+        holder.tvTime.setText("已结束：" + DateUtils.getMillon(Long.parseLong(datas.get(position).getEndtime()) * 1000));
 
         holder.llShop.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -148,13 +148,19 @@ public class ZuoRiLiShiFragment extends BaseLazyFragment implements View.OnClick
                             LLEmpty.setVisibility(View.VISIBLE);
                             rvHomelist.setVisibility(View.GONE);
                             rvHomelist.loadMoreEnd();
+                        } else {
+                            page = page - 1;
+                            rvHomelist.setCanloadMore(false);
+                            rvHomelist.loadMoreEnd();
                         }
                     }
                     indexGoodsBean = null;
                     result = null;
                 } catch (Exception e) {
                     dialog.dismiss();
+                    page = page - 1;
                     if (rvHomelist != null) {
+                        rvHomelist.setCanloadMore(false);
                         rvHomelist.loadMoreEnd();
                     }
                     e.printStackTrace();
@@ -163,6 +169,7 @@ public class ZuoRiLiShiFragment extends BaseLazyFragment implements View.OnClick
 
             @Override
             public void onMyError(VolleyError error) {
+                page = page - 1;
                 dialog.dismiss();
                 error.printStackTrace();
             }
