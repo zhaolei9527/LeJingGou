@@ -26,6 +26,7 @@ import sakura.com.lejinggou.Activity.LoginActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.MingXiJiLuListActivity;
 import sakura.com.lejinggou.Activity.MyChongZhiActivity;
+import sakura.com.lejinggou.Activity.MyOrderActivity;
 import sakura.com.lejinggou.Activity.SettingActivity;
 import sakura.com.lejinggou.Activity.TiXianActivity;
 import sakura.com.lejinggou.Activity.ZhiFuBaoActivity;
@@ -92,17 +93,26 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
 
     @Override
     protected void initPrepare() {
-
     }
 
     @Override
     protected void onInvisible() {
-
     }
 
     @Override
     protected void initData() {
+    }
 
+    @Override
+    protected View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        context = getActivity();
+        View view = inflater.inflate(R.layout.me_frament_layout, container, false);
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         try {
             String uid = String.valueOf(SpUtil.get(context, "uid", ""));
             if (!TextUtils.isEmpty(uid)) {
@@ -125,28 +135,21 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     llChongzhi.setOnClickListener(this);
                     llTixian.setOnClickListener(this);
                     llMingxi.setOnClickListener(this);
+                    llMyorder.setOnClickListener(this);
+                    llDaifahuo.setOnClickListener(this);
+                    llDaifukuan.setOnClickListener(this);
+                    llDaishouhuo.setOnClickListener(this);
+                    llYiwancheng.setOnClickListener(this);
+                    llYiguoqi.setOnClickListener(this);
 
                     getData();
                 } else {
                     EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-
-    @Override
-    protected View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        context = getActivity();
-        View view = inflater.inflate(R.layout.me_frament_layout, container, false);
-        initView(view);
-        return view;
-    }
-
-    private void initView(View view) {
-
     }
 
     //数据获取
@@ -228,6 +231,24 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.ll_myorder:
+                startActivity(new Intent(mContext, MyOrderActivity.class).putExtra("cid", "0"));
+                break;
+            case R.id.ll_daifukuan:
+                startActivity(new Intent(mContext, MyOrderActivity.class).putExtra("cid", "1"));
+                break;
+            case R.id.ll_daifahuo:
+                startActivity(new Intent(mContext, MyOrderActivity.class).putExtra("cid", "2"));
+                break;
+            case R.id.ll_daishouhuo:
+                startActivity(new Intent(mContext, MyOrderActivity.class).putExtra("cid", "3"));
+                break;
+            case R.id.ll_yiwancheng:
+                startActivity(new Intent(mContext, MyOrderActivity.class).putExtra("cid", "4"));
+                break;
+            case R.id.ll_yiguoqi:
+                startActivity(new Intent(mContext, MyOrderActivity.class).putExtra("cid", "-1"));
+                break;
             case R.id.img_message:
                 startActivity(new Intent(context, SettingActivity.class));
                 break;

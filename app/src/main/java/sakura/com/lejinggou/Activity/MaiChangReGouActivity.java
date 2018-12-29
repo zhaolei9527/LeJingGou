@@ -1,32 +1,44 @@
 package sakura.com.lejinggou.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alipay.sdk.app.PayTask;
 import com.android.volley.VolleyError;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.fangx.haorefresh.LoadMoreListener;
 import sakura.com.lejinggou.Adapter.MaiChangReGouListAdapter;
 import sakura.com.lejinggou.Base.BaseActivity;
+import sakura.com.lejinggou.Bean.CodeBean;
 import sakura.com.lejinggou.Bean.McReGouBean;
+import sakura.com.lejinggou.Bean.PayResult;
+import sakura.com.lejinggou.Bean.ZfpayBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EasyToast;
 import sakura.com.lejinggou.Utils.SpUtil;
@@ -72,12 +84,69 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
     LinearLayout llDijia;
     @BindView(R.id.btn_submit)
     Button btnSubmit;
+    @BindView(R.id.img_dismiss)
+    ImageView imgDismiss;
+    @BindView(R.id.Choosedzhifubao)
+    CheckBox Choosedzhifubao;
+    @BindView(R.id.Choosedweixin)
+    CheckBox Choosedweixin;
+    @BindView(R.id.tv_pay)
+    TextView tvPay;
+    @BindView(R.id.ll_pay)
+    LinearLayout llPay;
+    @BindView(R.id.ll_JPJG)
+    FrameLayout llJPJG;
+    @BindView(R.id.tv_YE)
+    TextView tvYE;
+    @BindView(R.id.tv_MINBZJ)
+    TextView tvMINBZJ;
+    @BindView(R.id.et_CZ)
+    EditText etCZ;
     private LinearLayoutManager line;
     private Dialog dialog;
     private MaiChangReGouListAdapter adapter;
     private String endM;
     private String topM;
+    private int pay = 2;
+    private String is_jlbzj = "0";
 
+    private static final int SDK_PAY_FLAG = 1;
+
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler = new Handler() {
+        @Override
+        @SuppressWarnings("unused")
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SDK_PAY_FLAG: {
+                    @SuppressWarnings("unchecked")
+                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+                    /**
+                     对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
+                     */
+                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+                    Log.e("PayActivity", resultInfo.toString());
+                    String resultStatus = payResult.getResultStatus();
+                    Log.e("PayActivity", resultStatus.toString());
+                    // 判断resultStatus 为9000则代表支付成功
+                    if (TextUtils.equals(resultStatus, "9000")) {
+                        // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        EasyToast.showShort(context, "支付成功");
+                        llPay.setVisibility(View.VISIBLE);
+                        dialog.show();
+                        orderBzj();
+                    } else {
+                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
+                        EasyToast.showShort(context, "支付失败，请重试");
+                    }
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    };
+    private McReGouBean mcBean;
 
     @Override
     protected int setthislayout() {
@@ -104,11 +173,36 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
         TextView textView = new TextView(context);
         textView.setText("-暂无更多-");
         rvMaichanglist.setFootEndView(textView);
+
     }
 
     @Override
     protected void initListener() {
         rlBack.setOnClickListener(this);
+        btnSubmit.setOnClickListener(this);
+        imgDismiss.setOnClickListener(this);
+        tvPay.setOnClickListener(this);
+
+        Choosedweixin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    pay = 1;
+                    Choosedzhifubao.setChecked(false);
+                }
+            }
+        });
+
+        Choosedzhifubao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    pay = 2;
+                    Choosedweixin.setChecked(false);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -124,7 +218,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
 
         }
 
-
         mHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -132,7 +225,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 mHandler.postDelayed(this, 1000);
             }
         });
-
 
     }
 
@@ -149,11 +241,162 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
             case R.id.rl_back:
                 finish();
                 break;
+            case R.id.img_dismiss:
+                llPay.setVisibility(View.GONE);
+                break;
+            case R.id.btn_submit:
+                if (is_jlbzj.equals("1")) {
+                    orderChujia();
+                } else {
+                    orderBzj();
+                }
+                break;
+            case R.id.tv_pay:
+
+                String CZ = etCZ.getText().toString().trim();
+
+                if (TextUtils.isEmpty(CZ)) {
+                    EasyToast.showShort(context, etCZ.getHint().toString());
+                    return;
+                }
+
+                if (pay == 0) {
+                    EasyToast.showShort(context, "请选择支付方式~");
+                    return;
+                }
+
+                if (pay == 2) {
+                    dialog.show();
+                    orderZfpay();
+                } else {
+                    //orderWxpay();
+                }
+                break;
             default:
                 break;
         }
     }
 
+    /**
+     * 出价
+     */
+    private void orderChujia() {
+        HashMap<String, String> params = new HashMap<>(3);
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
+        params.put("gid", String.valueOf(getIntent().getStringExtra("id")));
+        Log.e("orderZfpay", params.toString());
+        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "chujia/index", "chujia/index", params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String msg) {
+                dialog.dismiss();
+                Log.e("orderZfpay", msg);
+                try {
+                    CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
+                    if (1 == codeBean.getStatus()) {
+                        EasyToast.showShort(context, codeBean.getInfo());
+                    } else {
+                        EasyToast.showShort(context, codeBean.getInfo());
+                    }
+                    codeBean = null;
+                    msg = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * 缴纳保证金
+     */
+    private void orderBzj() {
+        HashMap<String, String> params = new HashMap<>(3);
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
+        params.put("gid", String.valueOf(getIntent().getStringExtra("id")));
+        Log.e("orderZfpay", params.toString());
+        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "chujia/bzj", "chujia/bzj", params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String msg) {
+                dialog.dismiss();
+                Log.e("orderZfpay", msg);
+                try {
+                    CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
+                    if (1 == codeBean.getStatus()) {
+                        EasyToast.showShort(context, codeBean.getInfo());
+                        dialog.dismiss();
+                        orderChujia();
+                    } else if (2 == codeBean.getStatus()) {
+                        llPay.setVisibility(View.VISIBLE);
+                        EasyToast.showShort(context, "余额不足，请充值~");
+                        tvYE.setText("当前账户余额：" + codeBean.getDqmon());
+                    } else {
+                        EasyToast.showShort(context, codeBean.getInfo());
+                    }
+                    msg = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * 订单支付，支付宝
+     */
+    private void orderZfpay() {
+        HashMap<String, String> params = new HashMap<>(3);
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
+        params.put("money", etCZ.getText().toString().trim());
+        params.put("type", "2");
+        Log.e("orderZfpay", params.toString());
+        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "about/cz", "about/cz", params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String msg) {
+                dialog.dismiss();
+                Log.e("支付宝", msg);
+                try {
+                    ZfpayBean zfpayBean = new Gson().fromJson(msg, ZfpayBean.class);
+                    final ZfpayBean finalZfpayBean = zfpayBean;
+                    Runnable payRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            PayTask alipay = new PayTask(MaiChangReGouActivity.this);
+                            Map<String, String> result = alipay.payV2(finalZfpayBean.getData().getRes(), true);
+                            Log.e("msp", result.toString());
+                            Message msg = new Message();
+                            msg.what = SDK_PAY_FLAG;
+                            msg.obj = result;
+                            mHandler.sendMessage(msg);
+                        }
+                    };
+                    Thread payThread = new Thread(payRunnable);
+                    payThread.start();
+                    zfpayBean = null;
+                    msg = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+    }
 
     private void getMcListEnd(final String m) {
         HashMap<String, String> params = new HashMap<>(1);
@@ -170,6 +413,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     dialog.dismiss();
                     Log.e("NewsListFragment", decode);
                     final McReGouBean mcBean = new Gson().fromJson(decode, McReGouBean.class);
+                    is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
                     if (1 == mcBean.getStatus()) {
                         if (null != mcBean.getData().getList() && !mcBean.getData().getList().isEmpty()) {
                             endM = mcBean.getData().getTop();
@@ -199,15 +443,15 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
         params.put("type", "2");
         params.put("id", String.valueOf(getIntent().getStringExtra("id")));
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
-        Log.e("NewsListFragment", "params:" + params);
         VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "goods/mc", "goods/mc", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
                 String decode = result;
                 try {
                     dialog.dismiss();
-                    Log.e("NewsListFragment:top", decode);
                     final McReGouBean mcBean = new Gson().fromJson(decode, McReGouBean.class);
+                    is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
+
                     if (1 == mcBean.getStatus()) {
                         SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
                         tvUser.setText(mcBean.getData().getUname());
@@ -232,7 +476,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
         });
     }
 
-
     private void getMcList() {
         HashMap<String, String> params = new HashMap<>(1);
         params.put("m", "");
@@ -247,7 +490,8 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 try {
                     dialog.dismiss();
                     Log.e("NewsListFragment", decode.toString());
-                    final McReGouBean mcBean = new Gson().fromJson(decode, McReGouBean.class);
+                    mcBean = new Gson().fromJson(decode, McReGouBean.class);
+                    is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
 
                     mHandler.post(new Runnable() {
                         @Override
@@ -264,11 +508,16 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                         endM = mcBean.getData().getTop();
                         topM = mcBean.getData().getEnd();
 
+                        String content = "<font color=\"#ef1544\">￥" + mcBean.getData().getBzj() + "</font>";
+                        tvMINBZJ.setText(Html.fromHtml("拍卖商品当前保证金金额将大于或等于" + content + "，请做好充足的准备。"));
+
                         LLEmpty.setVisibility(View.GONE);
                         if (!TextUtils.isEmpty(mcBean.getData().getUname())) {
                             SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
                             tvUser.setText(mcBean.getData().getUname());
                             tvUserMoney.setText("￥" + mcBean.getData().getPrice());
+
+
                             adapter = new MaiChangReGouListAdapter(mcBean.getData().getList(), context);
                             rvMaichanglist.setAdapter(adapter);
                             llDijia.setVisibility(View.GONE);
@@ -321,6 +570,5 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
         }
 
     }
-
 
 }

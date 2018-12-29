@@ -1,8 +1,12 @@
 package sakura.com.lejinggou.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,16 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alipay.sdk.app.PayTask;
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseActivity;
+import sakura.com.lejinggou.Bean.PayResult;
+import sakura.com.lejinggou.Bean.ZfpayBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EasyToast;
 import sakura.com.lejinggou.Utils.SpUtil;
@@ -63,6 +72,39 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
     private Dialog dialog;
     private String type = "1";
 
+    private static final int SDK_PAY_FLAG = 1;
+
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler = new Handler() {
+        @Override
+        @SuppressWarnings("unused")
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SDK_PAY_FLAG: {
+                    @SuppressWarnings("unchecked")
+                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+                    /**
+                     对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
+                     */
+                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+                    Log.e("PayActivity", resultInfo.toString());
+                    String resultStatus = payResult.getResultStatus();
+                    Log.e("PayActivity", resultStatus.toString());
+                    // 判断resultStatus 为9000则代表支付成功
+                    if (TextUtils.equals(resultStatus, "9000")) {
+                        // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        EasyToast.showShort(context, "支付成功");
+                    } else {
+                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
+                        EasyToast.showShort(context, "支付失败，请重试");
+                    }
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +152,18 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
                 startActivity(new Intent(context, MingXiJiLuListActivity.class));
                 break;
             case R.id.btn_submit:
+                String Money = etMoney.getText().toString().trim();
+                if (TextUtils.isEmpty(Money)) {
+                    EasyToast.showShort(context, etMoney.getHint().toString());
+                    return;
+                }
+
+                if (type.equals("2")) {
+                    dialog.show();
+                    orderZfpay();
+                } else {
+                    //orderWxpay();
+                }
 
                 break;
             case R.id.ll_WX:
@@ -118,7 +172,7 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
                 Choosedzhifubao.setChecked(false);
                 break;
             case R.id.ll_ZFB:
-                type = "1";
+                type = "2";
                 Choosedweixin.setChecked(false);
                 Choosedzhifubao.setChecked(true);
                 break;
@@ -128,22 +182,38 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
     }
 
     /**
-     * 余额获取
+     * 订单支付，支付宝
      */
-    private void userJine() {
-        HashMap<String, String> params = new HashMap<>(1);
-        params.put("pwd", UrlUtils.KEY);
-        params.put("type", "1");
+    private void orderZfpay() {
+        HashMap<String, String> params = new HashMap<>(3);
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
-        Log.e("MyChongZhiActivity", params.toString());
-        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "user/jine", "user/jine", params, new VolleyInterface(context) {
+        params.put("money", etMoney.getText().toString().trim());
+        params.put("type", "2");
+        Log.e("orderZfpay", params.toString());
+        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "about/cz", "about/cz", params, new VolleyInterface(context) {
             @Override
-            public void onMySuccess(String result) {
-                Log.e("MyChongZhiActivity", result);
+            public void onMySuccess(String msg) {
+                dialog.dismiss();
+                Log.e("支付宝", msg);
                 try {
-                    dialog.dismiss();
-
-
+                    ZfpayBean zfpayBean = new Gson().fromJson(msg, ZfpayBean.class);
+                    final ZfpayBean finalZfpayBean = zfpayBean;
+                    Runnable payRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            PayTask alipay = new PayTask(MyChongZhiActivity.this);
+                            Map<String, String> result = alipay.payV2(finalZfpayBean.getData().getRes(), true);
+                            Log.e("msp", result.toString());
+                            Message msg = new Message();
+                            msg.what = SDK_PAY_FLAG;
+                            msg.obj = result;
+                            mHandler.sendMessage(msg);
+                        }
+                    };
+                    Thread payThread = new Thread(payRunnable);
+                    payThread.start();
+                    zfpayBean = null;
+                    msg = null;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -156,6 +226,7 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
             }
         });
     }
+
 
     @Override
     protected void onDestroy() {

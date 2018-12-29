@@ -93,7 +93,7 @@ public class AboutIndexBean {
         private String skmsg;
         private String is_yg;
         private String ne;
-        private int zje;
+        private String zje;
 
         public static List<DataBean> arrayDataBeanFromData(String str) {
 
@@ -223,11 +223,11 @@ public class AboutIndexBean {
             this.ne = ne;
         }
 
-        public int getZje() {
+        public String getZje() {
             return zje;
         }
 
-        public void setZje(int zje) {
+        public void setZje(String zje) {
             this.zje = zje;
         }
     }

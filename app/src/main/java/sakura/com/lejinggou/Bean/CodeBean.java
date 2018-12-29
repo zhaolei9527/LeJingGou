@@ -17,12 +17,16 @@ import java.util.List;
 public class CodeBean {
 
     /**
-     * status : 1
-     * info : 短信发送成功
+     * status : 2
+     * info : 余额不足
+     * dqmon : 0.00
+     * bzj : 10.00
      */
 
     private int status;
     private String info;
+    private String dqmon;
+    private String bzj;
 
     public static List<CodeBean> arrayCodeBeanFromData(String str) {
 
@@ -46,5 +50,21 @@ public class CodeBean {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public String getDqmon() {
+        return dqmon;
+    }
+
+    public void setDqmon(String dqmon) {
+        this.dqmon = dqmon;
+    }
+
+    public String getBzj() {
+        return bzj;
+    }
+
+    public void setBzj(String bzj) {
+        this.bzj = bzj;
     }
 }

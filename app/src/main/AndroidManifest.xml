@@ -51,6 +51,9 @@
         <activity android:name=".Activity.MaiChangJieShuActivity"></activity>
         <activity android:name=".Activity.MaiChangYuGouActivity"></activity>
         <activity android:name=".Activity.MaiChangReGouActivity"></activity>
+        <activity android:name=".Activity.MyOrderActivity"></activity>
+        <activity android:name=".Activity.MyOrderDetailsActivity"></activity>
+        <activity android:name=".Activity.PayActivity"></activity>
         <!--====================================功能需要==========================================-->
 
         <activity
@@ -73,6 +76,12 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
 
     </application>
 
