@@ -18,7 +18,7 @@ public class Validator {
     /**
      * 正则表达式:验证密码(不包含特殊字符)
      */
-    public static final String REGEX_PASSWORD = "^[a-zA-Z0-9]{6,16}$";
+    public static final String REGEX_PASSWORD = "^[a-zA-Z0-9]{6,12}$";
 
     /**
      * 正则表达式:验证手机号
@@ -63,7 +63,18 @@ public class Validator {
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isPassword(String password) {
-        return Pattern.matches(REGEX_PASSWORD, password);
+        boolean isDigit = false;//定义一个boolean值，用来表示是否包含数字
+        boolean isLetter = false;//定义一个boolean值，用来表示是否包含字母
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isDigit(password.charAt(i))) {   //用char包装类中的判断数字的方法判断每一个字符
+                isDigit = true;
+            } else if (Character.isLetter(password.charAt(i))) {  //用char包装类中的判断字母的方法判断每一个字符
+                isLetter = true;
+            }
+        }
+        String regex = "^[a-zA-Z0-9]{6,12}$";
+        boolean isRight = isDigit && isLetter && password.matches(regex);
+        return isRight;
     }
 
     /**

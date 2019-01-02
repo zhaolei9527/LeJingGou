@@ -12,12 +12,12 @@ public class UrlUtils {
     /**
      * url连接头
      */
-    public static final String URL = "http://ljg.t.100help.net/";
+    public static final String URL = "http://app.lepaiyuan.com/";
 
     /**
      * api连接头
      */
-    public static final String BASE_URL = "http://ljg.t.100help.net/api.php/";
+    public static final String BASE_URL = "http://app.lepaiyuan.com/api.php/";
 
     /**
      * 接口连接key

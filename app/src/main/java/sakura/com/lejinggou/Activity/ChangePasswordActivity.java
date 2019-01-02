@@ -35,6 +35,7 @@ import sakura.com.lejinggou.Utils.CodeUtils;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
+import sakura.com.lejinggou.Utils.Validator;
 import sakura.com.lejinggou.Volley.VolleyInterface;
 import sakura.com.lejinggou.Volley.VolleyRequest;
 
@@ -276,6 +277,12 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
             Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if (!Validator.isPassword(password)){
+            Toast.makeText(this, "请输入6-20位字母，数字组合密码", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         passwordagain = etPasswordagain.getText().toString().trim();
         if (TextUtils.isEmpty(passwordagain)) {
             Toast.makeText(this, "请再次输入密码", Toast.LENGTH_SHORT).show();

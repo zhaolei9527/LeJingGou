@@ -18,11 +18,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
+
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import sakura.com.lejinggou.Bean.CodeBean;
@@ -30,6 +33,7 @@ import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.CodeUtils;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
+import sakura.com.lejinggou.Utils.Validator;
 import sakura.com.lejinggou.Volley.VolleyInterface;
 import sakura.com.lejinggou.Volley.VolleyRequest;
 
@@ -265,6 +269,13 @@ public class ForgetActivity extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if (!Validator.isPassword(password)){
+            Toast.makeText(this, "请输入6-20位字母，数字组合密码", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
         passwordagain = etPasswordagain.getText().toString().trim();
         if (TextUtils.isEmpty(passwordagain)) {
             Toast.makeText(this, "请再次输入密码", Toast.LENGTH_SHORT).show();
