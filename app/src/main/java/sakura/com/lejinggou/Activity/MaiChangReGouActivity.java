@@ -252,11 +252,15 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 llPay.setVisibility(View.GONE);
                 break;
             case R.id.btn_submit:
-
                 App.pausableThreadPoolExecutor.execute(new PriorityRunnable(1) {
                     @Override
                     public void doSth() {
-                        dialog.show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialog.show();
+                            }
+                        });
                         if (is_jlbzj.equals("1")) {
                             orderChujia();
                         } else {
@@ -472,11 +476,11 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                                 tvUserMoney.setText("￥" + mcBean.getData().getPrice());
                                 if (null != mcBean.getData().getList() && !mcBean.getData().getList().isEmpty()) {
                                     topM = mcBean.getData().getEnd();
-                                    if (adapter==null){
+                                    if (adapter == null) {
                                         adapter = new MaiChangReGouListAdapter(mcBean.getData().getList(), context);
                                         rvMaichanglist.setAdapter(adapter);
                                         llDijia.setVisibility(View.GONE);
-                                    }else {
+                                    } else {
                                         adapter.setTopDatas((ArrayList) mcBean.getData().getList());
                                         rvMaichanglist.scrollToPosition(0);
                                     }

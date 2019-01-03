@@ -202,13 +202,12 @@ public class MingXiJiLuListActivity extends BaseActivity implements View.OnClick
                         if (p == 1) {
                             adapter = new TiXianListAdapter(newsSearchBean.getData(), context);
                             rvTxjlList.setAdapter(adapter);
-                            if (newsSearchBean.getData().size() < 10) {
-                                rvTxjlList.setCanloadMore(false);
-                                rvTxjlList.loadMoreEnd();
-                            } else {
-                                rvTxjlList.setCanloadMore(true);
-                            }
                         } else {
+                            if (null == newsSearchBean.getData() || newsSearchBean.getData().isEmpty()) {
+                                p=p-1;
+                                rvTxjlList.loadMoreEnd();
+                                return;
+                            }
                             adapter.setDatas((ArrayList) newsSearchBean.getData());
                         }
                     } else {
@@ -259,14 +258,13 @@ public class MingXiJiLuListActivity extends BaseActivity implements View.OnClick
                         if (p2 == 1) {
                             chongZhiListAdapter = new ChongZhiListAdapter(czmxBean.getData(), context);
                             rvCzjlList.setAdapter(chongZhiListAdapter);
-                            if (czmxBean.getData().size() < 10) {
-                                rvCzjlList.setCanloadMore(false);
-                                rvCzjlList.loadMoreEnd();
-                            } else {
-                                rvCzjlList.setCanloadMore(true);
-                            }
                         } else {
-                            adapter.setDatas((ArrayList) czmxBean.getData());
+                            if (null == czmxBean.getData() || czmxBean.getData().isEmpty()) {
+                                p2=p2-1;
+                                rvCzjlList.loadMoreEnd();
+                                return;
+                            }
+                            chongZhiListAdapter.setDatas((ArrayList) czmxBean.getData());
                         }
                     } else {
                         if (p2 != 1) {
@@ -316,14 +314,13 @@ public class MingXiJiLuListActivity extends BaseActivity implements View.OnClick
                         if (p3 == 1) {
                             shouYiListAdapter = new ShouYiListAdapter(symxBean.getData(), context);
                             rvYjjlList.setAdapter(shouYiListAdapter);
-                            if (symxBean.getData().size() < 10) {
-                                rvYjjlList.setCanloadMore(false);
-                                rvYjjlList.loadMoreEnd();
-                            } else {
-                                rvYjjlList.setCanloadMore(true);
-                            }
                         } else {
-                            adapter.setDatas((ArrayList) symxBean.getData());
+                            if (null == symxBean.getData() || symxBean.getData().isEmpty()) {
+                                p3=p3-1;
+                                rvYjjlList.loadMoreEnd();
+                                return;
+                            }
+                            shouYiListAdapter.setDatas((ArrayList) symxBean.getData());
                         }
                     } else {
                         if (p3 != 1) {

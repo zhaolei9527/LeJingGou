@@ -112,10 +112,10 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
         }
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
+        ((MainActivity) getActivity()).mHandler.removeCallbacksAndMessages(null);
         dialog.show();
         getListData(type);
     }

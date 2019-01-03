@@ -42,6 +42,7 @@ public class TiXianListAdapter extends RecyclerView.Adapter<TiXianListAdapter.Vi
 
     public void setDatas(ArrayList datas) {
         this.datas.addAll(datas);
+        notifyDataSetChanged();
     }
 
     @Override
