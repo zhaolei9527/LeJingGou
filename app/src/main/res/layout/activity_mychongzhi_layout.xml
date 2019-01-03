@@ -90,7 +90,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/x20"
             android:layout_marginTop="@dimen/x10"
-            android:text="提现金额"
+            android:text="充值金额"
             android:textColor="@color/text333" />
 
         <EditText
@@ -101,7 +101,7 @@
             android:layout_marginTop="@dimen/x10"
             android:layout_marginRight="@dimen/x20"
             android:background="@color/bgea"
-            android:hint="请输入提现金额"
+            android:hint="请输入充值金额"
             android:inputType="numberDecimal"
             android:padding="@dimen/x5" />
 
@@ -126,6 +126,7 @@
             android:background="@color/bgea"></View>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/ll_WX"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y30">

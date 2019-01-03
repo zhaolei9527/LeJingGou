@@ -96,6 +96,10 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
     LinearLayout llPay;
     @BindView(R.id.ll_address)
     LinearLayout llAddress;
+    @BindView(R.id.tv_wuliu)
+    TextView tvWuliu;
+    @BindView(R.id.tv_danhao)
+    TextView tvDanhao;
     private String orderid;
     private String order;
     private Dialog dialog;
@@ -168,6 +172,7 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
     }
 
     private void initView() {
+
         imgCheckaddress.setVisibility(View.GONE);
         btnPaynow.setOnClickListener(this);
         Choosedweixin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -261,6 +266,9 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
                         };
                         Thread payThread = new Thread(payRunnable);
                         payThread.start();
+                    } else if (2 == zfpayBean.getStatus()) {
+                        EasyToast.showShort(context, zfpayBean.getInfo());
+                        finish();
                     } else {
                         EasyToast.showShort(context, zfpayBean.getInfo());
                         if (zfpayBean.getInfo().contains("请选择一个收获地址")) {
@@ -298,6 +306,9 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
                 try {
                     ZfpayBean zfpayBean = new Gson().fromJson(msg, ZfpayBean.class);
                     if (1 == zfpayBean.getStatus()) {
+                        EasyToast.showShort(context, zfpayBean.getInfo());
+                        finish();
+                    } else if (2 == zfpayBean.getStatus()) {
                         EasyToast.showShort(context, zfpayBean.getInfo());
                         finish();
                     } else {
@@ -376,6 +387,14 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
 
                     tvPriceTotal.setText("￥" + orderDetailBean.getData().getPrice());
                     tvBZJ.setText("￥" + orderDetailBean.getData().getBzj());
+
+                    if (!TextUtils.isEmpty(orderDetailBean.getData().getKdbh())) {
+                        tvWuliu.setText(orderDetailBean.getData().getKdgs());
+                    }
+
+                    if (!TextUtils.isEmpty(orderDetailBean.getData().getKdgs())) {
+                        tvDanhao.setText(orderDetailBean.getData().getKdbh());
+                    }
 
                     final View item_oreder_details_layout = View.inflate(context, R.layout.item_oreder_details_layout, null);
                     item_oreder_details_layout.setTag(orderDetailBean.getData().getId());

@@ -48,7 +48,7 @@ public class JingPaiXieYiDetailsActivity extends BaseActivity {
             dialog.show();
         }
 
-        tvTitle.setText("竞拍协议");
+        tvTitle.setText("竞购规则");
 
         // 开启 localStorage
         forum_Context.getSettings().setDomStorageEnabled(true);

@@ -142,6 +142,7 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
             holder.tvTitle.setText(rgBeanList.get(position).getName());
             holder.tvTime.setBackground(mContext.getResources().getDrawable(R.mipmap.time_bg));
 
+
             ((MainActivity) mContext).mHandler.post(new Runnable() {
                 @Override
                 public void run() {

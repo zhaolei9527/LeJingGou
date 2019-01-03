@@ -19,7 +19,7 @@ public class OrderDetailBean {
     /**
      * status : 1
      * info : 数据拉取成功
-     * data : {"id":"71","price":"5488.00","bzj":"2000.00","status":"1","addtime":"1546070100","kdgs":"","kdbh":"","name":"","tel":"","address":"","gname":"和田青玉-亦佛亦魔","fm_img":"/Public/uploads/lb/2018-12-29/2018_12_29_154802_9405.png","dqprice":"7488.00","status_msg":"待付款"}
+     * data : {"id":"119","price":"9990.00","bzj":"10.00","status":"3","addtime":"1546412961","kdgs":"申通快递","kdbh":"123123123123123","name":"特斯拉","tel":"17629345001","address":"河南省郑州市中原区skr聚聚","gname":"和田玉-山水如画11000-14000-200","fm_img":"/Public/uploads/lb/2019-01-02/2019_01_02_150631_5060.png","dqprice":"10000.00","status_msg":"待收货"}
      */
 
     private int status;
@@ -60,20 +60,20 @@ public class OrderDetailBean {
 
     public static class DataBean {
         /**
-         * id : 71
-         * price : 5488.00
-         * bzj : 2000.00
-         * status : 1
-         * addtime : 1546070100
-         * kdgs :
-         * kdbh :
-         * name :
-         * tel :
-         * address :
-         * gname : 和田青玉-亦佛亦魔
-         * fm_img : /Public/uploads/lb/2018-12-29/2018_12_29_154802_9405.png
-         * dqprice : 7488.00
-         * status_msg : 待付款
+         * id : 119
+         * price : 9990.00
+         * bzj : 10.00
+         * status : 3
+         * addtime : 1546412961
+         * kdgs : 申通快递
+         * kdbh : 123123123123123
+         * name : 特斯拉
+         * tel : 17629345001
+         * address : 河南省郑州市中原区skr聚聚
+         * gname : 和田玉-山水如画11000-14000-200
+         * fm_img : /Public/uploads/lb/2019-01-02/2019_01_02_150631_5060.png
+         * dqprice : 10000.00
+         * status_msg : 待收货
          */
 
         private String id;

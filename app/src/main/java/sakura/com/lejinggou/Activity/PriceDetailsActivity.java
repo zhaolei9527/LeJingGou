@@ -119,12 +119,11 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
     protected void initData() {
         if (Utils.isConnected(context)) {
             dialog = Utils.showLoadingDialog(context);
-            dialog.show();
-            goodsDetail();
         } else {
             EasyToast.showShort(context, R.string.Networkexception);
         }
     }
+
 
     @Override
     public void onClick(View v) {
@@ -161,6 +160,8 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
     public void onResume() {
         super.onResume();
         uid = (String) SpUtil.get(context, "uid", "");
+        dialog.show();
+        goodsDetail();
     }
 
     /**

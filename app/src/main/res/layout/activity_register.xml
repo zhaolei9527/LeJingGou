@@ -89,7 +89,7 @@
                     <EditText
                         android:id="@+id/et_account"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/y30"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/x5"
                         android:background="@null"
@@ -115,7 +115,7 @@
                     <EditText
                         android:id="@+id/et_code"
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/y30"
+                        android:layout_height="wrap_content"
                         android:layout_above="@+id/view"
                         android:layout_marginLeft="@dimen/x5"
                         android:layout_toRightOf="@+id/imageView"
@@ -160,7 +160,7 @@
                     <EditText
                         android:id="@+id/et_phonecode"
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/y30"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/x5"
                         android:layout_weight="1"
@@ -209,7 +209,7 @@
                     <EditText
                         android:id="@+id/et_password"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/y30"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/x5"
                         android:background="@null"
@@ -237,7 +237,7 @@
                     <EditText
                         android:id="@+id/et_passwordagain"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/y30"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/x5"
                         android:background="@null"
@@ -265,7 +265,7 @@
                     <EditText
                         android:id="@+id/et_tuijiangma"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/y30"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/x5"
                         android:background="@null"

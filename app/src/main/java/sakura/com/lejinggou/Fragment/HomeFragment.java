@@ -29,6 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.fangx.haorefresh.LoadMoreListener;
 import sakura.com.lejinggou.Activity.KeFuDetailsActivity;
+import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.NewsActivity;
 import sakura.com.lejinggou.Adapter.HomeGoodListAdapter;
 import sakura.com.lejinggou.Adapter.LoopAdapter;
@@ -109,6 +110,14 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
         } else {
             EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
         }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dialog.show();
+        getListData(type);
     }
 
     @Override
@@ -314,6 +323,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+        ((MainActivity) getActivity()).mHandler.removeCallbacksAndMessages(null);
         switch (view.getId()) {
             case R.id.ll_regou:
                 if (!type.equals("1")) {

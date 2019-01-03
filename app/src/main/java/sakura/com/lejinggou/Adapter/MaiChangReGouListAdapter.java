@@ -51,6 +51,9 @@ public class MaiChangReGouListAdapter extends RecyclerView.Adapter<MaiChangReGou
     public void setTopDatas(ArrayList<McReGouBean.DataBean.ListBean> datas) {
         Collections.reverse(datas);
         for (int i = 0; i < datas.size(); i++) {
+            if (this.datas.get(0).getUid().equals(datas.get(i).getUid())) {
+                return;
+            }
             this.datas.add(0, datas.get(i));
         }
         notifyDataSetChanged();

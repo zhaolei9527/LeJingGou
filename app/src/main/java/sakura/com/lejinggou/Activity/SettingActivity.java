@@ -47,6 +47,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     @BindView(R.id.tv_sm)
     TextView tvSm;
     private String is_sm;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     protected void initview() {
         is_sm = (String) SpUtil.get(context, "is_sm", "");
         String zfbacc = (String) SpUtil.get(context, "zfbacc", "");
-        String name = (String) SpUtil.get(context, "name", "");
+        name = (String) SpUtil.get(context, "name", "");
         tvZfb.setText(zfbacc);
     }
 
@@ -101,7 +102,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 } else if (is_sm.equals("1")) {
                     EasyToast.showShort(context, "审核中");
                 } else if (is_sm.equals("2")) {
-                    startActivity(new Intent(context, ShiMingActivity.class));
+                    EasyToast.showShort(context, "审核已通过");
                 } else if (is_sm.equals("-1")) {
                     startActivity(new Intent(context, ShiMingActivity.class));
                 }

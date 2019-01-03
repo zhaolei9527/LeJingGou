@@ -34,6 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.fangx.haorefresh.LoadMoreListener;
 import sakura.com.lejinggou.Adapter.MaiChangReGouListAdapter;
+import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.CodeBean;
 import sakura.com.lejinggou.Bean.McReGouBean;
@@ -41,6 +42,7 @@ import sakura.com.lejinggou.Bean.PayResult;
 import sakura.com.lejinggou.Bean.ZfpayBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.PriorityRunnable;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -221,7 +223,12 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                getMcListTop(topM);
+                App.pausableThreadPoolExecutor.execute(new PriorityRunnable(1) {
+                    @Override
+                    public void doSth() {
+                        getMcListTop(topM);
+                    }
+                });
                 mHandler.postDelayed(this, 1000);
             }
         });
@@ -245,26 +252,30 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 llPay.setVisibility(View.GONE);
                 break;
             case R.id.btn_submit:
-                if (is_jlbzj.equals("1")) {
-                    orderChujia();
-                } else {
-                    orderBzj();
-                }
+
+                App.pausableThreadPoolExecutor.execute(new PriorityRunnable(1) {
+                    @Override
+                    public void doSth() {
+                        dialog.show();
+                        if (is_jlbzj.equals("1")) {
+                            orderChujia();
+                        } else {
+                            orderBzj();
+                        }
+                    }
+                });
+
                 break;
             case R.id.tv_pay:
-
                 String CZ = etCZ.getText().toString().trim();
-
                 if (TextUtils.isEmpty(CZ)) {
                     EasyToast.showShort(context, etCZ.getHint().toString());
                     return;
                 }
-
                 if (pay == 0) {
                     EasyToast.showShort(context, "请选择支付方式~");
                     return;
                 }
-
                 if (pay == 2) {
                     dialog.show();
                     orderZfpay();
@@ -445,24 +456,34 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "goods/mc", "goods/mc", params, new VolleyInterface(context) {
             @Override
-            public void onMySuccess(String result) {
-                String decode = result;
+            public void onMySuccess(final String result) {
                 try {
-                    dialog.dismiss();
-                    final McReGouBean mcBean = new Gson().fromJson(decode, McReGouBean.class);
-                    is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
-
-                    if (1 == mcBean.getStatus()) {
-                        SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
-                        tvUser.setText(mcBean.getData().getUname());
-                        tvUserMoney.setText("￥" + mcBean.getData().getPrice());
-                        if (null != mcBean.getData().getList() && !mcBean.getData().getList().isEmpty()) {
-                            topM = mcBean.getData().getEnd();
-                            adapter.setTopDatas((ArrayList) mcBean.getData().getList());
-                            rvMaichanglist.scrollToPosition(0);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialog.dismiss();
+                            final McReGouBean mcBean = new Gson().fromJson(result, McReGouBean.class);
+                            is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
+                            if (1 == mcBean.getStatus()) {
+                                if (!tvUser.getText().equals(mcBean.getData().getUname())) {
+                                    SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
+                                }
+                                tvUser.setText(mcBean.getData().getUname());
+                                tvUserMoney.setText("￥" + mcBean.getData().getPrice());
+                                if (null != mcBean.getData().getList() && !mcBean.getData().getList().isEmpty()) {
+                                    topM = mcBean.getData().getEnd();
+                                    if (adapter==null){
+                                        adapter = new MaiChangReGouListAdapter(mcBean.getData().getList(), context);
+                                        rvMaichanglist.setAdapter(adapter);
+                                        llDijia.setVisibility(View.GONE);
+                                    }else {
+                                        adapter.setTopDatas((ArrayList) mcBean.getData().getList());
+                                        rvMaichanglist.scrollToPosition(0);
+                                    }
+                                }
+                            }
                         }
-                    }
-                    decode = null;
+                    });
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -516,8 +537,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                             SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
                             tvUser.setText(mcBean.getData().getUname());
                             tvUserMoney.setText("￥" + mcBean.getData().getPrice());
-
-
                             adapter = new MaiChangReGouListAdapter(mcBean.getData().getList(), context);
                             rvMaichanglist.setAdapter(adapter);
                             llDijia.setVisibility(View.GONE);
