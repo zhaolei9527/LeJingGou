@@ -255,12 +255,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 App.pausableThreadPoolExecutor.execute(new PriorityRunnable(1) {
                     @Override
                     public void doSth() {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                dialog.show();
-                            }
-                        });
                         if (is_jlbzj.equals("1")) {
                             orderChujia();
                         } else {
@@ -281,7 +275,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     return;
                 }
                 if (pay == 2) {
-                    dialog.show();
                     orderZfpay();
                 } else {
                     //orderWxpay();
@@ -343,7 +336,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 try {
                     CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
                     if (1 == codeBean.getStatus()) {
-                        EasyToast.showShort(context, codeBean.getInfo());
                         dialog.dismiss();
                         orderChujia();
                     } else if (2 == codeBean.getStatus()) {
@@ -517,6 +509,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     Log.e("NewsListFragment", decode.toString());
                     mcBean = new Gson().fromJson(decode, McReGouBean.class);
                     is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
+
 
                     mHandler.post(new Runnable() {
                         @Override

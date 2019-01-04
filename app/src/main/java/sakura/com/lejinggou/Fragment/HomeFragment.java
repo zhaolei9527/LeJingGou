@@ -323,7 +323,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        ((MainActivity) getActivity()).mHandler.removeCallbacksAndMessages(null);
         switch (view.getId()) {
             case R.id.ll_regou:
                 if (!type.equals("1")) {

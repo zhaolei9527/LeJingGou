@@ -161,6 +161,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
         super.onResume();
         uid = (String) SpUtil.get(context, "uid", "");
         dialog.show();
+        mHandler.removeCallbacksAndMessages(null);
         goodsDetail();
     }
 
