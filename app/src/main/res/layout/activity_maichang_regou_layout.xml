@@ -64,196 +64,190 @@
             android:layout_height="1px"
             android:background="#ccc"></View>
 
-        <android.support.v4.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:descendantFocusability="blocksDescendants"
             android:orientation="vertical">
 
-            <LinearLayout
+            <FrameLayout
+                android:id="@+id/ll_JPJG"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:descendantFocusability="blocksDescendants"
+                android:layout_height="@dimen/y90"
+                android:background="@mipmap/maichang_bg"
                 android:orientation="vertical">
 
-                <FrameLayout
-                    android:id="@+id/ll_JPJG"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/y90"
-                    android:background="@mipmap/maichang_bg"
-                    android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="@dimen/x220"
+                    android:layout_height="@dimen/y65"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/rgmaichang_bg">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/SimpleDraweeView_user"
+                        android:layout_width="@dimen/x41"
+                        android:layout_height="@dimen/x41"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x10"
+                        fresco:roundAsCircle="true" />
 
                     <LinearLayout
-                        android:layout_width="@dimen/x220"
-                        android:layout_height="@dimen/y65"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:background="@mipmap/rgmaichang_bg">
+                        android:orientation="vertical">
 
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/SimpleDraweeView_user"
-                            android:layout_width="@dimen/x41"
-                            android:layout_height="@dimen/x41"
-                            android:layout_gravity="center_vertical"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/x10"
-                            fresco:roundAsCircle="true" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_user"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text333" />
+
+                            <TextView
+                                android:id="@+id/tv_user_money"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/textred"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginTop="@dimen/x5"
+                            android:background="@mipmap/dangqianjia_bg"
+                            android:gravity="center"
+                            android:text="领先"
+                            android:textColor="@color/textred" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_dijia"
+                    android:layout_width="@dimen/x220"
+                    android:layout_height="@dimen/y65"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/rgmaichang_bg">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:gravity="center"
                             android:orientation="vertical">
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/tv_DJ"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/x10"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/tv_user"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/text333" />
-
-                                <TextView
-                                    android:id="@+id/tv_user_money"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/textred"
-                                    android:textStyle="bold" />
-
-                            </LinearLayout>
+                                android:layout_marginLeft="@dimen/x2"
+                                android:text="￥0.00"
+                                android:textColor="@color/bgtitle"
+                                android:textSize="@dimen/x14"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/x10"
-                                android:layout_marginTop="@dimen/x5"
-                                android:background="@mipmap/dangqianjia_bg"
-                                android:gravity="center"
-                                android:text="领先"
-                                android:textColor="@color/textred" />
+                                android:layout_marginLeft="@dimen/x2"
+                                android:layout_marginTop="@dimen/x2"
+                                android:text="底价"
+                                android:textColor="@color/text333"
+                                android:textSize="@dimen/x13" />
 
                         </LinearLayout>
 
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/x1"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/x20"
+                        android:layout_marginBottom="@dimen/x20"
+                        android:background="@color/bgddd"></View>
 
                     <LinearLayout
-                        android:id="@+id/ll_dijia"
-                        android:layout_width="@dimen/x220"
-                        android:layout_height="@dimen/y65"
-                        android:layout_gravity="center"
-                        android:background="@mipmap/rgmaichang_bg">
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/tv_BZJ"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:orientation="vertical">
+                                android:layout_marginLeft="@dimen/x2"
+                                android:text="￥0.00"
+                                android:textColor="@color/text333"
+                                android:textSize="@dimen/x14"
+                                android:textStyle="bold" />
 
-                                <TextView
-                                    android:id="@+id/tv_DJ"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/x2"
-                                    android:text="￥0.00"
-                                    android:textColor="@color/bgtitle"
-                                    android:textSize="@dimen/x14"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/x2"
-                                    android:layout_marginTop="@dimen/x2"
-                                    android:text="底价"
-                                    android:textColor="@color/text333"
-                                    android:textSize="@dimen/x13" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="@dimen/x1"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/x20"
-                            android:layout_marginBottom="@dimen/x20"
-                            android:background="@color/bgddd"></View>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <LinearLayout
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tv_BZJ"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/x2"
-                                    android:text="￥0.00"
-                                    android:textColor="@color/text333"
-                                    android:textSize="@dimen/x14"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/x2"
-                                    android:layout_marginTop="@dimen/x2"
-                                    android:text="保证金"
-                                    android:textColor="@color/text333"
-                                    android:textSize="@dimen/x13" />
-
-                            </LinearLayout>
+                                android:layout_marginLeft="@dimen/x2"
+                                android:layout_marginTop="@dimen/x2"
+                                android:text="保证金"
+                                android:textColor="@color/text333"
+                                android:textSize="@dimen/x13" />
 
                         </LinearLayout>
 
                     </LinearLayout>
 
-                </FrameLayout>
+                </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="#ccc"></View>
+            </FrameLayout>
 
-                <FrameLayout
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#ccc"></View>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/llhead">
+
+                <sakura.com.lejinggou.View.WenguoyiRecycleView
+                    android:id="@+id/rv_maichanglist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/llhead">
+                    android:clipChildren="false"
+                    android:clipToPadding="false"></sakura.com.lejinggou.View.WenguoyiRecycleView>
 
-                    <sakura.com.lejinggou.View.WenguoyiRecycleView
-                        android:id="@+id/rv_maichanglist"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"></sakura.com.lejinggou.View.WenguoyiRecycleView>
+                <include layout="@layout/layout_empty"></include>
 
-                    <include layout="@layout/layout_empty"></include>
+            </FrameLayout>
 
-                </FrameLayout>
+        </LinearLayout>
 
-            </LinearLayout>
-
-        </android.support.v4.widget.NestedScrollView>
 
         <Button
             android:id="@+id/btn_submit"

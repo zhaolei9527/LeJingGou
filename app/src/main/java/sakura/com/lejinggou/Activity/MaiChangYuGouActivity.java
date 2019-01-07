@@ -55,6 +55,8 @@ public class MaiChangYuGouActivity extends BaseActivity implements View.OnClickL
 
     @Override
     protected void initview() {
+        String title = getIntent().getStringExtra("title");
+        tvTitle.setText(title);
     }
 
     @Override

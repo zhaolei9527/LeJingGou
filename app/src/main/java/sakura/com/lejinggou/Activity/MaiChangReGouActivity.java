@@ -175,7 +175,8 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
         TextView textView = new TextView(context);
         textView.setText("-暂无更多-");
         rvMaichanglist.setFootEndView(textView);
-
+        String title = getIntent().getStringExtra("title");
+        tvTitle.setText(title);
     }
 
     @Override

@@ -63,96 +63,90 @@
             android:layout_height="1px"
             android:background="#ccc"></View>
 
-        <android.support.v4.widget.NestedScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:descendantFocusability="blocksDescendants">
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/ll_JPJG"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:descendantFocusability="blocksDescendants">
+                android:layout_height="@dimen/y90"
+                android:background="@mipmap/maichang_bg"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/ll_JPJG"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/y90"
-                    android:background="@mipmap/maichang_bg"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_width="@dimen/x220"
+                    android:layout_height="@dimen/y65"
+                    android:background="@mipmap/jingpaijieshu_bg">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/SimpleDraweeView_user"
+                        android:layout_width="@dimen/x41"
+                        android:layout_height="@dimen/x41"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x10"
+                        fresco:roundAsCircle="true" />
 
                     <LinearLayout
-                        android:layout_width="@dimen/x220"
-                        android:layout_height="@dimen/y65"
-                        android:background="@mipmap/jingpaijieshu_bg">
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/SimpleDraweeView_user"
-                            android:layout_width="@dimen/x41"
-                            android:layout_height="@dimen/x41"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="@dimen/x10"
-                            fresco:roundAsCircle="true" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/x10"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/tv_user"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/text333" />
-
-                                <TextView
-                                    android:id="@+id/tv_user_money"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/textred"
-                                    android:textStyle="bold" />
-
-                            </LinearLayout>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/tv_user"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/x10"
-                                android:layout_marginTop="@dimen/x5"
-                                android:background="@mipmap/dangqianjia_bg"
-                                android:gravity="center"
-                                android:text="成交"
-                                android:textColor="@color/textred" />
+                                android:textColor="@color/text333" />
+
+                            <TextView
+                                android:id="@+id/tv_user_money"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/textred"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginTop="@dimen/x5"
+                            android:background="@mipmap/dangqianjia_bg"
+                            android:gravity="center"
+                            android:text="成交"
+                            android:textColor="@color/textred" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_below="@id/ll_JPJG"
-                    android:background="#ccc"></View>
+            </LinearLayout>
 
-                <sakura.com.lejinggou.View.WenguoyiRecycleView
-                    android:layout_below="@id/view"
-                    android:id="@+id/rv_maichanglist"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"></sakura.com.lejinggou.View.WenguoyiRecycleView>
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@id/ll_JPJG"
+                android:background="#ccc"></View>
 
-            </RelativeLayout>
+            <sakura.com.lejinggou.View.WenguoyiRecycleView
+                android:id="@+id/rv_maichanglist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/view"></sakura.com.lejinggou.View.WenguoyiRecycleView>
 
-        </android.support.v4.widget.NestedScrollView>
+        </RelativeLayout>
+
 
     </LinearLayout>
 

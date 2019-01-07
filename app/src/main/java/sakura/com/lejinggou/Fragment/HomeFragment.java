@@ -261,6 +261,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                         adapter.datasRemove();
                         adapter.notifyDataSetChanged();
                     }
+
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -293,6 +294,9 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
             @Override
             public void onMyError(VolleyError error) {
+                if (page == 1) {
+                    LLEmpty.setVisibility(View.VISIBLE);
+                }
                 dialog.dismiss();
                 error.printStackTrace();
             }
@@ -325,37 +329,31 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_regou:
-                if (!type.equals("1")) {
-                    type = "1";
-                    page = 1;
-                    vRegou.setVisibility(View.VISIBLE);
-                    vJinri.setVisibility(View.GONE);
-                    vJinrilishi.setVisibility(View.GONE);
-                    dialog.show();
-                    getListData(type);
-                }
+                type = "1";
+                page = 1;
+                vRegou.setVisibility(View.VISIBLE);
+                vJinri.setVisibility(View.GONE);
+                vJinrilishi.setVisibility(View.GONE);
+                dialog.show();
+                getListData(type);
                 break;
             case R.id.ll_jinri:
-                if (!type.equals("2")) {
-                    type = "2";
-                    page = 1;
-                    vRegou.setVisibility(View.GONE);
-                    vJinri.setVisibility(View.VISIBLE);
-                    vJinrilishi.setVisibility(View.GONE);
-                    dialog.show();
-                    getListData(type);
-                }
+                type = "2";
+                page = 1;
+                vRegou.setVisibility(View.GONE);
+                vJinri.setVisibility(View.VISIBLE);
+                vJinrilishi.setVisibility(View.GONE);
+                dialog.show();
+                getListData(type);
                 break;
             case R.id.ll_jinrilishi:
-                if (!type.equals("3")) {
-                    type = "3";
-                    page = 1;
-                    vRegou.setVisibility(View.GONE);
-                    vJinri.setVisibility(View.GONE);
-                    vJinrilishi.setVisibility(View.VISIBLE);
-                    dialog.show();
-                    getListData(type);
-                }
+                type = "3";
+                page = 1;
+                vRegou.setVisibility(View.GONE);
+                vJinri.setVisibility(View.GONE);
+                vJinrilishi.setVisibility(View.VISIBLE);
+                dialog.show();
+                getListData(type);
                 break;
             default:
                 break;

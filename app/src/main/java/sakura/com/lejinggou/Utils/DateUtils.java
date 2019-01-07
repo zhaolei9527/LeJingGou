@@ -114,9 +114,9 @@ public class DateUtils {
      *
      * @return time -> yyyy年MM月dd日HH-mm
      */
-    public static String getHour(long time) {
+    public static String getMm(long time) {
 
-        return new SimpleDateFormat("yyyy年MM月dd日HH时mm分").format(time);
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(time);
 
     }
 

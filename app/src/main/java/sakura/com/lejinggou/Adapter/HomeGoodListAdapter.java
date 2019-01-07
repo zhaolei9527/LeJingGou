@@ -193,6 +193,10 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
                             public void run() {
                                 try {
                                     if (!ygBeanList.isEmpty()) {
+                                        if (ygBeanList.get(position).getS() == 0) {
+                                            ygBeanList.remove(position);
+                                            return;
+                                        }
                                         ygBeanList.get(position).setS(ygBeanList.get(position).getS() - 1);
                                         holder.tvTime.setText("距开始:" + getTimeFromInt(ygBeanList.get(position).getS()));
                                     }

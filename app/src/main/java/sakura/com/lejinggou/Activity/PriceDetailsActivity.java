@@ -136,15 +136,24 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                 }
 
                 if (goodsIndexBean.getData().getType() == 1) {
-                    startActivity(new Intent(context, MaiChangReGouActivity.class).putExtra("id", goodsIndexBean.getData().getId()));
+                    startActivity(new Intent(context, MaiChangReGouActivity.class)
+                            .putExtra("id", goodsIndexBean.getData().getId())
+                            .putExtra("title", goodsIndexBean.getData().getName())
+                    );
                 }
 
                 if (goodsIndexBean.getData().getType() == 2) {
-                    startActivity(new Intent(context, MaiChangYuGouActivity.class).putExtra("id", goodsIndexBean.getData().getId()));
+                    startActivity(new Intent(context, MaiChangYuGouActivity.class)
+                            .putExtra("id", goodsIndexBean.getData().getId())
+                            .putExtra("title", goodsIndexBean.getData().getName())
+                    );
                 }
 
                 if (goodsIndexBean.getData().getType() == 3) {
-                    startActivity(new Intent(context, MaiChangJieShuActivity.class).putExtra("id", goodsIndexBean.getData().getId()));
+                    startActivity(new Intent(context, MaiChangJieShuActivity.class)
+                            .putExtra("id", goodsIndexBean.getData().getId())
+                            .putExtra("title", goodsIndexBean.getData().getName())
+                    );
                 }
 
                 break;

@@ -147,9 +147,19 @@ public class ChuJiaJiLuActivity extends BaseActivity implements View.OnClickList
                         rvChujialist.setCanloadMore(false);
                     } else {
                         if (page == 1) {
+                            GoodsJlBean.DataBean.ListBean dqj = new GoodsJlBean.DataBean.ListBean();
+                            dqj.setAddtime(goodsJlBean.getData().getDqj().getAddtime());
+                            dqj.setBs(goodsJlBean.getData().getDqj().getBs());
+                            dqj.setHeadimg(goodsJlBean.getData().getDqj().getHeadimg());
+                            dqj.setNickname(goodsJlBean.getData().getDqj().getNickname());
                             chuJiaJiLuListAdapter = new ChuJiaJiLuListAdapter(context, goodsJlBean.getData().getList());
                             rvChujialist.setAdapter(chuJiaJiLuListAdapter);
                         } else {
+                            GoodsJlBean.DataBean.ListBean dqj = new GoodsJlBean.DataBean.ListBean();
+                            dqj.setAddtime(goodsJlBean.getData().getDqj().getAddtime());
+                            dqj.setBs(goodsJlBean.getData().getDqj().getBs());
+                            dqj.setHeadimg(goodsJlBean.getData().getDqj().getHeadimg());
+                            dqj.setNickname(goodsJlBean.getData().getDqj().getNickname());
                             chuJiaJiLuListAdapter.setDatas(goodsJlBean.getData().getList());
                         }
                     }

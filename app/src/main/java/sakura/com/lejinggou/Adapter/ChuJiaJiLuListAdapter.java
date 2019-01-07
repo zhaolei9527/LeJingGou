@@ -54,8 +54,8 @@ public class ChuJiaJiLuListAdapter extends RecyclerView.Adapter<ChuJiaJiLuListAd
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.SimpleDraweeView.setImageURI(UrlUtils.URL + datas.get(position).getHeadimg());
         holder.tvUser.setText(datas.get(position).getNickname());
-        holder.tvTime.setText(DateUtils.getMillon(Long.parseLong(datas.get(position).getAddtime()) * 1000));
-        holder.tvUserMoney.setText(datas.get(position).getBs());
+        holder.tvTime.setText(DateUtils.getMm(Long.parseLong(datas.get(position).getAddtime()) * 1000));
+        holder.tvUserMoney.setText("￥"+datas.get(position).getBs());
 
         if (position == 0) {
             if (ChuJiaJiLuActivity.type.equals("1")) {
@@ -65,9 +65,9 @@ public class ChuJiaJiLuListAdapter extends RecyclerView.Adapter<ChuJiaJiLuListAd
                 holder.tvUserMoney.setTextColor(mContext.getResources().getColor(R.color.textred));
             } else {
                 holder.tvUserType.setText("竞购成功");
-                holder.tvUserType.setTextColor(mContext.getResources().getColor(R.color.text333));
-                holder.tvUser.setTextColor(mContext.getResources().getColor(R.color.text333));
-                holder.tvUserMoney.setTextColor(mContext.getResources().getColor(R.color.text333));
+                holder.tvUserType.setTextColor(mContext.getResources().getColor(R.color.textred));
+                holder.tvUser.setTextColor(mContext.getResources().getColor(R.color.textred));
+                holder.tvUserMoney.setTextColor(mContext.getResources().getColor(R.color.textred));
             }
         } else {
             holder.tvUserType.setText("出局");

@@ -90,7 +90,7 @@ public class MaiChangReGouListAdapter extends RecyclerView.Adapter<MaiChangReGou
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.tvTime.setText(DateUtils.getMillon(Long.parseLong(datas.get(position).getAddtime()) * 1000));
+        holder.tvTime.setText(DateUtils.getMm(Long.parseLong(datas.get(position).getAddtime()) * 1000));
         holder.SimpleDraweeViewUser.setImageURI(UrlUtils.URL + datas.get(position).getHeadimg());
         holder.tvUser.setText(datas.get(position).getNickname());
         //首先是拼接字符串

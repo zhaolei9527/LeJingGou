@@ -90,6 +90,10 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
         TextView textView = new TextView(context);
         textView.setText("-暂无更多-");
         rvMaichanglist.setFootEndView(textView);
+
+        String title = getIntent().getStringExtra("title");
+        tvTitle.setText(title);
+
     }
 
     @Override
