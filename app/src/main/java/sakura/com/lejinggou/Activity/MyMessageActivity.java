@@ -181,6 +181,9 @@ public class MyMessageActivity extends BaseActivity {
                 try {
                     dialog.dismiss();
                     AboutZlBean aboutZlBean = new Gson().fromJson(result, AboutZlBean.class);
+
+                    EasyToast.showShort(context, aboutZlBean.getInfo());
+
                     if (1 == aboutZlBean.getStatus()) {
                         SpUtil.putAndApply(context, "img", aboutZlBean.getData().getHeadimg());
                         SpUtil.putAndApply(context, "uname", aboutZlBean.getData().getNickname());
@@ -188,9 +191,9 @@ public class MyMessageActivity extends BaseActivity {
                         SpUtil.putAndApply(context, "ne", "1");
                         etNicheng.setFocusable(false);
                         etNicheng.setEnabled(false);
-                    } else {
-                        EasyToast.showShort(context, aboutZlBean.getInfo());
                     }
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

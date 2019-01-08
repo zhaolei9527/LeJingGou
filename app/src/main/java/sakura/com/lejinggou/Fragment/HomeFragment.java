@@ -115,7 +115,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).mHandler.removeCallbacksAndMessages(null);
         dialog.show();
         getListData(type);
     }
@@ -266,6 +265,9 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                         @Override
                         public void run() {
                             if (indexGoodsBean.getData() != null) {
+
+                                ((MainActivity) getActivity()).mHandler.removeCallbacksAndMessages(null);
+
                                 adapter.setDatas(type, indexGoodsBean.getData());
                                 if (page == 1) {
                                     LLEmpty.setVisibility(View.GONE);

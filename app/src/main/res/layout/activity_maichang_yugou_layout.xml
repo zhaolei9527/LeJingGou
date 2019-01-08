@@ -34,12 +34,16 @@
 
             <TextView
                 android:id="@+id/tv_Title"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/x230"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:gravity="center"
                 android:text="卖场详情"
                 android:textColor="@color/text333"
                 android:textSize="@dimen/x13" />
+
 
         </RelativeLayout>
 

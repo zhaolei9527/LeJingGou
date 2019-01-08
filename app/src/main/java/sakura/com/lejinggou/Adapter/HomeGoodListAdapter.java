@@ -193,8 +193,9 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
                             public void run() {
                                 try {
                                     if (!ygBeanList.isEmpty()) {
-                                        if (ygBeanList.get(position).getS() == 0) {
+                                        if (ygBeanList.get(position).getS() <= 0) {
                                             ygBeanList.remove(position);
+                                            notifyDataSetChanged();
                                             return;
                                         }
                                         ygBeanList.get(position).setS(ygBeanList.get(position).getS() - 1);
