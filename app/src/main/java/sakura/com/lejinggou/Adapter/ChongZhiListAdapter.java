@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
 import sakura.com.lejinggou.Bean.CzmxBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.DateUtils;
-import sakura.com.lejinggou.Utils.SpUtil;
 
 
 /**
@@ -51,9 +50,7 @@ public class ChongZhiListAdapter extends RecyclerView.Adapter<ChongZhiListAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        String zfbname = (String) SpUtil.get(mContext, "zfbname", "");
-        String zfbacc = (String) SpUtil.get(mContext, "zfbacc", "");
-        holder.tvBank.setText(zfbname + "：(" + zfbacc + ")");
+        holder.tvBank.setText("充值到余额");
         holder.tvMoney.setText(datas.get(position).getMoney() + "元");
         holder.tvTime.setText(DateUtils.getMillon(Long.parseLong(datas.get(position).getAddtime()) * 1000));
         holder.tvMsg.setText(datas.get(position).getCause());

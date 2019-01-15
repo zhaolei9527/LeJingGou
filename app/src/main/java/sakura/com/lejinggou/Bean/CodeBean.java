@@ -28,6 +28,17 @@ public class CodeBean {
     private String dqmon;
     private String bzj;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    private String url;
+
+
     public static List<CodeBean> arrayCodeBeanFromData(String str) {
 
         Type listType = new TypeToken<ArrayList<CodeBean>>() {

@@ -143,10 +143,15 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                 }
 
                 if (goodsIndexBean.getData().getType() == 2) {
-                    startActivity(new Intent(context, MaiChangYuGouActivity.class)
-                            .putExtra("id", goodsIndexBean.getData().getId())
-                            .putExtra("title", goodsIndexBean.getData().getName())
-                    );
+                    int s = goodsIndexBean.getData().getS();
+                    if (s <= 0) {
+                        startActivity(new Intent(context, MaiChangReGouActivity.class)
+                                .putExtra("id", goodsIndexBean.getData().getId())
+                                .putExtra("title", goodsIndexBean.getData().getName())
+                        );
+                    } else {
+                        EasyToast.showShort(context, "商品预购中");
+                    }
                 }
 
                 if (goodsIndexBean.getData().getType() == 3) {

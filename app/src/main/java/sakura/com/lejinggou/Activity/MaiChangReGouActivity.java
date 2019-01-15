@@ -306,6 +306,11 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     } else {
                         EasyToast.showShort(context, codeBean.getInfo());
                     }
+
+                    if (!TextUtils.isEmpty(codeBean.getUrl())) {
+                        orderJQR(codeBean.getUrl());
+                    }
+
                     codeBean = null;
                     msg = null;
                 } catch (Exception e) {
@@ -344,7 +349,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                         EasyToast.showShort(context, "余额不足，请充值~");
                         tvYE.setText("当前账户余额：" + codeBean.getDqmon());
                     } else {
-                        EasyToast.showShort(context, codeBean.getInfo());
+                        //EasyToast.showShort(context, codeBean.getInfo());
                     }
                     msg = null;
                 } catch (Exception e) {
@@ -359,6 +364,33 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
             }
         });
     }
+
+    /**
+     * 机器人出价
+     */
+    private void orderJQR(String url) {
+        HashMap<String, String> params = new HashMap<>(3);
+        params.put("gid", String.valueOf(getIntent().getStringExtra("id")));
+        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + url, url, params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String msg) {
+                dialog.dismiss();
+                Log.e("orderZfpay", msg);
+
+                CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
+
+                if (!TextUtils.isEmpty(codeBean.getUrl())) {
+                    orderJQR(codeBean.getUrl());
+                }
+            }
+            @Override
+            public void onMyError(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+    }
+
 
     /**
      * 订单支付，支付宝

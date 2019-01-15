@@ -120,7 +120,7 @@ public class MaiChangYuGouActivity extends BaseActivity implements View.OnClickL
                                 } else {
 
                                     mcYGBean.getData().setS(mcYGBean.getData().getS() - 1);
-                                    tvTime.setText("距结束 " + getTimeFromInt((mcYGBean.getData().getS())));
+                                    tvTime.setText("距开始： " + getTimeFromInt((mcYGBean.getData().getS())));
 
                                 }
                                 mHandler.postDelayed(this, 1000);
