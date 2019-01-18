@@ -43,6 +43,7 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
     public HomeGoodListAdapter(Context context, List<HomeBean.DataBean.RgBean> rgBean) {
         this.mContext = context;
         this.type = "1";
+        this.rgBeanList.clear();
         this.rgBeanList.addAll(rgBean);
     }
 
@@ -75,6 +76,11 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
             return new ArrayList();
         }
     }
+
+    public void setRG(List<HomeBean.DataBean.RgBean> dataBeans) {
+        this.rgBeanList.addAll(dataBeans);
+    }
+
 
     public void setDatas(String type, List<IndexGoodsBean.DataBean> dataBeans) {
         this.type = type;

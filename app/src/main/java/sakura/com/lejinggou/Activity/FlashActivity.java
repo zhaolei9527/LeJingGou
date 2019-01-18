@@ -74,21 +74,7 @@ public class FlashActivity extends BaseActivity {
 
     @Override
     protected void initview() {
-        Acp.getInstance(context).request(new AcpOptions.Builder()
-                        .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .setDeniedMessage(getString(R.string.requstPerminssions))
-                        .build(),
-                new AcpListener() {
-                    @Override
-                    public void onGranted() {
 
-                    }
-
-                    @Override
-                    public void onDenied(List<String> permissions) {
-                        Toast.makeText(context, getString(R.string.Thepermissionapplicationisrejected), Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
     @Override

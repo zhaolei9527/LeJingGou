@@ -218,6 +218,86 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                         LLEmpty.setVisibility(View.VISIBLE);
                     }
 
+                    if (null != homeBean.getData().getYg() && !homeBean.getData().getYg().isEmpty()) {
+
+                        final HomeBean finalHomeBean1 = homeBean;
+
+                        new Thread() {
+                            @Override
+                            public void run() {
+                                super.run();
+                                try {
+
+                                    while (true) {
+
+                                        sleep(1000);
+
+                                        Log.e("HomeFragment", "s:sleep(1000);");
+
+                                        for (int i = 0; i < finalHomeBean1.getData().getYg().size(); i++) {
+                                            int s = finalHomeBean1.getData().getYg().get(i).getS();
+                                            if (s == 0) {
+                                                s = s - 1;
+                                                Log.e("HomeFragment", "s:" + s);
+                                                finalHomeBean1.getData().getYg().get(i).setS(s);
+
+                                                Log.e("HomeFragment", "s <= 0");
+
+                                                final ArrayList<HomeBean.DataBean.RgBean> rgBeans = new ArrayList<>();
+                                                HomeBean.DataBean.YgBean ygBean = finalHomeBean1.getData().getYg().get(i);
+                                                final HomeBean.DataBean.RgBean rgBean = new HomeBean.DataBean.RgBean();
+                                                rgBean.setType(1);
+                                                rgBean.setStarttime(ygBean.getStarttime());
+                                                rgBean.setEndtime(ygBean.getEndtime());
+                                                rgBean.setName(ygBean.getName());
+                                                rgBean.setFm_img(ygBean.getFm_img());
+                                                rgBean.setId(ygBean.getId());
+                                                rgBean.setGys(ygBean.getGys());
+                                                rgBean.setDqprice(ygBean.getDqprice());
+                                                rgBean.setS((int) (Long.parseLong(ygBean.getEndtime()) - Long.parseLong(ygBean.getStarttime())));
+
+                                                getActivity().runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+
+                                                        if (adapter == null) {
+                                                            Log.e("HomeFragment", "adapter == null");
+                                                            rgBeans.add(rgBean);
+                                                            adapter = new HomeGoodListAdapter(mContext, rgBeans);
+                                                            rvHomelist.setAdapter(adapter);
+                                                        } else {
+                                                            Log.e("HomeFragment", "adapter != null");
+                                                            rgBeans.add(rgBean);
+                                                            adapter.setRG(rgBeans);
+                                                        }
+                                                        adapter.notifyDataSetChanged();
+                                                        Log.e("HomeFragment", "adapter.notifyDataSetChanged");
+                                                    }
+                                                });
+
+                                            } else {
+
+                                                if (s >= 0) {
+                                                    s = s - 1;
+                                                    Log.e("HomeFragment", "s:" + s);
+                                                    finalHomeBean1.getData().getYg().get(i).setS(s);
+                                                }
+
+                                            }
+
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }.start();
+
+                        adapter = new HomeGoodListAdapter(mContext, homeBean.getData().getRg());
+                        rvHomelist.setAdapter(adapter);
+
+                    }
+
                     rvHomelist.loadMoreComplete();
                     homeBean = null;
                     result = null;
@@ -243,6 +323,9 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
     //数据获取
     public void getListData(final String type) {
+
+        App.getQueues().cancelAll("index/goods");
+
         HashMap<String, String> params = new HashMap<>(1);
         params.put("type", type);
         params.put("p", String.valueOf(page));
