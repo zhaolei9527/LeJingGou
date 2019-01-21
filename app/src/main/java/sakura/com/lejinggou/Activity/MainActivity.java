@@ -70,7 +70,6 @@ public class MainActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-
     @Override
     protected int setthislayout() {
         return R.layout.activity_main;

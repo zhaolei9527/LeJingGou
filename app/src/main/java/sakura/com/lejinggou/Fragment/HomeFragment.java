@@ -323,9 +323,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
     //数据获取
     public void getListData(final String type) {
-
         App.getQueues().cancelAll("index/goods");
-
         HashMap<String, String> params = new HashMap<>(1);
         params.put("type", type);
         params.put("p", String.valueOf(page));

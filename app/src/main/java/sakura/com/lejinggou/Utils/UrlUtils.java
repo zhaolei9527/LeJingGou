@@ -19,6 +19,17 @@ public class UrlUtils {
      */
     public static final String BASE_URL = "http://app.lepaiyuan.com/api.php/";
 
+
+//    /**
+//     * url连接头
+//     */
+//    public static final String URL = "http://www.hnapl.cn/";
+//
+//    /**
+//     * api连接头
+//     */
+//    public static final String BASE_URL = "http://www.hnapl.cn/api.php/";
+
     /**
      * 接口连接key
      */

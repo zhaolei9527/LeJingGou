@@ -151,6 +151,13 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
     private McReGouBean mcBean;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @Override
     protected int setthislayout() {
         return R.layout.activity_maichang_regou_layout;
     }
@@ -237,13 +244,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_back:
@@ -267,6 +267,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                         if (is_jlbzj.equals("1")) {
                             orderChujia();
                         } else {
+                            App.getQueues().cancelAll("chujia/bzj");
                             orderBzj();
                         }
                     }
@@ -385,6 +386,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     } else {
                         EasyToast.showShort(context, codeBean.getInfo());
                     }
+
                     msg = null;
                 } catch (Exception e) {
                     runOnUiThread(new Runnable() {
@@ -429,6 +431,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     orderJQR(codeBean.getUrl());
                 }
             }
+
             @Override
             public void onMyError(VolleyError error) {
                 dialog.dismiss();
