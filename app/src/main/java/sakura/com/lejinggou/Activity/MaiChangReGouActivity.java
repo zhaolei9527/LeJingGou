@@ -253,25 +253,32 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 llPay.setVisibility(View.GONE);
                 break;
             case R.id.btn_submit:
-                App.pausableThreadPoolExecutor.execute(new PriorityRunnable(1) {
-                    @Override
-                    public void doSth() {
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                btnSubmit.setFocusable(false);
+                if (!Utils.isFastClick()){
+
+                    App.pausableThreadPoolExecutor.execute(new PriorityRunnable(1) {
+                        @Override
+                        public void doSth() {
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btnSubmit.setFocusable(false);
+                                }
+                            });
+
+                            if (is_jlbzj.equals("1")) {
+                                orderChujia();
+                            } else {
+                                App.getQueues().cancelAll("chujia/bzj");
+                                orderBzj();
                             }
-                        });
-
-                        if (is_jlbzj.equals("1")) {
-                            orderChujia();
-                        } else {
-                            App.getQueues().cancelAll("chujia/bzj");
-                            orderBzj();
                         }
-                    }
-                });
+                    });
+
+                }else {
+                    //EasyToast.showShort(context,"点击过快");
+                }
 
                 break;
             case R.id.tv_pay:
