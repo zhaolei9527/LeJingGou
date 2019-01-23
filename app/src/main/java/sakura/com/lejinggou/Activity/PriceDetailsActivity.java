@@ -106,7 +106,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
     protected void initview() {
         uid = (String) SpUtil.get(context, "uid", "");
         RollPagerView.setHintView(new IconHintView(context, R.drawable.shape_selected, R.drawable.shape_noraml, DensityUtils.dp2px(context, getResources().getDimension(R.dimen.x7))));
-        RollPagerView.setPlayDelay(30000);
+        RollPagerView.setPlayDelay(2000);
     }
 
     @Override

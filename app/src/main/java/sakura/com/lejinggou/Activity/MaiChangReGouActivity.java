@@ -277,7 +277,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     });
 
                 }else {
-                    //EasyToast.showShort(context,"点击过快");
+                    EasyToast.showShort(context,"出价失败");
                 }
 
                 break;
