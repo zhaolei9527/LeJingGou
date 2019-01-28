@@ -232,17 +232,11 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
                                         sleep(1000);
 
-                                        Log.e("HomeFragment", "s:sleep(1000);");
-
                                         for (int i = 0; i < finalHomeBean1.getData().getYg().size(); i++) {
                                             int s = finalHomeBean1.getData().getYg().get(i).getS();
                                             if (s == 0) {
                                                 s = s - 1;
-                                                Log.e("HomeFragment", "s:" + s);
                                                 finalHomeBean1.getData().getYg().get(i).setS(s);
-
-                                                Log.e("HomeFragment", "s <= 0");
-
                                                 final ArrayList<HomeBean.DataBean.RgBean> rgBeans = new ArrayList<>();
                                                 HomeBean.DataBean.YgBean ygBean = finalHomeBean1.getData().getYg().get(i);
                                                 final HomeBean.DataBean.RgBean rgBean = new HomeBean.DataBean.RgBean();
@@ -261,17 +255,14 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                                                     public void run() {
 
                                                         if (adapter == null) {
-                                                            Log.e("HomeFragment", "adapter == null");
                                                             rgBeans.add(rgBean);
                                                             adapter = new HomeGoodListAdapter(mContext, rgBeans);
                                                             rvHomelist.setAdapter(adapter);
                                                         } else {
-                                                            Log.e("HomeFragment", "adapter != null");
                                                             rgBeans.add(rgBean);
                                                             adapter.setRG(rgBeans);
                                                         }
                                                         adapter.notifyDataSetChanged();
-                                                        Log.e("HomeFragment", "adapter.notifyDataSetChanged");
                                                     }
                                                 });
 
@@ -279,7 +270,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
                                                 if (s >= 0) {
                                                     s = s - 1;
-                                                    Log.e("HomeFragment", "s:" + s);
                                                     finalHomeBean1.getData().getYg().get(i).setS(s);
                                                 }
 

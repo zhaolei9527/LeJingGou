@@ -3,7 +3,6 @@ package sakura.com.lejinggou.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -108,9 +107,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 }
                 break;
             case R.id.ll_ZFB:
-                if (TextUtils.isEmpty(tvZfb.getText().toString())) {
-                    startActivity(new Intent(context, ZhiFuBaoActivity.class));
-                }
+                startActivity(new Intent(context, ZhiFuBaoActivity.class));
                 break;
             case R.id.ll_ChangePwd:
                 startActivity(new Intent(context, ChangePasswordActivity.class));
