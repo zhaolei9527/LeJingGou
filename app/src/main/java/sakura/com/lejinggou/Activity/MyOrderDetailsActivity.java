@@ -34,7 +34,7 @@ import sakura.com.lejinggou.Bean.OrderDetailBean;
 import sakura.com.lejinggou.Bean.PayResult;
 import sakura.com.lejinggou.Bean.ZfpayBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -127,11 +127,11 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        EasyToast.showShort(context, "支付成功");
+                        EZToast.showShort(context, "支付成功");
                         finish();
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                        EasyToast.showShort(context, "支付失败，请重试");
+                        EZToast.showShort(context, "支付失败，请重试");
                     }
                     break;
                 }
@@ -267,10 +267,10 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
                         Thread payThread = new Thread(payRunnable);
                         payThread.start();
                     } else if (2 == zfpayBean.getStatus()) {
-                        EasyToast.showShort(context, zfpayBean.getInfo());
+                        EZToast.showShort(context, zfpayBean.getInfo());
                         finish();
                     } else {
-                        EasyToast.showShort(context, zfpayBean.getInfo());
+                        EZToast.showShort(context, zfpayBean.getInfo());
                         if (zfpayBean.getInfo().contains("请选择一个收获地址")) {
                             startActivity(new Intent(context, AddressActivitry.class));
                         }
@@ -306,13 +306,13 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
                 try {
                     ZfpayBean zfpayBean = new Gson().fromJson(msg, ZfpayBean.class);
                     if (1 == zfpayBean.getStatus()) {
-                        EasyToast.showShort(context, zfpayBean.getInfo());
+                        EZToast.showShort(context, zfpayBean.getInfo());
                         finish();
                     } else if (2 == zfpayBean.getStatus()) {
-                        EasyToast.showShort(context, zfpayBean.getInfo());
+                        EZToast.showShort(context, zfpayBean.getInfo());
                         finish();
                     } else {
-                        EasyToast.showShort(context, zfpayBean.getInfo());
+                        EZToast.showShort(context, zfpayBean.getInfo());
                         if (zfpayBean.getInfo().contains("请选择一个收获地址")) {
                             startActivity(new Intent(context, AddressActivitry.class));
                         }
@@ -440,7 +440,7 @@ public class MyOrderDetailsActivity extends BaseActivity implements View.OnClick
                 dialog.show();
                 orderDetail();
             } else {
-                EasyToast.showShort(context, "网络未连接");
+                EZToast.showShort(context, "网络未连接");
                 finish();
             }
             isf = !isf;

@@ -26,7 +26,7 @@ import sakura.com.lejinggou.Activity.MyOrderDetailsActivity;
 import sakura.com.lejinggou.Adapter.MyOrderAdapter;
 import sakura.com.lejinggou.Bean.OrderListsBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -160,7 +160,7 @@ public class OrderContentFrameLayout extends LinearLayout {
                         if (1 == p) {
                             ll_empty.setVisibility(View.VISIBLE);
                         } else {
-                            EasyToast.showShort(context, R.string.notmore);
+                            EZToast.showShort(context, R.string.notmore);
                             mRecyclerView.loadMoreEnd();
                             mRecyclerView.setCanloadMore(false);
                         }

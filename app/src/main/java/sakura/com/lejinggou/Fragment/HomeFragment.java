@@ -39,7 +39,7 @@ import sakura.com.lejinggou.Bean.HomeBean;
 import sakura.com.lejinggou.Bean.IndexGoodsBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.DensityUtils;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.PriorityRunnable;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -108,7 +108,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
             llJinri.setOnClickListener(this);
             llJinrilishi.setOnClickListener(this);
         } else {
-            EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
+            EZToast.showShort(context, getResources().getString(R.string.Networkexception));
         }
     }
 

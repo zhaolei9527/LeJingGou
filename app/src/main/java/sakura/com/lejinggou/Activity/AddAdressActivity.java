@@ -29,7 +29,7 @@ import sakura.com.lejinggou.Bean.AboutDzaddBean;
 import sakura.com.lejinggou.Bean.CodeBean;
 import sakura.com.lejinggou.Bean.JsonBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.GetJsonDataUtil;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
@@ -301,7 +301,7 @@ public class AddAdressActivity extends BaseActivity implements View.OnClickListe
                 addressAdd();
             }
         } else {
-            EasyToast.showShort(context, "网络连接失败");
+            EZToast.showShort(context, "网络连接失败");
         }
     }
 
@@ -329,10 +329,10 @@ public class AddAdressActivity extends BaseActivity implements View.OnClickListe
                 try {
                     AboutDzaddBean aboutDzaddBean = new Gson().fromJson(result, AboutDzaddBean.class);
                     if ("1".equals(String.valueOf(aboutDzaddBean.getStatus()))) {
-                        EasyToast.showShort(context, "添加成功");
+                        EZToast.showShort(context, "添加成功");
                         finish();
                     } else {
-                        EasyToast.showShort(context, "添加失败");
+                        EZToast.showShort(context, "添加失败");
                     }
                     aboutDzaddBean = null;
                     result = null;
@@ -376,10 +376,10 @@ public class AddAdressActivity extends BaseActivity implements View.OnClickListe
                 try {
                     CodeBean codeBean = new Gson().fromJson(result, CodeBean.class);
                     if ("1".equals(String.valueOf(codeBean.getStatus()))) {
-                        EasyToast.showShort(context, "添加成功");
+                        EZToast.showShort(context, "添加成功");
                         finish();
                     } else {
-                        EasyToast.showShort(context, "添加失败");
+                        EZToast.showShort(context, "添加失败");
                     }
                     codeBean = null;
                     result = null;

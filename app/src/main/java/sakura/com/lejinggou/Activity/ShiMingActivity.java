@@ -21,7 +21,7 @@ import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.LoginBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -115,22 +115,22 @@ public class ShiMingActivity extends BaseActivity implements View.OnClickListene
                 String Name = etName.getText().toString().trim();
 
                 if (TextUtils.isEmpty(Name)) {
-                    EasyToast.showShort(context, etName.getHint().toString());
+                    EZToast.showShort(context, etName.getHint().toString());
                     return;
                 }
 
                 if (!Validator.isChinese(Name)) {
-                    EasyToast.showShort(context, "请输入汉字姓名");
+                    EZToast.showShort(context, "请输入汉字姓名");
                     return;
                 }
 
                 if (TextUtils.isEmpty(Idcard)) {
-                    EasyToast.showShort(context, etIdcard.getHint().toString());
+                    EZToast.showShort(context, etIdcard.getHint().toString());
                     return;
                 }
 
                 if (!Validator.isIDCard(Idcard)) {
-                    EasyToast.showShort(context, etIdcard.getHint().toString());
+                    EZToast.showShort(context, etIdcard.getHint().toString());
                     return;
                 }
 
@@ -139,7 +139,7 @@ public class ShiMingActivity extends BaseActivity implements View.OnClickListene
                     dialog.show();
                     getLogin();
                 } else {
-                    EasyToast.showShort(context, R.string.Networkexception);
+                    EZToast.showShort(context, R.string.Networkexception);
 
                 }
 
@@ -166,7 +166,7 @@ public class ShiMingActivity extends BaseActivity implements View.OnClickListene
                 try {
                     dialog.dismiss();
                     LoginBean loginBean = new Gson().fromJson(decode, LoginBean.class);
-                    EasyToast.showShort(context, loginBean.getInfo());
+                    EZToast.showShort(context, loginBean.getInfo());
                     decode = null;
                     loginBean = null;
                 } catch (Exception e) {

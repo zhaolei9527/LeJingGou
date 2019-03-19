@@ -22,7 +22,7 @@ import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.NewsIndexBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
 import sakura.com.lejinggou.View.ProgressView;
@@ -86,7 +86,7 @@ public class HelpActivity extends BaseActivity {
             dialog.show();
             getData();
         } else {
-            EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
+            EZToast.showShort(context, getResources().getString(R.string.Networkexception));
         }
     }
 

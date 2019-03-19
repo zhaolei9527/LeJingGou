@@ -37,7 +37,7 @@ import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseLazyFragment;
 import sakura.com.lejinggou.Bean.AboutIndexBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -164,7 +164,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     tvLJURl.setOnClickListener(this);
                     getData();
                 } else {
-                    EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
+                    EZToast.showShort(context, getResources().getString(R.string.Networkexception));
                 }
             }
         } catch (Exception e) {
@@ -210,7 +210,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                         SimpleDraweeViewEWM.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getEwm());
 
                     } else {
-                        EasyToast.showShort(context, aboutIndexBean.getInfo());
+                        EZToast.showShort(context, aboutIndexBean.getInfo());
                         mContext.startActivity(new Intent(context, LoginActivity.class));
                         ((MainActivity) mContext).finish();
                     }
@@ -260,7 +260,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     ClipboardManager cm = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
                     // 将文本内容放到系统剪贴板里。
                     cm.setText(aboutIndexBean.getData().getTjcode());
-                    EasyToast.showShort(context, "已将推荐码复制到粘贴板");
+                    EZToast.showShort(context, "已将推荐码复制到粘贴板");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -272,7 +272,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     ClipboardManager cm = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
                     // 将文本内容放到系统剪贴板里。
                     cm.setText(aboutIndexBean.getData().getLj());
-                    EasyToast.showShort(context, "已将推荐链接复制到粘贴板");
+                    EZToast.showShort(context, "已将推荐链接复制到粘贴板");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -284,7 +284,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 if (!TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
                     rlEwm.setVisibility(View.VISIBLE);
                 } else {
-                    EasyToast.showShort(context, "您当前非业务员");
+                    EZToast.showShort(context, "您当前非业务员");
                 }
                 break;
             case R.id.ll_myorder:
@@ -316,7 +316,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 if (!TextUtils.isEmpty(zfbname)) {
                     startActivity(new Intent(context, TiXianActivity.class));
                 } else {
-                    EasyToast.showShort(context, "请先绑定支付宝账户");
+                    EZToast.showShort(context, "请先绑定支付宝账户");
                     startActivity(new Intent(context, ZhiFuBaoActivity.class));
                 }
                 break;

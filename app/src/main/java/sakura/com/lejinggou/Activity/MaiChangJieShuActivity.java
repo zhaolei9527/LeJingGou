@@ -26,7 +26,7 @@ import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.McJieShuBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.DateUtils;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -110,7 +110,7 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
             dialog.show();
             getMcList();
         } else {
-            EasyToast.showShort(context, R.string.Networkexception);
+            EZToast.showShort(context, R.string.Networkexception);
 
         }
     }

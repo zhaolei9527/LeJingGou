@@ -32,7 +32,7 @@ import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.PayResult;
 import sakura.com.lejinggou.Bean.ZfpayBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -93,10 +93,10 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        EasyToast.showShort(context, "支付成功");
+                        EZToast.showShort(context, "支付成功");
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                        EasyToast.showShort(context, "支付失败，请重试");
+                        EZToast.showShort(context, "支付失败，请重试");
                     }
                     break;
                 }
@@ -138,7 +138,7 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
         if (Utils.isConnected(context)) {
             dialog = Utils.showLoadingDialog(context);
         } else {
-            EasyToast.showShort(context, R.string.Networkexception);
+            EZToast.showShort(context, R.string.Networkexception);
         }
     }
 
@@ -154,7 +154,7 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
             case R.id.btn_submit:
                 String Money = etMoney.getText().toString().trim();
                 if (TextUtils.isEmpty(Money)) {
-                    EasyToast.showShort(context, etMoney.getHint().toString());
+                    EZToast.showShort(context, etMoney.getHint().toString());
                     return;
                 }
 

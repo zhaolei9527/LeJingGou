@@ -30,7 +30,7 @@ import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.LoginBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.CodeUtils;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -212,10 +212,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
 //        if (!Utils.isFastClick()) {
 //            Log.e("LoginActivity", "出价成功");
-//            EasyToast.showShort(context,"出价成功");
+//            EZToast.showShort(context,"出价成功");
 //        } else {
 //            Log.e("LoginActivity", "出价失败");
-//            EasyToast.showShort(context,"出价失败");
+//            EZToast.showShort(context,"出价失败");
 //        }
 
         // TODO validate success, do something
@@ -243,10 +243,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         SpUtil.putAndApply(context, "uid", loginBean.getData().getUid());
                         SpUtil.putAndApply(context, "tel", etAccount.getText().toString());
                         SpUtil.putAndApply(context, "password", etPasswd.getText().toString());
-                        EasyToast.showShort(context, loginBean.getInfo());
+                        EZToast.showShort(context, loginBean.getInfo());
                         gotoMain();
                     } else {
-                        EasyToast.showShort(context, loginBean.getInfo());
+                        EZToast.showShort(context, loginBean.getInfo());
                     }
 
                 } catch (Exception e) {

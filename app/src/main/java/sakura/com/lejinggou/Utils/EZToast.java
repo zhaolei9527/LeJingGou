@@ -11,7 +11,7 @@ import static android.widget.Toast.makeText;
  * Toast 工具类
  */
 
-public class EasyToast {
+public class EZToast {
 
     public static final boolean isShow = true;
     private static Toast toast;

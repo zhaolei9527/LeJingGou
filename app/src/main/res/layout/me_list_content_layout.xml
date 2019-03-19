@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/x40"
     android:background="@color/bgfff"
     android:orientation="vertical">
 
@@ -244,7 +243,13 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/x1"
             android:background="@color/bgddd"></View>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y25"
+            android:gravity="center"
+            android:text="乐拍缘版本号：1.21.1"
+            android:textColor="@color/text999"
+            android:textSize="@dimen/x13" />
     </LinearLayout>
 
 </LinearLayout>

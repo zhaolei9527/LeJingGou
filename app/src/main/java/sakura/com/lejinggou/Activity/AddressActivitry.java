@@ -24,7 +24,7 @@ import sakura.com.lejinggou.Bean.AddressIndexBean;
 import sakura.com.lejinggou.Bean.CodeBean;
 import sakura.com.lejinggou.Bean.SuckleCartDelBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -99,7 +99,7 @@ public class AddressActivitry extends BaseActivity implements View.OnClickListen
             }
             addressIndex();
         } else {
-            EasyToast.showShort(context, "网络未连接");
+            EZToast.showShort(context, "网络未连接");
         }
     }
 
@@ -164,7 +164,7 @@ public class AddressActivitry extends BaseActivity implements View.OnClickListen
                                         }
                                         addressQie((String) item_address.getTag());
                                     } else {
-                                        EasyToast.showShort(context, "网络未连接");
+                                        EZToast.showShort(context, "网络未连接");
                                     }
                                 }
                             });
@@ -259,7 +259,7 @@ public class AddressActivitry extends BaseActivity implements View.OnClickListen
                 try {
                     CodeBean codeBean = new Gson().fromJson(result, CodeBean.class);
                     if ("1".equals(String.valueOf(codeBean.getStatus()))) {
-                        EasyToast.showShort(context, "删除成功");
+                        EZToast.showShort(context, "删除成功");
                         if (ll_address_list.getChildCount() == 0) {
                             ll_empty.setVisibility(View.VISIBLE);
                         }
@@ -295,7 +295,7 @@ public class AddressActivitry extends BaseActivity implements View.OnClickListen
                 try {
                     SuckleCartDelBean SuckleCartDelBean = new Gson().fromJson(result, SuckleCartDelBean.class);
                     if ("1".equals(String.valueOf(SuckleCartDelBean.getStu()))) {
-                        EasyToast.showShort(context, "设置成功");
+                        EZToast.showShort(context, "设置成功");
                     }
                     SuckleCartDelBean = null;
                     result = null;

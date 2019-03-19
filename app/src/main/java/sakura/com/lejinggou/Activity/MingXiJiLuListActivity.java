@@ -29,7 +29,7 @@ import sakura.com.lejinggou.Bean.CzmxBean;
 import sakura.com.lejinggou.Bean.SymxBean;
 import sakura.com.lejinggou.Bean.TixianLogBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -174,7 +174,7 @@ public class MingXiJiLuListActivity extends BaseActivity implements View.OnClick
             dialog.show();
             getTxmxList();
         } else {
-            EasyToast.showShort(context, R.string.Networkexception);
+            EZToast.showShort(context, R.string.Networkexception);
 
         }
     }

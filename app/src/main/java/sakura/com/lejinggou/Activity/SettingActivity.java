@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.View.CommomDialog;
 
@@ -99,9 +99,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 if (is_sm.equals("0")) {
                     startActivity(new Intent(context, ShiMingActivity.class));
                 } else if (is_sm.equals("1")) {
-                    EasyToast.showShort(context, "审核中");
+                    EZToast.showShort(context, "审核中");
                 } else if (is_sm.equals("2")) {
-                    EasyToast.showShort(context, "审核已通过");
+                    EZToast.showShort(context, "审核已通过");
                 } else if (is_sm.equals("-1")) {
                     startActivity(new Intent(context, ShiMingActivity.class));
                 }

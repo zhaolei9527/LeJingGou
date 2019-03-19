@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.McYGBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -73,7 +73,7 @@ public class MaiChangYuGouActivity extends BaseActivity implements View.OnClickL
             dialog.show();
             getMcList();
         } else {
-            EasyToast.showShort(context, R.string.Networkexception);
+            EZToast.showShort(context, R.string.Networkexception);
 
         }
     }
@@ -131,7 +131,7 @@ public class MaiChangYuGouActivity extends BaseActivity implements View.OnClickL
                         tvDJ.setText("￥" + mcYGBean.getData().getDj());
 
                     } else {
-                        EasyToast.showShort(context, mcYGBean.getInfo());
+                        EZToast.showShort(context, mcYGBean.getInfo());
                     }
                     decode = null;
                 } catch (Exception e) {

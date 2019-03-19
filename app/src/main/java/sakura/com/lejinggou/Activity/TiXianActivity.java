@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.CodeBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -84,14 +84,14 @@ public class TiXianActivity extends BaseActivity {
                 String money = etMoney.getText().toString().trim();
 
                 if (TextUtils.isEmpty(money)) {
-                    EasyToast.showShort(context, etMoney.getHint().toString());
+                    EZToast.showShort(context, etMoney.getHint().toString());
                     return;
                 }
 
                 double v = Double.parseDouble(money);
 
                 if (v < 1) {
-                    EasyToast.showShort(context, "温馨提示：单次提现金额不低于" + 1 + "元");
+                    EZToast.showShort(context, "温馨提示：单次提现金额不低于" + 1 + "元");
                     return;
                 }
 
@@ -99,7 +99,7 @@ public class TiXianActivity extends BaseActivity {
                     dialog.show();
                     doTx();
                 } else {
-                    EasyToast.showShort(context, R.string.Networkexception);
+                    EZToast.showShort(context, R.string.Networkexception);
                 }
 
             }
@@ -119,7 +119,7 @@ public class TiXianActivity extends BaseActivity {
         if (Utils.isConnected(context)) {
             dialog = Utils.showLoadingDialog(context);
         } else {
-            EasyToast.showShort(context, R.string.Networkexception);
+            EZToast.showShort(context, R.string.Networkexception);
         }
     }
 
@@ -144,7 +144,7 @@ public class TiXianActivity extends BaseActivity {
                 try {
                     dialog.dismiss();
                     CodeBean codeBean = new Gson().fromJson(result, CodeBean.class);
-                    EasyToast.showShort(context,codeBean.getInfo());
+                    EZToast.showShort(context,codeBean.getInfo());
                     etMoney.setText("");
                 } catch (Exception e) {
                     e.printStackTrace();

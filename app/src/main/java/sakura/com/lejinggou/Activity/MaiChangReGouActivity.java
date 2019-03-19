@@ -20,12 +20,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.android.volley.VolleyError;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+import com.haoge.easyandroid.easy.EasyToast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +42,6 @@ import sakura.com.lejinggou.Bean.McReGouBean;
 import sakura.com.lejinggou.Bean.PayResult;
 import sakura.com.lejinggou.Bean.ZfpayBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
 import sakura.com.lejinggou.Utils.PriorityRunnable;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
@@ -108,8 +107,8 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
     private LinearLayoutManager line;
     private Dialog dialog;
     private MaiChangReGouListAdapter adapter;
-    private String endM;
-    private String topM;
+    private String endM="";
+    private String topM="";
     private int pay = 2;
     private String is_jlbzj = "0";
 
@@ -134,13 +133,13 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        EasyToast.showShort(context, "支付成功");
+                        EasyToast.getDEFAULT().show("支付成功");// 使用系统样式进行输出
                         llPay.setVisibility(View.VISIBLE);
                         dialog.show();
                         orderBzj();
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                        EasyToast.showShort(context, "支付失败，请重试");
+                        EasyToast.getDEFAULT().show("支付失败，请重试");// 使用系统样式进行输出
                     }
                     break;
                 }
@@ -225,8 +224,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
             dialog.show();
             getMcList();
         } else {
-            EasyToast.showShort(context, R.string.Networkexception);
-
+            EasyToast.getDEFAULT().show( R.string.Networkexception);// 使用系统样式进行输出
         }
 
         mHandler.post(new Runnable() {
@@ -262,30 +260,32 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                             if (is_jlbzj.equals("1")) {
                                 orderChujia();
                             } else {
-                                App.getQueues().cancelAll("chujia/bzj");
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         dialog.show();
                                     }
                                 });
-                                orderBzj();
+                                if (!dialog.isShowing()){
+                                    orderBzj();
+                                }
+
                             }
                         }
                     });
                 } else {
-                    Toast.makeText(this, "出价失败", Toast.LENGTH_SHORT).show();
+                    EasyToast.getDEFAULT().show("出价失败~");// 使用系统样式进行输出
                 }
 
                 break;
             case R.id.tv_pay:
                 String CZ = etCZ.getText().toString().trim();
                 if (TextUtils.isEmpty(CZ)) {
-                    EasyToast.showShort(context, etCZ.getHint().toString());
+                    EasyToast.getDEFAULT().show(etCZ.getHint().toString());// 使用系统样式进行输出
                     return;
                 }
                 if (pay == 0) {
-                    EasyToast.showShort(context, "请选择支付方式~");
+                    EasyToast.getDEFAULT().show("请选择支付方式~");// 使用系统样式进行输出
                     return;
                 }
                 if (pay == 2) {
@@ -315,11 +315,9 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 try {
 
                     CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
-                    if (1 == codeBean.getStatus()) {
-                        EasyToast.showLong(context, codeBean.getInfo());
-                    } else {
-                        EasyToast.showLong(context, codeBean.getInfo());
-                    }
+
+                    EasyToast.getDEFAULT().show( codeBean.getInfo());// 使用系统样式进行输出
+
 
                     if (!TextUtils.isEmpty(codeBean.getUrl())) {
                         orderJQR(codeBean.getUrl());
@@ -351,19 +349,19 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
         VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "chujia/bzj", "chujia/bzj", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String msg) {
-                dialog.dismiss();
                 Log.e("orderZfpay", msg);
                 try {
                     CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
+                    dialog.dismiss();
                     if (1 == codeBean.getStatus()) {
-                        dialog.dismiss();
+                        is_jlbzj = "1";
                         orderChujia();
                     } else if (2 == codeBean.getStatus()) {
                         llPay.setVisibility(View.VISIBLE);
-                        EasyToast.showShort(context, "余额不足，请充值~");
+                        EasyToast.getDEFAULT().show("余额不足，请充值~");// 使用系统样式进行输出
                         tvYE.setText("当前账户余额：" + codeBean.getDqmon());
                     } else {
-                        EasyToast.showShort(context, codeBean.getInfo());
+                        EasyToast.getDEFAULT().show(codeBean.getInfo());// 使用系统样式进行输出
                     }
 
                     msg = null;

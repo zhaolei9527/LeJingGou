@@ -26,7 +26,7 @@ import me.iwf.photopicker.PhotoPickUtils;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.AboutZlBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -135,7 +135,7 @@ public class MyMessageActivity extends BaseActivity {
                 String Nicheng = etNicheng.getText().toString();
 
                 if (TextUtils.isEmpty(Nicheng)) {
-                    EasyToast.showShort(context, "用户名不能为空");
+                    EZToast.showShort(context, "用户名不能为空");
                     return;
                 }
 
@@ -143,7 +143,7 @@ public class MyMessageActivity extends BaseActivity {
                     dialog.show();
                     userDoinfo(imgnames, imgfiles);
                 } else {
-                    EasyToast.showShort(context, R.string.Networkexception);
+                    EZToast.showShort(context, R.string.Networkexception);
                 }
 
             }
@@ -182,7 +182,7 @@ public class MyMessageActivity extends BaseActivity {
                     dialog.dismiss();
                     AboutZlBean aboutZlBean = new Gson().fromJson(result, AboutZlBean.class);
 
-                    EasyToast.showShort(context, aboutZlBean.getInfo());
+                    EZToast.showShort(context, aboutZlBean.getInfo());
 
                     if (1 == aboutZlBean.getStatus()) {
                         SpUtil.putAndApply(context, "img", aboutZlBean.getData().getHeadimg());
@@ -213,7 +213,7 @@ public class MyMessageActivity extends BaseActivity {
         if (Utils.isConnected(context)) {
             dialog = Utils.showLoadingDialog(context);
         } else {
-            EasyToast.showShort(context, R.string.Networkexception);
+            EZToast.showShort(context, R.string.Networkexception);
         }
     }
 

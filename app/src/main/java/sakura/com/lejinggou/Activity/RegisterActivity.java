@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
 import sakura.com.lejinggou.Bean.CodeBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.CodeUtils;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
 import sakura.com.lejinggou.Utils.Validator;
@@ -159,7 +159,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 if (cbCheck.isChecked()) {
                     submit();
                 } else {
-                    EasyToast.showShort(context, "请先勾选同意注册协议");
+                    EZToast.showShort(context, "请先勾选同意注册协议");
                 }
                 break;
             case R.id.btn_getSMScode:

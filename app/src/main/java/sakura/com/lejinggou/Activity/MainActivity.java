@@ -35,7 +35,7 @@ import sakura.com.lejinggou.Fragment.MeFragment;
 import sakura.com.lejinggou.Fragment.ShopFragment;
 import sakura.com.lejinggou.Fragment.ZuoRiLiShiFragment;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.View.CustomViewPager;
@@ -135,7 +135,7 @@ public class MainActivity extends BaseActivity {
                     public void onTabChange(int position, View view) {
                         if (position == 3 || position == 4) {
                             if (TextUtils.isEmpty((String) SpUtil.get(MainActivity.this, "uid", ""))) {
-                                EasyToast.showShort(MainActivity.this, getString(R.string.Please_login_first));
+                                EZToast.showShort(MainActivity.this, getString(R.string.Please_login_first));
                                 finish();
                                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
                             }
@@ -199,7 +199,7 @@ public class MainActivity extends BaseActivity {
                     if (1 == loginBean.getStatus()) {
                         SpUtil.putAndApply(context, "uid", loginBean.getData().getUid().toString());
                     } else {
-                        EasyToast.showShort(context, getString(R.string.Login_failed_login));
+                        EZToast.showShort(context, getString(R.string.Login_failed_login));
                         startActivity(new Intent(context, LoginActivity.class));
                         finish();
                     }

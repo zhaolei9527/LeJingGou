@@ -28,7 +28,7 @@ import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseLazyFragment;
 import sakura.com.lejinggou.Bean.IndexGoodsBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.PriorityRunnable;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -73,7 +73,7 @@ public class ZuoRiLiShiFragment extends BaseLazyFragment implements View.OnClick
             dialog.show();
             getData();
         } else {
-            EasyToast.showShort(context, getResources().getString(R.string.Networkexception));
+            EZToast.showShort(context, getResources().getString(R.string.Networkexception));
         }
     }
 

@@ -28,7 +28,7 @@ import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.BankEvent;
 import sakura.com.lejinggou.Bean.PayResult;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.Utils;
 
 
@@ -77,12 +77,12 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        EasyToast.showShort(context, "支付成功");
+                        EZToast.showShort(context, "支付成功");
                         EventBus.getDefault().post(
                                 new BankEvent("good", "pay"));
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                        EasyToast.showShort(context, "支付失败，请重试");
+                        EZToast.showShort(context, "支付失败，请重试");
                         EventBus.getDefault().post(
                                 new BankEvent("bad", "pay"));
                     }
@@ -165,7 +165,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
             tvTotalmoney.setText(getIntent().getStringExtra("monsy"));
         } else {
             finish();
-            EasyToast.showShort(context, "网络未连接");
+            EZToast.showShort(context, "网络未连接");
         }
     }
 
@@ -185,7 +185,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
                     }
 
                 } else {
-                    EasyToast.showShort(context, "网络未连接");
+                    EZToast.showShort(context, "网络未连接");
                 }
                 break;
             case R.id.rl_back:

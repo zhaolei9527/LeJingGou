@@ -25,7 +25,7 @@ import sakura.com.lejinggou.Activity.MyOrderDetailsActivity;
 import sakura.com.lejinggou.Bean.CodeBean;
 import sakura.com.lejinggou.Bean.OrderListsBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -204,7 +204,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
                     if ("1".equals(String.valueOf(orderCancelBean.getStatus()))) {
                         Toast.makeText(mContext, "取消成功", Toast.LENGTH_SHORT).show();
                     } else {
-                        EasyToast.showShort(mContext, orderCancelBean.getInfo());
+                        EZToast.showShort(mContext, orderCancelBean.getInfo());
                     }
                     result = null;
                     orderCancelBean = null;
@@ -236,9 +236,9 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
                 try {
                     CodeBean suckleCartDelBean = new Gson().fromJson(result, CodeBean.class);
                     if ("1".equals(String.valueOf(suckleCartDelBean.getStatus()))) {
-                        EasyToast.showShort(mContext, "确认收货成功");
+                        EZToast.showShort(mContext, "确认收货成功");
                     } else {
-                        EasyToast.showShort(mContext, "确认收货失败");
+                        EZToast.showShort(mContext, "确认收货失败");
                     }
                     result = null;
                 } catch (Exception e) {

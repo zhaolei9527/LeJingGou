@@ -26,7 +26,7 @@ import sakura.com.lejinggou.Bean.GoodsIndexBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.DateUtils;
 import sakura.com.lejinggou.Utils.DensityUtils;
-import sakura.com.lejinggou.Utils.EasyToast;
+import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
@@ -120,7 +120,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
         if (Utils.isConnected(context)) {
             dialog = Utils.showLoadingDialog(context);
         } else {
-            EasyToast.showShort(context, R.string.Networkexception);
+            EZToast.showShort(context, R.string.Networkexception);
         }
     }
 
@@ -130,7 +130,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.shopnow:
                 if (TextUtils.isEmpty(uid)) {
-                    EasyToast.showShort(context, "请先登录");
+                    EZToast.showShort(context, "请先登录");
                     startActivity(new Intent(context, LoginActivity.class));
                     return;
                 }
@@ -150,7 +150,11 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                                 .putExtra("title", goodsIndexBean.getData().getName())
                         );
                     } else {
-                        EasyToast.showShort(context, "商品预购中");
+                        startActivity(new Intent(context, MaiChangReGouActivity.class)
+                                .putExtra("id", goodsIndexBean.getData().getId())
+                                .putExtra("title", goodsIndexBean.getData().getName())
+                        );
+                        EZToast.showShort(context, "商品预购中");
                     }
                 }
 
@@ -275,7 +279,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
 
                         }
                     } else {
-                        EasyToast.showShort(context, goodsIndexBean.getInfo());
+                        EZToast.showShort(context, goodsIndexBean.getInfo());
                         finish();
                     }
                     result = null;
