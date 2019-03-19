@@ -209,6 +209,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             return;
         }
 
+
+//        if (!Utils.isFastClick()) {
+//            Log.e("LoginActivity", "出价成功");
+//            EasyToast.showShort(context,"出价成功");
+//        } else {
+//            Log.e("LoginActivity", "出价失败");
+//            EasyToast.showShort(context,"出价失败");
+//        }
+
         // TODO validate success, do something
         dialog.show();
         getLogin(account, password);

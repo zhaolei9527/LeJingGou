@@ -152,7 +152,6 @@ public class VolleyRequest {
                     }
                     buf.append("&");
                 }
-
             }
             buff = buf.toString();
             if (buff.isEmpty() == false) {

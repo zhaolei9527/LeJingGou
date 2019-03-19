@@ -351,29 +351,20 @@ public class Utils {
         return "";
     }
 
-
     /**
      * 功能：判断是否是进行了快速点击的操作
      */
-    private static long lastClickTime = 0;//上次点击的时间
-    private static int spaceTime = 1000;//时间间隔
+    private static final int MIN_DELAY_TIME= 1000;  // 两次点击间隔不能少于1000ms
+    private static long lastClickTime;
 
     public static boolean isFastClick() {
-
-        long currentTime = System.currentTimeMillis();//当前系统时间
-        boolean isAllowClick;//是否允许点击
-
-        if (currentTime - lastClickTime > spaceTime) {
-
-            isAllowClick = false;
-
-        } else {
-            isAllowClick = true;
-
+        boolean flag = true;
+        long currentClickTime = System.currentTimeMillis();
+        if ((currentClickTime - lastClickTime) >= MIN_DELAY_TIME) {
+            flag = false;
+            lastClickTime = currentClickTime;
         }
-
-        lastClickTime = currentTime;
-        return isAllowClick;
+        return flag;
     }
 
 

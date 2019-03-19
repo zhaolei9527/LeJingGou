@@ -314,9 +314,7 @@ public class AddAdressActivity extends BaseActivity implements View.OnClickListe
         params.put("name", name);
         params.put("tel", phone);
         params.put("address", addressContent);
-
         params.put("ssx", Ssx);
-
 
         if (btnIsChoosed.isChecked()) {
             params.put("is_mr", "1");

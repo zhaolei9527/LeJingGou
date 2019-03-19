@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.android.volley.VolleyError;
@@ -254,30 +255,26 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 break;
             case R.id.btn_submit:
 
-                if (!Utils.isFastClick()){
-
+                if (!Utils.isFastClick()) {
                     App.pausableThreadPoolExecutor.execute(new PriorityRunnable(1) {
                         @Override
                         public void doSth() {
-
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btnSubmit.setFocusable(false);
-                                }
-                            });
-
                             if (is_jlbzj.equals("1")) {
                                 orderChujia();
                             } else {
                                 App.getQueues().cancelAll("chujia/bzj");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        dialog.show();
+                                    }
+                                });
                                 orderBzj();
                             }
                         }
                     });
-
-                }else {
-                    EasyToast.showShort(context,"出价失败");
+                } else {
+                    Toast.makeText(this, "出价失败", Toast.LENGTH_SHORT).show();
                 }
 
                 break;
@@ -317,18 +314,11 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 Log.e("orderZfpay", msg);
                 try {
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            btnSubmit.setFocusable(true);
-                        }
-                    });
-
                     CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
                     if (1 == codeBean.getStatus()) {
-                        EasyToast.showShort(context, codeBean.getInfo());
+                        EasyToast.showLong(context, codeBean.getInfo());
                     } else {
-                        EasyToast.showShort(context, codeBean.getInfo());
+                        EasyToast.showLong(context, codeBean.getInfo());
                     }
 
                     if (!TextUtils.isEmpty(codeBean.getUrl())) {
@@ -339,24 +329,12 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     msg = null;
                 } catch (Exception e) {
                     e.printStackTrace();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            btnSubmit.setFocusable(true);
-                        }
-                    });
                 }
             }
 
             @Override
             public void onMyError(VolleyError error) {
                 dialog.dismiss();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        btnSubmit.setFocusable(true);
-                    }
-                });
                 error.printStackTrace();
             }
         });
@@ -376,12 +354,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 dialog.dismiss();
                 Log.e("orderZfpay", msg);
                 try {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            btnSubmit.setFocusable(true);
-                        }
-                    });
                     CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
                     if (1 == codeBean.getStatus()) {
                         dialog.dismiss();
@@ -396,24 +368,12 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
 
                     msg = null;
                 } catch (Exception e) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            btnSubmit.setFocusable(true);
-                        }
-                    });
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onMyError(VolleyError error) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        btnSubmit.setFocusable(true);
-                    }
-                });
                 dialog.dismiss();
                 error.printStackTrace();
             }
@@ -598,7 +558,6 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     Log.e("NewsListFragment", decode.toString());
                     mcBean = new Gson().fromJson(decode, McReGouBean.class);
                     is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
-
 
                     mHandler.post(new Runnable() {
                         @Override
