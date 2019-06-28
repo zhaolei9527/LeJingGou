@@ -92,7 +92,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     @BindView(R.id.ll_BZ)
     LinearLayout llBZ;
     @BindView(R.id.img_message)
-    ImageView imgMessage;
+    RelativeLayout imgMessage;
     @BindView(R.id.SimpleDraweeView_EWM)
     com.facebook.drawee.view.SimpleDraweeView SimpleDraweeViewEWM;
     @BindView(R.id.tv_TJM)

@@ -4,48 +4,16 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@mipmap/me_center_bg" />
+
+    <LinearLayout
+        android:layout_width="353dp"
+        android:layout_height="155dp"
+        android:layout_gravity="center"
         android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/y33"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="@dimen/x20"
-                android:layout_height="@dimen/x20"
-                android:layout_marginLeft="@dimen/x20"
-                android:background="@mipmap/center_jine" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/x5"
-                android:gravity="center_vertical"
-                android:text="累计收益总金额："
-                android:textColor="@color/text333"
-                android:textSize="@dimen/x12" />
-
-            <TextView
-                android:id="@+id/tv_LJ"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="￥0.00"
-                android:textColor="#fa4c0c"
-                android:textSize="@dimen/x12" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x1"
-            android:background="@color/bgea"></View>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -224,7 +192,6 @@
 
         </LinearLayout>
 
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/x1"
@@ -232,7 +199,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y40"
+            android:layout_height="82dp"
             android:layout_gravity="center"
             android:background="@drawable/me_content_bg"
             android:gravity="center"
@@ -253,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="@dimen/x20"
@@ -263,10 +230,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x2"
+                        android:layout_marginTop="@dimen/x2"
                         android:text="充值"
                         android:textColor="@color/text333"
-                        android:textSize="@dimen/x13" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -292,7 +259,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="@dimen/x20"
@@ -302,10 +269,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x2"
+                        android:layout_marginTop="@dimen/x2"
                         android:text="提现"
                         android:textColor="@color/text333"
-                        android:textSize="@dimen/x13" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -331,7 +298,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="@dimen/x20"
@@ -341,10 +308,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x2"
+                        android:layout_marginTop="@dimen/x2"
                         android:text="明细"
                         android:textColor="@color/text333"
-                        android:textSize="@dimen/x13" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -359,6 +326,5 @@
 
 
     </LinearLayout>
-
 
 </FrameLayout>

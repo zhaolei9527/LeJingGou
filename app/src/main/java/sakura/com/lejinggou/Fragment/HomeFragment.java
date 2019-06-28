@@ -118,6 +118,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
             llRegou.setOnClickListener(this);
             llJinri.setOnClickListener(this);
             llJinrilishi.setOnClickListener(this);
+            llAll.setOnClickListener(this);
         } else {
             EZToast.showShort(context, getResources().getString(R.string.Networkexception));
         }
@@ -236,7 +237,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
                         }
                     });
-
 
                     for (int i = 0; i < homeBean.getData().getNews().size(); i++) {
                         titleList.add(Utils.Html2Text(homeBean.getData().getNews().get(i).getTitle().toString()));
