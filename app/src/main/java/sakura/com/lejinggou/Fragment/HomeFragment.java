@@ -12,9 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -23,6 +25,7 @@ import com.jude.rollviewpager.hintview.IconHintView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +46,7 @@ import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.PriorityRunnable;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
+import sakura.com.lejinggou.View.MyGridView;
 import sakura.com.lejinggou.View.ProgressView;
 import sakura.com.lejinggou.View.VerticalTextview;
 import sakura.com.lejinggou.View.WenguoyiRecycleView;
@@ -80,6 +84,12 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     RelativeLayout LLEmpty;
     @BindView(R.id.img_kefu)
     ImageView imgKefu;
+    @BindView(R.id.gv_good_type)
+    MyGridView gvGoodType;
+    @BindView(R.id.v_all)
+    View vAll;
+    @BindView(R.id.ll_all)
+    LinearLayout llAll;
     private Context context;
     private GridLayoutManager line;
     private int page = 1;
@@ -87,6 +97,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     private ArrayList<String> titleList = new ArrayList<String>();
     private HomeGoodListAdapter adapter;
     private String type = "1";
+    private SimpleAdapter goodtype;
 
     @Override
     protected void initPrepare() {
@@ -160,7 +171,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     //数据获取
     public void getData() {
         HashMap<String, String> params = new HashMap<>(1);
-        params.put("zzcn77", "962870");
         params.put("p", String.valueOf(page));
         Log.e("HomeFragment", params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "index/index" + App.LanguageTYPEHTTP, "index/index", params, new VolleyInterface(context) {
@@ -201,6 +211,32 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                             mContext.startActivity(new Intent(mContext, KeFuDetailsActivity.class).putExtra("url", finalHomeBean.getData().getDyurl()));
                         }
                     });
+
+                    String[] from = {"fengmian", "name"};
+
+                    int[] to = {R.id.SimpleDraweeView, R.id.tv_title};
+
+                    ArrayList<Map<String, String>> dataList = new ArrayList<Map<String, String>>();
+
+                    for (int i = 0; i < finalHomeBean.getData().getType().size(); i++) {
+                        Map<String, String> map = new HashMap<String, String>();
+                        map.put("fengmian", finalHomeBean.getData().getType().get(i).getFengmian());
+                        map.put("name", finalHomeBean.getData().getType().get(i).getName());
+                        dataList.add(map);
+                    }
+
+                    goodtype = new SimpleAdapter(context, dataList, R.layout.item_home_good_type_layout, from, to);
+
+                    gvGoodType.setAdapter(goodtype);
+
+                    gvGoodType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                                long arg3) {
+
+                        }
+                    });
+
 
                     for (int i = 0; i < homeBean.getData().getNews().size(); i++) {
                         titleList.add(Utils.Html2Text(homeBean.getData().getNews().get(i).getTitle().toString()));
@@ -401,10 +437,17 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.ll_all:
+                vAll.setVisibility(View.VISIBLE);
+                vRegou.setVisibility(View.GONE);
+                vJinri.setVisibility(View.GONE);
+                vJinrilishi.setVisibility(View.GONE);
+                break;
             case R.id.ll_regou:
                 type = "1";
                 page = 1;
                 vRegou.setVisibility(View.VISIBLE);
+                vAll.setVisibility(View.GONE);
                 vJinri.setVisibility(View.GONE);
                 vJinrilishi.setVisibility(View.GONE);
                 dialog.show();
@@ -416,6 +459,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                 vRegou.setVisibility(View.GONE);
                 vJinri.setVisibility(View.VISIBLE);
                 vJinrilishi.setVisibility(View.GONE);
+                vAll.setVisibility(View.GONE);
                 dialog.show();
                 getListData(type);
                 break;
@@ -423,6 +467,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                 type = "3";
                 page = 1;
                 vRegou.setVisibility(View.GONE);
+                vAll.setVisibility(View.GONE);
                 vJinri.setVisibility(View.GONE);
                 vJinrilishi.setVisibility(View.VISIBLE);
                 dialog.show();

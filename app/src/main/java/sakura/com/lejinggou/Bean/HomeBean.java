@@ -75,6 +75,17 @@ public class HomeBean {
         private List<YgBean> yg;
         private List<LsBean> ls;
 
+        public List<TypeBean> getType() {
+            return type;
+        }
+
+        public void setType(List<TypeBean> type) {
+            this.type = type;
+        }
+
+        private List<TypeBean> type;
+
+
         public static List<DataBean> arrayDataBeanFromData(String str) {
 
             Type listType = new TypeToken<ArrayList<DataBean>>() {
@@ -476,5 +487,53 @@ public class HomeBean {
                 this.type = type;
             }
         }
+
+        public static class TypeBean {
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
+            /**
+             * id : 47
+             * name : 卷浪/2018冬季新款人字纹圆领毛衣女宽松韩版套头针织衫网红短款
+             * fm_img : /Public/uploads/lb/2018-12-13/2018_12_13_160348_7556.png
+             * gys : 早安日记文艺生活馆
+             * dqprice : 530.00
+             * starttime : 1544688209
+             * endtime : 1546243411
+             * s : 455719
+             * type : 1
+             */
+
+            private String id;
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public String getFengmian() {
+                return fengmian;
+            }
+
+            public void setFengmian(String fengmian) {
+                this.fengmian = fengmian;
+            }
+
+            private String name;
+            private String fengmian;
+
+
+        }
+
+
     }
 }

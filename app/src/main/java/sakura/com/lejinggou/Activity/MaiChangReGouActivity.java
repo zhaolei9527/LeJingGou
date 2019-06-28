@@ -361,7 +361,8 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                         EasyToast.getDEFAULT().show("余额不足，请充值~");// 使用系统样式进行输出
                         tvYE.setText("当前账户余额：" + codeBean.getDqmon());
                     } else {
-                        EasyToast.getDEFAULT().show(codeBean.getInfo());// 使用系统样式进行输出
+                        EasyToast.newBuilder().setDuration(1500).build().show(codeBean.getInfo());
+                        //EasyToast.getDEFAULT().show(codeBean.getInfo());// 使用系统样式进行输出
                     }
 
                     msg = null;

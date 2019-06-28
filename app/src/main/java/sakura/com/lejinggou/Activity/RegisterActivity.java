@@ -306,7 +306,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         tel2 = etTuijiangma.getText().toString().trim();
         if (TextUtils.isEmpty(tel2)) {
             Toast.makeText(this, "请输入推荐码", Toast.LENGTH_SHORT).show();
-            return;
+            //return;
         }
 
         dialog.show();

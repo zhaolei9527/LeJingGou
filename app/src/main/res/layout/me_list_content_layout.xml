@@ -247,7 +247,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/y25"
             android:gravity="center"
-            android:text="乐拍缘版本号：1.22.1"
+            android:text="乐拍缘版本号：1.23.1"
             android:textColor="@color/text999"
             android:textSize="@dimen/x13" />
     </LinearLayout>

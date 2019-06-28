@@ -174,6 +174,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void submit() {
+
         // validate
         account = etAccount.getText().toString().trim();
         if (TextUtils.isEmpty(account)) {
@@ -291,4 +292,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
+
+
 }
