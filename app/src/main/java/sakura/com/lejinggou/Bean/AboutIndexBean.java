@@ -97,9 +97,18 @@ public class AboutIndexBean {
         private String tjcode;
         private String is_yg;
         private String ne;
-        private double zje;
+        private String zje;
         private String lj;
         private String ewm;
+        private String syjf;
+
+        public String getSyjf() {
+            return syjf;
+        }
+
+        public void setSyjf(String syjf) {
+            this.syjf = syjf;
+        }
 
         public static List<DataBean> arrayDataBeanFromData(String str) {
 
@@ -237,11 +246,11 @@ public class AboutIndexBean {
             this.ne = ne;
         }
 
-        public double getZje() {
+        public String getZje() {
             return zje;
         }
 
-        public void setZje(double zje) {
+        public void setZje(String zje) {
             this.zje = zje;
         }
 

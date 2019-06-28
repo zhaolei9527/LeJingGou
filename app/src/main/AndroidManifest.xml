@@ -171,6 +171,13 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden|adjustResize"></activity>
 
+        <activity
+            android:name=".Activity.XiaJiListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden|adjustResize"></activity>
+
+
 
         <!--====================================功能需要==========================================-->
 

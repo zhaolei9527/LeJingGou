@@ -32,6 +32,7 @@ import sakura.com.lejinggou.Activity.MyChongZhiActivity;
 import sakura.com.lejinggou.Activity.MyOrderActivity;
 import sakura.com.lejinggou.Activity.SettingActivity;
 import sakura.com.lejinggou.Activity.TiXianActivity;
+import sakura.com.lejinggou.Activity.XiaJiListActivity;
 import sakura.com.lejinggou.Activity.ZhiFuBaoActivity;
 import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseLazyFragment;
@@ -103,6 +104,22 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     ImageView wemClose;
     @BindView(R.id.rl_ewm)
     RelativeLayout rlEwm;
+    @BindView(R.id.tv_jf)
+    TextView tvJf;
+    @BindView(R.id.ll_myorder_jf)
+    LinearLayout llMyorderJf;
+    @BindView(R.id.ll_daifukuan_jf)
+    LinearLayout llDaifukuanJf;
+    @BindView(R.id.ll_daifahuo_jf)
+    LinearLayout llDaifahuoJf;
+    @BindView(R.id.ll_daishouhuo_jf)
+    LinearLayout llDaishouhuoJf;
+    @BindView(R.id.ll_yiwancheng_jf)
+    LinearLayout llYiwanchengJf;
+    @BindView(R.id.ll_yiguoqi_jf)
+    LinearLayout llYiguoqiJf;
+    @BindView(R.id.ll_XJ)
+    LinearLayout llXJ;
     private Context context;
     private Dialog dialog;
     private AboutIndexBean aboutIndexBean;
@@ -162,6 +179,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     wemClose.setOnClickListener(this);
                     tvTJM.setOnClickListener(this);
                     tvLJURl.setOnClickListener(this);
+                    llXJ.setOnClickListener(this);
                     getData();
                 } else {
                     EZToast.showShort(context, getResources().getString(R.string.Networkexception));
@@ -197,7 +215,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                         SpUtil.putAndApply(context, "skmsg", aboutIndexBean.getData().getSkmsg());
                         SpUtil.putAndApply(context, "qm", aboutIndexBean.getData().getQm());
                         SpUtil.putAndApply(context, "Kymon", aboutIndexBean.getData().getKymon());
-
+                        SpUtil.putAndApply(context, "syjf", aboutIndexBean.getData().getSyjf());
 
                         SimpleDraweeView.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getHeadimg());
                         tvUsername.setText(String.valueOf(aboutIndexBean.getData().getNickname()));
@@ -206,6 +224,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                         tvBZJ.setText(String.valueOf(aboutIndexBean.getData().getDjmon()));
                         tvKYJ.setText(String.valueOf(aboutIndexBean.getData().getKymon()));
                         tvKQJ.setText(String.valueOf(aboutIndexBean.getData().getKymon()));
+                        tvJf.setText(String.valueOf(aboutIndexBean.getData().getSyjf()));
 
                         SimpleDraweeViewEWM.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getEwm());
 
@@ -283,6 +302,13 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
             case R.id.ll_TGM:
                 if (!TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
                     rlEwm.setVisibility(View.VISIBLE);
+                } else {
+                    EZToast.showShort(context, "您当前非业务员");
+                }
+                break;
+            case R.id.ll_XJ:
+                if (!TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
+                    startActivity(new Intent(mContext, XiaJiListActivity.class));
                 } else {
                     EZToast.showShort(context, "您当前非业务员");
                 }

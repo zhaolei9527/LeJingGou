@@ -32,7 +32,7 @@ import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.LoginBean;
 import sakura.com.lejinggou.Fragment.HomeFragment;
 import sakura.com.lejinggou.Fragment.MeFragment;
-import sakura.com.lejinggou.Fragment.ShopFragment;
+import sakura.com.lejinggou.Fragment.NewsFragment;
 import sakura.com.lejinggou.Fragment.ZuoRiLiShiFragment;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EZToast;
@@ -102,7 +102,7 @@ public class MainActivity extends BaseActivity {
                 });
         final ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
-        fragments.add(new ShopFragment());
+        fragments.add(new NewsFragment());
         fragments.add(new ZuoRiLiShiFragment());
         fragments.add(new MeFragment());
         CustomViewPager viewpager = (CustomViewPager) findViewById(R.id.fl_content);
