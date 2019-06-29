@@ -35,6 +35,8 @@ public class UrlUtils {
     public static final String KEY = "xiaoman20170712";
     public static final String URL = "http://152.136.187.246/";
     public static final String BASE_URL = "http://152.136.187.246/api.php/";
-    public static final String JAVA_URL = "http://152.136.187.246:8080/jfshop/";
+    //    public static final String JAVA_URL = "http://152.136.187.246:8080/jfshop/";
+    public static final String JAVA_URL = "http://192.168.1.199:8080/jfshop/";
+
 
 }

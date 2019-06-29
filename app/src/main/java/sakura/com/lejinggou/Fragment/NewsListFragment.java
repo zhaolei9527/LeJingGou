@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +30,6 @@ import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.View.ProgressView;
-import sakura.com.lejinggou.View.SakuraLinearLayoutManager;
 import sakura.com.lejinggou.View.WenguoyiRecycleView;
 import sakura.com.lejinggou.Volley.VolleyInterface;
 import sakura.com.lejinggou.Volley.VolleyRequest;
@@ -41,7 +42,7 @@ public class NewsListFragment extends BaseLazyFragment {
     //private SwipeRefreshLayout refresh;
     private WenguoyiRecycleView mRecyclerView;
     private int p = 1;
-    private SakuraLinearLayoutManager line;
+    private GridLayoutManager line;
     private NewsListAdapter adapter;
     private int height;
     private Context context;
@@ -53,13 +54,14 @@ public class NewsListFragment extends BaseLazyFragment {
      */
     private void getNewsList() {
         HashMap<String, String> params = new HashMap<>(1);
-        params.put("page", String.valueOf(p));
-        params.put("cid", String.valueOf(news_content_fragment_layout.getTag()));
-        params.put("cid1", (String) SpUtil.get(context, "cid1", ""));
-        params.put("cid2", (String) SpUtil.get(context, "cid2", ""));
+        params.put("pageNo", String.valueOf(p));
+        params.put("pageSize", "20");
+        if (!TextUtils.isEmpty(String.valueOf(news_content_fragment_layout.getTag()))) {
+            params.put("typeid", String.valueOf(news_content_fragment_layout.getTag()));
+        }
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         Log.e("NewsListFragment", "params:" + params);
-        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "news/index", "news/index" + getTag(), params, new VolleyInterface(context) {
+        VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "usergetgoodsbytype", "usergetgoodsbytype" + getTag(), params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
                 String decode = result;
@@ -74,20 +76,31 @@ public class NewsListFragment extends BaseLazyFragment {
                             mRecyclerView.loadMoreComplete();
                             mRecyclerView.setCanloadMore(true);
                         }
+
 //                        if (refresh != null) {
 //                            refresh.setRefreshing(false);
 //                        }
+
                         if (p == 1) {
-                            adapter = new NewsListAdapter(newsListBean.getList(), context);
+
+                            if (newsListBean.getGoodsList().getList().isEmpty()) {
+                                LL_empty.setVisibility(View.VISIBLE);
+                                return;
+                            } else {
+                                LL_empty.setVisibility(View.GONE);
+                            }
+
+                            adapter = new NewsListAdapter(newsListBean.getGoodsList().getList(), context);
                             mRecyclerView.setAdapter(adapter);
 
-                            if (newsListBean.getList().size() < 10) {
-                                //refresh.setRefreshing(false);
+                            if (newsListBean.getGoodsList().getList().size() < 20 || !newsListBean.getGoodsList().isHasNextPage()) {
+                                mRecyclerView.setCanloadMore(false);
                             } else {
                                 mRecyclerView.setCanloadMore(true);
                             }
+
                         } else {
-                            adapter.setDatas((ArrayList) newsListBean.getList());
+                            adapter.setDatas((ArrayList) newsListBean.getGoodsList().getList());
                         }
 
                         mRecyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,7 +108,7 @@ public class NewsListFragment extends BaseLazyFragment {
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                                 startActivity(new Intent(context, NewsDetailsActivity.class)
-                                        .putExtra("id",""+adapter.getDatas().get(i).getId())
+                                        .putExtra("id", "" + adapter.getDatas().get(i).getId())
                                 );
 
                             }
@@ -154,7 +167,7 @@ public class NewsListFragment extends BaseLazyFragment {
         //refresh = (SwipeRefreshLayout) news_content_fragment_layout.findViewById(R.id.refresh);
         LL_empty = (RelativeLayout) news_content_fragment_layout.findViewById(R.id.LL_empty);
         mRecyclerView = (WenguoyiRecycleView) news_content_fragment_layout.findViewById(R.id.ce_shi_lv);
-        line = new SakuraLinearLayoutManager(context);
+        line = new GridLayoutManager(context, 2);
         line.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(line);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

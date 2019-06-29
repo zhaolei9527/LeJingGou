@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,8 +15,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import sakura.com.lejinggou.Bean.NewsListBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.DateUtils;
-import sakura.com.lejinggou.Utils.UrlUtils;
 
 
 /**
@@ -26,14 +24,14 @@ import sakura.com.lejinggou.Utils.UrlUtils;
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHolder> {
 
     Context mContext;
-    private ArrayList<NewsListBean.ListBean> datas = new ArrayList();
+    private ArrayList<NewsListBean.GoodsListBean.ListBean> datas = new ArrayList();
 
-    public ArrayList<NewsListBean.ListBean> getDatas() {
+    public ArrayList<NewsListBean.GoodsListBean.ListBean> getDatas() {
         return datas;
     }
 
-    public NewsListAdapter(List<NewsListBean.ListBean> list, Context context) {
-        this.datas = (ArrayList<NewsListBean.ListBean>) list;
+    public NewsListAdapter(List<NewsListBean.GoodsListBean.ListBean> list, Context context) {
+        this.datas = (ArrayList<NewsListBean.GoodsListBean.ListBean>) list;
         this.mContext = context;
     }
 
@@ -43,7 +41,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_news, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_jf_good_layout, parent, false);
         ViewHolder vp = new ViewHolder(view);
         return vp;
     }
@@ -51,10 +49,11 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        holder.SimpleDraweeView.setImageURI(UrlUtils.URL + datas.get(position).getImg());
-        holder.tvTitle.setText(datas.get(position).getTitle());
-        holder.tvLook.setText(datas.get(position).getView());
-        holder.tvTime.setText(DateUtils.getDay(Long.parseLong(datas.get(position).getAddtime()) * 1000));
+        holder.SimpleDraweeView.setImageURI(datas.get(position).getFengmian());
+        holder.tvTitle.setText(datas.get(position).getName());
+        holder.tvJf.setText("积分价：" + datas.get(position).getNeedintegral());
+        holder.tvMoney.setText(datas.get(position).getPrice());
+        holder.tvGYS.setText("供应商"+datas.get(position).getSupplier());
 
     }
 
@@ -67,14 +66,16 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.SimpleDraweeView)
         com.facebook.drawee.view.SimpleDraweeView SimpleDraweeView;
+        @BindView(R.id.tv_jf)
+        TextView tvJf;
         @BindView(R.id.tv_title)
         TextView tvTitle;
-        @BindView(R.id.tv_time)
-        TextView tvTime;
-        @BindView(R.id.tv_look)
-        TextView tvLook;
-        @BindView(R.id.fl_item)
-        FrameLayout flItem;
+        @BindView(R.id.tv_money)
+        TextView tvMoney;
+        @BindView(R.id.tv_GYS)
+        TextView tvGYS;
+        @BindView(R.id.ll_shop)
+        LinearLayout llShop;
 
         public ViewHolder(View itemView) {
             super(itemView);

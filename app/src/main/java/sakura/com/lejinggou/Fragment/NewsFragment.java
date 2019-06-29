@@ -3,7 +3,6 @@ package sakura.com.lejinggou.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +25,7 @@ import sakura.com.lejinggou.Bean.NewsListBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
+import sakura.com.lejinggou.View.MyViewPager;
 import sakura.com.lejinggou.View.PagerSlidingTabStrip;
 import sakura.com.lejinggou.Volley.VolleyInterface;
 import sakura.com.lejinggou.Volley.VolleyRequest;
@@ -42,7 +42,7 @@ public class NewsFragment extends BaseLazyFragment {
     @BindView(R.id.tabs)
     PagerSlidingTabStrip tabs;
     @BindView(R.id.VpNews_context)
-    ViewPager VpNewsContext;
+    MyViewPager VpNewsContext;
     Unbinder unbinder;
     private Context context;
     private int p = 1;
@@ -103,9 +103,13 @@ public class NewsFragment extends BaseLazyFragment {
                 try {
                     NewsListBean newsListBean = new Gson().fromJson(decode, NewsListBean.class);
                     //新闻分类处理
-                    List<NewsListBean.ClistBean> cate = newsListBean.getClist();
+                    List<NewsListBean.TypeListBean> cate = newsListBean.getTypeList();
                     titles.clear();
                     titleid.clear();
+
+                    titles.add("全部商品");
+                    titleid.add("");
+
                     for (int i = 0; i < cate.size(); i++) {
                         titles.add(cate.get(i).getName());
                         titleid.add(cate.get(i).getId());

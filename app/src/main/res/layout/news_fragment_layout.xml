@@ -6,31 +6,77 @@
     android:background="@color/bgfff"
     android:focusableInTouchMode="true">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <sakura.com.lejinggou.View.PagerSlidingTabStrip
-            android:id="@+id/tabs"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y34"
-            android:layout_marginLeft="@dimen/x10"
-            android:background="@color/white"
-            app:pstsIndicatorColor="@color/bgtitle"
-            app:pstsTabTextColor="@drawable/pagerslidingtabtextcolor" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#DDDDDD"></View>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:background="@mipmap/ji_top_bg" />
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/VpNews_context"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/white" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_search"
+                android:layout_width="350dp"
+                android:layout_height="34dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/x5"
+                android:layout_marginBottom="@dimen/x5"
+                android:background="@color/bgea"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x20"
+                    android:background="@mipmap/sousuo" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/x5"
+                    android:layout_marginBottom="@dimen/x5"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="搜索美玉"
+                    android:imeOptions="actionSearch"
+                    android:paddingLeft="@dimen/x10"
+                    android:singleLine="true"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <sakura.com.lejinggou.View.PagerSlidingTabStrip
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y34"
+                android:layout_marginLeft="@dimen/x10"
+                android:background="@color/white"
+                app:pstsIndicatorColor="@color/bgtitle"
+                app:pstsTabTextColor="@drawable/pagerslidingtabtextcolor" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#DDDDDD"></View>
+
+            <sakura.com.lejinggou.View.MyViewPager
+                android:id="@+id/VpNews_context"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
 
 </FrameLayout>
