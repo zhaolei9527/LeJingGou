@@ -19,9 +19,9 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import sakura.com.lejinggou.Adapter.TiXianListAdapter;
+import sakura.com.lejinggou.Adapter.XiaJiListAdapter;
 import sakura.com.lejinggou.Base.BaseActivity;
-import sakura.com.lejinggou.Bean.TixianLogBean;
+import sakura.com.lejinggou.Bean.SelectMpUserBypidjksBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
@@ -48,7 +48,7 @@ public class XiaJiListActivity extends BaseActivity implements View.OnClickListe
     WenguoyiRecycleView rvTxjlList;
     @BindView(R.id.LL_empty)
     RelativeLayout LLEmpty;
-    private TiXianListAdapter adapter;
+    private XiaJiListAdapter adapter;
     private SakuraLinearLayoutManager line;
     private Dialog dialog;
     private int p = 1;
@@ -108,16 +108,16 @@ public class XiaJiListActivity extends BaseActivity implements View.OnClickListe
     private void getTxmxList() {
         HashMap<String, String> params = new HashMap<>(1);
         params.put("id", String.valueOf(SpUtil.get(context, "uid", "")));
-        Log.e("selectMpUserBypidjk", "params:" + params);
-        VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "selectMpUserBypidjk", "selectMpUserBypidjk", params, new VolleyInterface(context) {
+        Log.e("selectMpUserBypidjks", "params:" + params);
+        VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "selectMpUserBypidjks", "selectMpUserBypidjks", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
                 String decode = result;
                 try {
                     dialog.dismiss();
-                    Log.e("selectMpUserBypidjk", decode.toString());
-                    TixianLogBean newsSearchBean = new Gson().fromJson(decode, TixianLogBean.class);
-                    if (1 == newsSearchBean.getStatus()) {
+                    Log.e("selectMpUserBypidjks", decode.toString());
+                    SelectMpUserBypidjksBean newsSearchBean = new Gson().fromJson(decode, SelectMpUserBypidjksBean.class);
+                    if (newsSearchBean.getStatus().equals("1")) {
                         LLEmpty.setVisibility(View.GONE);
                         if (rvTxjlList != null) {
                             rvTxjlList.setEnabled(true);
@@ -125,15 +125,10 @@ public class XiaJiListActivity extends BaseActivity implements View.OnClickListe
                             rvTxjlList.setCanloadMore(true);
                         }
                         if (p == 1) {
-                            adapter = new TiXianListAdapter(newsSearchBean.getData(), context);
+                            adapter = new XiaJiListAdapter(newsSearchBean.getList().getList(), context);
                             rvTxjlList.setAdapter(adapter);
                         } else {
-                            if (null == newsSearchBean.getData() || newsSearchBean.getData().isEmpty()) {
-                                p = p - 1;
-                                rvTxjlList.loadMoreEnd();
-                                return;
-                            }
-                            adapter.setDatas((ArrayList) newsSearchBean.getData());
+                            adapter.setDatas((ArrayList) newsSearchBean.getList().getList());
                         }
                     } else {
                         if (p != 1) {
