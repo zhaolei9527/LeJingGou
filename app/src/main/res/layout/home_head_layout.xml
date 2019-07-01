@@ -77,7 +77,7 @@
                 <ImageView
                     android:layout_width="17dp"
                     android:layout_height="17dp"
-                    android:background="@mipmap/regou" />
+                    android:background="@mipmap/all" />
 
                 <TextView
                     android:layout_width="wrap_content"

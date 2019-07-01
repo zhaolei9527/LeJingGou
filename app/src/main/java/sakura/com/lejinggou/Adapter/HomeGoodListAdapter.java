@@ -182,6 +182,7 @@ public class HomeGoodListAdapter extends RecyclerView.Adapter<HomeGoodListAdapte
             });
 
         } else if (type.equals("2")) {
+
             holder.SimpleDraweeView.setImageURI(UrlUtils.URL + ygBeanList.get(position).getFm_img());
             holder.SimpleDraweeView.setTag("2");
             holder.SimpleDraweeView.setTag(UrlUtils.URL + ygBeanList.get(position).getFm_img());

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_more"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:background="@color/bgea"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/x3"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginBottom="@dimen/x10"
+            android:background="@color/bgtitle"></View>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_weight="1"
+            android:text="积分产品"
+            android:textColor="@color/text333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x5"
+            android:text="更多"
+            android:textColor="@color/text333" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/x10"
+            android:background="@mipmap/more" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_good_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+    </LinearLayout>
+
+</LinearLayout>

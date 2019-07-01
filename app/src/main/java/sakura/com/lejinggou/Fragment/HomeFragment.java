@@ -34,11 +34,13 @@ import me.fangx.haorefresh.LoadMoreListener;
 import sakura.com.lejinggou.Activity.KeFuDetailsActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.NewsActivity;
+import sakura.com.lejinggou.Adapter.HomeAllGoodListAdapter;
 import sakura.com.lejinggou.Adapter.HomeGoodListAdapter;
 import sakura.com.lejinggou.Adapter.LoopAdapter;
 import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseLazyFragment;
 import sakura.com.lejinggou.Bean.HomeBean;
+import sakura.com.lejinggou.Bean.IndexAllGoodBean;
 import sakura.com.lejinggou.Bean.IndexGoodsBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.DensityUtils;
@@ -92,12 +94,16 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     LinearLayout llAll;
     private Context context;
     private GridLayoutManager line;
+    private LinearLayoutManager line2;
+
     private int page = 1;
     private Dialog dialog;
     private ArrayList<String> titleList = new ArrayList<String>();
     private HomeGoodListAdapter adapter;
+
     private String type = "1";
     private SimpleAdapter goodtype;
+    private HomeAllGoodListAdapter homeAllGoodListAdapter;
 
     @Override
     protected void initPrepare() {
@@ -128,7 +134,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     public void onResume() {
         super.onResume();
         dialog.show();
-        getListData(type);
+        getListAll();
     }
 
     @Override
@@ -146,6 +152,11 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
         line = new GridLayoutManager(context, 2);
         line.setOrientation(LinearLayoutManager.VERTICAL);
         rvHomelist.setLayoutManager(line);
+
+        line2 = new LinearLayoutManager(context);
+        line2.setOrientation(LinearLayoutManager.VERTICAL);
+        rvHomelist.setLayoutManager(line2);
+
         rvHomelist.setItemAnimator(new DefaultItemAnimator());
         ProgressView progressView = new ProgressView(context);
         progressView.setIndicatorId(ProgressView.BallRotate);
@@ -247,11 +258,11 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
                     if (null != homeBean.getData().getRg() && !homeBean.getData().getRg().isEmpty()) {
                         adapter = new HomeGoodListAdapter(mContext, homeBean.getData().getRg());
-                        rvHomelist.setAdapter(adapter);
+                        //rvHomelist.setAdapter(adapter);
                     } else {
                         adapter = new HomeGoodListAdapter(mContext, new ArrayList<HomeBean.DataBean.RgBean>());
-                        rvHomelist.setAdapter(adapter);
-                        LLEmpty.setVisibility(View.VISIBLE);
+                        //rvHomelist.setAdapter(adapter);
+                        //LLEmpty.setVisibility(View.VISIBLE);
                     }
 
                     if (null != homeBean.getData().getYg() && !homeBean.getData().getYg().isEmpty()) {
@@ -293,7 +304,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                                                         if (adapter == null) {
                                                             rgBeans.add(rgBean);
                                                             adapter = new HomeGoodListAdapter(mContext, rgBeans);
-                                                            rvHomelist.setAdapter(adapter);
+                                                            //rvHomelist.setAdapter(adapter);
                                                         } else {
                                                             rgBeans.add(rgBean);
                                                             adapter.setRG(rgBeans);
@@ -320,7 +331,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                         }.start();
 
                         adapter = new HomeGoodListAdapter(mContext, homeBean.getData().getRg());
-                        rvHomelist.setAdapter(adapter);
+                        //rvHomelist.setAdapter(adapter);
 
                     }
 
@@ -413,7 +424,6 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
     }
 
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -438,12 +448,18 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_all:
+                rvHomelist.setCanloadMore(false);
+                rvHomelist.setLayoutManager(line2);
                 vAll.setVisibility(View.VISIBLE);
                 vRegou.setVisibility(View.GONE);
                 vJinri.setVisibility(View.GONE);
                 vJinrilishi.setVisibility(View.GONE);
+                dialog.show();
+                getListAll();
                 break;
             case R.id.ll_regou:
+                rvHomelist.setCanloadMore(true);
+                rvHomelist.setLayoutManager(line);
                 type = "1";
                 page = 1;
                 vRegou.setVisibility(View.VISIBLE);
@@ -454,6 +470,8 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                 getListData(type);
                 break;
             case R.id.ll_jinri:
+                rvHomelist.setCanloadMore(true);
+                rvHomelist.setLayoutManager(line);
                 type = "2";
                 page = 1;
                 vRegou.setVisibility(View.GONE);
@@ -464,6 +482,8 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                 getListData(type);
                 break;
             case R.id.ll_jinrilishi:
+                rvHomelist.setCanloadMore(true);
+                rvHomelist.setLayoutManager(line);
                 type = "3";
                 page = 1;
                 vRegou.setVisibility(View.GONE);
@@ -477,4 +497,53 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                 break;
         }
     }
+
+    //数据获取
+    public void getListAll() {
+        App.getQueues().cancelAll("index/goods");
+        HashMap<String, String> params = new HashMap<>(1);
+        params.put("p", String.valueOf(page));
+        Log.e("allGood", params.toString());
+        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "index/allGood" + App.LanguageTYPEHTTP, "index/allGood", params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String result) {
+                Log.e("allGood", result);
+                try {
+
+                    dialog.dismiss();
+                    rvHomelist.setCanloadMore(true);
+                    final IndexAllGoodBean indexGoodsBean = new Gson().fromJson(result, IndexAllGoodBean.class);
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            homeAllGoodListAdapter = new HomeAllGoodListAdapter(indexGoodsBean.getData(), context);
+                            rvHomelist.setAdapter(homeAllGoodListAdapter);
+                        }
+                    });
+
+                    rvHomelist.loadMoreComplete();
+                    result = null;
+                } catch (Exception e) {
+                    dialog.dismiss();
+                    if (rvHomelist != null) {
+                        rvHomelist.loadMoreEnd();
+                        rvHomelist.setCanloadMore(false);
+                    }
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                if (page == 1) {
+                    LLEmpty.setVisibility(View.VISIBLE);
+                }
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+
+    }
+
 }
