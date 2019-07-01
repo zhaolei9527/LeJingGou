@@ -13,6 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import sakura.com.lejinggou.Activity.JFPriceDetailsActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.PriceDetailsActivity;
 import sakura.com.lejinggou.Bean.IndexAllGoodBean;
@@ -66,6 +67,15 @@ public class HomeAllGoodListAdapter extends RecyclerView.Adapter<HomeAllGoodList
                 tv_GYS.setText("供应商：" + datas.getJfgoods().get(i).getSupplier());
                 tv_title.setText(datas.getJfgoods().get(i).getName());
                 tv_money.setText("￥" + datas.getJfgoods().get(i).getPrice());
+
+                final int finalI = i;
+                item_jf.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mContext.startActivity(new Intent(mContext, JFPriceDetailsActivity.class).putExtra("id", datas.getJfgoods().get(finalI).getId()));
+                    }
+                });
+
                 holder.llGood.addView(item_jf);
             }
 
