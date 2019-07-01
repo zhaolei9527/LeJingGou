@@ -387,6 +387,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                                 ((MainActivity) getActivity()).mHandler.removeCallbacksAndMessages(null);
 
                                 adapter.setDatas(type, indexGoodsBean.getData());
+                                rvHomelist.setAdapter(adapter);
                                 if (page == 1) {
                                     LLEmpty.setVisibility(View.GONE);
                                 }

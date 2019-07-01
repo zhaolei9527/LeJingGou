@@ -1,6 +1,7 @@
 package sakura.com.lejinggou.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import sakura.com.lejinggou.Activity.MainActivity;
+import sakura.com.lejinggou.Activity.PriceDetailsActivity;
 import sakura.com.lejinggou.Bean.IndexAllGoodBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.DateUtils;
@@ -72,7 +74,7 @@ public class HomeAllGoodListAdapter extends RecyclerView.Adapter<HomeAllGoodList
 
             if (datas.getRg() != null) {
                 for (int i = 0; i < datas.getRg().size(); i++) {
-                    View item_jf = LayoutInflater.from(mContext).inflate(R.layout.item_home_list_layout, holder.llGood, false);
+                    View item_jf = LayoutInflater.from(mContext).inflate(R.layout.item_home_all_list_layout, holder.llGood, false);
                     SimpleDraweeView simpleDraweeView = item_jf.findViewById(R.id.SimpleDraweeView);
                     final TextView tv_jf = item_jf.findViewById(R.id.tv_time);
                     TextView tv_title = item_jf.findViewById(R.id.tv_title);
@@ -112,6 +114,13 @@ public class HomeAllGoodListAdapter extends RecyclerView.Adapter<HomeAllGoodList
                         }
                     });
 
+                    item_jf.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mContext.startActivity(new Intent(mContext, PriceDetailsActivity.class).putExtra("id", datas.getRg().get(finalI).getId()));
+                        }
+                    });
+
                     holder.llGood.addView(item_jf);
                 }
             }
@@ -122,7 +131,7 @@ public class HomeAllGoodListAdapter extends RecyclerView.Adapter<HomeAllGoodList
             if (datas.getYg() != null) {
 
                 for (int i = 0; i < datas.getYg().size(); i++) {
-                    View item_jf = LayoutInflater.from(mContext).inflate(R.layout.item_home_list_layout, holder.llGood, false);
+                    View item_jf = LayoutInflater.from(mContext).inflate(R.layout.item_home_all_list_layout, holder.llGood, false);
                     SimpleDraweeView simpleDraweeView = item_jf.findViewById(R.id.SimpleDraweeView);
                     final TextView tv_jf = item_jf.findViewById(R.id.tv_time);
                     TextView tv_title = item_jf.findViewById(R.id.tv_title);
@@ -163,6 +172,13 @@ public class HomeAllGoodListAdapter extends RecyclerView.Adapter<HomeAllGoodList
                         }
                     });
 
+                    item_jf.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mContext.startActivity(new Intent(mContext, PriceDetailsActivity.class).putExtra("id", datas.getYg().get(finalI).getId()));
+                        }
+                    });
+
                     holder.llGood.addView(item_jf);
                 }
             }
@@ -172,7 +188,7 @@ public class HomeAllGoodListAdapter extends RecyclerView.Adapter<HomeAllGoodList
 
             if (datas.getLs() != null) {
                 for (int i = 0; i < datas.getLs().size(); i++) {
-                    View item_jf = LayoutInflater.from(mContext).inflate(R.layout.item_home_list_layout, holder.llGood, false);
+                    View item_jf = LayoutInflater.from(mContext).inflate(R.layout.item_home_all_list_layout, holder.llGood, false);
                     SimpleDraweeView simpleDraweeView = item_jf.findViewById(R.id.SimpleDraweeView);
                     TextView tv_jf = item_jf.findViewById(R.id.tv_time);
                     TextView tv_title = item_jf.findViewById(R.id.tv_title);
@@ -187,6 +203,14 @@ public class HomeAllGoodListAdapter extends RecyclerView.Adapter<HomeAllGoodList
                     tv_title.setText(datas.getLs().get(i).getName());
                     tv_jf.setBackground(mContext.getResources().getDrawable(R.mipmap.jieshutime_bg));
                     tv_jf.setText("已结束：" + DateUtils.getDay(Long.parseLong(datas.getLs().get(i).getEndtime()) * 1000));
+
+                    final int finalI = i;
+                    item_jf.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mContext.startActivity(new Intent(mContext, PriceDetailsActivity.class).putExtra("id", datas.getLs().get(finalI).getId()));
+                        }
+                    });
 
                     holder.llGood.addView(item_jf);
                 }

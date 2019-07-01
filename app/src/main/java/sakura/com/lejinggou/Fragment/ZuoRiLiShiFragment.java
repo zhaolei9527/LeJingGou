@@ -120,11 +120,11 @@ public class ZuoRiLiShiFragment extends BaseLazyFragment implements View.OnClick
         HashMap<String, String> params = new HashMap<>(1);
         params.put("type", type);
         params.put("p", String.valueOf(page));
-        Log.e("HomeFragment", params.toString());
+        Log.e("index/goods", params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "index/goods" + App.LanguageTYPEHTTP, "index/goods", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
-                Log.e("HomeFragment", result);
+                Log.e("index/goods", result);
                 try {
                     dialog.dismiss();
                     rvHomelist.loadMoreComplete();
