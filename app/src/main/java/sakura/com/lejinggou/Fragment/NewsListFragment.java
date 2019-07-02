@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import me.fangx.haorefresh.LoadMoreListener;
-import sakura.com.lejinggou.Activity.NewsDetailsActivity;
+import sakura.com.lejinggou.Activity.JFPriceDetailsActivity;
 import sakura.com.lejinggou.Base.BaseLazyFragment;
 import sakura.com.lejinggou.Bean.NewsListBean;
 import sakura.com.lejinggou.R;
@@ -107,7 +107,7 @@ public class NewsListFragment extends BaseLazyFragment {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                                startActivity(new Intent(context, NewsDetailsActivity.class)
+                                startActivity(new Intent(context, JFPriceDetailsActivity.class)
                                         .putExtra("id", "" + adapter.getDatas().get(i).getId())
                                 );
 

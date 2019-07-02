@@ -53,7 +53,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
         holder.tvTitle.setText(datas.get(position).getName());
         holder.tvJf.setText("积分价：" + datas.get(position).getNeedintegral());
         holder.tvMoney.setText(datas.get(position).getPrice());
-        holder.tvGYS.setText("供应商"+datas.get(position).getSupplier());
+        holder.tvGYS.setText("供应商："+datas.get(position).getSupplier());
 
     }
 

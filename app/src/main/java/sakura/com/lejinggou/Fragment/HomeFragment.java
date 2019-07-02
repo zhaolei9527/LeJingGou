@@ -1,13 +1,16 @@
 package sakura.com.lejinggou.Fragment;
 
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.fangx.haorefresh.LoadMoreListener;
+import sakura.com.lejinggou.Activity.JfGoodListActivity;
 import sakura.com.lejinggou.Activity.KeFuDetailsActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.NewsActivity;
@@ -104,6 +108,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     private String type = "1";
     private SimpleAdapter goodtype;
     private HomeAllGoodListAdapter homeAllGoodListAdapter;
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void initPrepare() {
@@ -178,6 +183,61 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
         textView.setText(context.getString(R.string.notmore));
         rvHomelist.setFootEndView(textView);
 
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String type = intent.getStringExtra("type");
+
+                if (!TextUtils.isEmpty(type)) {
+
+
+                    if (type.equals("0")) {
+                        startActivity(new Intent(context, JfGoodListActivity.class));
+                    } else if (type.equals("1")) {
+                        LLEmpty.setVisibility(View.GONE);
+                        rvHomelist.setCanloadMore(true);
+                        rvHomelist.setLayoutManager(line);
+                        type = "1";
+                        page = 1;
+                        vRegou.setVisibility(View.VISIBLE);
+                        vAll.setVisibility(View.GONE);
+                        vJinri.setVisibility(View.GONE);
+                        vJinrilishi.setVisibility(View.GONE);
+                        dialog.show();
+                        getListData(type);
+                    } else if (type.equals("2")) {
+                        LLEmpty.setVisibility(View.GONE);
+                        rvHomelist.setCanloadMore(true);
+                        rvHomelist.setLayoutManager(line);
+                        type = "2";
+                        page = 1;
+                        vRegou.setVisibility(View.GONE);
+                        vJinri.setVisibility(View.VISIBLE);
+                        vJinrilishi.setVisibility(View.GONE);
+                        vAll.setVisibility(View.GONE);
+                        dialog.show();
+                        getListData(type);
+                    } else if (type.equals("3")) {
+                        LLEmpty.setVisibility(View.GONE);
+                        rvHomelist.setCanloadMore(true);
+                        rvHomelist.setLayoutManager(line);
+                        type = "3";
+                        page = 1;
+                        vRegou.setVisibility(View.GONE);
+                        vAll.setVisibility(View.GONE);
+                        vJinri.setVisibility(View.GONE);
+                        vJinrilishi.setVisibility(View.VISIBLE);
+                        dialog.show();
+                        getListData(type);
+                    }
+
+                }
+
+            }
+        };
+
+        mContext.registerReceiver(broadcastReceiver, new IntentFilter("typemore"));
+
     }
 
     //数据获取
@@ -245,6 +305,10 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
                         @Override
                         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                                 long arg3) {
+
+                            startActivity(new Intent(mContext, JfGoodListActivity.class)
+                                    .putExtra("id", "" + finalHomeBean.getData().getType().get(arg2).getId())
+                            );
 
                         }
                     });
@@ -428,6 +492,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mContext.unregisterReceiver(broadcastReceiver);
         App.getQueues().cancelAll("index/index");
     }
 
@@ -447,6 +512,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+        LLEmpty.setVisibility(View.GONE);
         switch (view.getId()) {
             case R.id.ll_all:
                 rvHomelist.setCanloadMore(false);

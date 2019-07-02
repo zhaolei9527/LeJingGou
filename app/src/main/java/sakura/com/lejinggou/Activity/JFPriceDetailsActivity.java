@@ -18,7 +18,7 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import sakura.com.lejinggou.Adapter.GoodLoopAdapter;
+import sakura.com.lejinggou.Adapter.JfGoodLoopAdapter;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.UsergetgoodsbyidBean;
 import sakura.com.lejinggou.R;
@@ -41,8 +41,6 @@ public class JFPriceDetailsActivity extends BaseActivity implements View.OnClick
     TextView tvTime;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.tv_GYS)
-    TextView tvGYS;
     @BindView(R.id.tv_GYS2)
     TextView tvGYS2;
     @BindView(R.id.tv_CKJ_money)
@@ -89,7 +87,6 @@ public class JFPriceDetailsActivity extends BaseActivity implements View.OnClick
         }
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -123,22 +120,24 @@ public class JFPriceDetailsActivity extends BaseActivity implements View.OnClick
     private void goodsDetail() {
         HashMap<String, String> params = new HashMap<>(1);
         params.put("id", String.valueOf(getIntent().getStringExtra("id")));
+//        params.put("id", "10");
         Log.e("PriceDetailsActivity", params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "usergetgoodsbyid", "usergetgoodsbyid", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
                 Log.e("PriceDetailsActivity", result);
                 try {
+
                     dialog.dismiss();
                     goodsIndexBean = new Gson().fromJson(result, UsergetgoodsbyidBean.class);
                     if (goodsIndexBean.getStatus().equals("1")) {
-                         RollPagerView.setAdapter(new GoodLoopAdapter(RollPagerView, goodsIndexBean.getList().getTupianlist()));
+
+                        RollPagerView.setAdapter(new JfGoodLoopAdapter(RollPagerView, goodsIndexBean.getList().getTupianlist()));
                         tvTitle.setText(goodsIndexBean.getList().getName());
-                        tvGYS.setText("供应商：" + goodsIndexBean.getList().getSupplier());
-                        tvGYS2.setText(goodsIndexBean.getList().getSupplier());
+                        tvGYS2.setText("供应商："+goodsIndexBean.getList().getSupplier());
                         tvCKJMoney.setText("￥" + goodsIndexBean.getList().getPrice());
                         tvTime.setText("需要积分：" + goodsIndexBean.getList().getNeedintegral());
-                        tvTime.setBackgroundColor(context.getResources().getColor(R.color.time));
+                        wb.loadUrl(goodsIndexBean.getList().getUrl());
 
                     } else {
                         EZToast.showShort(context, goodsIndexBean.getMsg());

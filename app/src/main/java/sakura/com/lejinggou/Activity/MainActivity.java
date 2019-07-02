@@ -87,12 +87,7 @@ public class MainActivity extends BaseActivity {
                 new AcpListener() {
                     @Override
                     public void onGranted() {
-                        try {
-                            ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                            cm.setText(TimePickerView.ZFB);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+
                     }
 
                     @Override

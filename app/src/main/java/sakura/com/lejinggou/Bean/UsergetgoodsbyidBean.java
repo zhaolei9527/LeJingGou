@@ -18,7 +18,7 @@ public class UsergetgoodsbyidBean {
 
     /**
      * msg : 获取成功
-     * list : {"id":10,"name":"和田","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468242upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000008.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=qBDc4HjZTWDab6zCA%2FL1nAJuiWk%3D","jftypeid":"4","price":12,"date":"2019-06-29 19:07:49","supplier":"和田","needintegral":"12","stock":"12","shangjia":"3","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468242upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000008.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=qBDc4HjZTWDab6zCA%2FL1nAJuiWk%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468717upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000009.tmp.jpg?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=FLH9VTyYEfO4TAJygEIdt3uvMcE%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468987upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000010.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=lyUTFEKJSSTwubWvQsClJyShAn0%3D,","state":"0","paixu":12,"tupianlist":["http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468242upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000008.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=qBDc4HjZTWDab6zCA%2FL1nAJuiWk%3D","http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468717upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000009.tmp.jpg?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=FLH9VTyYEfO4TAJygEIdt3uvMcE%3D","http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468987upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000010.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=lyUTFEKJSSTwubWvQsClJyShAn0%3D"]}
+     * list : {"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D","jftypeid":"6","price":100,"date":"2019-06-28 13:46:01","supplier":"和田玉","needintegral":"10000","stock":"10","state":"0","paixu":10,"url":"http://152.136.187.246/ym/jf/id/4.html","tupianlist":["http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D","http://wei1218.oss-cn-beijing.aliyuncs.com/1562055537070upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000010.tmp.png?Expires=1877415537&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=Ie3GxqFsnFzRf5%2FTlHDJIeNQUMQ%3D"]}
      * status : 1
      */
 
@@ -60,20 +60,19 @@ public class UsergetgoodsbyidBean {
 
     public static class ListBean {
         /**
-         * id : 10
-         * name : 和田
-         * fengmian : http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468242upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000008.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=qBDc4HjZTWDab6zCA%2FL1nAJuiWk%3D
-         * jftypeid : 4
-         * price : 12.0
-         * date : 2019-06-29 19:07:49
-         * supplier : 和田
-         * needintegral : 12
-         * stock : 12
-         * shangjia : 3
-         * tupian : http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468242upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000008.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=qBDc4HjZTWDab6zCA%2FL1nAJuiWk%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468717upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000009.tmp.jpg?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=FLH9VTyYEfO4TAJygEIdt3uvMcE%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468987upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000010.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=lyUTFEKJSSTwubWvQsClJyShAn0%3D,
+         * id : 4
+         * name : 和田玉1
+         * fengmian : http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D
+         * jftypeid : 6
+         * price : 100.0
+         * date : 2019-06-28 13:46:01
+         * supplier : 和田玉
+         * needintegral : 10000
+         * stock : 10
          * state : 0
-         * paixu : 12
-         * tupianlist : ["http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468242upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000008.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=qBDc4HjZTWDab6zCA%2FL1nAJuiWk%3D","http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468717upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000009.tmp.jpg?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=FLH9VTyYEfO4TAJygEIdt3uvMcE%3D","http://wei1218.oss-cn-beijing.aliyuncs.com/1561806468987upload_4616efc4_c4fe_4229_b28b_0e0c6df714f0_00000010.tmp.png?Expires=1877166468&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=lyUTFEKJSSTwubWvQsClJyShAn0%3D"]
+         * paixu : 10
+         * url : http://152.136.187.246/ym/jf/id/4.html
+         * tupianlist : ["http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D","http://wei1218.oss-cn-beijing.aliyuncs.com/1562055537070upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000010.tmp.png?Expires=1877415537&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=Ie3GxqFsnFzRf5%2FTlHDJIeNQUMQ%3D"]
          */
 
         private String id;
@@ -85,10 +84,9 @@ public class UsergetgoodsbyidBean {
         private String supplier;
         private String needintegral;
         private String stock;
-        private String shangjia;
-        private String tupian;
         private String state;
         private String paixu;
+        private String url;
         private List<String> tupianlist;
 
         public static List<ListBean> arrayListBeanFromData(String str) {
@@ -171,22 +169,6 @@ public class UsergetgoodsbyidBean {
             this.stock = stock;
         }
 
-        public String getShangjia() {
-            return shangjia;
-        }
-
-        public void setShangjia(String shangjia) {
-            this.shangjia = shangjia;
-        }
-
-        public String getTupian() {
-            return tupian;
-        }
-
-        public void setTupian(String tupian) {
-            this.tupian = tupian;
-        }
-
         public String getState() {
             return state;
         }
@@ -201,6 +183,14 @@ public class UsergetgoodsbyidBean {
 
         public void setPaixu(String paixu) {
             this.paixu = paixu;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
         }
 
         public List<String> getTupianlist() {

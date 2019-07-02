@@ -228,6 +228,28 @@ public class HomeAllGoodListAdapter extends RecyclerView.Adapter<HomeAllGoodList
 
         }
 
+        holder.llMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (position) {
+                    case 0:
+                        mContext.sendBroadcast(new Intent("typemore").putExtra("type", "0"));
+                        break;
+                    case 1:
+                        mContext.sendBroadcast(new Intent("typemore").putExtra("type", "1"));
+                        break;
+                    case 2:
+                        mContext.sendBroadcast(new Intent("typemore").putExtra("type", "2"));
+                        break;
+                    case 3:
+                        mContext.sendBroadcast(new Intent("typemore").putExtra("type", "3"));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
     }
 
     @Override

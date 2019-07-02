@@ -1,14 +1,9 @@
-package sakura.com.lejinggou.Fragment;
+package sakura.com.lejinggou.Activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
@@ -19,14 +14,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import sakura.com.lejinggou.Activity.SearchGoodActivity;
 import sakura.com.lejinggou.Adapter.NewsPageAdapter;
-import sakura.com.lejinggou.App;
-import sakura.com.lejinggou.Base.BaseLazyFragment;
+import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.NewsListBean;
 import sakura.com.lejinggou.R;
-import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.View.MyViewPager;
 import sakura.com.lejinggou.View.PagerSlidingTabStrip;
@@ -34,63 +25,59 @@ import sakura.com.lejinggou.Volley.VolleyInterface;
 import sakura.com.lejinggou.Volley.VolleyRequest;
 
 /**
- * com.wenguoyi.Fragment
+ * sakura.com.lejinggou.Activity
  *
  * @author 赵磊
- * @date 2018/5/15
+ * @date 2019/7/2
  * 功能描述：
  */
-public class NewsFragment extends BaseLazyFragment {
+public class JfGoodListActivity extends BaseActivity {
 
+    @BindView(R.id.rl_back)
+    FrameLayout rlBack;
     @BindView(R.id.tabs)
     PagerSlidingTabStrip tabs;
     @BindView(R.id.VpNews_context)
     MyViewPager VpNewsContext;
-    Unbinder unbinder;
-    @BindView(R.id.ll_search)
-    LinearLayout llSearch;
-    private Context context;
+
     private int p = 1;
     private List titles = new ArrayList();
     private List titleid = new ArrayList();
     private NewsPageAdapter adapter;
 
     @Override
-    protected void initPrepare() {
+    protected int setthislayout() {
+        return R.layout.activity_jfgood_layout;
+    }
+
+    @Override
+    protected void initview() {
 
     }
 
     @Override
-    protected void onInvisible() {
+    protected void initListener() {
+        rlBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
     }
 
     @Override
     protected void initData() {
-
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         p = 1;
         getIndex();
     }
 
     @Override
-    protected View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        context = getActivity();
-        View view = inflater.inflate(R.layout.news_fragment_layout, container, false);
-        return view;
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 
     /**
@@ -101,20 +88,12 @@ public class NewsFragment extends BaseLazyFragment {
         params.put("pageNo", String.valueOf(p));
         params.put("pageSize", "20");
         Log.e("NewsFragment", params.toString());
-        VolleyRequest.RequestPost(getActivity(), UrlUtils.JAVA_URL + "usergetgoodsbytype", "usergetgoodsbytype", params, new VolleyInterface(getActivity()) {
+        VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "usergetgoodsbytype", "usergetgoodsbytype", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
                 String decode = result;
                 Log.e("NewsFragment", decode);
                 try {
-
-                    llSearch.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            startActivity(new Intent(context, SearchGoodActivity.class));
-                        }
-                    });
-
                     NewsListBean newsListBean = new Gson().fromJson(decode, NewsListBean.class);
                     //新闻分类处理
                     List<NewsListBean.TypeListBean> cate = newsListBean.getTypeList();
@@ -130,7 +109,7 @@ public class NewsFragment extends BaseLazyFragment {
                     }
 
                     if (adapter == null) {
-                        adapter = new NewsPageAdapter(getChildFragmentManager(), getActivity(), titles, titleid);
+                        adapter = new NewsPageAdapter(getSupportFragmentManager(), context, titles, titleid);
                         VpNewsContext.setAdapter(adapter);
                         tabs.setViewPager(VpNewsContext);
                     } else {
@@ -138,8 +117,15 @@ public class NewsFragment extends BaseLazyFragment {
                             VpNewsContext.setAdapter(adapter);
                         }
                     }
-                    //缓存首页数据
-                    SpUtil.putAndApply(getActivity(), "index", decode);
+
+                    String id = getIntent().getStringExtra("id");
+
+                    for (int i = 0; i < titleid.size(); i++) {
+                        if (titleid.get(i).equals(id)) {
+                            VpNewsContext.setCurrentItem(i);
+                        }
+                    }
+
                     cate = null;
                     decode = null;
                 } catch (Exception e) {
@@ -154,10 +140,4 @@ public class NewsFragment extends BaseLazyFragment {
         });
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-        App.getQueues().cancelAll("new/index");
-    }
 }
