@@ -272,7 +272,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
     /**
      * 订单详情获取
      */
-    private void orderDetail() {
+    private void orderSubmit() {
         HashMap<String, String> params = new HashMap<>(3);
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         params.put("goodsid", id);
@@ -356,6 +356,90 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         });
     }
 
+
+    /**
+     * 订单详情获取
+     */
+    private void orderDetail() {
+        HashMap<String, String> params = new HashMap<>(3);
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
+        params.put("id", orderid);
+        Log.e("MyOrderDetailsActivity", params.toString());
+        VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "userGetBillById", "userGetBillById", params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String result) {
+                dialog.dismiss();
+                orderResult = result;
+                Log.e("MyOrderDetailsActivity", result);
+                try {
+//                    UserGetBillByIdBean orderDetailBean = new Gson().fromJson(result, UserGetBillByIdBean.class);
+//                    tvName.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getAddress().getName());
+//                    tvPhone.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getAddress().getTel());
+//                    tvDizhi.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getAddress().getAddress());
+//                    String stu = MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getState();
+//
+//                    llPay.setVisibility(View.GONE);
+//                    if ("1".equals(stu)) {
+//                        tvStu.setText("待付款");
+//                        llPay.setVisibility(View.VISIBLE);
+//                        llAddress.setVisibility(View.GONE);
+//                    } else if ("2".equals(stu)) {
+//                        tvStu.setText("待发货");
+//                    } else if ("3".equals(stu)) {
+//                        tvStu.setText("待收货");
+//                    } else if ("4".equals(stu)) {
+//                        tvStu.setText("已完成");
+//                    } else if ("-1".equals(stu)) {
+//                        tvStu.setText("已过期");
+//                        llAddress.setVisibility(View.GONE);
+//                    } else {
+//                        tvStu.setText("");
+//                    }
+//
+//                    tvPriceTotal.setText("￥" + MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getPrice());
+//                    tvBZJ.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getNeedintegral());
+//
+//                    if (!TextUtils.isEmpty(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getKdbh())) {
+//                        tvWuliu.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getKdgs());
+//                    }
+//
+//                    if (!TextUtils.isEmpty(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getKdgs())) {
+//                        tvDanhao.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getKdbh());
+//                    }
+//
+//                    final View item_oreder_details_layout = View.inflate(context, R.layout.item_oreder_details_layout, null);
+//                    item_oreder_details_layout.setTag(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getId());
+//                    SimpleDraweeView SimpleDraweeView = (com.facebook.drawee.view.SimpleDraweeView) item_oreder_details_layout.findViewById(R.id.SimpleDraweeView);
+//                    SimpleDraweeView.setImageURI(UrlUtils.URL + MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getFm_img());
+//                    final TextView tv_title = (TextView) item_oreder_details_layout.findViewById(R.id.tv_title);
+//                    tv_title.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getGname());
+//                    TextView tv_classify = (TextView) item_oreder_details_layout.findViewById(R.id.tv_classify);
+//                    tv_classify.setText("￥" + MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getPrice());
+//                    item_oreder_details_layout.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            Intent intent = new Intent(context, PriceDetailsActivity.class);
+//                            int tag = Integer.parseInt(item_oreder_details_layout.getTag().toString());
+//                            intent.putExtra("id", String.valueOf(tag));
+//                            startActivity(intent);
+//                        }
+//                    });
+//                    llOrders.addView(item_oreder_details_layout);
+                    result = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+    }
+
+
     public static boolean isf = false;
 
     @Override
@@ -366,7 +450,13 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
             if (connected) {
                 dialog = Utils.showLoadingDialog(context);
                 dialog.show();
-                orderDetail();
+
+                if (!TextUtils.isEmpty(id)) {
+                    orderSubmit();
+                } else {
+                    orderDetail();
+                }
+
             } else {
                 EZToast.showShort(context, "网络未连接");
                 finish();

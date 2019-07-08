@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 
 import me.fangx.haorefresh.LoadMoreListener;
-import sakura.com.lejinggou.Activity.MyOrderDetailsActivity;
+import sakura.com.lejinggou.Activity.MyJFOrderSubmitActivity;
 import sakura.com.lejinggou.Adapter.MyJFOrderAdapter;
 import sakura.com.lejinggou.Bean.UserGetBillBean;
 import sakura.com.lejinggou.R;
@@ -148,9 +148,8 @@ public class JFOrderContentFrameLayout extends LinearLayout {
                                 mRecyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                        context.startActivity(new Intent(context, MyOrderDetailsActivity.class).putExtra("orderid", adapter.getDatas().get(i).getId()));
+                                        context.startActivity(new Intent(context, MyJFOrderSubmitActivity.class).putExtra("orderid", adapter.getDatas().get(i).getId()));
                                     }
-
                                 });
                                 ll_empty.setVisibility(GONE);
                             } else {
