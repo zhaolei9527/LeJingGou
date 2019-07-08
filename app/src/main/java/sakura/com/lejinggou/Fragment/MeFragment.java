@@ -29,6 +29,7 @@ import sakura.com.lejinggou.Activity.LoginActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.MingXiJiLuListActivity;
 import sakura.com.lejinggou.Activity.MyChongZhiActivity;
+import sakura.com.lejinggou.Activity.MyJFOrderActivity;
 import sakura.com.lejinggou.Activity.MyOrderActivity;
 import sakura.com.lejinggou.Activity.SettingActivity;
 import sakura.com.lejinggou.Activity.TiXianActivity;
@@ -174,6 +175,14 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     llDaishouhuo.setOnClickListener(this);
                     llYiwancheng.setOnClickListener(this);
                     llYiguoqi.setOnClickListener(this);
+
+                    llMyorderJf.setOnClickListener(this);
+                    llDaifahuoJf.setOnClickListener(this);
+                    llDaifukuanJf.setOnClickListener(this);
+                    llDaishouhuoJf.setOnClickListener(this);
+                    llYiwanchengJf.setOnClickListener(this);
+                    llYiguoqiJf.setOnClickListener(this);
+
                     llBZ.setOnClickListener(this);
                     llTGM.setOnClickListener(this);
                     wemClose.setOnClickListener(this);
@@ -330,6 +339,24 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 break;
             case R.id.ll_yiguoqi:
                 startActivity(new Intent(mContext, MyOrderActivity.class).putExtra("cid", "-1"));
+                break;
+            case R.id.ll_myorder_jf:
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "0"));
+                break;
+            case R.id.ll_daifukuan_jf:
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "1"));
+                break;
+            case R.id.ll_daifahuo_jf:
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "2"));
+                break;
+            case R.id.ll_daishouhuo_jf:
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "3"));
+                break;
+            case R.id.ll_yiwancheng_jf:
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "4"));
+                break;
+            case R.id.ll_yiguoqi_jf:
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "-1"));
                 break;
             case R.id.img_message:
                 startActivity(new Intent(context, SettingActivity.class));
