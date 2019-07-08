@@ -96,6 +96,11 @@ public class JFPriceDetailsActivity extends BaseActivity implements View.OnClick
                     startActivity(new Intent(context, LoginActivity.class));
                     return;
                 }
+
+                startActivity(new Intent(context, MyJFOrderSubmitActivity.class)
+                        .putExtra("id",goodsIndexBean.getList().getId())
+                );
+
                 break;
             case R.id.rl_back:
                 finish();
@@ -127,18 +132,15 @@ public class JFPriceDetailsActivity extends BaseActivity implements View.OnClick
             public void onMySuccess(String result) {
                 Log.e("PriceDetailsActivity", result);
                 try {
-
                     dialog.dismiss();
                     goodsIndexBean = new Gson().fromJson(result, UsergetgoodsbyidBean.class);
                     if (goodsIndexBean.getStatus().equals("1")) {
-
                         RollPagerView.setAdapter(new JfGoodLoopAdapter(RollPagerView, goodsIndexBean.getList().getTupianlist()));
                         tvTitle.setText(goodsIndexBean.getList().getName());
-                        tvGYS2.setText("供应商："+goodsIndexBean.getList().getSupplier());
+                        tvGYS2.setText("供应商：" + goodsIndexBean.getList().getSupplier());
                         tvCKJMoney.setText("￥" + goodsIndexBean.getList().getPrice());
                         tvTime.setText("需要积分：" + goodsIndexBean.getList().getNeedintegral());
                         wb.loadUrl(goodsIndexBean.getList().getUrl());
-
                     } else {
                         EZToast.showShort(context, goodsIndexBean.getMsg());
                         finish();

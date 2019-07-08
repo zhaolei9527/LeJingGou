@@ -1,8 +1,6 @@
 package sakura.com.lejinggou.Activity;
 
 import android.Manifest;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,10 +9,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.bigkoo.pickerview.TimePickerView;
 import com.google.gson.Gson;
 import com.mylhyl.acp.Acp;
 import com.mylhyl.acp.AcpListener;
@@ -29,6 +28,7 @@ import butterknife.ButterKnife;
 import sakura.bottomtabbar.BottomTabBar;
 import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseActivity;
+import sakura.com.lejinggou.Bean.AppGetTZBean;
 import sakura.com.lejinggou.Bean.LoginBean;
 import sakura.com.lejinggou.Fragment.HomeFragment;
 import sakura.com.lejinggou.Fragment.MeFragment;
@@ -48,6 +48,12 @@ public class MainActivity extends BaseActivity {
     CustomViewPager flContent;
     @BindView(R.id.BottomTabBar)
     sakura.bottomtabbar.BottomTabBar BottomTabBar;
+    @BindView(R.id.SimpleDraweeView)
+    com.facebook.drawee.view.SimpleDraweeView SimpleDraweeView;
+    @BindView(R.id.img_close)
+    ImageView imgClose;
+    @BindView(R.id.ll_msg)
+    LinearLayout llMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,11 +153,12 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initListener() {
 
+
     }
 
     @Override
     protected void initData() {
-
+        appGetTZ();
     }
 
     private String account;
@@ -197,6 +204,64 @@ public class MainActivity extends BaseActivity {
                         EZToast.showShort(context, getString(R.string.Login_failed_login));
                         startActivity(new Intent(context, LoginActivity.class));
                         finish();
+                    }
+                    decode = null;
+                    loginBean = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * 登录获取
+     */
+    private void appGetTZ() {
+        HashMap<String, String> params = new HashMap<>(1);
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "0")));
+        Log.e("appGetTZ", "params:" + params);
+        VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "appGetTZ", "appGetTZ", params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String result) {
+                String decode = result;
+                Log.e("appGetTZ", decode);
+                try {
+                    AppGetTZBean loginBean = new Gson().fromJson(decode, AppGetTZBean.class);
+
+                    if (loginBean.getStatus().equals("1")) {
+
+                        if (loginBean.getList().getState().equals("0")) {
+
+                            llMsg.setVisibility(View.VISIBLE);
+
+                            imgClose.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    llMsg.setVisibility(View.GONE);
+                                }
+                            });
+
+                            SimpleDraweeView.setImageURI(loginBean.getList().getFengmian());
+
+                            final AppGetTZBean finalLoginBean = loginBean;
+                            SimpleDraweeView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    startActivity(new Intent(context, JFPriceDetailsActivity.class)
+                                            .putExtra("id", finalLoginBean.getList().getId())
+                                    );
+                                }
+                            });
+                        } else {
+                            llMsg.setVisibility(View.GONE);
+                        }
+
                     }
                     decode = null;
                     loginBean = null;

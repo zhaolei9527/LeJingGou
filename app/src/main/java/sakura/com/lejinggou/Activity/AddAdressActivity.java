@@ -332,7 +332,7 @@ public class AddAdressActivity extends BaseActivity implements View.OnClickListe
                         EZToast.showShort(context, "添加成功");
                         finish();
                     } else {
-                        EZToast.showShort(context, "添加失败");
+                        EZToast.showShort(context, aboutDzaddBean.getInfo());
                     }
                     aboutDzaddBean = null;
                     result = null;

@@ -40,7 +40,6 @@
             android:textColor="#F0667F"
             android:textSize="@dimen/x17" />
 
-
         <TextView
             android:id="@+id/tv_size"
             android:layout_width="wrap_content"
@@ -50,7 +49,7 @@
             android:layout_marginBottom="@dimen/x10"
             android:layout_marginLeft="@dimen/x143"
             android:layout_marginRight="@dimen/x10"
-            android:text="×2"
+            android:text="×1"
             android:textColor="#999999"
             android:textSize="@dimen/x13" />
 

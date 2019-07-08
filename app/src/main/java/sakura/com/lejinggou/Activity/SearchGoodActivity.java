@@ -1,13 +1,16 @@
 package sakura.com.lejinggou.Activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -16,7 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -24,6 +29,7 @@ import butterknife.ButterKnife;
 import me.fangx.haorefresh.LoadMoreListener;
 import sakura.com.lejinggou.Adapter.SheQuTieZiListAdapter;
 import sakura.com.lejinggou.Base.BaseActivity;
+import sakura.com.lejinggou.Bean.UserSeachJfGoodsBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.UrlUtils;
@@ -54,7 +60,7 @@ public class SearchGoodActivity extends BaseActivity {
     RelativeLayout LLEmpty;
     private Dialog dialog;
     private int p = 1;
-    private LinearLayoutManager line;
+    private GridLayoutManager line;
     SheQuTieZiListAdapter adapter;
 
     @Override
@@ -64,7 +70,7 @@ public class SearchGoodActivity extends BaseActivity {
 
     @Override
     protected void initview() {
-        line = new LinearLayoutManager(context);
+        line = new GridLayoutManager(context, 2);
         line.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(line);
         rvList.setItemAnimator(new DefaultItemAnimator());
@@ -144,52 +150,52 @@ public class SearchGoodActivity extends BaseActivity {
                 try {
                     dialog.dismiss();
                     Log.e("NewsListFragment", result);
-//                    NewsNewsBean newsNewsBean = new Gson().fromJson(result, NewsNewsBean.class);
-//                    if ("1".equals(String.valueOf(newsNewsBean.getStatus()))) {
-//
-//                        if (rvList != null) {
-//                            rvList.setEnabled(true);
-//                            rvList.loadMoreComplete();
-//                            rvList.setCanloadMore(true);
-//                        }
-//
-//                        if (newsNewsBean.getList() != null) {
-//                            if (p == 1) {
-//                                adapter = new SheQuTieZiListAdapter(newsNewsBean.getList(), context);
-//                                rvList.setAdapter(adapter);
-//                                if (newsNewsBean.getList().size() < 10) {
-//                                    rvList.setCanloadMore(false);
-//                                    rvList.loadMoreEnd();
-//                                } else {
-//                                    rvList.setCanloadMore(true);
-//                                }
-//                            } else {
-//                                adapter.setDatas((ArrayList) newsNewsBean.getList());
-//                            }
-//
-//                            rvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                                @Override
-//                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                                    startActivity(new Intent(context, KechengDetailActivity.class)
-//                                            .putExtra("id", String.valueOf(adapter.getDatas().get(i).getId()))
-//                                    );
-//                                }
-//                            });
-//
-//                        } else {
-//                            Toast.makeText(context, "暂无相关内容", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    } else {
-//                        if (p != 1) {
-//                            p = p - 1;
-//                            Toast.makeText(context, "没有更多了", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                        }
-//                        rvList.setCanloadMore(false);
-//                        rvList.loadMoreEnd();
-//                    }
-//                    newsNewsBean = null;
+                    UserSeachJfGoodsBean newsNewsBean = new Gson().fromJson(result, UserSeachJfGoodsBean.class);
+                    if ("1".equals(String.valueOf(newsNewsBean.getStatus()))) {
+
+                        if (rvList != null) {
+                            rvList.setEnabled(true);
+                            rvList.loadMoreComplete();
+                            rvList.setCanloadMore(true);
+                        }
+
+                        if (newsNewsBean.getList() != null) {
+                            if (p == 1) {
+                                adapter = new SheQuTieZiListAdapter(newsNewsBean.getList().getList(), context);
+                                rvList.setAdapter(adapter);
+                                if (newsNewsBean.getList().getList().size() < 10) {
+                                    rvList.setCanloadMore(false);
+                                    rvList.loadMoreEnd();
+                                } else {
+                                    rvList.setCanloadMore(true);
+                                }
+                            } else {
+                                adapter.setDatas((ArrayList) newsNewsBean.getList().getList());
+                            }
+
+                            rvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                    startActivity(new Intent(context, JFPriceDetailsActivity.class)
+                                            .putExtra("id", String.valueOf(adapter.getDatas().get(i).getId()))
+                                    );
+                                }
+                            });
+
+                        } else {
+                            Toast.makeText(context, "暂无相关内容", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } else {
+                        if (p != 1) {
+                            p = p - 1;
+                            Toast.makeText(context, "没有更多了", Toast.LENGTH_SHORT).show();
+                        } else {
+                        }
+                        rvList.setCanloadMore(false);
+                        rvList.loadMoreEnd();
+                    }
+                    newsNewsBean = null;
                     result = null;
                 } catch (Exception e) {
                     e.printStackTrace();
