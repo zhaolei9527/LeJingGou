@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import sakura.com.lejinggou.Activity.MyOrderActivity;
+import sakura.com.lejinggou.Activity.MyJFOrderActivity;
 import sakura.com.lejinggou.Adapter.JFOrderPageAdapter;
 import sakura.com.lejinggou.Base.BaseLazyFragment;
 import sakura.com.lejinggou.R;
@@ -49,15 +49,15 @@ public class MyJFOrderFragment extends BaseLazyFragment {
         if (orderPageAdapter == null) {
             orderPageAdapter = new JFOrderPageAdapter(context, titles);
             VpNews_context.setAdapter(orderPageAdapter);
-            if ("1".equals(MyOrderActivity.cid)) {
+            if ("0".equals(MyJFOrderActivity.cid)) {
                 VpNews_context.setCurrentItem(0);
-            } else if ("2".equals(MyOrderActivity.cid)) {
+            } else if ("1".equals(MyJFOrderActivity.cid)) {
                 VpNews_context.setCurrentItem(1);
-            } else if ("3".equals(MyOrderActivity.cid)) {
+            } else if ("2".equals(MyJFOrderActivity.cid)) {
                 VpNews_context.setCurrentItem(2);
-            } else if ("4".equals(MyOrderActivity.cid)) {
+            } else if ("3".equals(MyJFOrderActivity.cid)) {
                 VpNews_context.setCurrentItem(3);
-            } else if ("-1".equals(MyOrderActivity.cid)) {
+            } else if ("4".equals(MyJFOrderActivity.cid)) {
                 VpNews_context.setCurrentItem(4);
             }
         }
@@ -70,16 +70,16 @@ public class MyJFOrderFragment extends BaseLazyFragment {
 
             @Override
             public void onPageSelected(int position) {
-                if (position == 1) {
+                if (position == 0) {
                     context.sendBroadcast(new Intent("OrderContentRefresh").putExtra("stu", "0"));
                     stu = "0";
-                } else if (position == 2) {
+                } else if (position == 1) {
                     context.sendBroadcast(new Intent("OrderContentRefresh").putExtra("stu", "1"));
                     stu = "1";
-                } else if (position == 3) {
+                } else if (position == 2) {
                     context.sendBroadcast(new Intent("OrderContentRefresh").putExtra("stu", "2"));
                     stu = "2";
-                } else if (position == 4) {
+                } else if (position == 3) {
                     context.sendBroadcast(new Intent("OrderContentRefresh").putExtra("stu", "3"));
                     stu = "3";
                 } else if (position == 4) {

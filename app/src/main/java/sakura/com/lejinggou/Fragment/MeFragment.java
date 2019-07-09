@@ -344,19 +344,19 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "0"));
                 break;
             case R.id.ll_daifukuan_jf:
-                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "1"));
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "0"));
                 break;
             case R.id.ll_daifahuo_jf:
-                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "2"));
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "1"));
                 break;
             case R.id.ll_daishouhuo_jf:
-                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "3"));
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "2"));
                 break;
             case R.id.ll_yiwancheng_jf:
-                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "4"));
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "3"));
                 break;
             case R.id.ll_yiguoqi_jf:
-                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "-1"));
+                startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "4"));
                 break;
             case R.id.img_message:
                 startActivity(new Intent(context, SettingActivity.class));

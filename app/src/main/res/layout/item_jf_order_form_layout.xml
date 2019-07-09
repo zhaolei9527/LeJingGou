@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_or"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/SimpleDraweeView"
+            android:layout_width="@dimen/x84"
+            android:layout_height="@dimen/x84"
+            android:layout_marginLeft="@dimen/x8"
+            android:layout_marginTop="@dimen/x5"
+            android:layout_marginBottom="@dimen/x5" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/y90"
+            android:layout_marginTop="@dimen/y12"
+            android:layout_marginRight="@dimen/x10"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="adadadasd"
+            android:textColor="#333333"
+            android:textSize="@dimen/x13" />
+
+        <LinearLayout
+            android:id="@+id/ll_gj_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="共计："
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x10"
+                android:text="0积分"
+                android:textColor="#F0667F"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_jf_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="积分支付："
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_jf_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x10"
+                android:text="0积分"
+                android:textColor="#F0667F"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_qt_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_jf_price">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="其他支付："
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_qt_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x10"
+                android:text="￥0.00"
+                android:textColor="#F0667F"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x5"
+        android:background="#efefef"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/x5"
+        android:layout_marginBottom="@dimen/x5"
+        android:gravity="center_vertical|end"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x5"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btn_pay_order"
+            android:layout_width="@dimen/x75"
+            android:layout_height="@dimen/y25"
+            android:layout_marginRight="@dimen/x5"
+            android:background="@mipmap/btn_login"
+            android:text="立即支付"
+            android:textColor="#fff"
+            android:textSize="@dimen/x11"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_delete_order"
+            android:layout_width="@dimen/x75"
+            android:layout_height="@dimen/y25"
+            android:layout_marginRight="@dimen/x5"
+            android:background="@mipmap/btn_login"
+            android:text="取消订单"
+            android:textColor="@color/bgfff"
+            android:textSize="@dimen/x11"
+            android:visibility="gone" />
+
+
+        <Button
+            android:id="@+id/btn_isget_order"
+            android:layout_width="@dimen/x75"
+            android:layout_height="@dimen/y25"
+            android:layout_marginRight="@dimen/x5"
+            android:background="@mipmap/btn_login"
+            android:text="确认收货"
+            android:textColor="#fff"
+            android:textSize="@dimen/x11"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x5"
+        android:background="#efefef"></View>
+
+</LinearLayout>

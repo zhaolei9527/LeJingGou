@@ -19,7 +19,7 @@ public class UserGetBillBean {
 
     /**
      * msg : 获取成功
-     * list : {"pageNum":1,"pageSize":20,"size":2,"startRow":1,"endRow":2,"total":2,"pages":1,"list":[{"id":50,"user":{"id":1,"tel":"17629345001","headimg":"/Public/home/images/f_icon6.png","nickname":"e8438","status":1,"addtime":1561687699,"pid":0,"edittime":"0","password":"7fab9c962fbd1b59b1ed65f0cdb7ddf7","type":1,"isSm":0,"isYg":2,"zfbname":"","zfbacc":"","kymon":0.98,"djmon":0,"ljsy":0,"tjcode":"dece0071","skmsg":"","name":"","idcard":"","qm":"","isJqr":1,"ne":"0","syjf":"0"},"goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"0","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562055537070upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000010.tmp.png?Expires=1877415537&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=Ie3GxqFsnFzRf5%2FTlHDJIeNQUMQ%3D,","state":"0","url":""},"state":"0","num":"1"},{"id":51,"user":{"id":1,"tel":"17629345001","headimg":"/Public/home/images/f_icon6.png","nickname":"e8438","status":1,"addtime":1561687699,"pid":0,"edittime":"0","password":"7fab9c962fbd1b59b1ed65f0cdb7ddf7","type":1,"isSm":0,"isYg":2,"zfbname":"","zfbacc":"","kymon":0.98,"djmon":0,"ljsy":0,"tjcode":"dece0071","skmsg":"","name":"","idcard":"","qm":"","isJqr":1,"ne":"0","syjf":"0"},"goods":{"id":5,"name":"和田玉2","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562049584539upload_1e93ea05_a042_4be4_906a_b8253e80b888_00000033.tmp.png?Expires=1877409584&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=GxhSv7cAxGWFJ3LnHLlg14FRsjI%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"10000","stock":"10","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562049584539upload_1e93ea05_a042_4be4_906a_b8253e80b888_00000033.tmp.png?Expires=1877409584&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=GxhSv7cAxGWFJ3LnHLlg14FRsjI%3D,","state":"0","url":""},"price":"1000","state":"0","num":"1"}],"prePage":0,"nextPage":0,"isFirstPage":true,"isLastPage":true,"hasPreviousPage":false,"hasNextPage":false,"navigatePages":8,"navigatepageNums":[1],"navigateFirstPage":1,"navigateLastPage":1}
+     * list : {"pageNum":1,"pageSize":20,"size":4,"startRow":1,"endRow":4,"total":4,"pages":1,"list":[{"id":61,"oldjf":"0","newjf":"0","hfjf":"0","goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""},"oldprice":"0.98","newprice":"0.97","price":"0.01","date":"2019-07-08 20:26:30","state":"1","num":"1"},{"id":67,"oldjf":"0","newjf":"0","hfjf":"0","goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""},"oldprice":"0.97","newprice":"0.96","price":"0.01","date":"2019-07-08 22:47:59","state":"1","num":"1"},{"id":69,"oldjf":"0","newjf":"0","hfjf":"0","goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""},"oldprice":"0.96","newprice":"0.95","price":"0.01","date":"2019-07-08 22:49:22","state":"1","mpAddress":{"id":2,"uid":1,"name":"asda","tel":"17629345001","ssx":"河南省郑州市中原区","address":"asdasdasd","addtime":"1562588786","isMr":1},"num":"1"},{"id":70,"oldjf":"0","newjf":"0","hfjf":"0","goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""},"oldprice":"0.95","newprice":"0.94","price":"0.01","date":"2019-07-08 23:01:59","state":"1","mpAddress":{"id":2,"uid":1,"name":"asda","tel":"17629345001","ssx":"河南省郑州市中原区","address":"asdasdasd","addtime":"1562588786","isMr":1},"num":"1"}],"prePage":0,"nextPage":0,"isFirstPage":true,"isLastPage":true,"hasPreviousPage":false,"hasNextPage":false,"navigatePages":8,"navigatepageNums":[1],"navigateFirstPage":1,"navigateLastPage":1}
      * status : 1
      */
 
@@ -63,12 +63,12 @@ public class UserGetBillBean {
         /**
          * pageNum : 1
          * pageSize : 20
-         * size : 2
+         * size : 4
          * startRow : 1
-         * endRow : 2
-         * total : 2
+         * endRow : 4
+         * total : 4
          * pages : 1
-         * list : [{"id":50,"user":{"id":1,"tel":"17629345001","headimg":"/Public/home/images/f_icon6.png","nickname":"e8438","status":1,"addtime":1561687699,"pid":0,"edittime":"0","password":"7fab9c962fbd1b59b1ed65f0cdb7ddf7","type":1,"isSm":0,"isYg":2,"zfbname":"","zfbacc":"","kymon":0.98,"djmon":0,"ljsy":0,"tjcode":"dece0071","skmsg":"","name":"","idcard":"","qm":"","isJqr":1,"ne":"0","syjf":"0"},"goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"0","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562055537070upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000010.tmp.png?Expires=1877415537&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=Ie3GxqFsnFzRf5%2FTlHDJIeNQUMQ%3D,","state":"0","url":""},"state":"0","num":"1"},{"id":51,"user":{"id":1,"tel":"17629345001","headimg":"/Public/home/images/f_icon6.png","nickname":"e8438","status":1,"addtime":1561687699,"pid":0,"edittime":"0","password":"7fab9c962fbd1b59b1ed65f0cdb7ddf7","type":1,"isSm":0,"isYg":2,"zfbname":"","zfbacc":"","kymon":0.98,"djmon":0,"ljsy":0,"tjcode":"dece0071","skmsg":"","name":"","idcard":"","qm":"","isJqr":1,"ne":"0","syjf":"0"},"goods":{"id":5,"name":"和田玉2","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562049584539upload_1e93ea05_a042_4be4_906a_b8253e80b888_00000033.tmp.png?Expires=1877409584&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=GxhSv7cAxGWFJ3LnHLlg14FRsjI%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"10000","stock":"10","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562049584539upload_1e93ea05_a042_4be4_906a_b8253e80b888_00000033.tmp.png?Expires=1877409584&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=GxhSv7cAxGWFJ3LnHLlg14FRsjI%3D,","state":"0","url":""},"price":"1000","state":"0","num":"1"}]
+         * list : [{"id":61,"oldjf":"0","newjf":"0","hfjf":"0","goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""},"oldprice":"0.98","newprice":"0.97","price":"0.01","date":"2019-07-08 20:26:30","state":"1","num":"1"},{"id":67,"oldjf":"0","newjf":"0","hfjf":"0","goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""},"oldprice":"0.97","newprice":"0.96","price":"0.01","date":"2019-07-08 22:47:59","state":"1","num":"1"},{"id":69,"oldjf":"0","newjf":"0","hfjf":"0","goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""},"oldprice":"0.96","newprice":"0.95","price":"0.01","date":"2019-07-08 22:49:22","state":"1","mpAddress":{"id":2,"uid":1,"name":"asda","tel":"17629345001","ssx":"河南省郑州市中原区","address":"asdasdasd","addtime":"1562588786","isMr":1},"num":"1"},{"id":70,"oldjf":"0","newjf":"0","hfjf":"0","goods":{"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""},"oldprice":"0.95","newprice":"0.94","price":"0.01","date":"2019-07-08 23:01:59","state":"1","mpAddress":{"id":2,"uid":1,"name":"asda","tel":"17629345001","ssx":"河南省郑州市中原区","address":"asdasdasd","addtime":"1562588786","isMr":1},"num":"1"}]
          * prePage : 0
          * nextPage : 0
          * isFirstPage : true
@@ -90,8 +90,8 @@ public class UserGetBillBean {
         private String pages;
         private String prePage;
         private String nextPage;
-        private String isFirstPage;
-        private String isLastPage;
+        private boolean isFirstPage;
+        private boolean isLastPage;
         private boolean hasPreviousPage;
         private boolean hasNextPage;
         private String navigatePages;
@@ -180,19 +180,19 @@ public class UserGetBillBean {
             this.nextPage = nextPage;
         }
 
-        public String isIsFirstPage() {
+        public boolean isIsFirstPage() {
             return isFirstPage;
         }
 
-        public void setIsFirstPage(String isFirstPage) {
+        public void setIsFirstPage(boolean isFirstPage) {
             this.isFirstPage = isFirstPage;
         }
 
-        public String isIsLastPage() {
+        public boolean isIsLastPage() {
             return isLastPage;
         }
 
-        public void setIsLastPage(String isLastPage) {
+        public void setIsLastPage(boolean isLastPage) {
             this.isLastPage = isLastPage;
         }
 
@@ -254,20 +254,32 @@ public class UserGetBillBean {
 
         public static class ListBean {
             /**
-             * id : 50
-             * user : {"id":1,"tel":"17629345001","headimg":"/Public/home/images/f_icon6.png","nickname":"e8438","status":1,"addtime":1561687699,"pid":0,"edittime":"0","password":"7fab9c962fbd1b59b1ed65f0cdb7ddf7","type":1,"isSm":0,"isYg":2,"zfbname":"","zfbacc":"","kymon":0.98,"djmon":0,"ljsy":0,"tjcode":"dece0071","skmsg":"","name":"","idcard":"","qm":"","isJqr":1,"ne":"0","syjf":"0"}
-             * goods : {"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"0","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562055537070upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000010.tmp.png?Expires=1877415537&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=Ie3GxqFsnFzRf5%2FTlHDJIeNQUMQ%3D,","state":"0","url":""}
-             * state : 0
+             * id : 61
+             * oldjf : 0
+             * newjf : 0
+             * hfjf : 0
+             * goods : {"id":4,"name":"和田玉1","fengmian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D","jftypeid":"6","price":100,"supplier":"和田玉","needintegral":"0.1","stock":"96","tupian":"http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,","state":"0","url":""}
+             * oldprice : 0.98
+             * newprice : 0.97
+             * price : 0.01
+             * date : 2019-07-08 20:26:30
+             * state : 1
              * num : 1
-             * price : 1000
+             * mpAddress : {"id":2,"uid":1,"name":"asda","tel":"17629345001","ssx":"河南省郑州市中原区","address":"asdasdasd","addtime":"1562588786","isMr":1}
              */
 
             private String id;
-            private UserBean user;
+            private String oldjf;
+            private String newjf;
+            private String hfjf;
             private GoodsBean goods;
+            private String oldprice;
+            private String newprice;
+            private String price;
+            private String date;
             private String state;
             private String num;
-            private String price;
+            private MpAddressBean mpAddress;
 
             public static List<ListBean> arrayListBeanFromData(String str) {
 
@@ -285,12 +297,28 @@ public class UserGetBillBean {
                 this.id = id;
             }
 
-            public UserBean getUser() {
-                return user;
+            public String getOldjf() {
+                return oldjf;
             }
 
-            public void setUser(UserBean user) {
-                this.user = user;
+            public void setOldjf(String oldjf) {
+                this.oldjf = oldjf;
+            }
+
+            public String getNewjf() {
+                return newjf;
+            }
+
+            public void setNewjf(String newjf) {
+                this.newjf = newjf;
+            }
+
+            public String getHfjf() {
+                return hfjf;
+            }
+
+            public void setHfjf(String hfjf) {
+                this.hfjf = hfjf;
             }
 
             public GoodsBean getGoods() {
@@ -299,6 +327,38 @@ public class UserGetBillBean {
 
             public void setGoods(GoodsBean goods) {
                 this.goods = goods;
+            }
+
+            public String getOldprice() {
+                return oldprice;
+            }
+
+            public void setOldprice(String oldprice) {
+                this.oldprice = oldprice;
+            }
+
+            public String getNewprice() {
+                return newprice;
+            }
+
+            public void setNewprice(String newprice) {
+                this.newprice = newprice;
+            }
+
+            public String getPrice() {
+                return price;
+            }
+
+            public void setPrice(String price) {
+                this.price = price;
+            }
+
+            public String getDate() {
+                return date;
+            }
+
+            public void setDate(String date) {
+                this.date = date;
             }
 
             public String getState() {
@@ -317,289 +377,25 @@ public class UserGetBillBean {
                 this.num = num;
             }
 
-            public String getPrice() {
-                return price;
+            public MpAddressBean getMpAddress() {
+                return mpAddress;
             }
 
-            public void setPrice(String price) {
-                this.price = price;
-            }
-
-            public static class UserBean {
-                /**
-                 * id : 1
-                 * tel : 17629345001
-                 * headimg : /Public/home/images/f_icon6.png
-                 * nickname : e8438
-                 * status : 1
-                 * addtime : 1561687699
-                 * pid : 0
-                 * edittime : 0
-                 * password : 7fab9c962fbd1b59b1ed65f0cdb7ddf7
-                 * type : 1
-                 * isSm : 0
-                 * isYg : 2
-                 * zfbname :
-                 * zfbacc :
-                 * kymon : 0.98
-                 * djmon : 0.0
-                 * ljsy : 0.0
-                 * tjcode : dece0071
-                 * skmsg :
-                 * name :
-                 * idcard :
-                 * qm :
-                 * isJqr : 1
-                 * ne : 0
-                 * syjf : 0
-                 */
-
-                private String id;
-                private String tel;
-                private String headimg;
-                private String nickname;
-                private String status;
-                private String addtime;
-                private String pid;
-                private String edittime;
-                private String password;
-                private String type;
-                private String isSm;
-                private String isYg;
-                private String zfbname;
-                private String zfbacc;
-                private String kymon;
-                private String djmon;
-                private String ljsy;
-                private String tjcode;
-                private String skmsg;
-                private String name;
-                private String idcard;
-                private String qm;
-                private String isJqr;
-                private String ne;
-                private String syjf;
-
-                public static List<UserBean> arrayUserBeanFromData(String str) {
-
-                    Type listType = new TypeToken<ArrayList<UserBean>>() {
-                    }.getType();
-
-                    return new Gson().fromJson(str, listType);
-                }
-
-                public String getId() {
-                    return id;
-                }
-
-                public void setId(String id) {
-                    this.id = id;
-                }
-
-                public String getTel() {
-                    return tel;
-                }
-
-                public void setTel(String tel) {
-                    this.tel = tel;
-                }
-
-                public String getHeadimg() {
-                    return headimg;
-                }
-
-                public void setHeadimg(String headimg) {
-                    this.headimg = headimg;
-                }
-
-                public String getNickname() {
-                    return nickname;
-                }
-
-                public void setNickname(String nickname) {
-                    this.nickname = nickname;
-                }
-
-                public String getStatus() {
-                    return status;
-                }
-
-                public void setStatus(String status) {
-                    this.status = status;
-                }
-
-                public String getAddtime() {
-                    return addtime;
-                }
-
-                public void setAddtime(String addtime) {
-                    this.addtime = addtime;
-                }
-
-                public String getPid() {
-                    return pid;
-                }
-
-                public void setPid(String pid) {
-                    this.pid = pid;
-                }
-
-                public String getEdittime() {
-                    return edittime;
-                }
-
-                public void setEdittime(String edittime) {
-                    this.edittime = edittime;
-                }
-
-                public String getPassword() {
-                    return password;
-                }
-
-                public void setPassword(String password) {
-                    this.password = password;
-                }
-
-                public String getType() {
-                    return type;
-                }
-
-                public void setType(String type) {
-                    this.type = type;
-                }
-
-                public String getIsSm() {
-                    return isSm;
-                }
-
-                public void setIsSm(String isSm) {
-                    this.isSm = isSm;
-                }
-
-                public String getIsYg() {
-                    return isYg;
-                }
-
-                public void setIsYg(String isYg) {
-                    this.isYg = isYg;
-                }
-
-                public String getZfbname() {
-                    return zfbname;
-                }
-
-                public void setZfbname(String zfbname) {
-                    this.zfbname = zfbname;
-                }
-
-                public String getZfbacc() {
-                    return zfbacc;
-                }
-
-                public void setZfbacc(String zfbacc) {
-                    this.zfbacc = zfbacc;
-                }
-
-                public String getKymon() {
-                    return kymon;
-                }
-
-                public void setKymon(String kymon) {
-                    this.kymon = kymon;
-                }
-
-                public String getDjmon() {
-                    return djmon;
-                }
-
-                public void setDjmon(String djmon) {
-                    this.djmon = djmon;
-                }
-
-                public String getLjsy() {
-                    return ljsy;
-                }
-
-                public void setLjsy(String ljsy) {
-                    this.ljsy = ljsy;
-                }
-
-                public String getTjcode() {
-                    return tjcode;
-                }
-
-                public void setTjcode(String tjcode) {
-                    this.tjcode = tjcode;
-                }
-
-                public String getSkmsg() {
-                    return skmsg;
-                }
-
-                public void setSkmsg(String skmsg) {
-                    this.skmsg = skmsg;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public String getIdcard() {
-                    return idcard;
-                }
-
-                public void setIdcard(String idcard) {
-                    this.idcard = idcard;
-                }
-
-                public String getQm() {
-                    return qm;
-                }
-
-                public void setQm(String qm) {
-                    this.qm = qm;
-                }
-
-                public String getIsJqr() {
-                    return isJqr;
-                }
-
-                public void setIsJqr(String isJqr) {
-                    this.isJqr = isJqr;
-                }
-
-                public String getNe() {
-                    return ne;
-                }
-
-                public void setNe(String ne) {
-                    this.ne = ne;
-                }
-
-                public String getSyjf() {
-                    return syjf;
-                }
-
-                public void setSyjf(String syjf) {
-                    this.syjf = syjf;
-                }
+            public void setMpAddress(MpAddressBean mpAddress) {
+                this.mpAddress = mpAddress;
             }
 
             public static class GoodsBean {
                 /**
                  * id : 4
                  * name : 和田玉1
-                 * fengmian : http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D
+                 * fengmian : http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D
                  * jftypeid : 6
                  * price : 100.0
                  * supplier : 和田玉
                  * needintegral : 0.1
-                 * stock : 0
-                 * tupian : http://wei1218.oss-cn-beijing.aliyuncs.com/1562055536704upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000009.tmp.png?Expires=1877415536&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=z7dmu6laIvR9xIn9vl1c4buQarU%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562055537070upload_a1975330_b297_4c4b_ab2f_b495b332a34b_00000010.tmp.png?Expires=1877415537&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=Ie3GxqFsnFzRf5%2FTlHDJIeNQUMQ%3D,
+                 * stock : 96
+                 * tupian : http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755653upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000039.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=5JH4mg4lwsnYJFXXIha6YA3Xg6k%3D,http://wei1218.oss-cn-beijing.aliyuncs.com/1562587755798upload_0791695f_5e41_4c94_a822_1730bfd2b88c_00000040.tmp.png?Expires=1877947755&OSSAccessKeyId=LTAIsT7aEEg1qypH&Signature=v1hBHgwk9QkwvRVS3Ef0zOHE%2BWg%3D,
                  * state : 0
                  * url :
                  */
@@ -710,6 +506,100 @@ public class UserGetBillBean {
 
                 public void setUrl(String url) {
                     this.url = url;
+                }
+            }
+
+            public static class MpAddressBean {
+                /**
+                 * id : 2
+                 * uid : 1
+                 * name : asda
+                 * tel : 17629345001
+                 * ssx : 河南省郑州市中原区
+                 * address : asdasdasd
+                 * addtime : 1562588786
+                 * isMr : 1
+                 */
+
+                private String id;
+                private String uid;
+                private String name;
+                private String tel;
+                private String ssx;
+                private String address;
+                private String addtime;
+                private String isMr;
+
+                public static List<MpAddressBean> arrayMpAddressBeanFromData(String str) {
+
+                    Type listType = new TypeToken<ArrayList<MpAddressBean>>() {
+                    }.getType();
+
+                    return new Gson().fromJson(str, listType);
+                }
+
+                public String getId() {
+                    return id;
+                }
+
+                public void setId(String id) {
+                    this.id = id;
+                }
+
+                public String getUid() {
+                    return uid;
+                }
+
+                public void setUid(String uid) {
+                    this.uid = uid;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getTel() {
+                    return tel;
+                }
+
+                public void setTel(String tel) {
+                    this.tel = tel;
+                }
+
+                public String getSsx() {
+                    return ssx;
+                }
+
+                public void setSsx(String ssx) {
+                    this.ssx = ssx;
+                }
+
+                public String getAddress() {
+                    return address;
+                }
+
+                public void setAddress(String address) {
+                    this.address = address;
+                }
+
+                public String getAddtime() {
+                    return addtime;
+                }
+
+                public void setAddtime(String addtime) {
+                    this.addtime = addtime;
+                }
+
+                public String getIsMr() {
+                    return isMr;
+                }
+
+                public void setIsMr(String isMr) {
+                    this.isMr = isMr;
                 }
             }
         }

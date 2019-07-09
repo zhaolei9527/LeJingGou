@@ -53,6 +53,7 @@
                     android:background="@mipmap/sousuo" />
 
                 <EditText
+                    android:text="和田玉"
                     android:id="@+id/et_search_tiezi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

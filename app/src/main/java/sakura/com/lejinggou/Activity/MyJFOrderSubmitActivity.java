@@ -32,6 +32,7 @@ import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.CreateBillBean;
 import sakura.com.lejinggou.Bean.JfShopBean;
 import sakura.com.lejinggou.Bean.PayResult;
+import sakura.com.lejinggou.Bean.UserGetBillByIdBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
@@ -103,6 +104,22 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
     Button btnPaynow;
     @BindView(R.id.ll_pay)
     LinearLayout llPay;
+    @BindView(R.id.rl_suoxuJF)
+    RelativeLayout rlSuoxuJF;
+    @BindView(R.id.rl_userJF)
+    RelativeLayout rlUserJF;
+    @BindView(R.id.rl_userYUE)
+    RelativeLayout rlUserYUE;
+    @BindView(R.id.rl_ZJJF)
+    RelativeLayout rlZJJF;
+    @BindView(R.id.rl_JFZF)
+    RelativeLayout rlJFZF;
+    @BindView(R.id.rl_QTZF)
+    RelativeLayout rlQTZF;
+    @BindView(R.id.rl_WUGS)
+    RelativeLayout rlWUGS;
+    @BindView(R.id.rl_KDDH)
+    RelativeLayout rlKDDH;
     private String orderid;
     private String order;
     private Dialog dialog;
@@ -213,14 +230,6 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
             }
         });
 
-        rlChangeDizhi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(context, AddressActivitry.class)
-                        .putExtra("type", "backAddress"), addressCode);
-            }
-        });
-
     }
 
     @Override
@@ -285,6 +294,14 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                 orderResult = result;
                 Log.e("MyOrderDetailsActivity", result);
                 try {
+
+                    rlChangeDizhi.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivityForResult(new Intent(context, AddressActivitry.class)
+                                    .putExtra("type", "backAddress"), addressCode);
+                        }
+                    });
 
                     orderDetailBean = new Gson().fromJson(result, CreateBillBean.class);
 
@@ -364,67 +381,67 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         HashMap<String, String> params = new HashMap<>(3);
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         params.put("id", orderid);
-        Log.e("MyOrderDetailsActivity", params.toString());
+        Log.e("userGetBillById", params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "userGetBillById", "userGetBillById", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
                 dialog.dismiss();
                 orderResult = result;
-                Log.e("MyOrderDetailsActivity", result);
+                Log.e("userGetBillById", result);
                 try {
-//                    UserGetBillByIdBean orderDetailBean = new Gson().fromJson(result, UserGetBillByIdBean.class);
-//                    tvName.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getAddress().getName());
-//                    tvPhone.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getAddress().getTel());
-//                    tvDizhi.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getAddress().getAddress());
-//                    String stu = MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getState();
-//
-//                    llPay.setVisibility(View.GONE);
-//                    if ("1".equals(stu)) {
-//                        tvStu.setText("待付款");
-//                        llPay.setVisibility(View.VISIBLE);
-//                        llAddress.setVisibility(View.GONE);
-//                    } else if ("2".equals(stu)) {
-//                        tvStu.setText("待发货");
-//                    } else if ("3".equals(stu)) {
-//                        tvStu.setText("待收货");
-//                    } else if ("4".equals(stu)) {
-//                        tvStu.setText("已完成");
-//                    } else if ("-1".equals(stu)) {
-//                        tvStu.setText("已过期");
-//                        llAddress.setVisibility(View.GONE);
-//                    } else {
-//                        tvStu.setText("");
-//                    }
-//
-//                    tvPriceTotal.setText("￥" + MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getPrice());
-//                    tvBZJ.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getNeedintegral());
-//
-//                    if (!TextUtils.isEmpty(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getKdbh())) {
-//                        tvWuliu.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getKdgs());
-//                    }
-//
-//                    if (!TextUtils.isEmpty(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getKdgs())) {
-//                        tvDanhao.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getKdbh());
-//                    }
-//
-//                    final View item_oreder_details_layout = View.inflate(context, R.layout.item_oreder_details_layout, null);
-//                    item_oreder_details_layout.setTag(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getId());
-//                    SimpleDraweeView SimpleDraweeView = (com.facebook.drawee.view.SimpleDraweeView) item_oreder_details_layout.findViewById(R.id.SimpleDraweeView);
-//                    SimpleDraweeView.setImageURI(UrlUtils.URL + MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getFm_img());
-//                    final TextView tv_title = (TextView) item_oreder_details_layout.findViewById(R.id.tv_title);
-//                    tv_title.setText(MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getGname());
-//                    TextView tv_classify = (TextView) item_oreder_details_layout.findViewById(R.id.tv_classify);
-//                    tv_classify.setText("￥" + MyJFOrderSubmitActivity.this.orderDetailBean.getGoods().getPrice());
-//                    item_oreder_details_layout.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            Intent intent = new Intent(context, PriceDetailsActivity.class);
-//                            int tag = Integer.parseInt(item_oreder_details_layout.getTag().toString());
-//                            intent.putExtra("id", String.valueOf(tag));
-//                            startActivity(intent);
-//                        }
-//                    });
-//                    llOrders.addView(item_oreder_details_layout);
+                    UserGetBillByIdBean orderDetailBean = new Gson().fromJson(result, UserGetBillByIdBean.class);
+                    tvName.setText(orderDetailBean.getList().getMpAddress().getName());
+                    tvPhone.setText(orderDetailBean.getList().getMpAddress().getTel());
+                    tvDizhi.setText(orderDetailBean.getList().getMpAddress().getAddress());
+                    String stu = orderDetailBean.getList().getState();
+
+                    llPay.setVisibility(View.GONE);
+                    if ("0".equals(stu)) {
+                        tvStu.setText("待付款");
+                        llPay.setVisibility(View.VISIBLE);
+                        llAddress.setVisibility(View.GONE);
+                    } else if ("1".equals(stu)) {
+                        tvStu.setText("待发货");
+                    } else if ("2".equals(stu)) {
+                        tvStu.setText("待收货");
+                    } else if ("3".equals(stu)) {
+                        tvStu.setText("已完成");
+                    } else if ("4".equals(stu)) {
+                        tvStu.setText("已过期");
+                        llAddress.setVisibility(View.GONE);
+                    } else {
+                        tvStu.setText("");
+                    }
+
+                    tvPriceTotal.setText("￥" + orderDetailBean.getList().getGoods().getPrice());
+                    tvBZJ.setText(orderDetailBean.getList().getGoods().getNeedintegral());
+
+                    if (!TextUtils.isEmpty(orderDetailBean.getList().getKuaidiming())) {
+                        tvWuliu.setText(orderDetailBean.getList().getKuaidiming());
+                    }
+
+                    if (!TextUtils.isEmpty(orderDetailBean.getList().getKuaidihao())) {
+                        tvDanhao.setText(orderDetailBean.getList().getKuaidihao());
+                    }
+
+                    final View item_oreder_details_layout = View.inflate(context, R.layout.item_oreder_details_layout, null);
+                    item_oreder_details_layout.setTag(orderDetailBean.getList().getGoods().getId());
+                    SimpleDraweeView SimpleDraweeView = (com.facebook.drawee.view.SimpleDraweeView) item_oreder_details_layout.findViewById(R.id.SimpleDraweeView);
+                    SimpleDraweeView.setImageURI(orderDetailBean.getList().getGoods().getFengmian());
+                    final TextView tv_title = (TextView) item_oreder_details_layout.findViewById(R.id.tv_title);
+                    tv_title.setText(orderDetailBean.getList().getGoods().getName());
+                    TextView tv_classify = (TextView) item_oreder_details_layout.findViewById(R.id.tv_classify);
+                    tv_classify.setText("￥" + orderDetailBean.getList().getGoods().getPrice());
+                    item_oreder_details_layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, PriceDetailsActivity.class);
+                            int tag = Integer.parseInt(item_oreder_details_layout.getTag().toString());
+                            intent.putExtra("id", String.valueOf(tag));
+                            startActivity(intent);
+                        }
+                    });
+                    llOrders.addView(item_oreder_details_layout);
                     result = null;
                 } catch (Exception e) {
                     e.printStackTrace();
