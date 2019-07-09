@@ -235,6 +235,7 @@
                     android:textColor="#333" />
 
                 <TextView
+                    android:id="@+id/tv_ZJJF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -269,6 +270,7 @@
                     android:textColor="#333" />
 
                 <TextView
+                    android:id="@+id/tv_JFZF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -302,6 +304,7 @@
                     android:textColor="#333" />
 
                 <TextView
+                    android:id="@+id/tv_QTZF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

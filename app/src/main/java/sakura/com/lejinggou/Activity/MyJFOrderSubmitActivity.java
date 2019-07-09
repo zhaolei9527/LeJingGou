@@ -120,6 +120,12 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
     RelativeLayout rlWUGS;
     @BindView(R.id.rl_KDDH)
     RelativeLayout rlKDDH;
+    @BindView(R.id.tv_ZJJF)
+    TextView tvZJJF;
+    @BindView(R.id.tv_JFZF)
+    TextView tvJFZF;
+    @BindView(R.id.tv_QTZF)
+    TextView tvQTZF;
     private String orderid;
     private String order;
     private Dialog dialog;
@@ -295,6 +301,12 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                 Log.e("MyOrderDetailsActivity", result);
                 try {
 
+                    rlJFZF.setVisibility(View.GONE);
+                    rlQTZF.setVisibility(View.GONE);
+                    rlZJJF.setVisibility(View.GONE);
+                    rlWUGS.setVisibility(View.GONE);
+                    rlKDDH.setVisibility(View.GONE);
+
                     rlChangeDizhi.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -305,16 +317,16 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
 
                     orderDetailBean = new Gson().fromJson(result, CreateBillBean.class);
 
-                    if (orderDetailBean.getAddress() != null) {
+                    if (orderDetailBean.getList().getAddress() != null) {
                         tvAddDizhi.setVisibility(View.INVISIBLE);
                         tvName.setVisibility(View.VISIBLE);
-                        tvName.setText(orderDetailBean.getAddress().getName());
+                        tvName.setText(orderDetailBean.getList().getAddress().getName());
                         tvDizhi.setVisibility(View.VISIBLE);
-                        tvDizhi.setText(orderDetailBean.getAddress().getSsx() + orderDetailBean.getAddress().getAddress());
+                        tvDizhi.setText(orderDetailBean.getList().getAddress().getSsx() + orderDetailBean.getList().getAddress().getAddress());
                         tvPhone.setVisibility(View.VISIBLE);
-                        tvPhone.setText(orderDetailBean.getAddress().getTel());
+                        tvPhone.setText(orderDetailBean.getList().getAddress().getTel());
                         //地址id
-                        addressID = orderDetailBean.getAddress().getId();
+                        addressID = orderDetailBean.getList().getAddress().getId();
                     } else {
                         tvAddDizhi.setVisibility(View.VISIBLE);
                         tvName.setVisibility(View.INVISIBLE);
@@ -322,32 +334,31 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                         tvPhone.setVisibility(View.INVISIBLE);
                     }
 
-                    tvZHJF.setText(orderDetailBean.getUserjf());
-                    tvZHYE.setText("￥" + orderDetailBean.getUsermoney());
+                    tvZHJF.setText(orderDetailBean.getList().getUserjf());
+                    tvZHYE.setText("￥" + orderDetailBean.getList().getUsermoney());
 
                     tvStu.setText("待付款");
                     llPay.setVisibility(View.VISIBLE);
                     llAddress.setVisibility(View.VISIBLE);
 
-                    double Userjf = Double.parseDouble(orderDetailBean.getUserjf());
-
-                    double Needintegral = Double.parseDouble(orderDetailBean.getGoods().getNeedintegral());
+                    double Userjf = Double.parseDouble(orderDetailBean.getList().getUserjf());
+                    double Needintegral = Double.parseDouble(orderDetailBean.getList().getGoods().getNeedintegral());
 
                     if (Userjf > Needintegral) {
                         rlLv.setVisibility(View.GONE);
                     }
 
-                    tvPriceTotal.setText("￥" + orderDetailBean.getGoods().getPrice());
-                    tvBZJ.setText(orderDetailBean.getGoods().getNeedintegral());
+                    tvPriceTotal.setText("￥" + orderDetailBean.getList().getGoods().getPrice());
+                    tvBZJ.setText(orderDetailBean.getList().getGoods().getNeedintegral());
 
                     final View item_oreder_details_layout = View.inflate(context, R.layout.item_oreder_details_layout, null);
-                    item_oreder_details_layout.setTag(orderDetailBean.getGoods().getId());
+                    item_oreder_details_layout.setTag(orderDetailBean.getList().getGoods().getId());
                     SimpleDraweeView SimpleDraweeView = (com.facebook.drawee.view.SimpleDraweeView) item_oreder_details_layout.findViewById(R.id.SimpleDraweeView);
-                    SimpleDraweeView.setImageURI(orderDetailBean.getGoods().getFengmian());
+                    SimpleDraweeView.setImageURI(orderDetailBean.getList().getGoods().getFengmian());
                     final TextView tv_title = (TextView) item_oreder_details_layout.findViewById(R.id.tv_title);
-                    tv_title.setText(orderDetailBean.getGoods().getName());
+                    tv_title.setText(orderDetailBean.getList().getGoods().getName());
                     TextView tv_classify = (TextView) item_oreder_details_layout.findViewById(R.id.tv_classify);
-                    tv_classify.setText("￥" + orderDetailBean.getGoods().getPrice());
+                    tv_classify.setText("￥" + orderDetailBean.getList().getGoods().getPrice());
                     item_oreder_details_layout.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -389,26 +400,73 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                 orderResult = result;
                 Log.e("userGetBillById", result);
                 try {
+
                     UserGetBillByIdBean orderDetailBean = new Gson().fromJson(result, UserGetBillByIdBean.class);
                     tvName.setText(orderDetailBean.getList().getMpAddress().getName());
                     tvPhone.setText(orderDetailBean.getList().getMpAddress().getTel());
                     tvDizhi.setText(orderDetailBean.getList().getMpAddress().getAddress());
+                    tvZHJF.setText(orderDetailBean.getList().getUser().getSyjf());
+                    tvZHYE.setText("￥" + orderDetailBean.getList().getUser().getKymon());
+                    tvZJJF.setText(orderDetailBean.getList().getGoods().getName());
+                    tvJFZF.setText(orderDetailBean.getList().getHfjf());
+                    tvQTZF.setText("¥"+orderDetailBean.getList().getPrice());
+
                     String stu = orderDetailBean.getList().getState();
 
                     llPay.setVisibility(View.GONE);
                     if ("0".equals(stu)) {
                         tvStu.setText("待付款");
                         llPay.setVisibility(View.VISIBLE);
-                        llAddress.setVisibility(View.GONE);
+                        llAddress.setVisibility(View.VISIBLE);
+                        rlSuoxuJF.setVisibility(View.VISIBLE);
+                        rlUserJF.setVisibility(View.VISIBLE);
+                        rlUserYUE.setVisibility(View.VISIBLE);
+                        rlJFZF.setVisibility(View.GONE);
+                        rlQTZF.setVisibility(View.GONE);
+                        rlZJJF.setVisibility(View.GONE);
+                        rlWUGS.setVisibility(View.GONE);
+                        rlKDDH.setVisibility(View.GONE);
                     } else if ("1".equals(stu)) {
                         tvStu.setText("待发货");
+                        rlSuoxuJF.setVisibility(View.GONE);
+                        rlUserJF.setVisibility(View.GONE);
+                        rlUserYUE.setVisibility(View.GONE);
+                        rlJFZF.setVisibility(View.VISIBLE);
+                        rlQTZF.setVisibility(View.VISIBLE);
+                        rlZJJF.setVisibility(View.VISIBLE);
+                        rlWUGS.setVisibility(View.GONE);
+                        rlKDDH.setVisibility(View.GONE);
                     } else if ("2".equals(stu)) {
                         tvStu.setText("待收货");
+                        rlSuoxuJF.setVisibility(View.GONE);
+                        rlUserJF.setVisibility(View.GONE);
+                        rlUserYUE.setVisibility(View.GONE);
+                        rlJFZF.setVisibility(View.VISIBLE);
+                        rlQTZF.setVisibility(View.VISIBLE);
+                        rlZJJF.setVisibility(View.VISIBLE);
+                        rlWUGS.setVisibility(View.VISIBLE);
+                        rlKDDH.setVisibility(View.VISIBLE);
                     } else if ("3".equals(stu)) {
                         tvStu.setText("已完成");
+                        rlSuoxuJF.setVisibility(View.GONE);
+                        rlUserJF.setVisibility(View.GONE);
+                        rlUserYUE.setVisibility(View.GONE);
+                        rlJFZF.setVisibility(View.VISIBLE);
+                        rlQTZF.setVisibility(View.VISIBLE);
+                        rlZJJF.setVisibility(View.VISIBLE);
+                        rlWUGS.setVisibility(View.VISIBLE);
+                        rlKDDH.setVisibility(View.VISIBLE);
                     } else if ("4".equals(stu)) {
-                        tvStu.setText("已过期");
-                        llAddress.setVisibility(View.GONE);
+                        tvStu.setText("已取消");
+                        rlSuoxuJF.setVisibility(View.GONE);
+                        rlUserJF.setVisibility(View.GONE);
+                        rlUserYUE.setVisibility(View.GONE);
+                        rlJFZF.setVisibility(View.VISIBLE);
+                        rlQTZF.setVisibility(View.VISIBLE);
+                        rlZJJF.setVisibility(View.VISIBLE);
+                        rlWUGS.setVisibility(View.GONE);
+                        rlKDDH.setVisibility(View.GONE);
+                        llAddress.setVisibility(View.VISIBLE);
                     } else {
                         tvStu.setText("");
                     }
@@ -495,13 +553,13 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         params.put("addressid", addressID);
         params.put("num", "1");
 
-        double Userjf = Double.parseDouble(orderDetailBean.getUserjf());
-        double Needintegral = Double.parseDouble(orderDetailBean.getGoods().getNeedintegral());
+        double Userjf = Double.parseDouble(orderDetailBean.getList().getUserjf());
+        double Needintegral = Double.parseDouble(orderDetailBean.getList().getGoods().getNeedintegral());
 
         if (Userjf > Needintegral) {
-            params.put("jf", orderDetailBean.getGoods().getNeedintegral());
+            params.put("jf", orderDetailBean.getList().getGoods().getNeedintegral());
         } else {
-            params.put("jf", orderDetailBean.getUserjf());
+            params.put("jf", orderDetailBean.getList().getUserjf());
             if (!ChoosedYue.isChecked()) {
                 dialog.dismiss();
                 EZToast.showShort(context, "积分不足,请配合余额支付");
@@ -509,7 +567,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
             }
         }
 
-        params.put("oid", orderDetailBean.getOid());
+        params.put("oid", orderDetailBean.getList().getOid());
 
         if (ChoosedYue.isChecked()) {
             params.put("isyue", "1");
