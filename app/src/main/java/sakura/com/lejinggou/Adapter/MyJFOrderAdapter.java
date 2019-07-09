@@ -2,6 +2,7 @@ package sakura.com.lejinggou.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import sakura.com.lejinggou.Activity.MyJFOrderSubmitActivity;
 import sakura.com.lejinggou.Bean.CodeBean;
 import sakura.com.lejinggou.Bean.UserGetBillBean;
 import sakura.com.lejinggou.R;
@@ -124,6 +126,22 @@ public class MyJFOrderAdapter extends RecyclerView.Adapter<MyJFOrderAdapter.View
 
         }
 
+        holder.btnIsgetOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datas.get(position).setState("3");
+                notifyItemChanged(position);
+                orderReceipt(datas.get(position).getId());
+            }
+        });
+
+        holder.btnPayOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, MyJFOrderSubmitActivity.class).putExtra("orderid", datas.get(position).getId()));
+            }
+        });
+
     }
 
     @Override
@@ -205,12 +223,12 @@ public class MyJFOrderAdapter extends RecyclerView.Adapter<MyJFOrderAdapter.View
     private void orderReceipt(String id) {
         HashMap<String, String> params = new HashMap<>(3);
         params.put("uid", String.valueOf(SpUtil.get(mContext, "uid", "")));
-        params.put("id", id);
-        Log.e("MyOrderAdapter", "params:" + params);
-        VolleyRequest.RequestPost(mContext, UrlUtils.BASE_URL + "order/sh", "order/sh", params, new VolleyInterface(mContext) {
+        params.put("oid", id);
+        Log.e("billshouhuo", "params:" + params);
+        VolleyRequest.RequestPost(mContext, UrlUtils.JAVA_URL + "billshouhuo", "billshouhuo", params, new VolleyInterface(mContext) {
             @Override
             public void onMySuccess(String result) {
-                Log.e("RegisterActivity", result);
+                Log.e("billshouhuo", result);
                 try {
                     CodeBean suckleCartDelBean = new Gson().fromJson(result, CodeBean.class);
                     if ("1".equals(String.valueOf(suckleCartDelBean.getStatus()))) {

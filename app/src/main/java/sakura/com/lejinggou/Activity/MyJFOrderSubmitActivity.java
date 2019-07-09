@@ -168,6 +168,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
     };
 
     private String id;
+    private UserGetBillByIdBean userGetBillByIdBean;
 
     @Override
     protected void onDestroy() {
@@ -245,8 +246,19 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                 finish();
                 break;
             case R.id.btn_paynow:
+                if (TextUtils.isEmpty(addressID)){
+                    EZToast.showShort(context,"请选择地址");
+                    return;
+                }
+
                 dialog.show();
-                orderYuepay();
+
+                if (!TextUtils.isEmpty(id)) {
+                    orderYuepay();
+                } else {
+                    orderDetailYuepay();
+                }
+
                 break;
             default:
                 break;
@@ -401,17 +413,18 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                 Log.e("userGetBillById", result);
                 try {
 
-                    UserGetBillByIdBean orderDetailBean = new Gson().fromJson(result, UserGetBillByIdBean.class);
-                    tvName.setText(orderDetailBean.getList().getMpAddress().getName());
-                    tvPhone.setText(orderDetailBean.getList().getMpAddress().getTel());
-                    tvDizhi.setText(orderDetailBean.getList().getMpAddress().getAddress());
-                    tvZHJF.setText(orderDetailBean.getList().getUser().getSyjf());
-                    tvZHYE.setText("￥" + orderDetailBean.getList().getUser().getKymon());
-                    tvZJJF.setText(orderDetailBean.getList().getGoods().getName());
-                    tvJFZF.setText(orderDetailBean.getList().getHfjf());
-                    tvQTZF.setText("¥"+orderDetailBean.getList().getPrice());
+                    userGetBillByIdBean = new Gson().fromJson(result, UserGetBillByIdBean.class);
+                    addressID=userGetBillByIdBean.getList().getMpAddress().getId();
+                    tvName.setText(userGetBillByIdBean.getList().getMpAddress().getName());
+                    tvPhone.setText(userGetBillByIdBean.getList().getMpAddress().getTel());
+                    tvDizhi.setText(userGetBillByIdBean.getList().getMpAddress().getAddress());
+                    tvZHJF.setText(userGetBillByIdBean.getList().getUser().getSyjf());
+                    tvZHYE.setText("￥" + userGetBillByIdBean.getList().getUser().getKymon());
+                    tvZJJF.setText(userGetBillByIdBean.getList().getGoods().getName());
+                    tvJFZF.setText(userGetBillByIdBean.getList().getHfjf());
+                    tvQTZF.setText("¥"+ userGetBillByIdBean.getList().getPrice());
 
-                    String stu = orderDetailBean.getList().getState();
+                    String stu = userGetBillByIdBean.getList().getState();
 
                     llPay.setVisibility(View.GONE);
                     if ("0".equals(stu)) {
@@ -471,25 +484,25 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                         tvStu.setText("");
                     }
 
-                    tvPriceTotal.setText("￥" + orderDetailBean.getList().getGoods().getPrice());
-                    tvBZJ.setText(orderDetailBean.getList().getGoods().getNeedintegral());
+                    tvPriceTotal.setText("￥" + userGetBillByIdBean.getList().getGoods().getPrice());
+                    tvBZJ.setText(userGetBillByIdBean.getList().getGoods().getNeedintegral());
 
-                    if (!TextUtils.isEmpty(orderDetailBean.getList().getKuaidiming())) {
-                        tvWuliu.setText(orderDetailBean.getList().getKuaidiming());
+                    if (!TextUtils.isEmpty(userGetBillByIdBean.getList().getKuaidiming())) {
+                        tvWuliu.setText(userGetBillByIdBean.getList().getKuaidiming());
                     }
 
-                    if (!TextUtils.isEmpty(orderDetailBean.getList().getKuaidihao())) {
-                        tvDanhao.setText(orderDetailBean.getList().getKuaidihao());
+                    if (!TextUtils.isEmpty(userGetBillByIdBean.getList().getKuaidihao())) {
+                        tvDanhao.setText(userGetBillByIdBean.getList().getKuaidihao());
                     }
 
                     final View item_oreder_details_layout = View.inflate(context, R.layout.item_oreder_details_layout, null);
-                    item_oreder_details_layout.setTag(orderDetailBean.getList().getGoods().getId());
+                    item_oreder_details_layout.setTag(userGetBillByIdBean.getList().getGoods().getId());
                     SimpleDraweeView SimpleDraweeView = (com.facebook.drawee.view.SimpleDraweeView) item_oreder_details_layout.findViewById(R.id.SimpleDraweeView);
-                    SimpleDraweeView.setImageURI(orderDetailBean.getList().getGoods().getFengmian());
+                    SimpleDraweeView.setImageURI(userGetBillByIdBean.getList().getGoods().getFengmian());
                     final TextView tv_title = (TextView) item_oreder_details_layout.findViewById(R.id.tv_title);
-                    tv_title.setText(orderDetailBean.getList().getGoods().getName());
+                    tv_title.setText(userGetBillByIdBean.getList().getGoods().getName());
                     TextView tv_classify = (TextView) item_oreder_details_layout.findViewById(R.id.tv_classify);
-                    tv_classify.setText("￥" + orderDetailBean.getList().getGoods().getPrice());
+                    tv_classify.setText("￥" + userGetBillByIdBean.getList().getGoods().getPrice());
                     item_oreder_details_layout.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -547,6 +560,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         ButterKnife.bind(this);
     }
 
+
     private void orderYuepay() {
         HashMap<String, String> params = new HashMap<>(3);
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
@@ -568,6 +582,66 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         }
 
         params.put("oid", orderDetailBean.getList().getOid());
+
+        if (ChoosedYue.isChecked()) {
+            params.put("isyue", "1");
+        } else {
+            params.put("isyue", "0");
+        }
+        Log.e("orderZfpay", params.toString());
+        VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "jfshop", "jfshop", params, new VolleyInterface(context) {
+            @Override
+            public void onMySuccess(String msg) {
+                dialog.dismiss();
+                Log.e("jfshop", msg);
+                try {
+                    JfShopBean jfShopBean = new Gson().fromJson(msg, JfShopBean.class);
+                    if (jfShopBean.getStatus().equals("1")) {
+                        EZToast.showShort(context, "支付成功");
+                        tvStu.setText("待发货");
+                        llPay.setVisibility(View.GONE);
+                    } else {
+                        EZToast.showShort(context, jfShopBean.getMsg());
+                        if (jfShopBean.getMsg().equals("支付失败,余额不足")) {
+                            startActivity(new Intent(context, MyChongZhiActivity.class));
+                            finish();
+                        }
+                    }
+                    msg = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+    }
+
+    private void orderDetailYuepay() {
+        HashMap<String, String> params = new HashMap<>(3);
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
+        params.put("addressid", addressID);
+        params.put("num", "1");
+
+        double Userjf = Double.parseDouble(userGetBillByIdBean.getList().getUser().getSyjf());
+        double Needintegral = Double.parseDouble(userGetBillByIdBean.getList().getGoods().getNeedintegral());
+
+        if (Userjf > Needintegral) {
+            params.put("jf", userGetBillByIdBean.getList().getGoods().getNeedintegral());
+        } else {
+            params.put("jf", userGetBillByIdBean.getList().getUser().getSyjf());
+            if (!ChoosedYue.isChecked()) {
+                dialog.dismiss();
+                EZToast.showShort(context, "积分不足,请配合余额支付");
+                return;
+            }
+        }
+
+        params.put("oid", userGetBillByIdBean.getList().getId());
 
         if (ChoosedYue.isChecked()) {
             params.put("isyue", "1");
