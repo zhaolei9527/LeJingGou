@@ -126,6 +126,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
             dialog = Utils.showLoadingDialog(getActivity());
             dialog.show();
             getData();
+            getListAll();
             llRegou.setOnClickListener(this);
             llJinri.setOnClickListener(this);
             llJinrilishi.setOnClickListener(this);
@@ -138,8 +139,7 @@ public class HomeFragment extends BaseLazyFragment implements View.OnClickListen
     @Override
     public void onResume() {
         super.onResume();
-        dialog.show();
-        getListAll();
+
     }
 
     @Override

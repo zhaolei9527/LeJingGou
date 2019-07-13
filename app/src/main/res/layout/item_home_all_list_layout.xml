@@ -44,14 +44,13 @@
 
         </FrameLayout>
 
-
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/x5"
             android:ellipsize="end"
-            android:maxLines="2"
+            android:maxLines="1"
             android:padding="@dimen/x5"
             android:textColor="@color/text333"
             android:textSize="@dimen/x13" />

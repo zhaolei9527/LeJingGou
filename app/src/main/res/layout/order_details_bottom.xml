@@ -272,7 +272,7 @@
             android:layout_width="@dimen/x262"
             android:layout_height="@dimen/y33"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/x80"
+            android:layout_marginTop="@dimen/x30"
             android:background="@mipmap/btn_login"
             android:text="支付"
             android:textColor="@color/bgfff" />
