@@ -237,6 +237,12 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
 
                         SimpleDraweeViewEWM.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getEwm());
 
+                        if (TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
+                            llXJ.setVisibility(View.GONE);
+                        } else {
+                            llXJ.setVisibility(View.VISIBLE);
+                        }
+
                     } else {
                         EZToast.showShort(context, aboutIndexBean.getInfo());
                         mContext.startActivity(new Intent(context, LoginActivity.class));
@@ -312,14 +318,14 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 if (!TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
                     rlEwm.setVisibility(View.VISIBLE);
                 } else {
-                    EZToast.showShort(context, "您当前非业务员");
+                    EZToast.showShort(context, "您当前非经纪人");
                 }
                 break;
             case R.id.ll_XJ:
                 if (!TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
                     startActivity(new Intent(mContext, XiaJiListActivity.class));
                 } else {
-                    EZToast.showShort(context, "您当前非业务员");
+                    EZToast.showShort(context, "您当前非经纪人");
                 }
                 break;
             case R.id.ll_myorder:
