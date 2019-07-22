@@ -226,7 +226,12 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                         SpUtil.putAndApply(context, "Kymon", aboutIndexBean.getData().getKymon());
                         SpUtil.putAndApply(context, "syjf", aboutIndexBean.getData().getSyjf());
 
-                        SimpleDraweeView.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getHeadimg());
+                        if (aboutIndexBean.getData().getHeadimg().startsWith("http")) {
+                            SimpleDraweeView.setImageURI(aboutIndexBean.getData().getHeadimg());
+                        } else {
+                            SimpleDraweeView.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getHeadimg());
+                        }
+
                         tvUsername.setText(String.valueOf(aboutIndexBean.getData().getNickname()));
                         tvLJ.setText("累计收益：￥" + String.valueOf(aboutIndexBean.getData().getLjsy()));
                         tvYE.setText(String.valueOf(aboutIndexBean.getData().getZje()));
