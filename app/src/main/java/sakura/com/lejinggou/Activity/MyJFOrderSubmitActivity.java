@@ -304,7 +304,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         params.put("goodsid", id);
         params.put("num", "1");
-        Log.e("MyOrderDetailsActivity", params.toString());
+        Log.e("MyOrderDetailsActivity", "createBill" + params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "createBill", "createBill", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
@@ -404,7 +404,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         HashMap<String, String> params = new HashMap<>(3);
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         params.put("id", orderid);
-        Log.e("userGetBillById", params.toString());
+        Log.e("userGetBillById", "userGetBillById" + params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "userGetBillById", "userGetBillById", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
@@ -589,7 +589,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
             params.put("isyue", "0");
         }
 
-        Log.e("orderZfpay", params.toString());
+        Log.e("orderZfpay", "jfshop" + params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "jfshop", "jfshop", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String msg) {
@@ -627,10 +627,8 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         params.put("addressid", addressID);
         params.put("num", "1");
-
         double Userjf = Double.parseDouble(userGetBillByIdBean.getList().getUser().getSyjf());
         double Needintegral = Double.parseDouble(userGetBillByIdBean.getList().getGoods().getNeedintegral());
-
         if (Userjf > Needintegral) {
             params.put("jf", userGetBillByIdBean.getList().getGoods().getNeedintegral());
         } else {
@@ -641,15 +639,13 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                 return;
             }
         }
-
         params.put("oid", userGetBillByIdBean.getList().getId());
-
         if (ChoosedYue.isChecked()) {
             params.put("isyue", "1");
         } else {
             params.put("isyue", "0");
         }
-        Log.e("orderZfpay", params.toString());
+        Log.e("orderZfpay", "jfshop" + params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "jfshop", "jfshop", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String msg) {
