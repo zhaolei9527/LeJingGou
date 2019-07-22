@@ -52,7 +52,13 @@ public class ChuJiaJiLuListAdapter extends RecyclerView.Adapter<ChuJiaJiLuListAd
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.SimpleDraweeView.setImageURI(UrlUtils.URL + datas.get(position).getHeadimg());
+
+        if (datas.get(position).getHeadimg().startsWith("http")) {
+            holder. SimpleDraweeView.setImageURI(datas.get(position).getHeadimg());
+        } else {
+            holder. SimpleDraweeView.setImageURI(UrlUtils.URL + datas.get(position).getHeadimg());
+        }
+
         holder.tvUser.setText(datas.get(position).getNickname());
         holder.tvTime.setText(DateUtils.getMm(Long.parseLong(datas.get(position).getAddtime()) * 1000));
         holder.tvUserMoney.setText("￥"+datas.get(position).getBs());

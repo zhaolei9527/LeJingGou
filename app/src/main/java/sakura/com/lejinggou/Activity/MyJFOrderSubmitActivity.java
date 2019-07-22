@@ -246,8 +246,8 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                 finish();
                 break;
             case R.id.btn_paynow:
-                if (TextUtils.isEmpty(addressID)){
-                    EZToast.showShort(context,"请选择地址");
+                if (TextUtils.isEmpty(addressID)) {
+                    EZToast.showShort(context, "请选择地址");
                     return;
                 }
 
@@ -414,7 +414,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                 try {
 
                     userGetBillByIdBean = new Gson().fromJson(result, UserGetBillByIdBean.class);
-                    addressID=userGetBillByIdBean.getList().getMpAddress().getId();
+                    addressID = userGetBillByIdBean.getList().getMpAddress().getId();
                     tvName.setText(userGetBillByIdBean.getList().getMpAddress().getName());
                     tvPhone.setText(userGetBillByIdBean.getList().getMpAddress().getTel());
                     tvDizhi.setText(userGetBillByIdBean.getList().getMpAddress().getAddress());
@@ -422,7 +422,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                     tvZHYE.setText("￥" + userGetBillByIdBean.getList().getUser().getKymon());
                     tvZJJF.setText(userGetBillByIdBean.getList().getGoods().getName());
                     tvJFZF.setText(userGetBillByIdBean.getList().getHfjf());
-                    tvQTZF.setText("¥"+ userGetBillByIdBean.getList().getPrice());
+                    tvQTZF.setText("¥" + userGetBillByIdBean.getList().getPrice());
 
                     String stu = userGetBillByIdBean.getList().getState();
 
@@ -588,6 +588,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
         } else {
             params.put("isyue", "0");
         }
+
         Log.e("orderZfpay", params.toString());
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "jfshop", "jfshop", params, new VolleyInterface(context) {
             @Override

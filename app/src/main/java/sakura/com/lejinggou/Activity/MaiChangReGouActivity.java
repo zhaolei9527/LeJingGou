@@ -107,8 +107,8 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
     private LinearLayoutManager line;
     private Dialog dialog;
     private MaiChangReGouListAdapter adapter;
-    private String endM="";
-    private String topM="";
+    private String endM = "";
+    private String topM = "";
     private int pay = 2;
     private String is_jlbzj = "0";
 
@@ -224,7 +224,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
             dialog.show();
             getMcList();
         } else {
-            EasyToast.getDEFAULT().show( R.string.Networkexception);// 使用系统样式进行输出
+            EasyToast.getDEFAULT().show(R.string.Networkexception);// 使用系统样式进行输出
         }
 
         mHandler.post(new Runnable() {
@@ -266,7 +266,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                                         dialog.show();
                                     }
                                 });
-                                if (!dialog.isShowing()){
+                                if (!dialog.isShowing()) {
                                     orderBzj();
                                 }
 
@@ -316,8 +316,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
 
                     CodeBean codeBean = new Gson().fromJson(msg, CodeBean.class);
 
-                    EasyToast.getDEFAULT().show( codeBean.getInfo());// 使用系统样式进行输出
-
+                    EasyToast.getDEFAULT().show(codeBean.getInfo());// 使用系统样式进行输出
 
                     if (!TextUtils.isEmpty(codeBean.getUrl())) {
                         orderJQR(codeBean.getUrl());
@@ -466,7 +465,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                 String decode = result;
                 try {
                     dialog.dismiss();
-                    Log.e("NewsListFragment", decode);
+                    Log.e("NewsListFragment-mc", decode);
                     final McReGouBean mcBean = new Gson().fromJson(decode, McReGouBean.class);
                     is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
                     if (1 == mcBean.getStatus()) {
@@ -493,6 +492,9 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
     }
 
     private void getMcListTop(final String m) {
+        if (TextUtils.isEmpty(m)) {
+            return;
+        }
         HashMap<String, String> params = new HashMap<>(1);
         params.put("m", m);
         params.put("type", "2");
@@ -505,6 +507,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            Log.e("NewsListFragment-top", result);
                             dialog.dismiss();
                             final McReGouBean mcBean = new Gson().fromJson(result, McReGouBean.class);
                             is_jlbzj = String.valueOf(mcBean.getData().getIs_jlbzj());
@@ -578,7 +581,11 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
 
                         LLEmpty.setVisibility(View.GONE);
                         if (!TextUtils.isEmpty(mcBean.getData().getUname())) {
-                            SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
+                            if (mcBean.getData().getUheadimg().startsWith("http")) {
+                                SimpleDraweeViewUser.setImageURI(mcBean.getData().getUheadimg());
+                            } else {
+                                SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
+                            }
                             tvUser.setText(mcBean.getData().getUname());
                             tvUserMoney.setText("￥" + mcBean.getData().getPrice());
                             adapter = new MaiChangReGouListAdapter(mcBean.getData().getList(), context);

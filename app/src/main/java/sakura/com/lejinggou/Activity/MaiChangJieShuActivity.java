@@ -190,7 +190,12 @@ public class MaiChangJieShuActivity extends BaseActivity implements View.OnClick
                         rvMaichanglist.loadMoreComplete();
                         endM = mcBean.getData().getTop();
                         tvTime.setText("已结束：" + DateUtils.getMillon(Long.parseLong(mcBean.getData().getEndtime()) * 1000));
-                        SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
+
+                        if (mcBean.getData().getUheadimg().startsWith("http")) {
+                            SimpleDraweeViewUser.setImageURI(mcBean.getData().getUheadimg());
+                        } else {
+                            SimpleDraweeViewUser.setImageURI(UrlUtils.URL + mcBean.getData().getUheadimg());
+                        }
                         tvUser.setText(mcBean.getData().getUname());
                         tvUserMoney.setText("￥" + mcBean.getData().getPrice());
                         if (null != mcBean.getData().getList() && !mcBean.getData().getList().isEmpty()) {
