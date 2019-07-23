@@ -225,6 +225,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                         SpUtil.putAndApply(context, "qm", aboutIndexBean.getData().getQm());
                         SpUtil.putAndApply(context, "Kymon", aboutIndexBean.getData().getKymon());
                         SpUtil.putAndApply(context, "syjf", aboutIndexBean.getData().getSyjf());
+                        SpUtil.putAndApply(context, "Is_yg", aboutIndexBean.getData().getIs_yg());
 
                         if (aboutIndexBean.getData().getHeadimg().startsWith("http")) {
                             SimpleDraweeView.setImageURI(aboutIndexBean.getData().getHeadimg());
@@ -242,9 +243,11 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
 
                         SimpleDraweeViewEWM.setImageURI(UrlUtils.URL + aboutIndexBean.getData().getEwm());
 
-                        if (TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
+                        if (!aboutIndexBean.getData().getIs_yg().equals("2")) {
+                            llTGM.setVisibility(View.GONE);
                             llXJ.setVisibility(View.GONE);
                         } else {
+                            llTGM.setVisibility(View.VISIBLE);
                             llXJ.setVisibility(View.VISIBLE);
                         }
 
@@ -320,14 +323,14 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 rlEwm.setVisibility(View.GONE);
                 break;
             case R.id.ll_TGM:
-                if (!TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
+                if (aboutIndexBean.getData().getIs_yg().equals("2")) {
                     rlEwm.setVisibility(View.VISIBLE);
                 } else {
                     EZToast.showShort(context, "您当前非经纪人");
                 }
                 break;
             case R.id.ll_XJ:
-                if (!TextUtils.isEmpty(aboutIndexBean.getData().getEwm())) {
+                if (aboutIndexBean.getData().getIs_yg().equals("2")) {
                     startActivity(new Intent(mContext, XiaJiListActivity.class));
                 } else {
                     EZToast.showShort(context, "您当前非经纪人");
@@ -370,7 +373,11 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 startActivity(new Intent(mContext, MyJFOrderActivity.class).putExtra("cid", "4"));
                 break;
             case R.id.img_message:
-                startActivity(new Intent(context, SettingActivity.class));
+                if (aboutIndexBean.getData().getIs_yg().equals("4")) {
+                    EZToast.showShort(context, "当前身份不可修改用户资料");
+                } else {
+                    startActivity(new Intent(context, SettingActivity.class));
+                }
                 break;
             case R.id.ll_chongzhi:
                 startActivity(new Intent(context, MyChongZhiActivity.class));

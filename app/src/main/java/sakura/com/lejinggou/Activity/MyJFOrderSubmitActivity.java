@@ -621,7 +621,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
             }
         });
     }
-
+    
     private void orderDetailYuepay() {
         HashMap<String, String> params = new HashMap<>(3);
         params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
