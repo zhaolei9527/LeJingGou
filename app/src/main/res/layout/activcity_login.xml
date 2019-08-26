@@ -48,8 +48,8 @@
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="@dimen/x80"
-            android:layout_height="@dimen/x80"
+            android:layout_width="@dimen/x130"
+            android:layout_height="@dimen/y50"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/y15"
@@ -61,20 +61,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/img"
             android:layout_marginLeft="@dimen/x20"
-            android:layout_marginTop="@dimen/y15"
+            android:layout_marginTop="@dimen/y20"
             android:layout_marginRight="@dimen/x20"
             android:orientation="vertical">
 
             <EditText
-                android:text=""
-                android:maxLines="1"
                 android:id="@+id/et_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:hint="请输入手机号"
                 android:inputType="number"
+                android:maxLines="1"
                 android:singleLine="true"
+                android:text=""
                 android:textColor="@color/text333"
                 android:textColorHint="@color/text999" />
 
@@ -91,15 +91,15 @@
             android:orientation="vertical">
 
             <EditText
-                android:text=""
-                android:maxLines="1"
                 android:id="@+id/et_passwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:hint="请输入密码"
                 android:inputType="textPassword"
+                android:maxLines="1"
                 android:singleLine="true"
+                android:text=""
                 android:textColor="@color/text333"
                 android:textColorHint="@color/text999" />
 

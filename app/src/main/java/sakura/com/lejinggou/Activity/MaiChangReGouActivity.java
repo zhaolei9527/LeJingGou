@@ -2,6 +2,7 @@ package sakura.com.lejinggou.Activity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -279,20 +280,21 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
 
                 break;
             case R.id.tv_pay:
-                String CZ = etCZ.getText().toString().trim();
-                if (TextUtils.isEmpty(CZ)) {
-                    EasyToast.getDEFAULT().show(etCZ.getHint().toString());// 使用系统样式进行输出
-                    return;
-                }
-                if (pay == 0) {
-                    EasyToast.getDEFAULT().show("请选择支付方式~");// 使用系统样式进行输出
-                    return;
-                }
-                if (pay == 2) {
-                    orderZfpay();
-                } else {
-                    //orderWxpay();
-                }
+                startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url", "http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
+//                String CZ = etCZ.getText().toString().trim();
+//                if (TextUtils.isEmpty(CZ)) {
+//                    EasyToast.getDEFAULT().show(etCZ.getHint().toString());// 使用系统样式进行输出
+//                    return;
+//                }
+//                if (pay == 0) {
+//                    EasyToast.getDEFAULT().show("请选择支付方式~");// 使用系统样式进行输出
+//                    return;
+//                }
+//                if (pay == 2) {
+//                    orderZfpay();
+//                } else {
+//                    //orderWxpay();
+//                }
                 break;
             default:
                 break;

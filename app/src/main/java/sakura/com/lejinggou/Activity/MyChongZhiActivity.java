@@ -152,6 +152,7 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
                 startActivity(new Intent(context, MingXiJiLuListActivity.class));
                 break;
             case R.id.btn_submit:
+
                 String Money = etMoney.getText().toString().trim();
                 if (TextUtils.isEmpty(Money)) {
                     EZToast.showShort(context, etMoney.getHint().toString());
@@ -164,7 +165,6 @@ public class MyChongZhiActivity extends BaseActivity implements View.OnClickList
                 } else {
                     //orderWxpay();
                 }
-
                 break;
             case R.id.ll_WX:
                 type = "1";

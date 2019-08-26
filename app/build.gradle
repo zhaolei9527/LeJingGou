@@ -71,8 +71,5 @@ dependencies {
     implementation project(':picker')
     implementation project(':pickerview')
     implementation "com.github.yjfnypeu:EasyAndroid:1.2.5"
-
-
-
 }
 

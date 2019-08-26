@@ -24,11 +24,11 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import sakura.com.lejinggou.Activity.ChongZhiXianXiaActivity;
 import sakura.com.lejinggou.Activity.HelpActivity;
 import sakura.com.lejinggou.Activity.LoginActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.MingXiJiLuListActivity;
-import sakura.com.lejinggou.Activity.MyChongZhiActivity;
 import sakura.com.lejinggou.Activity.MyJFOrderActivity;
 import sakura.com.lejinggou.Activity.MyOrderActivity;
 import sakura.com.lejinggou.Activity.SettingActivity;
@@ -380,7 +380,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 }
                 break;
             case R.id.ll_chongzhi:
-                startActivity(new Intent(context, MyChongZhiActivity.class));
+                startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url","http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
+                //startActivity(new Intent(context, MyChongZhiActivity.class));
                 break;
             case R.id.ll_tixian:
                 String zfbname = (String) SpUtil.get(context, "zfbname", "");
