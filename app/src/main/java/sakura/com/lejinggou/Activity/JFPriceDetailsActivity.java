@@ -98,7 +98,7 @@ public class JFPriceDetailsActivity extends BaseActivity implements View.OnClick
                 }
 
                 startActivity(new Intent(context, MyJFOrderSubmitActivity.class)
-                        .putExtra("id",goodsIndexBean.getList().getId())
+                        .putExtra("id", goodsIndexBean.getList().getId())
                 );
 
                 break;
@@ -140,7 +140,7 @@ public class JFPriceDetailsActivity extends BaseActivity implements View.OnClick
                         tvGYS2.setText("供应商：" + goodsIndexBean.getList().getSupplier());
                         tvCKJMoney.setText("￥" + goodsIndexBean.getList().getPrice());
                         tvTime.setText("需要积分：" + goodsIndexBean.getList().getNeedintegral());
-                        wb.loadUrl(goodsIndexBean.getList().getUrl());
+                        wb.loadUrl("http://yuyuanyoupin.com/ym/jf/id/" + String.valueOf(getIntent().getStringExtra("id")) + ".html");
                     } else {
                         EZToast.showShort(context, goodsIndexBean.getMsg());
                         finish();
