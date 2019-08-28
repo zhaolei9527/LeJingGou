@@ -108,7 +108,7 @@
                         android:layout_marginRight="@dimen/x5"
                         android:background="@drawable/bg_jf_round_title"
                         android:padding="3dp"
-                        android:text="市场价"
+                        android:text="积分兑换价"
                         android:textColor="@color/bgtitle"
                         android:textSize="@dimen/x10" />
 

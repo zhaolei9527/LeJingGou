@@ -139,7 +139,7 @@ public class JFPriceDetailsActivity extends BaseActivity implements View.OnClick
                         tvTitle.setText(goodsIndexBean.getList().getName());
                         tvGYS2.setText("供应商：" + goodsIndexBean.getList().getSupplier());
                         tvCKJMoney.setText("￥" + goodsIndexBean.getList().getPrice());
-                        tvTime.setText("需要积分：" + goodsIndexBean.getList().getNeedintegral());
+                        tvTime.setText("兑换所需积分：" + goodsIndexBean.getList().getNeedintegral());
                         wb.loadUrl("http://yuyuanyoupin.com/ym/jf/id/" + String.valueOf(getIntent().getStringExtra("id")) + ".html");
                     } else {
                         EZToast.showShort(context, goodsIndexBean.getMsg());
