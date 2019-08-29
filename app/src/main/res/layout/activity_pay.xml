@@ -99,10 +99,10 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:visibility="gone"
             android:id="@+id/rl_weixinpay"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y30">
+            android:layout_height="@dimen/y30"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/img_weixin"
@@ -139,7 +139,8 @@
         <RelativeLayout
             android:id="@+id/rl_yue"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y30">
+            android:layout_height="@dimen/y30"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/img_yue"

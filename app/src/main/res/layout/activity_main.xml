@@ -42,7 +42,7 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/SimpleDraweeView"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/x220"
             android:layout_height="@dimen/y280"
             android:layout_marginLeft="@dimen/x45"
             android:layout_marginRight="@dimen/x45"

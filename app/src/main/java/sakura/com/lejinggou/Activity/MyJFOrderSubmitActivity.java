@@ -604,7 +604,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                     } else {
                         EZToast.showShort(context, jfShopBean.getMsg());
                         if (jfShopBean.getMsg().equals("支付失败,余额不足")) {
-                            startActivity(new Intent(context, MyChongZhiActivity.class));
+                            startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url","http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
                             finish();
                         }
                     }
@@ -660,7 +660,7 @@ public class MyJFOrderSubmitActivity extends BaseActivity implements View.OnClic
                     } else {
                         EZToast.showShort(context, jfShopBean.getMsg());
                         if (jfShopBean.getMsg().equals("支付失败,余额不足")) {
-                            startActivity(new Intent(context, MyChongZhiActivity.class));
+                            startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url","http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
                             finish();
                         }
                     }
