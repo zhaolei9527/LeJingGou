@@ -43,6 +43,7 @@ import sakura.com.lejinggou.Utils.EZToast;
 import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
+import sakura.com.lejinggou.View.CommomDialog;
 import sakura.com.lejinggou.Volley.VolleyInterface;
 import sakura.com.lejinggou.Volley.VolleyRequest;
 
@@ -121,6 +122,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     LinearLayout llYiguoqiJf;
     @BindView(R.id.ll_XJ)
     LinearLayout llXJ;
+    @BindView(R.id.ll_EXIT)
+    LinearLayout llEXIT;
     private Context context;
     private Dialog dialog;
     private AboutIndexBean aboutIndexBean;
@@ -135,6 +138,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
 
     @Override
     protected void initData() {
+
+
     }
 
     @Override
@@ -189,6 +194,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     tvTJM.setOnClickListener(this);
                     tvLJURl.setOnClickListener(this);
                     llXJ.setOnClickListener(this);
+                    llEXIT.setOnClickListener(this);
+
                     getData();
                 } else {
                     EZToast.showShort(context, getResources().getString(R.string.Networkexception));
@@ -226,6 +233,13 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                         SpUtil.putAndApply(context, "Kymon", aboutIndexBean.getData().getKymon());
                         SpUtil.putAndApply(context, "syjf", aboutIndexBean.getData().getSyjf());
                         SpUtil.putAndApply(context, "Is_yg", aboutIndexBean.getData().getIs_yg());
+
+
+                        if (aboutIndexBean.getData().getIs_yg().equals("4")) {
+                            llEXIT.setVisibility(View.VISIBLE);
+                        } else {
+                            llEXIT.setVisibility(View.GONE);
+                        }
 
                         if (aboutIndexBean.getData().getHeadimg().startsWith("http")) {
                             SimpleDraweeView.setImageURI(aboutIndexBean.getData().getHeadimg());
@@ -295,6 +309,23 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.ll_EXIT:
+                new CommomDialog(context, R.style.dialog, "您确定退出登录么？", new CommomDialog.OnCloseListener() {
+                    @Override
+                    public void onClick(Dialog dialog, final boolean confirm) {
+                        if (confirm) {
+                            dialog.dismiss();
+                            SpUtil.clear(context);
+                            Intent intent = new Intent(context, LoginActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        } else {
+                            dialog.dismiss();
+
+                        }
+                    }
+                }).setTitle("提示").show();
+                break;
             case R.id.tv_TJM:
                 try {
                     // 从API11开始android推荐使用android.content.ClipboardManager
@@ -380,7 +411,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 }
                 break;
             case R.id.ll_chongzhi:
-                startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url","http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
+                startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url", "http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
                 //startActivity(new Intent(context, MyChongZhiActivity.class));
                 break;
             case R.id.ll_tixian:

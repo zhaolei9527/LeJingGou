@@ -466,6 +466,35 @@
             android:layout_height="@dimen/x1"
             android:background="@color/bgddd"></View>
 
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_EXIT"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y39"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x15"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="退出登录"
+                android:textColor="@color/text444" />
+
+            <ImageView
+                android:layout_width="@dimen/x5"
+                android:layout_height="@dimen/y8"
+                android:layout_marginRight="@dimen/x8"
+                android:background="@mipmap/jiantou" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@color/bgddd"></View>
     </LinearLayout>
 
 </LinearLayout>
