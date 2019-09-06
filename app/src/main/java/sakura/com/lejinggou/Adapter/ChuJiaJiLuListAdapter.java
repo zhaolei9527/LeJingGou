@@ -60,7 +60,7 @@ public class ChuJiaJiLuListAdapter extends RecyclerView.Adapter<ChuJiaJiLuListAd
         }
 
         holder.tvUser.setText(datas.get(position).getNickname());
-        holder.tvTime.setText(DateUtils.getMm(Long.parseLong(datas.get(position).getAddtime()) * 1000));
+        holder.tvTime.setText(DateUtils.getMillon(Long.parseLong(datas.get(position).getAddtime()) * 1000));
         holder.tvUserMoney.setText("￥"+datas.get(position).getBs());
 
         if (position == 0) {
