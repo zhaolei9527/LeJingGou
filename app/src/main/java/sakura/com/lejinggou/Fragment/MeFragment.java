@@ -47,6 +47,8 @@ import sakura.com.lejinggou.View.CommomDialog;
 import sakura.com.lejinggou.Volley.VolleyInterface;
 import sakura.com.lejinggou.Volley.VolleyRequest;
 
+import static com.tencent.bugly.beta.Beta.checkUpgrade;
+
 /**
  * sakura.com.lejinggou.Fragment
  *
@@ -124,6 +126,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     LinearLayout llXJ;
     @BindView(R.id.ll_EXIT)
     LinearLayout llEXIT;
+    @BindView(R.id.ll_UPApp)
+    LinearLayout llUPApp;
     private Context context;
     private Dialog dialog;
     private AboutIndexBean aboutIndexBean;
@@ -195,6 +199,7 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                     tvLJURl.setOnClickListener(this);
                     llXJ.setOnClickListener(this);
                     llEXIT.setOnClickListener(this);
+                    llUPApp.setOnClickListener(this);
 
                     getData();
                 } else {
@@ -309,6 +314,9 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.ll_UPApp:
+                checkUpgrade();
+                break;
             case R.id.ll_EXIT:
                 new CommomDialog(context, R.style.dialog, "您确定退出登录么？", new CommomDialog.OnCloseListener() {
                     @Override
