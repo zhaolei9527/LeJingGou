@@ -329,7 +329,6 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                             startActivity(intent);
                         } else {
                             dialog.dismiss();
-
                         }
                     }
                 }).setTitle("提示").show();

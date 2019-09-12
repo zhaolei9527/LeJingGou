@@ -19,6 +19,7 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.fangx.haorefresh.LoadMoreListener;
 import sakura.com.lejinggou.Adapter.XiaJiListAdapter;
 import sakura.com.lejinggou.Base.BaseActivity;
 import sakura.com.lejinggou.Bean.SelectMpUserBypidjksBean;
@@ -78,7 +79,15 @@ public class XiaJiListActivity extends BaseActivity implements View.OnClickListe
         TextView textView = new TextView(context);
         textView.setText("-暂无更多-");
         rvTxjlList.setFootEndView(textView);
-        rvTxjlList.setCanloadMore(false);
+        rvTxjlList.setLoadMoreListener(new LoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                p = p + 1;
+                dialog.show();
+                getTxmxList();
+            }
+        });
+
     }
 
     @Override
@@ -108,6 +117,8 @@ public class XiaJiListActivity extends BaseActivity implements View.OnClickListe
     private void getTxmxList() {
         HashMap<String, String> params = new HashMap<>(1);
         params.put("id", String.valueOf(SpUtil.get(context, "uid", "")));
+        params.put("pageNo", String.valueOf(p));
+        params.put("pageSize", "20");
         Log.e("selectMpUserBypidjks", "params:" + params);
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "selectMpUserBypidjks", "selectMpUserBypidjks", params, new VolleyInterface(context) {
             @Override
@@ -130,6 +141,11 @@ public class XiaJiListActivity extends BaseActivity implements View.OnClickListe
                         } else {
                             adapter.setDatas((ArrayList) newsSearchBean.getList().getList());
                         }
+
+                        if (newsSearchBean.getList().getList().size()<20){
+                            rvTxjlList.setCanloadMore(false);
+                        }
+
                     } else {
                         if (p != 1) {
                             p = p - 1;
