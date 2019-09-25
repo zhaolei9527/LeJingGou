@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgfff"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@mipmap/dlbg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/x37"
+                    android:visibility="visible">
+
+                    <FrameLayout
+                        android:id="@+id/rl_back"
+                        android:layout_width="@dimen/x30"
+                        android:layout_height="@dimen/x30"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x10">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:background="@mipmap/close" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="充值"
+                        android:textColor="@color/text333"
+                        android:textSize="@dimen/x16" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:background="@color/bgddd"></View>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y37"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/x12"
+                    android:paddingRight="@dimen/x12">
+
+                    <EditText
+                        android:text="0.01"
+                        android:id="@+id/et_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:background="@null"
+                        android:hint="请输入充值金额"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        android:textColor="@color/text333"
+                        android:textColorHint="@color/text999"
+                        android:textSize="@dimen/x13" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:background="@color/bgea"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y37"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/x12"
+                    android:paddingRight="@dimen/x12">
+
+                    <EditText
+                        android:text="赵磊"
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:background="@null"
+                        android:hint="请输入持卡人姓名"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:textColor="@color/text333"
+                        android:textColorHint="@color/text999"
+                        android:textSize="@dimen/x13" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:background="@color/bgea"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y37"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/x12"
+                    android:paddingRight="@dimen/x12">
+
+                    <EditText
+                        android:text="412726199807103758"
+                        android:id="@+id/et_user_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:background="@null"
+                        android:hint="请输入持卡人身份证号"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:textColor="@color/text333"
+                        android:textColorHint="@color/text999"
+                        android:textSize="@dimen/x13" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:background="@color/bgea"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y37"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/x12"
+                    android:paddingRight="@dimen/x12">
+
+                    <EditText
+                        android:text="6217002430037533438"
+                        android:id="@+id/et_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:background="@null"
+                        android:hint="请输入银行卡号"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColor="@color/text333"
+                        android:textColorHint="@color/text999"
+                        android:textSize="@dimen/x13" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:background="@color/bgea"></View>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y37"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/x12"
+                    android:paddingRight="@dimen/x12">
+
+                    <EditText
+                        android:text="17629345001"
+                        android:id="@+id/et_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:background="@null"
+                        android:hint="请输入银行预留手机号"
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:textColor="@color/text333"
+                        android:textColorHint="@color/text999"
+                        android:textSize="@dimen/x13" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:background="@color/bgea"></View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y37"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/x12"
+                    android:paddingRight="@dimen/x12">
+
+                    <EditText
+                        android:id="@+id/et_phonecode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入短信验证码"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:singleLine="true"
+                        android:textColor="@color/text333"
+                        android:textColorHint="@color/text999"
+                        android:textSize="@dimen/x13" />
+
+
+                    <View
+                        android:layout_width="@dimen/x1"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x10"
+                        android:layout_marginRight="@dimen/x10"
+                        android:background="@color/bgea"></View>
+
+                    <TextView
+                        android:id="@+id/btn_getSMScode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="获取验证码"
+                        android:textColor="#0b7de7"
+                        android:textSize="@dimen/x13" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:background="@color/bgea"></View>
+
+                <Button
+                    android:id="@+id/btn_juhepay"
+                    android:layout_width="@dimen/x262"
+                    android:layout_height="@dimen/y33"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/x50"
+                    android:background="@mipmap/btn_login"
+                    android:text="确认充值"
+                    android:textAllCaps="false"
+                    android:textColor="@color/bgfff"
+                    android:textSize="@dimen/x15"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
