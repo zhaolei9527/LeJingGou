@@ -29,6 +29,7 @@ import sakura.com.lejinggou.Bean.HuiJuChongZhiBean;
 import sakura.com.lejinggou.Bean.HuiJuSMSBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.EZToast;
+import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.Utils.UrlUtils;
 import sakura.com.lejinggou.Utils.Utils;
 import sakura.com.lejinggou.Volley.VolleyInterface;
@@ -96,6 +97,33 @@ public class HuiJuPayActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initData() {
+
+        String etPrice = (String) SpUtil.get(context, "etPrice", "");
+        String etName = (String) SpUtil.get(context, "etName", "");
+        String etUserCode = (String) SpUtil.get(context, "etUserCode", "");
+        String etCard = (String) SpUtil.get(context, "etCard", "");
+        String etPhone = (String) SpUtil.get(context, "etPhone", "");
+
+        if (!TextUtils.isEmpty(etPrice)) {
+            this.etPrice.setText(etPrice);
+        }
+
+        if (!TextUtils.isEmpty(etName)) {
+            this.etName.setText(etName);
+        }
+
+        if (!TextUtils.isEmpty(etUserCode)) {
+            this.etUserCode.setText(etUserCode);
+        }
+
+        if (!TextUtils.isEmpty(etCard)) {
+            this.etCard.setText(etCard);
+        }
+
+        if (!TextUtils.isEmpty(etPhone)) {
+            this.etPhone.setText(etPhone);
+        }
+
     }
 
 
@@ -149,7 +177,14 @@ public class HuiJuPayActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
 
+                SpUtil.putAndApply(context, "etPrice", etPrice.getText().toString());
+                SpUtil.putAndApply(context, "etName", etName.getText().toString());
+                SpUtil.putAndApply(context, "etUserCode", etUserCode.getText().toString());
+                SpUtil.putAndApply(context, "etCard", etCard.getText().toString());
+                SpUtil.putAndApply(context, "etPhone", etPhone.getText().toString());
+
                 submit();
+
                 break;
             case R.id.btn_getSMScode:
 
@@ -222,13 +257,12 @@ public class HuiJuPayActivity extends AppCompatActivity implements View.OnClickL
      */
     private void getUserPlace() {
         HashMap<String, String> params = new HashMap<>(2);
-        params.put("uid", "1");
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         params.put("price", etPrice.getText().toString().trim());
         params.put("username", etName.getText().toString().trim());
         params.put("userNo", etUserCode.getText().toString().trim());
         params.put("carNo", etCard.getText().toString().trim());
         params.put("tel", etPhone.getText().toString().trim());
-
         VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "huijuchongzhiSMS", "huijuchongzhiSMS", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
@@ -272,7 +306,7 @@ public class HuiJuPayActivity extends AppCompatActivity implements View.OnClickL
      */
     private void getRegister() {
         HashMap<String, String> params = new HashMap<>(1);
-        params.put("uid", "1");
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
         params.put("price", etPrice.getText().toString().trim());
         params.put("userName", etName.getText().toString().trim());
         params.put("userno", etUserCode.getText().toString().trim());

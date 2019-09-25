@@ -280,7 +280,8 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
 
                 break;
             case R.id.tv_pay:
-                startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url", "http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
+                startActivity(new Intent(context,HuiJuPayActivity.class));
+//                startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url", "http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
 //                String CZ = etCZ.getText().toString().trim();
 //                if (TextUtils.isEmpty(CZ)) {
 //                    EasyToast.getDEFAULT().show(etCZ.getHint().toString());// 使用系统样式进行输出

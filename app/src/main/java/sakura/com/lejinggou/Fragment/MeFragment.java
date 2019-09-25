@@ -24,8 +24,8 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import sakura.com.lejinggou.Activity.ChongZhiXianXiaActivity;
 import sakura.com.lejinggou.Activity.HelpActivity;
+import sakura.com.lejinggou.Activity.HuiJuPayActivity;
 import sakura.com.lejinggou.Activity.LoginActivity;
 import sakura.com.lejinggou.Activity.MainActivity;
 import sakura.com.lejinggou.Activity.MingXiJiLuListActivity;
@@ -418,7 +418,8 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 }
                 break;
             case R.id.ll_chongzhi:
-                startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url", "http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
+                startActivity(new Intent(context, HuiJuPayActivity.class));
+//                startActivity(new Intent(context, ChongZhiXianXiaActivity.class).putExtra("url", "http://abc.yuyuanyoupin.com:8080/jfshop/goRechargeForm"));
                 //startActivity(new Intent(context, MyChongZhiActivity.class));
                 break;
             case R.id.ll_tixian:

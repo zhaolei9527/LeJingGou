@@ -79,7 +79,6 @@
                     android:paddingRight="@dimen/x12">
 
                     <EditText
-                        android:text="0.01"
                         android:id="@+id/et_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -109,7 +108,6 @@
                     android:paddingRight="@dimen/x12">
 
                     <EditText
-                        android:text="赵磊"
                         android:id="@+id/et_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -139,7 +137,6 @@
                     android:paddingRight="@dimen/x12">
 
                     <EditText
-                        android:text="412726199807103758"
                         android:id="@+id/et_user_code"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -169,7 +166,6 @@
                     android:paddingRight="@dimen/x12">
 
                     <EditText
-                        android:text="6217002430037533438"
                         android:id="@+id/et_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -198,7 +194,6 @@
                     android:paddingRight="@dimen/x12">
 
                     <EditText
-                        android:text="17629345001"
                         android:id="@+id/et_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
