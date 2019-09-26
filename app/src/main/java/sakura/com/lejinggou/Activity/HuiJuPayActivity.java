@@ -325,7 +325,7 @@ public class HuiJuPayActivity extends AppCompatActivity implements View.OnClickL
                     HuiJuChongZhiBean codeBean = new Gson().fromJson(decode, HuiJuChongZhiBean.class);
                     if (codeBean.getStatus().equals("1")) {
                         Toast.makeText(HuiJuPayActivity.this, "充值成功", Toast.LENGTH_SHORT).show();
-                        etPhonecode.setText("");
+                        onBackPressed();
                     } else {
                         Toast.makeText(HuiJuPayActivity.this, codeBean.getMsg(), Toast.LENGTH_SHORT).show();
                     }
