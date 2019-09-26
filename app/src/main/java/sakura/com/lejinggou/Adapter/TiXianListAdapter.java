@@ -18,7 +18,6 @@ import butterknife.ButterKnife;
 import sakura.com.lejinggou.Bean.TixianLogBean;
 import sakura.com.lejinggou.R;
 import sakura.com.lejinggou.Utils.DateUtils;
-import sakura.com.lejinggou.Utils.SpUtil;
 import sakura.com.lejinggou.View.CommomDialog;
 
 
@@ -54,9 +53,8 @@ public class TiXianListAdapter extends RecyclerView.Adapter<TiXianListAdapter.Vi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        String zfbname = (String) SpUtil.get(mContext, "zfbname", "");
-        String zfbacc = (String) SpUtil.get(mContext, "zfbacc", "");
-        holder.tvBank.setText(zfbname + "：(" + zfbacc + ")");
+
+        holder.tvBank.setText(datas.get(position).getAcc());
         holder.tvMoney.setText(datas.get(position).getMoney() + "元");
         holder.tvTime.setText(DateUtils.getMillon(Long.parseLong(datas.get(position).getAddtime()) * 1000));
 

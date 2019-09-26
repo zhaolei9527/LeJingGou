@@ -51,6 +51,10 @@ public class TiXianActivity extends BaseActivity {
     TextView tvTixianjilu;
     @BindView(R.id.btn_submit)
     Button btnSubmit;
+    @BindView(R.id.et_name)
+    EditText etName;
+    @BindView(R.id.et_code)
+    EditText etCode;
     private Dialog dialog;
 
     @Override
@@ -60,15 +64,26 @@ public class TiXianActivity extends BaseActivity {
 
     @Override
     protected void initview() {
-        String zfbname = (String) SpUtil.get(context, "zfbname", "");
-        String zfbacc = (String) SpUtil.get(context, "zfbacc", "");
+//        String zfbname = (String) SpUtil.get(context, "zfbname", "");
+//        String zfbacc = (String) SpUtil.get(context, "zfbacc", "");
         String Kymon = (String) SpUtil.get(context, "Kymon", "");
-        tvBank.setText(zfbname + "：(" + zfbacc + ")");
+//        tvBank.setText(zfbname + "：(" + zfbacc + ")");
         tvYue.setText("当前账户最多可提现余额：￥" + Kymon);
     }
 
     @Override
     protected void initListener() {
+
+        String bankname = (String) SpUtil.get(context, "bankname", "");
+        String bankcode = (String) SpUtil.get(context, "bankcode", "");
+
+        if (!TextUtils.isEmpty(bankname)) {
+            etName.setText(bankname);
+        }
+
+        if (!TextUtils.isEmpty(bankcode)) {
+            etCode.setText(bankcode);
+        }
 
         rlBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +95,20 @@ public class TiXianActivity extends BaseActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String name = etName.getText().toString().trim();
+
+                if (TextUtils.isEmpty(name)) {
+                    EZToast.showShort(context, etName.getHint().toString());
+                    return;
+                }
+
+                String code = etCode.getText().toString().trim();
+
+                if (TextUtils.isEmpty(code)) {
+                    EZToast.showShort(context, etCode.getHint().toString());
+                    return;
+                }
 
                 String money = etMoney.getText().toString().trim();
 
@@ -97,10 +126,14 @@ public class TiXianActivity extends BaseActivity {
 
                 if (Utils.isConnected(context)) {
                     dialog.show();
-                    doTx();
+                    doJAVATx();
+                    //doTx();
                 } else {
                     EZToast.showShort(context, R.string.Networkexception);
                 }
+
+                SpUtil.putAndApply(context, "bankname", etName.getText().toString().trim());
+                SpUtil.putAndApply(context, "bankcode", etCode.getText().toString().trim());
 
             }
         });
@@ -130,13 +163,15 @@ public class TiXianActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    private void doTx() {
+    private void doJAVATx() {
         HashMap<String, String> params = new HashMap<>(1);
-        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
-        params.put("money", etMoney.getText().toString());
+//        params.put("userid", String.valueOf(SpUtil.get(context, "uid", "")));
+        params.put("userid", "1");
+        params.put("price", etMoney.getText().toString());
+        params.put("carno", etCode.getText().toString());
+        params.put("name", etName.getText().toString());
         Log.e("LoginActivity", params.toString());
-        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "about/tx", "about/tx", params, new VolleyInterface(context) {
-
+        VolleyRequest.RequestPost(context, UrlUtils.JAVA_URL + "chuangjiantixian", "chuangjiantixian", params, new VolleyInterface(context) {
             @Override
             public void onMySuccess(String result) {
                 String decode = result;
@@ -144,7 +179,7 @@ public class TiXianActivity extends BaseActivity {
                 try {
                     dialog.dismiss();
                     CodeBean codeBean = new Gson().fromJson(result, CodeBean.class);
-                    EZToast.showShort(context,codeBean.getInfo());
+                    EZToast.showShort(context, codeBean.getMsg());
                     etMoney.setText("");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -160,4 +195,32 @@ public class TiXianActivity extends BaseActivity {
     }
 
 
+    private void doTx() {
+        HashMap<String, String> params = new HashMap<>(1);
+        params.put("uid", String.valueOf(SpUtil.get(context, "uid", "")));
+        params.put("money", etMoney.getText().toString());
+        Log.e("LoginActivity", params.toString());
+        VolleyRequest.RequestPost(context, UrlUtils.BASE_URL + "about/tx", "about/tx", params, new VolleyInterface(context) {
+
+            @Override
+            public void onMySuccess(String result) {
+                String decode = result;
+                Log.e("LoginActivity", decode);
+                try {
+                    dialog.dismiss();
+                    CodeBean codeBean = new Gson().fromJson(result, CodeBean.class);
+                    EZToast.showShort(context, codeBean.getInfo());
+                    etMoney.setText("");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onMyError(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+    }
 }

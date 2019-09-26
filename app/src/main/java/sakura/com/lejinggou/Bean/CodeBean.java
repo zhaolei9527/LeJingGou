@@ -28,6 +28,17 @@ public class CodeBean {
     private String dqmon;
     private String bzj;
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    private String msg;
+
+
     public String getUrl() {
         return url;
     }
