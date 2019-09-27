@@ -249,7 +249,6 @@ public class HuiJuPayActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-
     String orderid = "";
 
     /**

@@ -165,8 +165,7 @@ public class TiXianActivity extends BaseActivity {
 
     private void doJAVATx() {
         HashMap<String, String> params = new HashMap<>(1);
-//        params.put("userid", String.valueOf(SpUtil.get(context, "uid", "")));
-        params.put("userid", "1");
+        params.put("userid", String.valueOf(SpUtil.get(context, "uid", "")));
         params.put("price", etMoney.getText().toString());
         params.put("carno", etCode.getText().toString());
         params.put("name", etName.getText().toString());
