@@ -75,7 +75,6 @@ public class HuiJuPayActivity extends AppCompatActivity implements View.OnClickL
         initView();
         initData();
 
-
     }
 
     @Override
@@ -105,7 +104,7 @@ public class HuiJuPayActivity extends AppCompatActivity implements View.OnClickL
         String etPhone = (String) SpUtil.get(context, "etPhone", "");
 
         if (!TextUtils.isEmpty(etPrice)) {
-            this.etPrice.setText(etPrice);
+//            this.etPrice.setText(etPrice);
         }
 
         if (!TextUtils.isEmpty(etName)) {

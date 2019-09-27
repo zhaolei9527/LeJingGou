@@ -179,7 +179,9 @@ public class TiXianActivity extends BaseActivity {
                     dialog.dismiss();
                     CodeBean codeBean = new Gson().fromJson(result, CodeBean.class);
                     EZToast.showShort(context, codeBean.getMsg());
-                    etMoney.setText("");
+                    if (codeBean.getStatus()==1){
+                        onBackPressed();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

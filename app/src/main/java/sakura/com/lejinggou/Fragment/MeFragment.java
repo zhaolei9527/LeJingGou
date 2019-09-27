@@ -34,7 +34,6 @@ import sakura.com.lejinggou.Activity.MyOrderActivity;
 import sakura.com.lejinggou.Activity.SettingActivity;
 import sakura.com.lejinggou.Activity.TiXianActivity;
 import sakura.com.lejinggou.Activity.XiaJiListActivity;
-import sakura.com.lejinggou.Activity.ZhiFuBaoActivity;
 import sakura.com.lejinggou.App;
 import sakura.com.lejinggou.Base.BaseLazyFragment;
 import sakura.com.lejinggou.Bean.AboutIndexBean;
@@ -423,13 +422,17 @@ public class MeFragment extends BaseLazyFragment implements View.OnClickListener
                 //startActivity(new Intent(context, MyChongZhiActivity.class));
                 break;
             case R.id.ll_tixian:
-                String zfbname = (String) SpUtil.get(context, "zfbname", "");
-                if (!TextUtils.isEmpty(zfbname)) {
-                    startActivity(new Intent(context, TiXianActivity.class));
+                if (aboutIndexBean.getData().getIs_yg().equals("4")) {
+                    EZToast.showShort(context, "当前身份不可提现");
                 } else {
-                    EZToast.showShort(context, "请先绑定支付宝账户");
-                    startActivity(new Intent(context, ZhiFuBaoActivity.class));
+                    startActivity(new Intent(context, TiXianActivity.class));
                 }
+//                String zfbname = (String) SpUtil.get(context, "zfbname", "");
+//                if (!TextUtils.isEmpty(zfbname)) {
+//                } else {
+//                    EZToast.showShort(context, "请先绑定支付宝账户");
+//                    startActivity(new Intent(context, ZhiFuBaoActivity.class));
+//                }
                 break;
             case R.id.ll_mingxi:
                 startActivity(new Intent(context, MingXiJiLuListActivity.class));
