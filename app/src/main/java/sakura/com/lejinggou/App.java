@@ -3,6 +3,7 @@ package sakura.com.lejinggou;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
+import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -10,6 +11,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.haoge.easyandroid.EasyAndroid;
 import com.hss01248.frescopicker.FrescoIniter;
 import com.tencent.bugly.Bugly;
+import com.tencent.smtt.sdk.QbSdk;
 
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -32,6 +34,8 @@ public class App extends MultiDexApplication {
     public static PausableThreadPoolExecutor pausableThreadPoolExecutor;
     public static String LanguageTYPEHTTP = "?l=zh-cn";
     public static Context context;
+    public static boolean initX5 = false;
+
     protected String getAppkey() {
         return null;
     }
@@ -51,6 +55,21 @@ public class App extends MultiDexApplication {
         PhotoPickUtils.init(getApplicationContext(), new FrescoIniter());//第二个参数根据具体依赖库而定
         EasyAndroid.init(this);
         Bugly.init(getApplicationContext(), "18a7a5e034", false);
+        //初始化X5内核
+        QbSdk.initX5Environment(this, new QbSdk.PreInitCallback() {
+
+            @Override
+            public void onCoreInitFinished() {
+                //x5内核初始化完成回调接口，此接口回调并表示已经加载起来了x5，有可能特殊情况下x5内核加载失败，切换到系统内核。
+            }
+
+            @Override
+            public void onViewInitFinished(boolean b) {
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                Log.e("@@", "加载内核是否成功:" + b);
+                initX5 = b;
+            }
+        });
     }
 
     public static RequestQueue getQueues() {

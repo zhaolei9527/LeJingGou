@@ -129,6 +129,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.shopnow:
+
                 if (TextUtils.isEmpty(uid)) {
                     EZToast.showShort(context, "请先登录");
                     startActivity(new Intent(context, LoginActivity.class));
@@ -219,7 +220,6 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                             }
                         });
 
-
                         llCJJL.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -229,7 +229,6 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                                 );
                             }
                         });
-
 
                         Log.e("PriceDetailsActivity", String.valueOf(goodsIndexBean.getData().getS()));
 
