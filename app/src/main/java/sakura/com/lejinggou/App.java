@@ -54,7 +54,7 @@ public class App extends MultiDexApplication {
         pausableThreadPoolExecutor = new PausableThreadPoolExecutor(1, 1, 0L, TimeUnit.SECONDS, new PriorityBlockingQueue<Runnable>());
         PhotoPickUtils.init(getApplicationContext(), new FrescoIniter());//第二个参数根据具体依赖库而定
         EasyAndroid.init(this);
-        Bugly.init(getApplicationContext(), "18a7a5e034", false);
+        Bugly.init(getApplicationContext(), "58e444e19a", false);
         //初始化X5内核
         QbSdk.initX5Environment(this, new QbSdk.PreInitCallback() {
 
