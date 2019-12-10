@@ -147,7 +147,8 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
 
                     long l = Long.parseLong(goodsIndexBean.getData().getStarttime());
                     long l1 = System.currentTimeMillis() / 1000;
-                    if (l<=l1){
+
+                    if (l1 - l < 0) {
                         EZToast.showShort(context, "商品预购中");
                         return;
                     }
@@ -162,7 +163,7 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                                         .putExtra("title", goodsIndexBean.getData().getName())
                                 );
                             }
-                        },1000);
+                        }, 1000);
                     } else {
                         EZToast.showShort(context, "商品预购中");
                     }
