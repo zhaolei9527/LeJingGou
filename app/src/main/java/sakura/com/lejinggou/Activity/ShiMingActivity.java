@@ -167,6 +167,9 @@ public class ShiMingActivity extends BaseActivity implements View.OnClickListene
                     dialog.dismiss();
                     LoginBean loginBean = new Gson().fromJson(decode, LoginBean.class);
                     EZToast.showShort(context, loginBean.getInfo());
+                    if (loginBean.getStatus()==1){
+                      SpUtil.putAndApply(context, "is_sm", "1");
+                    }
                     decode = null;
                     loginBean = null;
                 } catch (Exception e) {

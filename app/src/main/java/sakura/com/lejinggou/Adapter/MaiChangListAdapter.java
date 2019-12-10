@@ -58,11 +58,11 @@ public class MaiChangListAdapter extends RecyclerView.Adapter<MaiChangListAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType==1){
+        if (viewType == 1) {
             View view = LayoutInflater.from(mContext).inflate(R.layout.item_my_maichang_list_layout, parent, false);
             ViewHolder vp = new ViewHolder(view);
             return vp;
-        }else {
+        } else {
             View view = LayoutInflater.from(mContext).inflate(R.layout.item_maichang_list_layout, parent, false);
             ViewHolder vp = new ViewHolder(view);
             return vp;
@@ -73,7 +73,13 @@ public class MaiChangListAdapter extends RecyclerView.Adapter<MaiChangListAdapte
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.tvTime.setText(DateUtils.getMillon(Long.parseLong(datas.get(position).getAddtime()) * 1000));
-        holder.SimpleDraweeViewUser.setImageURI(UrlUtils.URL + datas.get(position).getHeadimg());
+
+        if (datas.get(position).getHeadimg().equals("http")) {
+            holder.SimpleDraweeViewUser.setImageURI(datas.get(position).getHeadimg());
+        } else {
+            holder.SimpleDraweeViewUser.setImageURI(UrlUtils.URL + datas.get(position).getHeadimg());
+        }
+
         holder.tvUser.setText(datas.get(position).getNickname());
         //首先是拼接字符串
         String content = "<font color=\"#ef1544\">￥" + datas.get(position).getBs() + "</font>";

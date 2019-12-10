@@ -136,13 +136,6 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                     return;
                 }
 
-                long l = Long.parseLong(goodsIndexBean.getData().getStarttime());
-                long l1 = System.currentTimeMillis() / 1000;
-                if (l<=l1){
-                    EZToast.showShort(context, "商品预购中");
-                    return;
-                }
-
                 if (goodsIndexBean.getData().getType() == 1) {
                     startActivity(new Intent(context, MaiChangReGouActivity.class)
                             .putExtra("id", goodsIndexBean.getData().getId())
@@ -151,6 +144,14 @@ public class PriceDetailsActivity extends BaseActivity implements View.OnClickLi
                 }
 
                 if (goodsIndexBean.getData().getType() == 2) {
+
+                    long l = Long.parseLong(goodsIndexBean.getData().getStarttime());
+                    long l1 = System.currentTimeMillis() / 1000;
+                    if (l<=l1){
+                        EZToast.showShort(context, "商品预购中");
+                        return;
+                    }
+
                     int s = goodsIndexBean.getData().getS();
                     if (s <= 0) {
                         mHandler.postDelayed(new Runnable() {
