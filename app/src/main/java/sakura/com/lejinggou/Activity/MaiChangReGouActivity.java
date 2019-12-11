@@ -135,7 +135,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         EasyToast.getDEFAULT().show("支付成功");// 使用系统样式进行输出
-                        llPay.setVisibility(View.VISIBLE);
+//                        llPay.setVisibility(View.VISIBLE);
                         dialog.show();
                         orderBzj();
                     } else {
@@ -359,7 +359,7 @@ public class MaiChangReGouActivity extends BaseActivity implements View.OnClickL
                         is_jlbzj = "1";
                         orderChujia();
                     } else if (2 == codeBean.getStatus()) {
-                        llPay.setVisibility(View.VISIBLE);
+//                        llPay.setVisibility(View.VISIBLE);
                         EasyToast.getDEFAULT().show("余额不足，请充值~");// 使用系统样式进行输出
                         tvYE.setText("当前账户余额：" + codeBean.getDqmon());
                     } else {
